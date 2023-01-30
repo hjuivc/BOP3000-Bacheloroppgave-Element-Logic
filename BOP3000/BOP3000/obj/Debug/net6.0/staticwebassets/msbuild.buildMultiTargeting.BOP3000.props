@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BOP3000.props" />
+</Project>

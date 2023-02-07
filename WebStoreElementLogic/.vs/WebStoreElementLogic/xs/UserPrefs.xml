@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{75036BC6-7656-4FB8-BA24-4FCDF74F1077}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebStoreElementLogic/Pages/OrderPage.razor">
+    <Files>
+      <File FileName="WebStoreElementLogic/Pages/OrderPage.razor" Line="26" Column="27" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="WebStoreElementLogic" expanded="True">
+            <Node name="WebStoreElementLogic" expanded="True">
+              <Node name="Data" expanded="True" />
+              <Node name="Pages" expanded="True">
+                <Node name="OrderPage.razor" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.WebStoreElementLogic PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
+</Properties>

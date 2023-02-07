@@ -1,9 +1,8 @@
-/* _content/WebStoreElementLogic/Shared/Alert.razor.rz.scp.css */
-.blackout-background[b-u6ugx8dqab] {
+﻿.blackout-background {
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.0);
 
-    animation-name: blackout-b-u6ugx8dqab;
+    animation-name: blackout;
     animation-duration: 0.1s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in;
@@ -17,14 +16,11 @@
     height: 100%;
 }
 
-@keyframes blackout-b-u6ugx8dqab {
+@keyframes blackout {
     from { background-color: rgba(0, 0, 0, 0.0); }
     to { background-color: rgba(0, 0, 0, 0.3) }
 }
 
-.alert[b-u6ugx8dqab] {
+.alert {
     z-index: 2;
-}
-/* _content/WebStoreElementLogic/Shared/NavMenu.razor.rz.scp.css */
-body[b-gzu309u40k] {
 }

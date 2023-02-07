@@ -1,0 +1,56 @@
+﻿@using Data
+
+<form class="d-flex flex-column position-fixed shadow p-lg-3 p-sm-1 justify-content-center">
+    <img src="images/default.jpg" style="width: 40vmin; height: 40vmin;" />
+
+    <label class="form-label" for="name">Name</label>
+    <input class="form-control" type="text" name="name" @bind="Copy.Name">
+
+    <label class="form-label" for="id">Id</label>
+    <input class="form-control" type="text" name="id" @bind="Copy.Id">
+
+    <label class="form-label" for="description">Description</label>
+    <textarea class="form-control" name="desc" @bind="Copy.Desc"></textarea>
+
+    <div class="d-flex my-3 justify-content-between">
+        <button type="button" @onclick="Discard" class="btn btn-warning">Discard changes</button>
+        <button type="button" @onclick="Save" class="btn btn-success">Save changes</button>
+    </div>
+    <button type="button" @onclick="Delete" class="btn btn-danger align-self-lg-start align-self-sm-stretch">Delete</button>
+
+    
+</form>
+
+@code {
+
+    [Parameter]
+    public ProductInfo Info { get; set; }
+
+    [Parameter]
+    public ProductInfo Copy { get; set; }
+
+    [Parameter]
+    public EventCallback OnSave { get; set; }
+
+    [Parameter]
+    public EventCallback OnDelete { get; set; }
+
+    private void Discard()
+    {
+        ProductInfo.Change(Copy, Info);
+        StateHasChanged();
+    }
+
+    private void Save()
+    {
+        ProductInfo.Change(Info, Copy);
+        StateHasChanged();
+        OnSave.InvokeAsync();
+    }
+
+    private void Delete()
+    {
+        OnDelete.InvokeAsync();
+    }
+
+}

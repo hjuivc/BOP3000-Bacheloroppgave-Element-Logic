@@ -1,0 +1,31 @@
+﻿@using Data
+
+<div class="d-flex flex-row shadow my-2 p-2 bg-light rounded border border-2 @(Selected? "border-success" : "border-light")" 
+    @onclick="SelectProduct">
+    <img src="images/default.jpg" style="width: 10vmin; height: 10vmin;" />
+    <div class="ms-4 mt-lg-3 mt-0 algn-middle">
+        <h3 class="text-truncate" style="max-width: 30vw">@Info.Name</h3>
+        <span class="d-md-inline-block d-none text-truncate" style="max-width: 30vw;">@Info.Desc</span>
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public ProductInfo Info { get; set; }
+
+    [Parameter]
+    public int Index { get; set; }
+
+    [Parameter]
+    public bool Selected { get; set; } = false;
+
+    [Parameter]
+    public EventCallback<int> OnSelected { get; set; }
+
+    private void SelectProduct()
+    {
+        Selected = true;
+        OnSelected.InvokeAsync(Index);
+    }
+}

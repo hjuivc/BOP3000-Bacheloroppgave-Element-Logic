@@ -27,11 +27,11 @@
     <div class="container-fluid d-flex justify-content-center">
         @if(SelectedIndex >= 0)
         {
-            <ProductForm 
+            <ProductForm
                 Info="Products[SelectedIndex]"
-                Copy="(ProductInfo) Products[SelectedIndex].Clone()" 
+                Copy="(ProductInfo) Products[SelectedIndex].Clone()"
                 OnSave="SaveHandler"
-                OnDelete="DeleteHandler"/>
+                OnDelete="DeleteHandler" />
         }
     </div>
 </div>

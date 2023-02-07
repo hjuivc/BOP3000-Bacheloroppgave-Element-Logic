@@ -1,8 +1,57 @@
 ﻿@page "/orderpage"
+@using Data
 
-<h3>OrderPage</h3>
-
+<div class="d-flex flex-row mx-5 rounded">
+    <input name="search" type="text" class="form-control" @bind="searchTerm" @bind:event="oninput">
+    <button @onclick="Search" class="btn btn-primary">Search</button>
+</div>
+<div class="container-fluid d-flex flex-row flex-wrap">
+@for (int i = 0; i < ProductsCopy.Count; i++)
+{
+    <div class="d-flex flex-column m-4 p-2 shadow">
+        <img src="images/default.jpg" style="width: 20vmin; height: 20vmin;" />
+        <h4>@ProductsCopy[i].Name</h4>
+        <span>Qty</span>
+    </div>
+}
+</div>
 @code {
+
+    private List<ProductInfo> ProductsCopy = new List<ProductInfo>();
+
+    private List<ProductInfo> Products = ProductInfo.generateList(35);
+
+    private string searchTerm = "";
+
+    private void Search() 
+    {
+        FillCopy(searchTerm);
+    }
+
+    private void FillCopy(string term) 
+    {
+        ProductsCopy.Clear();
+        foreach(ProductInfo info in Products) 
+        {
+            if(term == "")
+            {
+                ProductsCopy.Add((ProductInfo) info.Clone());
+            } 
+            else
+            {
+                if(info.Name.ToLower().Contains(term.ToLower())) 
+                {
+                    ProductsCopy.Add((ProductInfo) info.Clone());
+                }
+            }
+        }
+        StateHasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        FillCopy("");
+    }
 
 }
 

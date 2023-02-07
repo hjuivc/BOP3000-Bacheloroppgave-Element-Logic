@@ -9,81 +9,81 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebStoreElementLogic
 build_property.RootNamespace = WebStoreElementLogic
-build_property.ProjectDir = C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\
+build_property.ProjectDir = /Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic
+build_property.MSBuildProjectDirectory = /Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/App.razor]
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/FetchData.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/Inbound.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5ib3VuZC5yYXpvcg==
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/Inbound.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5ib3VuZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/Index.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/OrderPage.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JkZXJQYWdlLnJhem9y
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/OrderPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvT3JkZXJQYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/ProductPage.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdFBhZ2UucmF6b3I=
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/ProductPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvZHVjdFBhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/StockPage.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvY2tQYWdlLnJhem9y
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/StockPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU3RvY2tQYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Shared/MainLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Shared/ProductForm.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFByb2R1Y3RGb3JtLnJhem9y
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Shared/ProductForm.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1Byb2R1Y3RGb3JtLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Shared/ProductListItem.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFByb2R1Y3RMaXN0SXRlbS5yYXpvcg==
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Shared/ProductListItem.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1Byb2R1Y3RMaXN0SXRlbS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Shared/SurveyPrompt.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/_Imports.razor]
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Shared/Alert.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEFsZXJ0LnJhem9y
-build_metadata.AdditionalFiles.CssScope = b-u6ugx8dqab
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Shared/Alert.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0FsZXJ0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-h85anei4l6
 
-[C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Shared/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-gzu309u40k
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-xd99ywpqx9
 
-[C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/_Host.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

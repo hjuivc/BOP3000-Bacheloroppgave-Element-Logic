@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\WebStoreElementLogic",
+    "\\WebStoreElementLogic\\WebStoreElementLogic",
+    "\\WebStoreElementLogic\\WebStoreElementLogic\\Data"
   ],
+  "SelectedNode": "\\WebStoreElementLogic\\WebStoreElementLogic\\Data\\ProductInfo.cs",
   "PreviewInSolutionExplorer": false
 }

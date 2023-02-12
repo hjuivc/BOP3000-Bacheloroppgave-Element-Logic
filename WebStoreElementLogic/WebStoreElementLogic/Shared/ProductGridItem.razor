@@ -1,0 +1,25 @@
+@using Data
+
+<div class="d-flex flex-column m-4 p-2 shadow rounded" @onclick="Select">
+    <img src="images/default.jpg" style="width: 20vmin; height: 20vmin;" />
+    <h4>@Info.Name</h4>
+    <span>Qty</span>
+</div>
+
+@code {
+
+    [Parameter]
+    public int Index { get; set; }
+
+    [Parameter]
+    public ProductInfo Info { get; set; }
+
+    [Parameter]
+    public EventCallback<int> OnSelected { get; set; }
+
+    private void Select() 
+    {
+        OnSelected.InvokeAsync(Index);
+    }
+
+}

@@ -1,0 +1,23 @@
+﻿<Properties StartupConfiguration="{75036BC6-7656-4FB8-BA24-4FCDF74F1077}|Default">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="WebStoreElementLogic" expanded="True">
+            <Node name="WebStoreElementLogic" expanded="True">
+              <Node name="Data" expanded="True" />
+              <Node name="Pages" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.WebStoreElementLogic PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

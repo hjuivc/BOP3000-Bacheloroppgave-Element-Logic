@@ -1,8 +1,77 @@
 ﻿@page "/orderpage"
+@using Data
 
-<h3>OrderPage</h3>
+@if(SelectedIndex >= 0) 
+{
+    <div calss="d-flex flex-cloumn shadow position-fixed w-25 top-50 start-50 translate-center justify-content-center" @onclick="Cancel">
+        <div class="text-end"><button class="btn-close" /></div>
+        <img src="images/default.jpg" />
+        <h3>@ProductsCopy[SelectedIndex].Name</h3>
+        <span>Qty</span>
+    </div>
+}
+<div class="d-flex flex-row mx-5 rounded">
+    <input name="search" type="text" class="form-control" @bind="searchTerm" @bind:event="oninput">
+    <button @onclick="Search" class="btn btn-primary">Search</button>
+</div>
+<div class="container-fluid d-flex flex-row flex-wrap justify-content-around">
+@for (int i = 0; i < ProductsCopy.Count; i++)
+{
+   <ProductGridItem Info="@ProductsCopy[i]" OnSelected="Select" Index="i" />
+}
+</div>
+
 
 @code {
+
+    private void Cancel() {
+        SelectedIndex = -1;
+        StateHasChanged();
+    }
+
+    private void Select(int index) 
+    {
+        SelectedIndex = index;
+        StateHasChanged();
+    }
+
+    private int SelectedIndex = -1;
+
+    private List<ProductInfo> ProductsCopy = new List<ProductInfo>();
+
+    private List<ProductInfo> Products = ProductInfo.generateList(35);
+
+    private string searchTerm = "";
+
+    private void Search() 
+    {
+        FillCopy(searchTerm);
+    }
+
+    private void FillCopy(string term) 
+    {
+        ProductsCopy.Clear();
+        foreach(ProductInfo info in Products) 
+        {
+            if(term == "" || info.Name == null)
+            {
+                ProductsCopy.Add((ProductInfo) info.Clone());
+            } 
+            else
+            {
+                if(info.Name.ToLower().Contains(term.ToLower())) 
+                {
+                    ProductsCopy.Add((ProductInfo) info.Clone());
+                }
+            }
+        }
+        StateHasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        FillCopy("");
+    }
 
 }
 

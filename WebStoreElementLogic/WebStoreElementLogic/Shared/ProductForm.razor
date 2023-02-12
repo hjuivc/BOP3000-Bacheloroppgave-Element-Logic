@@ -1,0 +1,74 @@
+﻿@using Data
+
+<form class="d-flex flex-column p-lg-3 justify-content-center px-0 px-md-2 px-lg-5">
+    <h2 class="text-center">@Title</h2>
+    <img src="images/default.jpg" style="width: 30vmin; height: 30vmin;" class="align-self-center" />
+
+    <label class="form-label" for="name">Name</label>
+    <input class="form-control" type="text" name="name" @bind="Copy.Name">
+
+    <label class="form-label" for="id">Id</label>
+    <input class="form-control" type="text" name="id" @bind="Copy.Id">
+
+    <label class="form-label" for="description">Description</label>
+    <textarea class="form-control" name="desc" @bind="Copy.Desc"></textarea>
+
+    <div class="d-flex my-3 justify-content-between">
+        <button type="button" @onclick="Discard" class="btn btn-warning">@DiscardLabel</button>
+        <button type="button" @onclick="Save" class="btn btn-success">@SaveLabel</button>
+    </div>
+    @if(DeleteButton)
+    {
+        <button type="button" @onclick="Delete" class="btn btn-danger align-self-lg-start align-self-stretch">Delete</button>
+    }
+</form>
+
+@code {
+
+    [Parameter]
+    public string DiscardLabel { get; set; } = "";
+
+    [Parameter]
+    public string SaveLabel { get; set; } = "";
+
+    [Parameter]
+    public bool DeleteButton { get; set; } = false;
+
+    [Parameter]
+    public string Title { get; set; } = "";
+
+    [Parameter]
+    public ProductInfo Info { get; set; }
+
+    [Parameter]
+    public ProductInfo Copy { get; set; }
+
+    [Parameter]
+    public EventCallback OnSave { get; set; }
+
+    [Parameter]
+    public EventCallback OnDiscard { get; set; }
+
+    [Parameter]
+    public EventCallback OnDelete { get; set; }
+
+    private void Discard()
+    {
+        ProductInfo.Change(Copy, Info);
+        OnDiscard.InvokeAsync();
+        StateHasChanged();
+    }
+
+    private void Save()
+    {
+        ProductInfo.Change(Info, Copy);
+        StateHasChanged();
+        OnSave.InvokeAsync();
+    }
+
+    private void Delete()
+    {
+        OnDelete.InvokeAsync();
+    }
+
+}

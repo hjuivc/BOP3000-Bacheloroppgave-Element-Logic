@@ -28,3 +28,7 @@
 /* _content/WebStoreElementLogic/Shared/NavMenu.razor.rz.scp.css */
 body[b-gzu309u40k] {
 }
+/* _content/WebStoreElementLogic/Shared/ProductListItem.razor.rz.scp.css */
+.selected[b-hszx84rlgp] {
+    box-shadow: 5px 5px 5px 5px rgba(20, 200, 20, 0.8);
+}

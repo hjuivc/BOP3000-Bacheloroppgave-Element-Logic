@@ -11,6 +11,14 @@
             Name = "Product " + (1 + number);
         }
 
+        public ProductInfo() 
+        {
+            Name = "New name";
+            Desc = "";
+            Id = "";
+        }
+
+
         public ProductInfo(string? name, string? desc, string? id)
         {
             Name = name;

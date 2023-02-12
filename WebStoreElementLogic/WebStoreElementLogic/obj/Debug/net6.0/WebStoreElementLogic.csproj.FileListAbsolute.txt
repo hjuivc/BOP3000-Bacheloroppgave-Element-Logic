@@ -93,3 +93,4 @@ C:/Users/eirik/Source/Repos/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElemen
 /Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/WebStoreElementLogic.pdb
 /Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/WebStoreElementLogic.genruntimeconfig.cache
 /Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/ref/WebStoreElementLogic.dll
+/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/scopedcss/Shared/ProductListItem.razor.rz.scp.css

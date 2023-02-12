@@ -56,8 +56,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1Byb2R1Y3RGb3JtLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Shared/ProductListItem.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1Byb2R1Y3RMaXN0SXRlbS5yYXpvcg==
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Shared/ProductGridItem.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1Byb2R1Y3RHcmlkSXRlbS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Shared/SurveyPrompt.razor]
@@ -75,6 +75,10 @@ build_metadata.AdditionalFiles.CssScope = b-h85anei4l6
 [/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-xd99ywpqx9
+
+[/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Shared/ProductListItem.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1Byb2R1Y3RMaXN0SXRlbS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-hszx84rlgp
 
 [/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s

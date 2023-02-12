@@ -1,7 +1,8 @@
 ﻿@using Data
 
-<form class="d-flex flex-column position-fixed shadow p-lg-3 p-sm-1 justify-content-center">
-    <img src="images/default.jpg" style="width: 40vmin; height: 40vmin;" />
+<form class="d-flex flex-column p-lg-3 justify-content-center px-0 px-md-2 px-lg-5">
+    <h2 class="text-center">@Title</h2>
+    <img src="images/default.jpg" style="width: 30vmin; height: 30vmin;" class="align-self-center" />
 
     <label class="form-label" for="name">Name</label>
     <input class="form-control" type="text" name="name" @bind="Copy.Name">
@@ -13,15 +14,28 @@
     <textarea class="form-control" name="desc" @bind="Copy.Desc"></textarea>
 
     <div class="d-flex my-3 justify-content-between">
-        <button type="button" @onclick="Discard" class="btn btn-warning">Discard changes</button>
-        <button type="button" @onclick="Save" class="btn btn-success">Save changes</button>
+        <button type="button" @onclick="Discard" class="btn btn-warning">@DiscardLabel</button>
+        <button type="button" @onclick="Save" class="btn btn-success">@SaveLabel</button>
     </div>
-    <button type="button" @onclick="Delete" class="btn btn-danger align-self-lg-start align-self-sm-stretch">Delete</button>
-
-    
+    @if(DeleteButton)
+    {
+        <button type="button" @onclick="Delete" class="btn btn-danger align-self-lg-start align-self-sm-stretch">Delete</button>
+    }
 </form>
 
 @code {
+
+    [Parameter]
+    public string DiscardLabel { get; set; } = "";
+
+    [Parameter]
+    public string SaveLabel { get; set; } = "";
+
+    [Parameter]
+    public bool DeleteButton { get; set; } = false;
+
+    [Parameter]
+    public string Title { get; set; } = "";
 
     [Parameter]
     public ProductInfo Info { get; set; }
@@ -33,11 +47,15 @@
     public EventCallback OnSave { get; set; }
 
     [Parameter]
+    public EventCallback OnDiscard { get; set; }
+
+    [Parameter]
     public EventCallback OnDelete { get; set; }
 
     private void Discard()
     {
         ProductInfo.Change(Copy, Info);
+        OnDiscard.InvokeAsync();
         StateHasChanged();
     }
 

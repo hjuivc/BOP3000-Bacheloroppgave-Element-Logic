@@ -5,7 +5,8 @@
 {
     <Alert OnCancel="CancelDelete">
         <h3>Delete Product</h3>
-        Are you sure you wish to delete @Products[SelectedIndex].Name?
+        Are you sure you wish to delete 
+        <span class="text-danger text-decoration-underline">@Products[SelectedIndex].Name?</span>
         <div class="d-flex flex-row justify-content-around">
             <button @onclick="CancelDelete" class="btn btn-success mt-3">Cancel</button>
             <button @onclick="Delete" class="btn btn-danger mt-3">Delete</button>
@@ -24,18 +25,20 @@
         }
     </div>
     <div class="container-fluid">
+
         <button class="btn btn-primary mt-2 bottom-0 mb-4 rounded-pill position-fixed align-self-end d-block" 
-        style="z-index: 7; transform: translateX(-5vw);"
+        style="z-index: 3; transform: translateX(-5vw);"
         @onclick="New">
             <h3>new</h3>
         </button>
+
         <div class="container-fluid position-fixed w-50 pe-4">
         @if(SelectedIndex >= 0)
         {
             <ProductForm
                 Title="Edit product"
                 SaveLabel="Save changes"
-                DiscardLabel="Discarc changes"
+                DiscardLabel="Discard changes"
                 DeleteButton
                 Info="Products[SelectedIndex]"
                 Copy="(ProductInfo) Products[SelectedIndex].Clone()"
@@ -46,9 +49,9 @@
         {
             <ProductForm
                 Title="Add new product"
-                Info="newInfo"
                 SaveLabel="Add"
                 DiscardLabel="Cancel"
+                Info="newInfo"
                 Copy="new ProductInfo()"
                 OnSave="SaveHandler"
                 OnDiscard="Discard" />
@@ -61,15 +64,13 @@
     public List<ProductInfo> Products = ProductInfo.generateList(10);
 
     private ProductInfo newInfo = new ProductInfo();
-
     private bool AddNew = false;
-
     private bool DeleteAlert = false;
-
     private int SelectedIndex = -1;
 
     private void SelectProduct(int index)
     {
+        AddNew = false;
         SelectedIndex = index;
     }
 

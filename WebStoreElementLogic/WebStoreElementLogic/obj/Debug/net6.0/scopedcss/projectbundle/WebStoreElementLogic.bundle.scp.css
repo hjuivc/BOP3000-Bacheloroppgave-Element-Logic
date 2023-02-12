@@ -1,6 +1,6 @@
 /* _content/WebStoreElementLogic/Shared/Alert.razor.rz.scp.css */
 .blackout-background[b-u6ugx8dqab] {
-    z-index: 1;
+    z-index: 5;
     background-color: rgba(0, 0, 0, 0.0);
 
     animation-name: blackout-b-u6ugx8dqab;
@@ -23,7 +23,7 @@
 }
 
 .alert[b-u6ugx8dqab] {
-    z-index: 2;
+    z-index: 6;
 }
 /* _content/WebStoreElementLogic/Shared/NavMenu.razor.rz.scp.css */
 body[b-gzu309u40k] {

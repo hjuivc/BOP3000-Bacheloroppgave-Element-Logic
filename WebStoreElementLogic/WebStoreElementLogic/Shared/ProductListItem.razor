@@ -1,4 +1,5 @@
 ﻿@using Data
+@using WebStoreElementLogic.Entities;
 
 <div class='d-flex flex-row shadow my-2 bg-light p-2 rounded border border-2 @(Selected? "border-success selected" : "border-light")' 
     style="background-color: #34495e;"
@@ -13,7 +14,7 @@
 @code {
 
     [Parameter]
-    public ProductInfo Info { get; set; }
+    public Product Info { get; set; }
 
     [Parameter]
     public int Index { get; set; }

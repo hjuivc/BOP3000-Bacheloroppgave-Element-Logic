@@ -1,6 +1,10 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using System.Data;
 using WebStoreElementLogic.Data;
+using WebStoreElementLogic.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

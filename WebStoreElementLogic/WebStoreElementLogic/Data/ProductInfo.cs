@@ -3,8 +3,14 @@
     public class ProductInfo : ICloneable
     {
         public string? Name { get; set; }
+<<<<<<< Updated upstream:WebStoreElementLogic/WebStoreElementLogic/Data/ProductInfo.cs
         public string? Desc { get; set; } = "Description for the product goes here..";
         public string? Id { get; set; } = "0";
+=======
+        public string? Desc { get; set; }
+        public int? Id { get; set; } = 0;
+        public string? URL { get; set; } = "images/default.jpg";
+>>>>>>> Stashed changes:WebStoreElementLogic/WebStoreElementLogic/Entities/Product.cs
 
         public ProductInfo(int number)
         {
@@ -13,7 +19,7 @@
 
         public ProductInfo() 
         {
-            Name = "New name";
+            Name = "";
             Desc = "";
             Id = "";
         }

@@ -18,7 +18,7 @@
     [Parameter]
     public EventCallback<int> OnSelected { get; set; }
 
-    private void Select() 
+    private void Select()
     {
         OnSelected.InvokeAsync(Index);
     }

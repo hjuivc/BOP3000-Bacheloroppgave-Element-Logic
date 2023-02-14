@@ -1,5 +1,6 @@
 ﻿@page "/orderpage"
 @using Data
+@using WebStoreElementLogic.Entities;
 
 @if(SelectedIndex >= 0) 
 {
@@ -37,9 +38,9 @@
 
     private int SelectedIndex = -1;
 
-    private List<ProductInfo> ProductsCopy = new List<ProductInfo>();
+    private List<Product> ProductsCopy = new List<Product>();
 
-    private List<ProductInfo> Products = ProductInfo.generateList(35);
+    private List<Product> Products = Product.generateList(35);
 
     private string searchTerm = "";
 
@@ -51,17 +52,17 @@
     private void FillCopy(string term) 
     {
         ProductsCopy.Clear();
-        foreach(ProductInfo info in Products) 
+        foreach(Product info in Products) 
         {
             if(term == "" || info.Name == null)
             {
-                ProductsCopy.Add((ProductInfo) info.Clone());
+                ProductsCopy.Add((Product) info.Clone());
             } 
             else
             {
                 if(info.Name.ToLower().Contains(term.ToLower())) 
                 {
-                    ProductsCopy.Add((ProductInfo) info.Clone());
+                    ProductsCopy.Add((Product) info.Clone());
                 }
             }
         }

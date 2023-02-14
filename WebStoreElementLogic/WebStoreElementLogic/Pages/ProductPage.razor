@@ -1,27 +1,32 @@
 ﻿@page "/productpage"
-@using Data
+@using WebStoreElementLogic.Data;
+@using WebStoreElementLogic.Entities;
+@using WebStoreElementLogic.Interfaces;
+@inject IProductService ProductService;
+@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
 
-@if(DeleteAlert)
+@if (DeleteAlert)
 {
-    <Alert OnCancel="CancelDelete">
-        <h3>Delete Product</h3>
-        Are you sure you wish to delete 
-        <span class="text-danger text-decoration-underline">@Products[SelectedIndex].Name?</span>
-        <div class="d-flex flex-row justify-content-around">
-            <button @onclick="CancelDelete" class="btn btn-success mt-3">Cancel</button>
-            <button @onclick="Delete" class="btn btn-danger mt-3">Delete</button>
-        </div>
-    </Alert>
+        <Alert OnCancel="CancelDelete">
+            <h3>Delete Product</h3>
+            Are you sure you wish to delete 
+            <span class="text-danger text-decoration-underline">@Products[SelectedIndex].Name?</span>
+            <div class="d-flex flex-row justify-content-around">
+                <button @onclick="CancelDelete" class="btn btn-success mt-3">Cancel</button>
+            <button @onclick="() => Delete(Products[SelectedIndex].Id)">Delete </button>
+            </div>
+        </Alert>
 }
 <div class="d-flex justify-content-between">
     <div class="container-fluid">
-        @for(int i = 0;i < Products.Count;i++)
+        @for (int i = 0; i < Products.Count; i++)
         {
-            <ProductListItem
-                Info=Products[i]
+                <ProductListItem
+                Info=(Products)[i]
                 Index="i"
                 OnSelected="SelectProduct"
-                  Selected="SelectedIndex == i" />
+                Selected="SelectedIndex == i" />
+
         }
     </div>
     <div class="container-fluid">
@@ -33,65 +38,68 @@
         </button>
 
         <div class="container-fluid position-fixed w-50 pe-4">
-        @if(SelectedIndex >= 0)
-        {
-            <ProductForm
+            @if (SelectedIndex >= 0)
+            {
+                <ProductForm
                 Title="Edit product"
                 SaveLabel="Save changes"
                 DiscardLabel="Discard changes"
                 DeleteButton
                 Info="Products[SelectedIndex]"
-                Copy="(ProductInfo) Products[SelectedIndex].Clone()"
+                Copy="(Product) Products[SelectedIndex].Clone()"
                 OnSave="SaveHandler"
                 OnDelete="DeleteHandler" />
-        }
-        @if(AddNew)
-        {
-            <ProductForm
+            }
+            @if (AddNew)
+            {
+                <ProductForm
                 Title="Add new product"
                 SaveLabel="Add"
                 DiscardLabel="Cancel"
                 Info="newInfo"
-                Copy="new ProductInfo()"
+                Copy="new Product()"
                 OnSave="SaveHandler"
                 OnDiscard="Discard" />
-        }
+            }
         </div>
     </div>
 </div>
 
 
 @code {
-    public List<ProductInfo> Products = ProductInfo.generateList(10);
+    
+    public List<Product> Products = Product.generateList(10);
 
-    private ProductInfo newInfo = new ProductInfo();
+    private Product newInfo = new Product();
     private bool AddNew = false;
     private bool DeleteAlert = false;
     private int SelectedIndex = -1;
 
-<<<<<<< Updated upstream
-=======
-    // method for showing productname from database into page
+
+
     protected override async Task OnInitializedAsync()
     {
+        // method for showing productname from database into page
+        Products = await ProductService.GetProducts(0, "name", "descr");
         
-        ProductService PS = new ProductService(new DapperService());
-        Products = await PS.ListAll(0, 100, "ProductName", "ASC", "");
     }
 
->>>>>>> Stashed changes
+
     private void SelectProduct(int index)
     {
         AddNew = false;
         SelectedIndex = index;
     }
 
-    private void SaveHandler()
+    protected async Task SaveHandler()
     {
-        if(AddNew)
+        if (AddNew)
         {
+            // Adding product to database         
+            await ProductService.Create(newInfo);
             Products.Add(newInfo);
             AddNew = false;
+            
         }
         StateHasChanged();
     }
@@ -106,22 +114,28 @@
         DeleteAlert = false;
     }
 
-    private void Delete()
+    protected async Task Delete(int id)
     {
+        await ProductService.Delete(id);
+        
         DeleteAlert = false;
 
-        if(SelectedIndex >= 0) 
+        if (SelectedIndex >= 0)
         {
             Products.RemoveAt(SelectedIndex);
             SelectedIndex = -1;
         }
     }
-
-    private void New() 
+    
+    private async Task New()
     {
-        newInfo = new ProductInfo();
+        var productsList = await ProductService.GetNextID(0);
+        newInfo.Id = productsList.FirstOrDefault()?.Id ?? 0;
+        newInfo = new Product();
         SelectedIndex = -1;
         AddNew = true;
+        
+        NavigationManager.NavigateTo("/productpage");
 
         StateHasChanged();
     }
@@ -133,3 +147,4 @@
     }
 
 }
+

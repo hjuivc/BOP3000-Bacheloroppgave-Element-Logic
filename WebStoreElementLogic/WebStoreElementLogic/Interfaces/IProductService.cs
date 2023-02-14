@@ -1,4 +1,3 @@
-using WebStoreElementLogic.Data;
 using WebStoreElementLogic.Entities;
 
 namespace WebStoreElementLogic.Interfaces
@@ -14,5 +13,7 @@ namespace WebStoreElementLogic.Interfaces
         Task<List<Product>> ListAllRefresh(string searchTerm, int page, int pageSize, string sortColumnName, string sortDirection);
         Task<List<Product>> GetProduct(int Id);
         Task<List<Product>> GetNextID(int Id);
+        Task<List<Product>> GetProductNames(string Name);
+        Task<List<Product>> GetProducts(int? id, string name, string descr);
     }
 }

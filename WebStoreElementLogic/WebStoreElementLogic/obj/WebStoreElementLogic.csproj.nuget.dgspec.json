@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alex\\Desktop\\Bachelor\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\WebStoreElementLogic.csproj": {}
+    "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\WebStoreElementLogic.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alex\\Desktop\\Bachelor\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\WebStoreElementLogic.csproj": {
+    "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\WebStoreElementLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alex\\Desktop\\Bachelor\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\WebStoreElementLogic.csproj",
+        "projectUniqueName": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\WebStoreElementLogic.csproj",
         "projectName": "WebStoreElementLogic",
-        "projectPath": "C:\\Users\\Alex\\Desktop\\Bachelor\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\WebStoreElementLogic.csproj",
+        "projectPath": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\WebStoreElementLogic.csproj",
         "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alex\\Desktop\\Bachelor\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\",
+        "outputPath": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,16 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

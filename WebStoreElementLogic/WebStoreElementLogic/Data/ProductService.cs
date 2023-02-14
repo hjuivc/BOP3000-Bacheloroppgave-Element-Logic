@@ -4,8 +4,6 @@ using WebStoreElementLogic.Interfaces;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using WebStoreElementLogic.Entities;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-
 
 namespace WebStoreElementLogic.Data
 {
@@ -26,7 +24,7 @@ namespace WebStoreElementLogic.Data
                 var dbPara = new DynamicParameters();
                 dbPara.Add("@ExtProductId", product.Id, DbType.Int64);
                 dbPara.Add("@ProductName", product.Name, DbType.String);
-                dbPara.Add("@ProductDesc", product.Desc, DbType.String);
+                dbPara.Add("@ProductDesc", product.Descr, DbType.String);
                 dbPara.Add("@ImageId", product.URL, DbType.String);
                 result = _dapperService.Execute(
                     "[dbo].[spAddProducts]",
@@ -43,7 +41,6 @@ namespace WebStoreElementLogic.Data
 
             return Task.FromResult(result);
         }
-
 
         public Task<Product> GetByID(int id)
         {
@@ -77,7 +74,7 @@ namespace WebStoreElementLogic.Data
                 var dbPara = new DynamicParameters();
                 dbPara.Add("@ExtProductId", product.Id, DbType.Int64);
                 dbPara.Add("@ProductName", product.Name, DbType.String);
-                dbPara.Add("@ProductDesc", product.Desc, DbType.String);
+                dbPara.Add("@ProductDesc", product.Descr, DbType.String);
                 dbPara.Add("@ImageId", product.URL, DbType.String);
                 result = _dapperService.Execute(
                     "[dbo].[spUpdateProducts]",
@@ -102,7 +99,7 @@ namespace WebStoreElementLogic.Data
 
             // Check if sort column name is provided, if not, set it to "ProductName"
             var sortClause = string.IsNullOrEmpty(sortColumnName) ? "ProductName" : sortColumnName;
-            
+
             // Check if sort direction is provided, if not, set it to "ASC"
             sortClause += string.IsNullOrEmpty(sortDirection) ? " DESC" : " " + sortDirection;
 
@@ -134,6 +131,13 @@ namespace WebStoreElementLogic.Data
             return Task.FromResult(productsList.ToList());
         }
 
+        // Task for showing product names from database
+        public Task<List<Product>> GetProductNames(string Name)
+        {
+            var productsList = _dapperService.GetAll<Product>($"SELECT ProductName FROM [Products]", null, commandType: CommandType.Text);
+            return Task.FromResult(productsList.ToList());
+        }
+
 
         public Task<List<Product>> GetProduct(int Id)
         {
@@ -151,5 +155,41 @@ namespace WebStoreElementLogic.Data
         {
             throw new NotImplementedException();
         }
+
+        public async Task<List<Product>> GetProducts(int? id, string name, string descr)
+        {
+
+            var sql = $"SELECT ExtProductId AS Id, ProductName AS Name, ProductDesc AS Descr FROM [Products] ORDER BY ProductName";
+
+            using (var connection = new SqlConnection("Server=AASS-PC\\SQLEXPRESS01;Database=Element Logic (Web Shop);Persist Security Info=False;User Id=admin;Password=usnADMIN2020;Encrypt=false"))
+            {
+
+                try
+                {
+                    Console.WriteLine(sql);
+                    await connection.OpenAsync();
+                    var Products = await connection.QueryAsync<Product>(sql);
+
+                    if (Products == null || !Products.Any())
+                    {
+                        Console.WriteLine("No data found");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Data found");
+                    }
+
+                    Console.WriteLine(Products.ToString());
+                    return Products.ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return null;
+                }
+            }
+        }
+
+
     }
 }

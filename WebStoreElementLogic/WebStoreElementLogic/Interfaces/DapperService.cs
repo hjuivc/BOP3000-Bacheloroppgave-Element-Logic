@@ -4,7 +4,8 @@ using Microsoft.Data.SqlClient;
 using WebStoreElementLogic.Interfaces;
 using System.Data.Common;
 
-namespace WebStoreElementLogic.Interfaces
+
+namespace WebStoreElementLogic.Data
 {
     public class DapperService : IDapperService
     {
@@ -19,13 +20,14 @@ namespace WebStoreElementLogic.Interfaces
             _connection = new SqlConnection(_connectionString);
             _connection.Open();
 
+            // checking if connection is succesfull
             if (_connection.State == ConnectionState.Open)
             {
-                Console.WriteLine("Connection successful.");
+                Console.WriteLine("Connection succesfull");
             }
             else
             {
-                Console.WriteLine("Connection failed.");
+                Console.WriteLine("Connection failed");
             }
         }
 

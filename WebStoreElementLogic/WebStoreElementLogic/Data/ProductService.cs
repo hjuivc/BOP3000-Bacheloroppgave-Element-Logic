@@ -13,7 +13,15 @@ namespace WebStoreElementLogic.Data
 
         public ProductService(IDapperService dapperService)
         {
-            _dapperService = dapperService;
+            try
+            {
+                _dapperService = dapperService;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Could not create DapperService");
+                throw;
+            }
         }
 
         public Task<int> Create(Product product)

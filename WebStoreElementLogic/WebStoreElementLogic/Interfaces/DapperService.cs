@@ -17,17 +17,24 @@ namespace WebStoreElementLogic.Data
 
         public DapperService()
         {
-            _connection = new SqlConnection(_connectionString);
-            _connection.Open();
+            try
+            {
+                _connection = new SqlConnection(_connectionString);
+                _connection.Open();
 
-            // checking if connection is succesfull
-            if (_connection.State == ConnectionState.Open)
-            {
-                Console.WriteLine("Connection succesfull");
+                // checking if connection is succesfull
+                if (_connection.State == ConnectionState.Open)
+                {
+                    Console.WriteLine("Connection succesfull");
+                }
+                else
+                {
+                    Console.WriteLine("Connection failed");
+                }
             }
-            else
+            catch 
             {
-                Console.WriteLine("Connection failed");
+                Console.WriteLine("No Connection");
             }
         }
 

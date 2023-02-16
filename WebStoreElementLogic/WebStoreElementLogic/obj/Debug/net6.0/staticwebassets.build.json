@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bBR081FM8qSJpDRi4La/daLKtXMlPuU/1Mxgxfc1Jks=",
+  "Hash": "sx1kyG4kSOMgs7663jTnATfBexsP9uq0nIDkkPA7pNA=",
   "Source": "WebStoreElementLogic",
   "BasePath": "_content/WebStoreElementLogic",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "WebStoreElementLogic\\wwwroot",
       "Source": "WebStoreElementLogic",
-      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\bundle\\WebStoreElementLogic.styles.css",
+      "Identity": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\bundle\\WebStoreElementLogic.styles.css",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "WebStoreElementLogic.styles.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\bundle\\WebStoreElementLogic.styles.css"
+      "OriginalItemSpec": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\bundle\\WebStoreElementLogic.styles.css"
     },
     {
-      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WebStoreElementLogic.bundle.scp.css",
+      "Identity": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WebStoreElementLogic.bundle.scp.css",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "WebStoreElementLogic.bundle.scp.css",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WebStoreElementLogic.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WebStoreElementLogic.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "Identity": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "Identity": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.eot",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
     },
     {
-      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "Identity": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.otf",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
     },
     {
-      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "Identity": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.svg",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
     },
     {
-      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "Identity": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.ttf",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
-      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "Identity": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.woff",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
-      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "Identity": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/open-iconic/FONT-LICENSE",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
-      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "Identity": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/open-iconic/ICON-LICENSE",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\ICON-LICENSE"
     },
     {
-      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\README.md",
+      "Identity": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\README.md",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/open-iconic/README.md",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\README.md"
     },
     {
-      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\site.css",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -255,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\favicon.ico",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -272,10 +272,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\default.jpg",
+      "Identity": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\default.jpg",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/default.jpg",
       "AssetKind": "All",

@@ -61,10 +61,11 @@
 
     // product- object
     private Product product;
-    
+
     protected async Task OninitializeAsync()
     {
         product = await ProductService.GetByID(id);
+
     }
 
     private void Discard()

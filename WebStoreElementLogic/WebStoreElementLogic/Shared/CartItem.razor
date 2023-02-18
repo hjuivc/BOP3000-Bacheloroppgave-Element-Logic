@@ -1,0 +1,27 @@
+﻿@using Data
+
+<li class="list-group-item d-flex justify-content-between align-items-start" style="max-width: 16vw;">
+    @Info.Name
+    <div>
+        <span class="badge bg-primary rounded-pill">@Count</span>
+        <button @onclick="Remove" class="btn-close"></button>
+    </div>
+</li>
+@code {
+    [Parameter]
+    public ProductInfo Info { get; set; }
+
+    [Parameter]
+    public int Count { get; set; } = 1;
+
+    [Parameter]
+    public int Index { get; set; }
+
+    [Parameter]
+    public EventCallback<int> OnRemove { get; set; }
+
+    public void Remove()
+    {
+        OnRemove.InvokeAsync(Index);
+    }
+}

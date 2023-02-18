@@ -1,0 +1,120 @@
+﻿@page "/cartdemo"
+@using Data
+
+@if (DisplayCheckout)
+{
+    <Alert OnCancel="() => DisplayCheckout = false">
+        <h3>Checkout</h3>
+        Are you sure you want to checkout the following items:
+        <ul class="list-group">
+            @for (int i = 0;i < Cart.Count; i++)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    @Cart.ElementAt(i).Key.Name
+                    <span class="badge bg-primary rounded-pill">
+                        @Cart.ElementAt(i).Value
+                    </span>
+                </li>
+            }
+        </ul>
+        <div class="d-flex flex-row justify-content-around mt-3">
+            <button class="btn btn-warning" @onclick="() => DisplayCheckout = false">Cancel</button>
+            <button class="btn btn-success" @onclick="SendCart">Confirm</button>
+        </div>
+    </Alert>
+}
+
+@if (DisplaySuccess)
+{
+    <Alert OnCancel="() => DisplaySuccess = false">
+        <h3>Order placed!</h3>
+        <button class="btn btn-success" @onclick="() => DisplaySuccess = false">Ok</button>
+    </Alert>   
+}
+
+<div class="container-fluid row">
+    <div class="col container-fluid">
+        <div class="row">
+            <button @onclick="() => DisplayGrid = !DisplayGrid" class="btn btn-primary">Swap Display</button>
+        </div>
+        @for(int i = 0;!DisplayGrid && i < Products.Count;i++)
+        {
+            <ProductListItem
+                Info="Products[i]"
+                Index="i"
+                OnSelected="Select"
+                Selected="SelectedIndex == i" />
+        }
+        @if (DisplayGrid)
+        {
+            <div class="container-fluid d-flex flex-row flex-wrap justify-content-around">
+                @for (int i = 0; i < Products.Count; i++)
+                {
+                    <ProductGridItem Info="@Products[i]" Index="i" OnSelected="Select" />
+                }
+            </div>
+        }
+    </div>
+    <div class="col-4 col-lg-2 border-start border-dark ms-4">
+
+        <!-- Cart Menu -->
+        <div class="position-fixed container-fluid d-flex flex-column justify-content-between text-white align-content-center" style="height: calc(100% - 85px)">
+            <ul class="list-group">
+                @for (int i = 0; i < Cart.Count; i++)
+                {
+                    <!--
+                    <li class="list-group-item d-flex justify-content-between align-items-start" style="max-width: 16vw;">
+                        @Cart.ElementAt(i).Key.Name
+                        <div>
+                            <span class="badge bg-primary rounded-pill">@Cart.ElementAt(i).Value</span>
+                            <button @onclick="() => Cart.Remove(Cart.ElementAt(i).Key)" class="btn-close"></button>
+                        </div>
+                    </li>
+                    -->
+                    <CartItem Info="@Cart.ElementAt(i).Key" Count="@Cart.ElementAt(i).Value" Index="i" OnRemove="RemoveFromCart" />
+                }
+            </ul>
+            <div>
+                <button @onclick="() => { if (Cart.Count > 0) DisplayCheckout = true; }" class="btn btn-success mb-4">Send Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    public List<ProductInfo> Products = ProductInfo.generateList(25);
+
+    public int SelectedIndex = -1;
+
+    public bool DisplayGrid = false;
+    public bool DisplayCheckout = false;
+    public bool DisplaySuccess = false;
+
+    public void Select(int index)
+    {
+        SelectedIndex = index;
+
+        if(!Cart.ContainsKey(Products[index]))
+        {
+            Cart.Add(Products[index], 1);
+        }
+        else
+        {
+            Cart[Products[index]]++;
+        }
+    }
+
+    public void SendCart()
+    {
+        Cart.Clear();
+        DisplayCheckout = false;
+        DisplaySuccess = true;
+    }
+
+    public void RemoveFromCart(int index)
+    {
+        Cart.Remove(Cart.ElementAt(index).Key);
+    }
+
+    public Dictionary<ProductInfo, int> Cart = new Dictionary<ProductInfo, int>();
+}

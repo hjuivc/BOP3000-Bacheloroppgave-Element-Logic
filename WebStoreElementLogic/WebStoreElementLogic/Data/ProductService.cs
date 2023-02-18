@@ -155,7 +155,7 @@ namespace WebStoreElementLogic.Data
 
         public Task<List<Product>> GetNextID(int Id)
         {
-            var productsList = _dapperService.GetAll<Product>($"SELECT MAX(ExtProductId + 1) AS ExtProductId FROM [Products]", null, commandType: CommandType.Text);
+            var productsList = _dapperService.GetAll<Product>($"SELECT MAX(ExtProductId + 1) AS Id FROM [Products]", null, commandType: CommandType.Text);
             return Task.FromResult(productsList.ToList());
         }
 

@@ -1,10 +1,13 @@
-﻿namespace WebStoreElementLogic.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebStoreElementLogic.Entities
 {
     public class Product
     {
         public string? Name { get; set; }
         public string? Descr { get; set; }
         public int Id { get; set; }
+        [Key]
         public string? URL { get; set; }
 
 

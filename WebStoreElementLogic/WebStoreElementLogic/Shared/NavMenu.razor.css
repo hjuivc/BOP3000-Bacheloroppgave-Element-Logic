@@ -1,2 +1,19 @@
-﻿body {
+﻿/* // X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    img {
+        width: 133px;
+        height: 59px;
+    }
+
+    .navbar-toggler {
+        width: 42px !important;
+        height: 30px !important;
+        padding: 0px !important;
+    }
+
+    .navbar-toggler-icon {
+        width: 20px !important;
+        height: 15px !important;
+        padding: 10px !important;
+    }
 }

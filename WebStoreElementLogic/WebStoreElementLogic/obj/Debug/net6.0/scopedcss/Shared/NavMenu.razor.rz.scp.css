@@ -1,2 +1,19 @@
-body[b-gzu309u40k] {
+/* // X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    img[b-gzu309u40k] {
+        width: 133px;
+        height: 59px;
+    }
+
+    .navbar-toggler[b-gzu309u40k] {
+        width: 42px !important;
+        height: 30px !important;
+        padding: 0px !important;
+    }
+
+    .navbar-toggler-icon[b-gzu309u40k] {
+        width: 20px !important;
+        height: 15px !important;
+        padding: 10px !important;
+    }
 }

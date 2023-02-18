@@ -42,6 +42,8 @@
             <button class="btn btn-primary mt-2 bottom-0 mb-4 rounded-pill position-fixed align-self-end d-block" 
             style="z-index: 3; transform: translateX(-5vw);"
             @onclick="New">
+            <!-- Activates the method GetNewId-->
+            
                 <h3>Add Product</h3>
             </button>
         }
@@ -76,6 +78,9 @@
 
 
 @code {
+    [Parameter]
+    public int id { get; set; }
+
     public List<Product>? Products = new List<Product>();
 
     private Product newInfo = new Product();
@@ -92,6 +97,7 @@
         // method for showing productname from database into page
         try
         {
+            newInfo = await ProductService.GetByID(id);
             // Store in a new list temporarily to avoid seting Products to null
             List<Product> FetchedProducts = await ProductService.GetProducts(0, "name", "descr");
             Products = FetchedProducts;
@@ -149,8 +155,9 @@
     private async Task New()
     {
         var productsList = await ProductService.GetNextID(0);
-        newInfo.Id = productsList.FirstOrDefault()?.Id ?? 0;
-        newInfo = new Product();
+        // Checks if the Id is null
+        int newId = productsList?.FirstOrDefault()?.Id ?? 0;
+        newInfo = new Product { Id = newId };
         SelectedIndex = -1;
         AddNew = true;
         

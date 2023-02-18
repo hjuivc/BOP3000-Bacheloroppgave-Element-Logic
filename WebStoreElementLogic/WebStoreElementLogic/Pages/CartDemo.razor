@@ -28,7 +28,10 @@
 {
     <Alert OnCancel="() => DisplaySuccess = false">
         <h3>Order placed!</h3>
-        <button class="btn btn-success" @onclick="() => DisplaySuccess = false">Ok</button>
+        Your order has been placed
+        <div class="d-flex flex-row justify-content-around mt-3">
+            <button class="btn btn-success" @onclick="() => DisplaySuccess = false">Ok</button>
+        </div>
     </Alert>   
 }
 
@@ -62,16 +65,11 @@
             <ul class="list-group">
                 @for (int i = 0; i < Cart.Count; i++)
                 {
-                    <!--
-                    <li class="list-group-item d-flex justify-content-between align-items-start" style="max-width: 16vw;">
-                        @Cart.ElementAt(i).Key.Name
-                        <div>
-                            <span class="badge bg-primary rounded-pill">@Cart.ElementAt(i).Value</span>
-                            <button @onclick="() => Cart.Remove(Cart.ElementAt(i).Key)" class="btn-close"></button>
-                        </div>
-                    </li>
-                    -->
-                    <CartItem Info="@Cart.ElementAt(i).Key" Count="@Cart.ElementAt(i).Value" Index="i" OnRemove="RemoveFromCart" />
+                    <CartItem Info="@Cart.ElementAt(i).Key" 
+                        Count="@Cart.ElementAt(i).Value" 
+                        Index="i" 
+                        OnCountUpdate="UpdateCount"
+                        OnRemove="RemoveFromCart" />
                 }
             </ul>
             <div>
@@ -114,6 +112,22 @@
     public void RemoveFromCart(int index)
     {
         Cart.Remove(Cart.ElementAt(index).Key);
+    }
+
+    public void UpdateCount(int[] IndexAndCount)
+    {
+        // Look into alternatives here, maybe a dictionary with the indexes as keys?
+        int index = IndexAndCount[0];
+        int count = IndexAndCount[1];
+
+        if (count <= 0)
+        {
+            RemoveFromCart(index);
+        }
+        else
+        {
+            Cart[Cart.ElementAt(index).Key] = count;
+        }
     }
 
     public Dictionary<ProductInfo, int> Cart = new Dictionary<ProductInfo, int>();

@@ -4,6 +4,8 @@
     @Info.Name
     <div>
         <span class="badge bg-primary rounded-pill">@Count</span>
+        <span role="button" class="badge bg-success round-pill" @onclick="() => UpdateCount(1)" aria-label="Increase Quantity">+</span>
+        <span role="button" class="badge bg-danger round-pill" @onclick="() => UpdateCount(-1)" aria-label="Decrease Quantity">-</span>
         <button @onclick="Remove" class="btn-close"></button>
     </div>
 </li>
@@ -20,8 +22,18 @@
     [Parameter]
     public EventCallback<int> OnRemove { get; set; }
 
+    [Parameter]
+    public EventCallback<int[]> OnCountUpdate { get; set; }
+
     public void Remove()
     {
         OnRemove.InvokeAsync(Index);
     }
+
+    public void UpdateCount(int increment)
+    {
+        Count += increment;
+        OnCountUpdate.InvokeAsync(new int[2] { Index, Count });
+    }
+
 }

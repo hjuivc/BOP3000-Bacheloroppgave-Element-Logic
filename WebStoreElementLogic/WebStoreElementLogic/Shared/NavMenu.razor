@@ -1,18 +1,34 @@
-﻿<div class="container-fluid">
-    <header class="d-flex flex-wrap justify-content-center py-4 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap" /></svg>
-            <span class="fs-4">Element Logic</span>
-        </a>
+﻿<head>
+    <link href="~/css/styling/NavMenu.css" rel="stylesheet" />
+</head>
 
-        <ul class="nav nav-pills">
-            <li class="nav-item"><a href="productpage" class="nav-link">Products</a></li>
-            <li class="nav-item"><a href="inboundpage" class="nav-link">Inbound</a></li>
-            <li class="nav-item"><a href="stockpage" class="nav-link">Stock Page</a></li>
-            <li class="nav-item"><a href="orderpage" class="nav-link">OrderPage</a></li>
-        </ul>
-    </header>
-</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <img width="190" height="90" class="navbar-brand" src="\images\Element Logic logo white on red hires.jpg" alt="header_logo">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="productpage">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="inboundtpage">Inbound</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="stockpage">Stock Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="orderpage">Order Page</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 @code {
     

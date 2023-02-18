@@ -1,9 +1,64 @@
-﻿@page "/index"
+﻿@page "/"
+@using System.Timers
 
-<h3>Index</h3>
+<h1>Index</h1>
+
+<div class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item @(currentSlide == 0 ? "active" : "")">
+            <img src="/images/logos/Element Logic logo white on red hires.jpg" class="d-block w-100" style="height: 500px;" alt="First slide">
+        </div>
+        <div class="carousel-item @(currentSlide == 1 ? "active" : "")">
+            <img src="/images/logos/Element logic logo red hires.JPG" class="d-block w-100" style="height: 500px;" alt="Second slide">
+        </div>
+        <div class="carousel-item @(currentSlide == 2 ? "active" : "")">
+            <img src="/images/logos/Element logic logo black hires.JPG" class="d-block w-100" style="height: 500px;" alt="Third slide">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev" @onclick="PrevSlide">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next" @onclick="NextSlide">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
 
 @code {
+    private int currentSlide = 0;
+    private Timer timer;
 
+    protected override void OnInitialized()
+    {
+        timer = new Timer(5000);
+        timer.Elapsed += (sender, args) =>
+        {
+            InvokeAsync(NextSlide);
+        };
+        timer.AutoReset = true;
+        timer.Enabled = true;
+    }
+
+    private void NextSlide()
+    {
+        currentSlide++;
+        if (currentSlide > 2)
+        {
+            currentSlide = 0;
+        }
+        StateHasChanged();
+    }
+
+    private void PrevSlide()
+    {
+        currentSlide--;
+        if (currentSlide < 0)
+        {
+            currentSlide = 2;
+        }
+        StateHasChanged();
+    }
 }
-
-

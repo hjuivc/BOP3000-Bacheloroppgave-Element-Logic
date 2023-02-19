@@ -1,12 +1,31 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using System.Data;
 using WebStoreElementLogic.Data;
+using WebStoreElementLogic.Interfaces;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+
+var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+var connectionString = config.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<WebStoreElementLogic.Data.AppContext>(options =>
+    options.UseSqlServer(connectionString));
+
+builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddTransient<DapperService>();
+
+builder.Services.AddTransient<IDbConnection>(x => new SqlConnection(connectionString));
+
+builder.Services.AddScoped<IDapperService, DapperService>();
 
 var app = builder.Build();
 

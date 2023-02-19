@@ -1,4 +1,5 @@
 @using Data
+@using WebStoreElementLogic.Entities;
 
 <div class="d-flex flex-column m-4 p-2 shadow rounded" @onclick="Select">
     <img src="images/logos/Element Logic logo E hires.jpg" style="width: 20vmin; height: 20vmin;" />
@@ -12,12 +13,12 @@
     public int Index { get; set; }
 
     [Parameter]
-    public ProductInfo Info { get; set; }
+    public Product Info { get; set; }
 
     [Parameter]
     public EventCallback<int> OnSelected { get; set; }
 
-    private void Select() 
+    private void Select()
     {
         OnSelected.InvokeAsync(Index);
     }

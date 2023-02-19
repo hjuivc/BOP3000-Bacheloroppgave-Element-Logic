@@ -1,4 +1,4 @@
-﻿@using Data
+﻿@using Entities
 
 <li class="list-group-item d-flex justify-content-between align-items-start" style="max-width: 16vw;">
     @Info.Name
@@ -11,7 +11,7 @@
 </li>
 @code {
     [Parameter]
-    public ProductInfo Info { get; set; }
+    public Product Info { get; set; }
 
     [Parameter]
     public int Count { get; set; } = 1;
@@ -23,7 +23,7 @@
     public EventCallback<int> OnRemove { get; set; }
 
     [Parameter]
-    public EventCallback<(int, int)> OnCountUpdate { get; set; }
+    public EventCallback<int[]> OnCountUpdate { get; set; }
 
     public void Remove()
     {
@@ -33,7 +33,7 @@
     public void UpdateCount(int increment)
     {
         Count += increment;
-        OnCountUpdate.InvokeAsync((Index, Count));
+        OnCountUpdate.InvokeAsync(new int[2] { Index, Count });
     }
 
 }

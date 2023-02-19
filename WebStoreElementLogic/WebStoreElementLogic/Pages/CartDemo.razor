@@ -1,5 +1,5 @@
 ﻿@page "/cartdemo"
-@using Data
+@using Entities
 
 @if (DisplayCheckout)
 {
@@ -80,7 +80,7 @@
 </div>
 
 @code {
-    public List<ProductInfo> Products = ProductInfo.generateList(25);
+    public List<Product> Products = Product.generateList(25);
 
     public int SelectedIndex = -1;
 
@@ -114,17 +114,20 @@
         Cart.Remove(Cart.ElementAt(index).Key);
     }
 
-    public void UpdateCount((int index, int count) product)
+    public void UpdateCount(int[] product)
     {
-        if (product.count <= 0)
+        int index = product[0];
+        int count = product[1];
+
+        if (count <= 0)
         {
-            RemoveFromCart(product.index);
+            RemoveFromCart(index);
         }
         else
         {
-            Cart[Cart.ElementAt(product.index).Key] = product.count;
+            Cart[Cart.ElementAt(index).Key] = count;
         }
     }
 
-    public Dictionary<ProductInfo, int> Cart = new Dictionary<ProductInfo, int>();
+    public Dictionary<Product, int> Cart = new Dictionary<Product, int>();
 }

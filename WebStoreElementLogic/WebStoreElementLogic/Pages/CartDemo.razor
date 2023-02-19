@@ -114,19 +114,15 @@
         Cart.Remove(Cart.ElementAt(index).Key);
     }
 
-    public void UpdateCount(int[] IndexAndCount)
+    public void UpdateCount((int index, int count) product)
     {
-        // Look into alternatives here, maybe a dictionary with the indexes as keys?
-        int index = IndexAndCount[0];
-        int count = IndexAndCount[1];
-
-        if (count <= 0)
+        if (product.count <= 0)
         {
-            RemoveFromCart(index);
+            RemoveFromCart(product.index);
         }
         else
         {
-            Cart[Cart.ElementAt(index).Key] = count;
+            Cart[Cart.ElementAt(product.index).Key] = product.count;
         }
     }
 

@@ -23,7 +23,7 @@
     public EventCallback<int> OnRemove { get; set; }
 
     [Parameter]
-    public EventCallback<int[]> OnCountUpdate { get; set; }
+    public EventCallback<(int, int)> OnCountUpdate { get; set; }
 
     public void Remove()
     {
@@ -33,7 +33,7 @@
     public void UpdateCount(int increment)
     {
         Count += increment;
-        OnCountUpdate.InvokeAsync(new int[2] { Index, Count });
+        OnCountUpdate.InvokeAsync((Index, Count));
     }
 
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fQo9ZXA5qYIYCZ5dnuGNgHLPO8mY2DgsHY/SAISlBJI=",
+  "Hash": "p3H6TQbx3gGvVShEQDxPczYRd9SZsGHWgbdZtstqcIo=",
   "Source": "WebStoreElementLogic",
   "BasePath": "_content/WebStoreElementLogic",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "WebStoreElementLogic\\wwwroot",
       "Source": "WebStoreElementLogic",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\bundle\\WebStoreElementLogic.styles.css",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\bundle\\WebStoreElementLogic.styles.css",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "WebStoreElementLogic.styles.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\bundle\\WebStoreElementLogic.styles.css"
+      "OriginalItemSpec": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\bundle\\WebStoreElementLogic.styles.css"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WebStoreElementLogic.bundle.scp.css",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WebStoreElementLogic.bundle.scp.css",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "WebStoreElementLogic.bundle.scp.css",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WebStoreElementLogic.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WebStoreElementLogic.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.eot",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.otf",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.svg",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.ttf",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.woff",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/open-iconic/FONT-LICENSE",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/open-iconic/ICON-LICENSE",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\ICON-LICENSE"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\README.md",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\open-iconic\\README.md",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/open-iconic/README.md",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\README.md"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\css\\site.css",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -255,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\favicon.ico",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -272,10 +272,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-Black.ttf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-Black.ttf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "fonts/Roboto-Black.ttf",
       "AssetKind": "All",
@@ -289,10 +289,10 @@
       "OriginalItemSpec": "wwwroot\\fonts\\Roboto-Black.ttf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-BlackItalic.ttf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-BlackItalic.ttf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "fonts/Roboto-BlackItalic.ttf",
       "AssetKind": "All",
@@ -306,10 +306,10 @@
       "OriginalItemSpec": "wwwroot\\fonts\\Roboto-BlackItalic.ttf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-Bold.ttf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-Bold.ttf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "fonts/Roboto-Bold.ttf",
       "AssetKind": "All",
@@ -323,10 +323,10 @@
       "OriginalItemSpec": "wwwroot\\fonts\\Roboto-Bold.ttf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-BoldItalic.ttf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-BoldItalic.ttf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "fonts/Roboto-BoldItalic.ttf",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\fonts\\Roboto-BoldItalic.ttf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-Italic.ttf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-Italic.ttf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "fonts/Roboto-Italic.ttf",
       "AssetKind": "All",
@@ -357,10 +357,10 @@
       "OriginalItemSpec": "wwwroot\\fonts\\Roboto-Italic.ttf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-Light.ttf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-Light.ttf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "fonts/Roboto-Light.ttf",
       "AssetKind": "All",
@@ -374,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\fonts\\Roboto-Light.ttf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-LightItalic.ttf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-LightItalic.ttf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "fonts/Roboto-LightItalic.ttf",
       "AssetKind": "All",
@@ -391,10 +391,10 @@
       "OriginalItemSpec": "wwwroot\\fonts\\Roboto-LightItalic.ttf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-Medium.ttf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-Medium.ttf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "fonts/Roboto-Medium.ttf",
       "AssetKind": "All",
@@ -408,10 +408,10 @@
       "OriginalItemSpec": "wwwroot\\fonts\\Roboto-Medium.ttf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-MediumItalic.ttf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-MediumItalic.ttf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "fonts/Roboto-MediumItalic.ttf",
       "AssetKind": "All",
@@ -425,10 +425,10 @@
       "OriginalItemSpec": "wwwroot\\fonts\\Roboto-MediumItalic.ttf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-Regular.ttf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-Regular.ttf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "fonts/Roboto-Regular.ttf",
       "AssetKind": "All",
@@ -442,10 +442,10 @@
       "OriginalItemSpec": "wwwroot\\fonts\\Roboto-Regular.ttf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-Thin.ttf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-Thin.ttf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "fonts/Roboto-Thin.ttf",
       "AssetKind": "All",
@@ -459,10 +459,10 @@
       "OriginalItemSpec": "wwwroot\\fonts\\Roboto-Thin.ttf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-ThinItalic.ttf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\fonts\\Roboto-ThinItalic.ttf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "fonts/Roboto-ThinItalic.ttf",
       "AssetKind": "All",
@@ -476,10 +476,10 @@
       "OriginalItemSpec": "wwwroot\\fonts\\Roboto-ThinItalic.ttf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\logos\\Element Logic logo black hires.jpg",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\logos\\Element Logic logo black hires.jpg",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/logos/Element Logic logo black hires.jpg",
       "AssetKind": "All",
@@ -493,10 +493,10 @@
       "OriginalItemSpec": "wwwroot\\images\\logos\\Element Logic logo black hires.jpg"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\logos\\Element Logic logo E hires.jpg",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\logos\\Element Logic logo E hires.jpg",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/logos/Element Logic logo E hires.jpg",
       "AssetKind": "All",
@@ -510,10 +510,10 @@
       "OriginalItemSpec": "wwwroot\\images\\logos\\Element Logic logo E hires.jpg"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\logos\\Element Logic logo red hires.jpg",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\logos\\Element Logic logo red hires.jpg",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/logos/Element Logic logo red hires.jpg",
       "AssetKind": "All",
@@ -527,10 +527,10 @@
       "OriginalItemSpec": "wwwroot\\images\\logos\\Element Logic logo red hires.jpg"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\logos\\Element Logic logo white hires.png",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\logos\\Element Logic logo white hires.png",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/logos/Element Logic logo white hires.png",
       "AssetKind": "All",
@@ -544,10 +544,10 @@
       "OriginalItemSpec": "wwwroot\\images\\logos\\Element Logic logo white hires.png"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\logos\\Element Logic logo white on red hires.jpg",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\logos\\Element Logic logo white on red hires.jpg",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/logos/Element Logic logo white on red hires.jpg",
       "AssetKind": "All",
@@ -561,10 +561,10 @@
       "OriginalItemSpec": "wwwroot\\images\\logos\\Element Logic logo white on red hires.jpg"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\logos\\OWP-2500x97.png",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\logos\\OWP-2500x97.png",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/logos/OWP-2500x97.png",
       "AssetKind": "All",
@@ -578,10 +578,10 @@
       "OriginalItemSpec": "wwwroot\\images\\logos\\OWP-2500x97.png"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\logos\\OWP-white-2500x97.png",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\logos\\OWP-white-2500x97.png",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/logos/OWP-white-2500x97.png",
       "AssetKind": "All",
@@ -595,10 +595,10 @@
       "OriginalItemSpec": "wwwroot\\images\\logos\\OWP-white-2500x97.png"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo E vector.eps",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo E vector.eps",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/vectors/Element Logic logo E vector.eps",
       "AssetKind": "All",
@@ -612,10 +612,10 @@
       "OriginalItemSpec": "wwwroot\\images\\vectors\\Element Logic logo E vector.eps"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo E vector.pdf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo E vector.pdf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/vectors/Element Logic logo E vector.pdf",
       "AssetKind": "All",
@@ -629,10 +629,10 @@
       "OriginalItemSpec": "wwwroot\\images\\vectors\\Element Logic logo E vector.pdf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo E vector.svg",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo E vector.svg",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/vectors/Element Logic logo E vector.svg",
       "AssetKind": "All",
@@ -646,10 +646,10 @@
       "OriginalItemSpec": "wwwroot\\images\\vectors\\Element Logic logo E vector.svg"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector black.eps",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector black.eps",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/vectors/Element Logic logo vector black.eps",
       "AssetKind": "All",
@@ -663,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\images\\vectors\\Element Logic logo vector black.eps"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector black.pdf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector black.pdf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/vectors/Element Logic logo vector black.pdf",
       "AssetKind": "All",
@@ -680,10 +680,10 @@
       "OriginalItemSpec": "wwwroot\\images\\vectors\\Element Logic logo vector black.pdf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector black.svg",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector black.svg",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/vectors/Element Logic logo vector black.svg",
       "AssetKind": "All",
@@ -697,10 +697,10 @@
       "OriginalItemSpec": "wwwroot\\images\\vectors\\Element Logic logo vector black.svg"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector red.eps",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector red.eps",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/vectors/Element Logic logo vector red.eps",
       "AssetKind": "All",
@@ -714,10 +714,10 @@
       "OriginalItemSpec": "wwwroot\\images\\vectors\\Element Logic logo vector red.eps"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector red.pdf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector red.pdf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/vectors/Element Logic logo vector red.pdf",
       "AssetKind": "All",
@@ -731,10 +731,10 @@
       "OriginalItemSpec": "wwwroot\\images\\vectors\\Element Logic logo vector red.pdf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector red.svg",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector red.svg",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/vectors/Element Logic logo vector red.svg",
       "AssetKind": "All",
@@ -748,10 +748,10 @@
       "OriginalItemSpec": "wwwroot\\images\\vectors\\Element Logic logo vector red.svg"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector white.eps",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector white.eps",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/vectors/Element Logic logo vector white.eps",
       "AssetKind": "All",
@@ -765,10 +765,10 @@
       "OriginalItemSpec": "wwwroot\\images\\vectors\\Element Logic logo vector white.eps"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector white.pdf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector white.pdf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/vectors/Element Logic logo vector white.pdf",
       "AssetKind": "All",
@@ -782,10 +782,10 @@
       "OriginalItemSpec": "wwwroot\\images\\vectors\\Element Logic logo vector white.pdf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector white.svg",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector white.svg",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/vectors/Element Logic logo vector white.svg",
       "AssetKind": "All",
@@ -799,10 +799,10 @@
       "OriginalItemSpec": "wwwroot\\images\\vectors\\Element Logic logo vector white.svg"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector white-on-red.eps",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector white-on-red.eps",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/vectors/Element Logic logo vector white-on-red.eps",
       "AssetKind": "All",
@@ -816,10 +816,10 @@
       "OriginalItemSpec": "wwwroot\\images\\vectors\\Element Logic logo vector white-on-red.eps"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector white-on-red.pdf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector white-on-red.pdf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/vectors/Element Logic logo vector white-on-red.pdf",
       "AssetKind": "All",
@@ -833,10 +833,10 @@
       "OriginalItemSpec": "wwwroot\\images\\vectors\\Element Logic logo vector white-on-red.pdf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector white-on-red.svg",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Element Logic logo vector white-on-red.svg",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/vectors/Element Logic logo vector white-on-red.svg",
       "AssetKind": "All",
@@ -850,10 +850,10 @@
       "OriginalItemSpec": "wwwroot\\images\\vectors\\Element Logic logo vector white-on-red.svg"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Empowered by vector 200x63.pdf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\Empowered by vector 200x63.pdf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/vectors/Empowered by vector 200x63.pdf",
       "AssetKind": "All",
@@ -867,10 +867,10 @@
       "OriginalItemSpec": "wwwroot\\images\\vectors\\Empowered by vector 200x63.pdf"
     },
     {
-      "Identity": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\OWP 481x18.pdf",
+      "Identity": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\images\\vectors\\OWP 481x18.pdf",
       "SourceId": "WebStoreElementLogic",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Documents\\GitHub\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\eirik\\Source\\Repos\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\wwwroot\\",
       "BasePath": "_content/WebStoreElementLogic",
       "RelativePath": "images/vectors/OWP 481x18.pdf",
       "AssetKind": "All",

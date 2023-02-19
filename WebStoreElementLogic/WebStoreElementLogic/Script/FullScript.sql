@@ -120,7 +120,7 @@ WHERE [ExtProductId]		= @ExtProductId
 GO
 
 -- Test- data for the Products table
-INSERT INTO dbo.Products(ExtProductID,ProductName,ProductDesc,ImageId)
+INSERT INTO dbo.Products(ExtProductId,ProductName,ProductDesc,ImageId)
 VALUES ('1', 'Rab Torque Pant', 'Hiking pants', ''),
        ('2', 'Rab Momentum Shorts', 'Hiking shorts', ''),
        ('3', 'Rab Outpost Jacket', 'Fleece jacket', ''),

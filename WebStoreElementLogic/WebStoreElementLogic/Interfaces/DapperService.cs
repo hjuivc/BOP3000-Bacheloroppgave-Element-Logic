@@ -9,17 +9,18 @@ namespace WebStoreElementLogic.Data
 {
     public class DapperService : IDapperService
     {
-
         public IDbConnection Connection { get; set; }
 
-        private readonly string _connectionString = "Server=AASS-PC\\SQLEXPRESS01;Database=Element Logic (Web Shop);Persist Security Info=False;User Id=admin;Password=usnADMIN2020;Encrypt=false";
         private readonly IDbConnection _connection;
+        private readonly IConfiguration _configuration;
 
-        public DapperService()
+        public DapperService(IConfiguration configuration)
         {
+            _configuration = configuration;
+
             try
             {
-                _connection = new SqlConnection(_connectionString);
+                _connection = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]);
                 _connection.Open();
 
                 // checking if connection is succesfull
@@ -32,9 +33,9 @@ namespace WebStoreElementLogic.Data
                     Console.WriteLine("Connection failed");
                 }
             }
-            catch 
+            catch(Exception e) 
             {
-                Console.WriteLine("No Connection");
+                Console.WriteLine("No Connection: \n" + e.ToString());
             }
         }
 

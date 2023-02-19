@@ -10,11 +10,13 @@ namespace WebStoreElementLogic.Data
     public class ProductService : IProductService
     {
         private readonly IDapperService _dapperService;
+        private readonly IConfiguration _configuration;
 
-        public ProductService(IDapperService dapperService)
+        public ProductService(IDapperService dapperService, IConfiguration configuration)
         {
             try
             {
+                _configuration = configuration;
                 _dapperService = dapperService;
             }
             catch(Exception e)
@@ -166,10 +168,9 @@ namespace WebStoreElementLogic.Data
 
         public async Task<List<Product>> GetProducts(int? id, string name, string descr)
         {
-
             var sql = $"SELECT ExtProductId AS Id, ProductName AS Name, ProductDesc AS Descr FROM [Products] ORDER BY ProductName";
 
-            using (var connection = new SqlConnection("Server=AASS-PC\\SQLEXPRESS01;Database=Element Logic (Web Shop);Persist Security Info=False;User Id=admin;Password=usnADMIN2020;Encrypt=false"))
+            using (var connection = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]))
             {
 
                 try
@@ -192,7 +193,7 @@ namespace WebStoreElementLogic.Data
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("ProductService, GetProducts: " + ex.Message);
                     return null;
                 }
             }

@@ -1,8 +1,0 @@
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\BOP3000\BOP3000\obj\Debug\net6.0\WebStore.csproj.AssemblyReference.cache
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\BOP3000\BOP3000\obj\Debug\net6.0\WebStore.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\BOP3000\BOP3000\obj\Debug\net6.0\WebStore.AssemblyInfoInputs.cache
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\BOP3000\BOP3000\obj\Debug\net6.0\WebStore.AssemblyInfo.cs
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\BOP3000\BOP3000\obj\Debug\net6.0\WebStore.csproj.CoreCompileInputs.cache
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\BOP3000\BOP3000\obj\Debug\net6.0\WebStore.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\BOP3000\BOP3000\obj\Debug\net6.0\WebStore.RazorAssemblyInfo.cache
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\BOP3000\BOP3000\obj\Debug\net6.0\WebStore.RazorAssemblyInfo.cs

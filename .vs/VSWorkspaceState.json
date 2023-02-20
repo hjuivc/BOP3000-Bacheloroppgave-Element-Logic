@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\WebStoreElementLogic",
-    "\\WebStoreElementLogic\\WebStoreElementLogic",
-    "\\WebStoreElementLogic\\WebStoreElementLogic\\Pages"
+    ""
   ],
-  "SelectedNode": "\\WebStoreElementLogic\\WebStoreElementLogic\\Pages\\ProductPage.razor",
+  "SelectedNode": "\\WebStoreElementLogic.sln",
   "PreviewInSolutionExplorer": false
 }

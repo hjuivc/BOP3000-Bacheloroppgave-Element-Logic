@@ -99,7 +99,7 @@
         {
             newInfo = await ProductService.GetByID(id);
             // Store in a new list temporarily to avoid seting Products to null
-            List<Product> FetchedProducts = await ProductService.GetProducts(0, "name", "descr");
+            List<Product> FetchedProducts = await ProductService.GetProducts(0, "name", "descr", "url");
             Products = FetchedProducts;
         }
         catch(Exception e)

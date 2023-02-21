@@ -21,14 +21,16 @@ namespace WebStoreElementLogic.Entities
             Name = "";
             Descr = "";
             Id = 0;
+            URL = "";
         }
 
 
-        public Product(string? name, string? descr, int id)
+        public Product(string? name, string? descr, int id, string url)
         {
             Name = name;
             Descr = descr;
             Id = id;
+            URL = url;
         }
 
         public static List<Product> generateList(int size)
@@ -45,7 +47,7 @@ namespace WebStoreElementLogic.Entities
 
         public object Clone()
         {
-            return new Product(Name, Descr, Id);
+            return new Product(Name, Descr, Id, URL);
         }
 
         public static void Change(Product changed, Product changer)
@@ -53,6 +55,7 @@ namespace WebStoreElementLogic.Entities
             changed.Name = changer.Name;
             changed.Descr = changer.Descr;
             changed.Id = changer.Id;
+            changed.URL = changer.URL;
         }
     }
 }

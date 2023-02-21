@@ -1,235 +1,83 @@
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/bin/Debug/net6.0/appsettings.Development.json
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/bin/Debug/net6.0/appsettings.json
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/bin/Debug/net6.0/WebStoreElementLogic.staticwebassets.runtime.json
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/bin/Debug/net6.0/WebStoreElementLogic
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/bin/Debug/net6.0/WebStoreElementLogic.deps.json
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/bin/Debug/net6.0/WebStoreElementLogic.runtimeconfig.json
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/bin/Debug/net6.0/WebStoreElementLogic.dll
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/bin/Debug/net6.0/WebStoreElementLogic.pdb
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/WebStoreElementLogic.csproj.AssemblyReference.cache
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/WebStoreElementLogic.GeneratedMSBuildEditorConfig.editorconfig
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/WebStoreElementLogic.AssemblyInfoInputs.cache
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/WebStoreElementLogic.AssemblyInfo.cs
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/WebStoreElementLogic.csproj.CoreCompileInputs.cache
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/WebStoreElementLogic.MvcApplicationPartsAssemblyInfo.cache
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/WebStoreElementLogic.RazorAssemblyInfo.cache
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/WebStoreElementLogic.RazorAssemblyInfo.cs
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/staticwebassets/msbuild.WebStoreElementLogic.Microsoft.AspNetCore.StaticWebAssets.props
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/staticwebassets/msbuild.build.WebStoreElementLogic.props
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.WebStoreElementLogic.props
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.WebStoreElementLogic.props
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/staticwebassets.pack.json
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/staticwebassets.build.json
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/staticwebassets.development.json
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/scopedcss/Shared/Alert.razor.rz.scp.css
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/scopedcss/Shared/NavMenu.razor.rz.scp.css
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/scopedcss/bundle/WebStoreElementLogic.styles.css
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/scopedcss/projectbundle/WebStoreElementLogic.bundle.scp.css
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/WebStoreElementLogic.dll
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/refint/WebStoreElementLogic.dll
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/WebStoreElementLogic.pdb
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/WebStoreElementLogic.genruntimeconfig.cache
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/ref/WebStoreElementLogic.dll
-/Users/eirik/Projects/BOP3000-Bacheloroppgave-Element-Logic/WebStoreElementLogic/WebStoreElementLogic/obj/Debug/net6.0/scopedcss/Shared/ProductListItem.razor.rz.scp.css
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\appsettings.json
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.staticwebassets.runtime.json
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.exe
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.deps.json
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.runtimeconfig.json
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.pdb
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.csproj.AssemblyReference.cache
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.AssemblyInfoInputs.cache
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.AssemblyInfo.cs
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.csproj.CoreCompileInputs.cache
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.RazorAssemblyInfo.cache
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.RazorAssemblyInfo.cs
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets\msbuild.WebStoreElementLogic.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets\msbuild.build.WebStoreElementLogic.props
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.WebStoreElementLogic.props
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.WebStoreElementLogic.props
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets.pack.json
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets.build.json
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\Shared\Alert.razor.rz.scp.css
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\Shared\ProductListItem.razor.rz.scp.css
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\bundle\WebStoreElementLogic.styles.css
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\projectbundle\WebStoreElementLogic.bundle.scp.css
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\refint\WebStoreElementLogic.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.pdb
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.genruntimeconfig.cache
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\ref\WebStoreElementLogic.dll
-<<<<<<< HEAD
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\appsettings.json
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.staticwebassets.runtime.json
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.exe
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.deps.json
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.runtimeconfig.json
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.dll
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.pdb
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.csproj.AssemblyReference.cache
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.AssemblyInfoInputs.cache
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.AssemblyInfo.cs
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.csproj.CoreCompileInputs.cache
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.RazorAssemblyInfo.cache
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.RazorAssemblyInfo.cs
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets\msbuild.WebStoreElementLogic.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets\msbuild.build.WebStoreElementLogic.props
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.WebStoreElementLogic.props
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.WebStoreElementLogic.props
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets.pack.json
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets.build.json
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\Shared\Alert.razor.rz.scp.css
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\Shared\ProductListItem.razor.rz.scp.css
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\bundle\WebStoreElementLogic.styles.css
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\projectbundle\WebStoreElementLogic.bundle.scp.css
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.dll
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\refint\WebStoreElementLogic.dll
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.pdb
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.genruntimeconfig.cache
-C:\Users\admin\Documents\GitHub\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\ref\WebStoreElementLogic.dll
-=======
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.csproj.AssemblyReference.cache
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.AssemblyInfoInputs.cache
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.AssemblyInfo.cs
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.csproj.CoreCompileInputs.cache
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.RazorAssemblyInfo.cache
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.RazorAssemblyInfo.cs
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\refint\WebStoreElementLogic.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.pdb
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\appsettings.json
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.staticwebassets.runtime.json
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.exe
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.deps.json
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.runtimeconfig.json
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.pdb
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Azure.Core.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Azure.Identity.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Dapper.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Identity.Client.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Drawing.Common.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Memory.Data.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Runtime.Caching.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Security.Permissions.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Windows.Extensions.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets\msbuild.WebStoreElementLogic.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets\msbuild.build.WebStoreElementLogic.props
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.WebStoreElementLogic.props
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.WebStoreElementLogic.props
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets.pack.json
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets.build.json
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\Shared\Alert.razor.rz.scp.css
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\Shared\ProductListItem.razor.rz.scp.css
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\bundle\WebStoreElementLogic.styles.css
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\projectbundle\WebStoreElementLogic.bundle.scp.css
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.csproj.CopyComplete
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.genruntimeconfig.cache
-C:\Users\Alex\Desktop\Bachelor 2\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\ref\WebStoreElementLogic.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Azure.Core.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Azure.Identity.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Dapper.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Identity.Client.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Drawing.Common.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Memory.Data.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Runtime.Caching.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Security.Permissions.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Windows.Extensions.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
-C:\Users\eirik\Source\Repos\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.csproj.CopyComplete
->>>>>>> alex_sql
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\appsettings.json
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.staticwebassets.runtime.json
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.exe
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.deps.json
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.runtimeconfig.json
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\WebStoreElementLogic.pdb
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Azure.Identity.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Dapper.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Memory.Data.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Runtime.Caching.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Security.Permissions.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\System.Windows.Extensions.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.csproj.AssemblyReference.cache
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.AssemblyInfoInputs.cache
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.AssemblyInfo.cs
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.csproj.CoreCompileInputs.cache
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.RazorAssemblyInfo.cache
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.RazorAssemblyInfo.cs
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets\msbuild.WebStoreElementLogic.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets\msbuild.build.WebStoreElementLogic.props
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.WebStoreElementLogic.props
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.WebStoreElementLogic.props
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\Shared\Alert.razor.rz.scp.css
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\Shared\ProductListItem.razor.rz.scp.css
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\bundle\WebStoreElementLogic.styles.css
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\scopedcss\projectbundle\WebStoreElementLogic.bundle.scp.css
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.csproj.CopyComplete
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\refint\WebStoreElementLogic.dll
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.pdb
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\WebStoreElementLogic.genruntimeconfig.cache
+C:\Users\Alex\Desktop\Bachelor - NY\BOP3000-Bacheloroppgave-Element-Logic\WebStoreElementLogic\WebStoreElementLogic\obj\Debug\net6.0\ref\WebStoreElementLogic.dll

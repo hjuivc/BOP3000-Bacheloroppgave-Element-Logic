@@ -3261,11 +3261,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\WebStoreElementLogic.csproj",
+      "projectUniqueName": "C:\\Users\\Alex\\Desktop\\Bachelor - NY\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\WebStoreElementLogic.csproj",
       "projectName": "WebStoreElementLogic",
-      "projectPath": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\WebStoreElementLogic.csproj",
+      "projectPath": "C:\\Users\\Alex\\Desktop\\Bachelor - NY\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\WebStoreElementLogic.csproj",
       "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\",
+      "outputPath": "C:\\Users\\Alex\\Desktop\\Bachelor - NY\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

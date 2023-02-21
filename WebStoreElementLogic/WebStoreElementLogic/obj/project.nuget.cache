@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "38uKTyidMDrz43cyn+Km6DnlXwb45gi2qPs0VP1ZkSJhq4MaVhnHj7GzviPV1nHULsW15rofE6BGwM/+dNFohA==",
+  "dgSpecHash": "VVBu2R/DxEvTfaUmRMKZyMEWwM01bW7AYPTXclSIRkCsMhHv/Vg/AZfKS7JGNWAMESSoirmCDnXW2B82gl4x5Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alex\\Desktop\\Bachelor 2\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\WebStoreElementLogic.csproj",
+  "projectFilePath": "C:\\Users\\Alex\\Desktop\\Bachelor - NY\\BOP3000-Bacheloroppgave-Element-Logic\\WebStoreElementLogic\\WebStoreElementLogic\\WebStoreElementLogic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alex\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Alex\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

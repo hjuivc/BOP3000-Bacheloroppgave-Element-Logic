@@ -10,30 +10,30 @@
     </div>
 </li>
 @code {
-    [Parameter]
-    public Product Info { get; set; }
+        [Parameter]
+        public Product Info { get; set; }
 
-    [Parameter]
-    public int Count { get; set; } = 1;
+        [Parameter]
+        public int Count { get; set; } = 1;
 
-    [Parameter]
-    public int Index { get; set; }
+        [Parameter]
+        public int Index { get; set; }
 
-    [Parameter]
-    public EventCallback<int> OnRemove { get; set; }
+        [Parameter]
+        public EventCallback<int> OnRemove { get; set; }
 
-    [Parameter]
-    public EventCallback<int[]> OnCountUpdate { get; set; }
+        [Parameter]
+        public EventCallback<int[]> OnCountUpdate { get; set; }
 
-    public void Remove()
-    {
-        OnRemove.InvokeAsync(Index);
-    }
+        public void Remove()
+        {
+            OnRemove.InvokeAsync(Index);
+        }
 
-    public void UpdateCount(int increment)
-    {
-        Count += increment;
-        OnCountUpdate.InvokeAsync(new int[2] { Index, Count });
-    }
+        public void UpdateCount(int increment)
+        {
+            Count += increment;
+            OnCountUpdate.InvokeAsync(new int[] { Index, Count });
+}
 
 }

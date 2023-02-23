@@ -13,7 +13,7 @@
         <span class="text-danger text-decoration-underline">@Products[SelectedIndex].Name?</span>
         <div class="d-flex flex-row justify-content-around">
             <button @onclick="CancelDelete" class="btn btn-success mt-3">Cancel</button>
-        <button @onclick="() => Delete(Products[SelectedIndex].Id)">Delete </button>
+            <button @onclick="() => Delete(Products[SelectedIndex].Id)" class="btn btn-danger mt-3">Delete </button>
         </div>
     </Alert>
 }

@@ -5,77 +5,85 @@
 @inject IProductService ProductService;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
 
-@if (DeleteAlert)
+@if (Products == null)
 {
-    <Alert OnCancel="CancelDelete">
-        <h3>Delete Product</h3>
-        Are you sure you wish to delete 
-        <span class="text-danger text-decoration-underline">@Products[SelectedIndex].Name?</span>
-        <div class="d-flex flex-row justify-content-around">
-            <button @onclick="CancelDelete" class="btn btn-success mt-3">Cancel</button>
-        <button @onclick="() => Delete(Products[SelectedIndex].Id)">Delete </button>
-        </div>
-    </Alert>
+    <p><em>Loading Products...</em></p>
 }
+else
+{
 
-<div class="d-flex justify-content-between">
-    <div class="container-fluid">
-        @for (int i = 0;Products != null && i < Products.Count; i++)
-        {
-                <ProductListItem
-                Info=(Products)[i]
-                Index="i"
-                OnSelected="SelectProduct"
-                Selected="SelectedIndex == i" />
+    @if (DeleteAlert)
+    {
+        <Alert OnCancel="CancelDelete">
+            <h3>Delete Product</h3>
+            Are you sure you wish to delete 
+            <span class="text-danger text-decoration-underline">@Products[SelectedIndex].Name?</span>
+            <div class="d-flex flex-row justify-content-around">
+                <button @onclick="CancelDelete" class="btn btn-success mt-3">Cancel</button>
+            <button @onclick="() => Delete(Products[SelectedIndex].Id)">Delete </button>
+            </div>
+        </Alert>
+    }
 
-        }
-        @if (Products == null)
-        {
-            <h3>Loading Products...</h3>
-        }
-    </div>
-    <div class="container-fluid">
-
-        <!-- TODO: better solution -->
-        @if (Products != null)
-        {
-            <button class="btn btn-primary mt-2 bottom-0 mb-4 rounded-pill position-fixed align-self-end d-block" 
-            style="z-index: 3; transform: translateX(-5vw);"
-            @onclick="New">
-            <!-- Activates the method GetNewId-->
-            
-                <h3>Add Product</h3>
-            </button>
-        }
-
-        <div class="container-fluid position-fixed w-50 pe-4">
-            @if (SelectedIndex >= 0)
+    <div class="d-flex justify-content-between">
+        <div class="container-fluid">
+            @for (int i = 0;Products != null && i < Products.Count; i++)
             {
-                <ProductForm
-                Title="Edit product"
-                SaveLabel="Save changes"
-                DiscardLabel="Discard changes"
-                DeleteButton
-                Info="Products[SelectedIndex]"
-                Copy="(Product) Products[SelectedIndex].Clone()"
-                OnSave="SaveHandler"
-                OnDelete="DeleteHandler" />
+                    <ProductListItem
+                    Info=(Products)[i]
+                    Index="i"
+                    OnSelected="SelectProduct"
+                    Selected="SelectedIndex == i" />
+
             }
-            @if (AddNew)
+            @if (Products == null)
             {
-                <ProductForm
-                Title="Add new product"
-                SaveLabel="Add"
-                DiscardLabel="Cancel"
-                Info="newInfo"
-                Copy="(Product) newInfo.Clone()"
-                OnSave="SaveHandler"
-                OnDiscard="Discard" />
+                <h3>Loading Products...</h3>
             }
         </div>
-    </div>
-</div>
+        <div class="container-fluid">
 
+            <!-- TODO: better solution -->
+            @if (Products != null)
+            {
+                <button class="btn btn-primary mt-2 bottom-0 mb-4 rounded-pill position-fixed align-self-end d-block" 
+                style="z-index: 3; transform: translateX(-5vw);"
+                @onclick="New">
+                <!-- Activates the method GetNewId-->
+            
+                    <h3>Add Product</h3>
+                </button>
+            }
+
+            <div class="container-fluid position-fixed w-50 pe-4">
+                @if (SelectedIndex >= 0)
+                {
+                    <ProductForm
+                    Title="Edit product"
+                    SaveLabel="Save changes"
+                    DiscardLabel="Discard changes"
+                    DeleteButton
+                    Info="Products[SelectedIndex]"
+                    Copy="(Product) Products[SelectedIndex].Clone()"
+                    OnSave="SaveHandler"
+                    OnDelete="DeleteHandler" />
+                }
+                @if (AddNew)
+                {
+                    <ProductForm
+                    Title="Add new product"
+                    SaveLabel="Add"
+                    DiscardLabel="Cancel"
+                    Info="newInfo"
+                    Copy="(Product) newInfo.Clone()"
+                    OnSave="SaveHandler"
+                    OnDiscard="Discard" />
+                }
+            </div>
+        </div>
+    </div>
+
+}
 
 @code {
     [Parameter]

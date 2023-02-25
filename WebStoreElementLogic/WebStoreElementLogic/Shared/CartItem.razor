@@ -1,7 +1,7 @@
 ﻿@using Entities
 
-<li class="list-group-item d-flex justify-content-between align-items-start" style="max-width: 16vw;">
-    @Info.Name
+<li class="list-group-item d-flex flex-column flex-xxl-row justify-content-between align-items-start" style="max-width: 16vw;">
+    <span class="d-block d-xxl-inline">@Info.Name</span>
     <div>
         <span class="badge bg-primary rounded-pill">@Count</span>
         <span role="button" class="badge bg-success round-pill" @onclick="() => UpdateCount(1)" aria-label="Increase Quantity">+</span>

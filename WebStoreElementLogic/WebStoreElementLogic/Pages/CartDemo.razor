@@ -9,12 +9,30 @@
         <ul class="list-group">
             @for (int i = 0;i < Cart.Count; i++)
             {
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    @Cart.ElementAt(i).Key.Name
-                    <span class="badge bg-primary rounded-pill">
-                        @Cart.ElementAt(i).Value
-                    </span>
-                </li>
+                <CheckoutItem 
+                    Count="@Cart.ElementAt(i).Value" 
+                    Info="@Cart.ElementAt(i).Key" 
+                    Index="i"
+                    OnCountUpdate="(int[] p) => {
+                        int index = p[0];
+                        int count = p[1];
+                        if(count <= 0)
+                        {
+                            Cart.Remove(Cart.ElementAt(index).Key);
+                            if(Cart.Count == 0) DisplayCheckout = false;
+                        }
+                        else
+                        {
+                            Cart[Cart.ElementAt(index).Key] = count;
+                        }
+                    }"
+
+
+                    OnRemove="(Product p) => 
+                    { 
+                        Cart.Remove(p); 
+                        if(Cart.Count == 0) DisplayCheckout = false; 
+                    }" />
             }
         </ul>
         <div class="d-flex flex-row justify-content-around mt-3">
@@ -40,6 +58,9 @@
         <div class="row">
             <button @onclick="() => DisplayGrid = !DisplayGrid" class="btn btn-primary">Swap Display</button>
         </div>
+        <div class="row d-block d-xl-none position-sticky sticky-top">
+            <button class="btn btn-success" @onclick="() => DisplayCheckout = true">Show Cart (@CartCount())</button>
+        </div>
         @for(int i = 0;!DisplayGrid && i < Products.Count;i++)
         {
             <ProductListItem
@@ -58,7 +79,7 @@
             </div>
         }
     </div>
-    <div class="col-4 col-lg-2 border-start border-dark ms-4">
+    <div class="col-4 col-lg-2 border-start border-dark ms-4 d-none d-xl-block">
 
         <!-- Cart Menu -->
         <div class="position-fixed container-fluid d-flex flex-column justify-content-between text-white align-content-center" style="height: calc(100% - 85px)">
@@ -87,6 +108,17 @@
     public bool DisplayGrid = false;
     public bool DisplayCheckout = false;
     public bool DisplaySuccess = false;
+
+    // Summarize the amount of products currently in the cart
+    public int CartCount()
+    {
+        int count = 0;
+        for(int i = 0; i < Cart.Count; i++)
+        {
+            count += Cart.ElementAt(i).Value;
+        }
+        return count;
+    }
 
     public void Select(int index)
     {

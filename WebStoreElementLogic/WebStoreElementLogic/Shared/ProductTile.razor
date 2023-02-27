@@ -1,0 +1,33 @@
+﻿@using WebStoreElementLogic.Entities
+
+
+<div class="col-lg-3 col-md-4 col-sm-6">
+    <div class="card m-4 border-4 rounded" style="cursor: pointer;" @onclick="SelectProduct">
+        <img src="images/logos/Element Logic logo E hires.jpg" class="card-img-top" alt="productimage">
+        <div class="card-body">
+            <h5 class="card-title">@Product.Name</h5>
+            <p class="card-text">Quantity:@Product.Qty</p>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int Index { get; set; }
+
+    [Parameter]
+    public Product Product { get; set; }
+
+    [Parameter]
+    public bool Selected { get; set; } = false;
+
+    [Parameter]
+    public EventCallback<int> OnSelected { get; set; }
+
+    private void SelectProduct()
+    {
+        Selected = true;
+        OnSelected.InvokeAsync(Index);
+    }
+
+}

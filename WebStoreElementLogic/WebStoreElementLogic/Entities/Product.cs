@@ -5,11 +5,11 @@ namespace WebStoreElementLogic.Entities
     public class Product
     {
         public string? Name { get; set; }
-        public string? Descr { get; set; }
+        public string? Descr { get; set; } = "hehiehieheiheiehieheihe";
         public int Id { get; set; }
         [Key]
         public string? URL { get; set; }
-
+        public int Qty { get; set; } = 20;
 
         public Product(int number)
         {
@@ -25,12 +25,16 @@ namespace WebStoreElementLogic.Entities
         }
 
 
+
         public Product(string? name, string? descr, int id, string url)
+
         {
             Name = name;
             Descr = descr;
             Id = id;
+
             URL = url;
+
         }
 
         public static List<Product> generateList(int size)
@@ -47,7 +51,9 @@ namespace WebStoreElementLogic.Entities
 
         public object Clone()
         {
+
             return new Product(Name, Descr, Id, URL);
+
         }
 
         public static void Change(Product changed, Product changer)

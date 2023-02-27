@@ -1,42 +1,46 @@
 ﻿@page "/orderpage"
-@using Data
 @using WebStoreElementLogic.Entities;
 
-@if(SelectedIndex >= 0) 
-{
-    <div calss="d-flex flex-cloumn shadow position-fixed w-25 top-50 start-50 translate-center justify-content-center" @onclick="Cancel">
-        <div class="text-end"><button class="btn-close" /></div>
-        <img src="images/default.jpg" />
-        <h3>@ProductsCopy[SelectedIndex].Name</h3>
-        <span>Qty</span>
-    </div>
-}
+
 <div class="d-flex flex-row mx-5 rounded">
     <input name="search" type="text" class="form-control" @bind="searchTerm" @bind:event="oninput">
     <button @onclick="Search" class="btn btn-primary">Search</button>
 </div>
-<div class="container-fluid d-flex flex-row flex-wrap justify-content-around">
-@for (int i = 0; i < ProductsCopy.Count; i++)
-{
-   <ProductGridItem Info="@ProductsCopy[i]" OnSelected="Select" Index="i" />
-}
+<div class="container-fluid">
+    <div class="row">
+        @for (int i = 0; i < Products.Count; i++)
+        {
+            <ProductTile Product="@Products[i]" 
+            Index="i" 
+            OnSelected="SelectProduct" 
+            Selected="SelectedIndex == i"  />
+        }
+        @if (Products == null)
+        {
+            <h3>Loading Products...</h3>
+        }
+    </div>
 </div>
+
+@if(ShowModal)
+{
+    <ProductModal Product="@Products[SelectedIndex]" Index="SelectedIndex" OnCancelEvent="() =>ShowModal = false" />
+}
 
 
 @code {
 
-    private void Cancel() {
-        SelectedIndex = -1;
-        StateHasChanged();
-    }
-
-    private void Select(int index) 
+    private void SelectProduct(int index)
     {
         SelectedIndex = index;
+        Console.Write(SelectedIndex);
+        ShowModal = true;
         StateHasChanged();
     }
 
     private int SelectedIndex = -1;
+
+    private bool ShowModal = false;
 
     private List<Product> ProductsCopy = new List<Product>();
 

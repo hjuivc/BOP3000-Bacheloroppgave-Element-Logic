@@ -1,0 +1,38 @@
+﻿@using Entities
+
+<li class="list-group-item d-flex justify-content-between align-items-center">
+    @Info.Name
+    <span class="d-flex flex-row">
+        <span class="badge bg-primary rounded-pill">@Count</span>
+        <span class="d-flex flex-row d-xl-none">
+            <span role="button" class="badge bg-success round-pill" @onclick="() => UpdateCount(1)" aria-label="Increase Quantity">+</span>
+            <span role="button" class="badge bg-danger round-pill" @onclick="() => UpdateCount(-1)" aria-label="Decrease Quantity">-</span>
+            <button class="btn-close d-block d-xl-none" @onclick="() => OnRemove.InvokeAsync(Info)"></button>
+        </span>
+    </span>
+</li>
+
+@code {
+
+    [Parameter]
+    public Product Info { get; set; }
+
+    [Parameter]
+    public int Count { get; set; }
+
+    [Parameter]
+    public int Index { get; set; }
+
+    [Parameter]
+    public EventCallback<Product> OnRemove { get; set; }
+
+    [Parameter]
+    public EventCallback<int[]> OnCountUpdate { get; set; }
+
+    public void UpdateCount(int change)
+    {
+        Count += change;
+        OnCountUpdate.InvokeAsync(new int[] { Index, Count });
+    }
+
+}

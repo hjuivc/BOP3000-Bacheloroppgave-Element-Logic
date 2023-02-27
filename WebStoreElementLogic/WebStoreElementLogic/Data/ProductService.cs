@@ -166,9 +166,9 @@ namespace WebStoreElementLogic.Data
             throw new NotImplementedException();
         }
 
-        public async Task<List<Product>> GetProducts(int? id, string name, string descr)
+        public async Task<List<Product>> GetProducts(int? id, string name, string descr, string url)
         {
-            var sql = $"SELECT ExtProductId AS Id, ProductName AS Name, ProductDesc AS Descr FROM [Products] ORDER BY ProductName";
+            var sql = $"SELECT ExtProductId AS Id, ProductName AS Name, ProductDesc AS Descr, ImageId AS URL FROM [Products] ORDER BY ProductName";
 
             using (var connection = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]))
             {

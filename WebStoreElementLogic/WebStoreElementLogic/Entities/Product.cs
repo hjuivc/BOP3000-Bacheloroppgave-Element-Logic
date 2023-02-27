@@ -26,14 +26,14 @@ namespace WebStoreElementLogic.Entities
 
 
 
-        public Product(string? name, string? descr, int id, string url)
+        public Product(string? name, string? descr, int id, string url, int qty)
 
         {
             Name = name;
             Descr = descr;
             Id = id;
-
             URL = url;
+            Qty = qty;
 
         }
 
@@ -52,7 +52,7 @@ namespace WebStoreElementLogic.Entities
         public object Clone()
         {
 
-            return new Product(Name, Descr, Id, URL);
+            return new Product(Name, Descr, Id, URL, Qty);
 
         }
 

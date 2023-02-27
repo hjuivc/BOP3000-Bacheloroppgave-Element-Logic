@@ -1,0 +1,132 @@
+﻿@using Entities
+
+@if (DisplayCheckout)
+{
+    <Alert OnCancel="() => DisplayCheckout = false">
+        <h3>Checkout</h3>
+        Are you sure you want to order the following items?
+        <ul class="list-group">
+            @for (int i = 0; i < CartDict.Count; i++)
+            {
+                <CheckoutItem Count="@CartDict.ElementAt(i).Value"
+                      Info="@CartDict.ElementAt(i).Key"
+                      Index="i"
+                      OnCountUpdate="(int[] p) => {
+                        int index = p[0];
+                        int count = p[1];
+                        if(count <= 0)
+                        {
+                            CartDict.Remove(CartDict.ElementAt(index).Key);
+                            if(CartDict.Count == 0) DisplayCheckout = false;
+                        }
+                        else
+                        {
+                            CartDict[CartDict.ElementAt(index).Key] = count;
+                        }
+                    }"
+                      OnRemove="(Product p) =>
+                    {
+                        CartDict.Remove(p);
+                        if(CartDict.Count == 0) DisplayCheckout = false;
+                    }" />
+            }
+        </ul>
+        <div class="d-flex flex-row justify-content-around mt-3">
+            <button class="btn btn-warning" @onclick="() => DisplayCheckout = false">Cancel</button>
+            <button class="btn btn-success" @onclick="SendCart">Confirm</button>
+        </div>
+    </Alert>
+}
+
+@if (DisplaySuccess)
+{
+    <Alert OnCancel="() => DisplaySuccess = false">
+        <h3>Order placed!</h3>
+        Your order has been placed
+        <div class="d-flex flex-row justify-content-around mt-3">
+            <button class="btn btn-success" @onclick="() => DisplaySuccess = false">Ok</button>
+        </div>
+    </Alert>
+}
+
+<div class="container-fluid row">
+    <div class="col container-fluid">
+        <div class="row d-block d-xl-none position-sticky sticky-top">
+            <button class="btn btn-success" @onclick="() => DisplayCheckout = true">Show Cart (@CartCount())</button>
+        </div>
+        @ChildContent
+    </div>
+    <div class="col-2 border-start border-dark ms-4 d-none d-xl-block">
+
+        <!-- Cart Menu -->
+        <div class="position-fixed container-fluid d-flex flex-column justify-content-between text-white align-content-center" style="height: calc(100% - 85px)">
+            <ul class="list-group">
+                @for (int i = 0; i < CartDict.Count; i++)
+                {
+                    <CartItem Info="@CartDict.ElementAt(i).Key"
+                          Count="@CartDict.ElementAt(i).Value"
+                          Index="i"
+                          OnCountUpdate="UpdateCount"
+                          OnRemove="RemoveFromCart" />
+                }
+            </ul>
+            <div>
+                <button @onclick="() => { if (CartDict.Count > 0) DisplayCheckout = true; }" class="btn btn-success mb-4">Send Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public List<Product> Products { get; set; } = Product.generateList(25);
+
+    [Parameter]
+    public Dictionary<Product, int> CartDict { get; set; } = new Dictionary<Product, int>();
+
+    public bool DisplayCheckout = false;
+    public bool DisplaySuccess = false;
+
+    // Summarize the amount of products currently in the cart
+    public int CartCount()
+    {
+        int count = 0;
+        for (int i = 0; i < CartDict.Count; i++)
+        {
+            count += CartDict.ElementAt(i).Value;
+        }
+        return count;
+    }
+
+    public void SendCart()
+    {
+        CartDict.Clear();
+        DisplayCheckout = false;
+        DisplaySuccess = true;
+    }
+
+    public void RemoveFromCart(int index)
+    {
+        CartDict.Remove(CartDict.ElementAt(index).Key);
+    }
+
+    public void UpdateCount(int[] product)
+    {
+        int index = product[0];
+        int count = product[1];
+
+        if (count <= 0)
+        {
+            RemoveFromCart(index);
+        }
+        else
+        {
+            CartDict[CartDict.ElementAt(index).Key] = count;
+        }
+    }
+
+    
+}

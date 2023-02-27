@@ -6,5 +6,8 @@
     transform: scale(1.15);
 }
 
-
+img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
 

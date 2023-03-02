@@ -1,3 +1,16 @@
 .selected {
     box-shadow: 5px 5px 5px 5px rgba(20, 200, 20, 0.8);
 }
+
+img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+section {
+    transition: all 0.3s;
+}
+
+section:hover {
+    transform: scale(1.05);
+}

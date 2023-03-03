@@ -54,7 +54,7 @@
     public Product Copy { get; set; }
 
     [Parameter]
-    public EventCallback OnSave { get; set; }
+    public EventCallback<Product> OnSave { get; set; }
 
     [Parameter]
     public EventCallback OnDiscard { get; set; }
@@ -84,7 +84,7 @@
         await ProductService.Update(Copy);
         Product.Change(Info, Copy);
         StateHasChanged();
-        OnSave.InvokeAsync();
+        OnSave.InvokeAsync(Info);
         NavigationManager.NavigateTo("/productpage");
     }
 

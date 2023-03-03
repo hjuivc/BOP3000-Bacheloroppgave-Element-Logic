@@ -71,7 +71,7 @@ else
                     DeleteButton
                     Info="FilteredProducts[SelectedIndex]"
                     Copy="(Product) FilteredProducts[SelectedIndex].Clone()"
-                    OnSave="@(() => AddNew ? SaveHandler(Products[SelectedIndex]) : SaveHandler(FilteredProducts[SelectedIndex]))"
+                    OnSave="SaveHandler"
                     OnDelete="DeleteHandler" />
 
 
@@ -84,7 +84,7 @@ else
                          DiscardLabel="Cancel"
                          Info="newInfo"
                          Copy="(Product) newInfo.Clone()"
-                         OnSave="@(() => SaveHandler(Products[SelectedIndex]))"
+                         OnSave="SaveHandler"
                          OnDiscard="Discard" />
                 }
 
@@ -182,15 +182,29 @@ else
     {
         if (AddNew)
         {
+            // Add product to db and array
             await ProductService.Create(product);
             Products.Add(product);
-            SelectedIndex = Products.Count - 1;
+
+            AddNew = false;
         }
         else
         {
             await ProductService.Update(product);
-            Products[SelectedIndex] = product;
         }
+
+        // Manually trigger filter
+        FilterProducts();
+
+        // If our currently filtered products don't show the new product, reset the filter
+        if (!FilteredProducts.Contains(product))
+        {
+            searchTerm = "";
+            FilterProducts();
+        }
+
+        // Have the newest product be the selected product
+        SelectedIndex = FilteredProducts.IndexOf(product);
     }
 
 

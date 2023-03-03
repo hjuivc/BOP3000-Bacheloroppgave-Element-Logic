@@ -1,4 +1,5 @@
 ﻿@page "/productpage"
+@using Microsoft.AspNetCore.WebUtilities;
 @using WebStoreElementLogic.Data;
 @using WebStoreElementLogic.Entities;
 @using WebStoreElementLogic.Interfaces;
@@ -11,6 +12,11 @@
 }
 else
 {
+    <!-- Search function -->
+    <div class="row-col-md-3 pull-left">
+        <input type="text" id="txtSearch" class="form-control" placeholder="Search Product Names.."
+            @bind="SearchTerm" @bind:event="oninput"/>
+    </div>
 
     @if (DeleteAlert)
     {
@@ -25,22 +31,22 @@ else
         </Alert>
     }
 
+    <!-- Test for searching -->
     <div class="d-flex justify-content-between">
         <div class="container-fluid">
-            @for (int i = 0;Products != null && i < Products.Count; i++)
+            @if (FilteredProducts != null)
             {
+                @foreach (var product in FilteredProducts)
+                {
                     <ProductListItem
-                    Info=(Products)[i]
-                    Index="i"
-                    OnSelected="SelectProduct"
-                    Selected="SelectedIndex == i" />
-
-            }
-            @if (Products == null)
-            {
-                <h3>Loading Products...</h3>
+                    Info="@product"
+                    Index="@FilteredProducts.IndexOf(product)"
+                    OnSelected="(index) => SelectProduct(FilteredProducts[index])"
+                    Selected="@(SelectedIndex == FilteredProducts.IndexOf(product))" />
+                }
             }
         </div>
+    
         <div class="container-fluid">
 
             <!-- TODO: better solution -->
@@ -58,27 +64,30 @@ else
             <div class="container-fluid position-fixed w-50 pe-4">
                 @if (SelectedIndex >= 0)
                 {
-                    <ProductForm
+                    <ProductForm 
                     Title="Edit product"
                     SaveLabel="Save changes"
                     DiscardLabel="Discard changes"
                     DeleteButton
-                    Info="Products[SelectedIndex]"
-                    Copy="(Product) Products[SelectedIndex].Clone()"
-                    OnSave="SaveHandler"
+                    Info="FilteredProducts[SelectedIndex]"
+                    Copy="(Product) FilteredProducts[SelectedIndex].Clone()"
+                    OnSave="@(() => AddNew ? SaveHandler(Products[SelectedIndex]) : SaveHandler(FilteredProducts[SelectedIndex]))"
                     OnDelete="DeleteHandler" />
+
+
                 }
                 @if (AddNew)
                 {
-                    <ProductForm
-                    Title="Add new product"
-                    SaveLabel="Add"
-                    DiscardLabel="Cancel"
-                    Info="newInfo"
-                    Copy="(Product) newInfo.Clone()"
-                    OnSave="SaveHandler"
-                    OnDiscard="Discard" />
+                    <ProductForm 
+                        Title="Add new product"
+                         SaveLabel="Add"
+                         DiscardLabel="Cancel"
+                         Info="newInfo"
+                         Copy="(Product) newInfo.Clone()"
+                         OnSave="@(() => SaveHandler(Products[SelectedIndex]))"
+                         OnDiscard="Discard" />
                 }
+
             </div>
         </div>
     </div>
@@ -86,6 +95,33 @@ else
 }
 
 @code {
+    // Search function - all changes
+    private string searchTerm;
+    private string SearchTerm
+    {
+        get { return searchTerm; }
+        set
+        {
+            searchTerm = value;
+            FilterProducts();
+        }
+    }
+
+    private int totalPages;
+    private int totalRecords;
+    private int curPage;
+    private int pagerSize;
+    private int pageSize;
+    private int startPage;
+    private int endPage;
+    private string sortColumnName = "Id";
+    private string sortDirection = "ASC";
+    private bool isSortedAscending;
+    private string activeSortColumn;
+    private List<Product> FilteredProducts;
+    // Search function above
+
+
     [Parameter]
     public int id { get; set; }
 
@@ -99,43 +135,64 @@ else
 
     private int SelectedIndex = -1;
 
-
     protected override async Task OnInitializedAsync()
     {
-        // method for showing productname from database into page
         try
         {
             newInfo = await ProductService.GetByID(id);
-            // Store in a new list temporarily to avoid seting Products to null
-            List<Product> FetchedProducts = await ProductService.GetProducts(0, "name", "descr", "url");
-            Products = FetchedProducts;
+            // Set the page size to 25 products per page
+            int pageSize = 25;
+            // Get the current page number from the query string
+            int pageIndex = GetPageIndexFromQueryString();
+            // Store in a new list temporarily to avoid setting Products to null
+            List<Product> FetchedProducts = await ProductService.GetProducts(searchTerm, pageIndex, pageSize);
+            FilteredProducts = FetchedProducts;
+            Products = FilteredProducts.ToList();
+
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             NoConnection = true;
         }
-
     }
 
+    // Search- function
+    private int GetPageIndexFromQueryString()
+    {
+        var uri = new Uri(NavigationManager.Uri);
+        var queryParameters = QueryHelpers.ParseQuery(uri.Query);
+        var pageIndex = 0;
+        if (queryParameters.ContainsKey("pageIndex"))
+        {
+            int.TryParse(queryParameters["pageIndex"], out pageIndex);
+        }
+        return pageIndex;
+    }
 
-    private void SelectProduct(int index)
+    // Changed due to the search- function
+    private void SelectProduct(Product product)
     {
         AddNew = false;
-        SelectedIndex = index;
+        SelectedIndex = FilteredProducts.IndexOf(product);
     }
 
-    protected async Task SaveHandler()
+
+    // Changed due to the search- function
+    private async Task SaveHandler(Product product)
     {
         if (AddNew)
         {
-            // Adding product to database         
-            await ProductService.Create(newInfo);
-            Products.Add(newInfo);
-            AddNew = false;
-
+            await ProductService.Create(product);
+            Products.Add(product);
+            SelectedIndex = Products.Count - 1;
         }
-        StateHasChanged();
+        else
+        {
+            await ProductService.Update(product);
+            Products[SelectedIndex] = product;
+        }
     }
+
 
     private void DeleteHandler()
     {
@@ -150,7 +207,7 @@ else
     protected async Task Delete(int id)
     {
         await ProductService.Delete(id);
-        
+
         DeleteAlert = false;
 
         if (SelectedIndex >= 0)
@@ -159,25 +216,85 @@ else
             SelectedIndex = -1;
         }
     }
-    
+
     private async Task New()
     {
         var productsList = await ProductService.GetNextID(0);
         // Checks if the Id is null
         int newId = productsList?.FirstOrDefault()?.Id ?? 0;
         newInfo = new Product { Id = newId };
-        SelectedIndex = -1;
+        SelectedIndex = FilteredProducts.IndexOf(newInfo);
         AddNew = true;
-        
+
         NavigationManager.NavigateTo("/productpage");
 
         StateHasChanged();
     }
 
+
+
+
     private void Discard()
     {
         AddNew = false;
         StateHasChanged();
+    }
+
+    // Search- functions from here
+    public async Task RefreshRecords(int currentPage)
+    {
+        var products = await ProductService.ListAllRefresh(SearchTerm, currentPage, pageSize, sortColumnName, sortDirection);
+        Products = products;
+    }
+
+    public void FilterProducts()
+    {
+        SelectedIndex = -1;
+
+        Console.WriteLine("FilterProducts called");
+        endPage = 0;
+        Console.WriteLine($"SearchTerm = {SearchTerm}");
+        if (string.IsNullOrWhiteSpace(SearchTerm))
+        {
+            // If the search term is empty or null, show all products
+            FilteredProducts = Products;
+        }
+        else
+        {
+            // Otherwise, filter the products based on the search term
+            FilteredProducts = Products.Where(p => p.Name.IndexOf(SearchTerm, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+        }
+        Console.WriteLine($"FilteredProducts = {FilteredProducts.Count}");
+    }
+
+
+
+
+    public void SetPagerSize(string direction)
+    {
+        if (direction == "forward" && endPage < totalPages)
+        {
+            startPage = endPage + 1;
+            if (endPage + pagerSize < totalPages)
+            {
+                endPage = startPage + pagerSize - 1;
+            }
+            else
+            {
+                endPage = totalPages;
+            }
+            this.StateHasChanged();
+        }
+        else if (direction == "back" && startPage > 1)
+        {
+            endPage = startPage - 1;
+            startPage = startPage - pagerSize;
+        }
+        else
+        {
+            startPage = 1;
+            endPage = totalPages;
+        }
     }
 
 }

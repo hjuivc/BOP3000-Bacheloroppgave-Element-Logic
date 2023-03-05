@@ -108,13 +108,13 @@ namespace WebStoreElementLogic.Data
             int offset = Math.Max(0, (page - 1) * pageSize); // Ensure the offset is not negative
 
             // Check if sort column name is provided, if not, set it to "ProductName"
-            var sortClause = string.IsNullOrEmpty(sortColumnName) ? "ProductName" : sortColumnName;
+            var sortClause = string.IsNullOrEmpty(sortColumnName) ? "Name" : sortColumnName;
 
             // Check if sort direction is provided, if not, set it to "ASC"
             sortClause += string.IsNullOrEmpty(sortDirection) ? " DESC" : " " + sortDirection;
 
             // Prepare the SQL statement
-            var sql = $"SELECT * FROM [Products] WHERE ProductName LIKE @searchTerm ORDER BY {sortClause} OFFSET @offset ROWS FETCH NEXT @pageSize ROWS ONLY";
+            var sql = $"SELECT * FROM [Products] WHERE ProductName LIKE @searchTerm";
 
             // Prepare the parameters to pass to the query
             var parameters = new { Offset = offset, PageSize = pageSize, SearchTerm = $"%{searchTerm}%" };
@@ -166,30 +166,17 @@ namespace WebStoreElementLogic.Data
             throw new NotImplementedException();
         }
 
-        public async Task<List<Product>> GetProducts(int? id, string name, string descr, string url)
+        public async Task<List<Product>> GetProducts(string searchTerm, int pageIndex = 1, int pageSize = 10)
         {
-            var sql = $"SELECT ExtProductId AS Id, ProductName AS Name, ProductDesc AS Descr, ImageId AS URL FROM [Products] ORDER BY ProductName";
+            var sql = $"SELECT ExtProductId AS Id, ProductName AS Name, ProductDesc AS Descr, ImageId AS URL FROM [Products] WHERE ProductName LIKE @searchTerm ORDER BY ProductName";
 
             using (var connection = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]))
             {
-
                 try
                 {
-                    Console.WriteLine(sql);
                     await connection.OpenAsync();
-                    var Products = await connection.QueryAsync<Product>(sql);
-
-                    if (Products == null || !Products.Any())
-                    {
-                        Console.WriteLine("No data found");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Data found");
-                    }
-
-                    Console.WriteLine(Products.ToString());
-                    return Products.ToList();
+                    var products = await connection.QueryAsync<Product>(sql, new { searchTerm = $"%{searchTerm}%" });
+                    return products.ToList();
                 }
                 catch (Exception ex)
                 {
@@ -198,6 +185,9 @@ namespace WebStoreElementLogic.Data
                 }
             }
         }
+
+
+
 
 
     }

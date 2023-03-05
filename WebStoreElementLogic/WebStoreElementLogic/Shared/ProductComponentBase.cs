@@ -21,7 +21,6 @@ namespace WebStoreElementLogic.Shared
         // Product related methods
         public virtual void SelectProduct(Product product)
         {
-            //AddNew = false;
             SelectedIndex = FilteredProducts.IndexOf(product);
         }
 

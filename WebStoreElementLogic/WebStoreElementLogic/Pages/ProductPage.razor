@@ -18,9 +18,9 @@ else
             <h3>Delete Product</h3>
             Are you sure you wish to delete 
             <span class="text-danger text-decoration-underline">@Products[SelectedIndex].Name?</span>
-            <div class="d-flex flex-row justify-content-around">
-                <button @onclick="CancelDelete" class="btn btn-success mt-3">Cancel</button>
-            <button @onclick="() => Delete(Products[SelectedIndex].Id)">Delete </button>
+            <div class="d-flex flex-row justify-content-around mt-3">
+                <button @onclick="CancelDelete" class="btn btn-success">Cancel</button>
+            <button @onclick="() => Delete(Products[SelectedIndex].Id)" class="btn btn-danger">Delete </button>
             </div>
         </Alert>
     }

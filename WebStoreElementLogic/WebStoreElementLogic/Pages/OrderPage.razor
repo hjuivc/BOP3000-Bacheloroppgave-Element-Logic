@@ -1,30 +1,51 @@
 ﻿@page "/orderpage"
+@using WebStoreElementLogic.Data;
 @using WebStoreElementLogic.Entities;
+@using WebStoreElementLogic.Interfaces;
+@inject IProductService ProductService;
+@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
 
-
-<div class="d-flex flex-row mx-5 rounded">
-    <input name="search" type="text" class="form-control" @bind="searchTerm" @bind:event="oninput">
-    <button @onclick="Search" class="btn btn-primary">Search</button>
-</div>
-<div class="container-fluid">
-    <div class="row">
-        @for (int i = 0; i < Products.Count; i++)
-        {
-            <ProductTile Product="@Products[i]" 
-            Index="i" 
-            OnSelected="SelectProduct" 
-            Selected="SelectedIndex == i"  />
-        }
-        @if (Products == null)
-        {
-            <h3>Loading Products...</h3>
-        }
+<Cart CartDict="CartDict" Products="Products">
+    <div class="d-flex flex-row mx-5 rounded mb-3">
+        <button @onclick="() => ShowList = !ShowList" class="btn btn-primary">@(ShowList? "⬛" : "📃")</button>
+        <input name="search" type="text" class="form-control ms-3" @bind="searchTerm" @bind:event="oninput">
+        <button @onclick="Search" class="btn btn-primary">Search</button>
     </div>
-</div>
+    <div class="container-fluid">
+        <div class="row">
+            @for (int i = 0; i < Products.Count; i++)
+            {
+                if (!ShowList)
+                {
+                    <ProductTile Product="@Products[i]" 
+                        Index="i" 
+                        OnSelected="SelectProduct" 
+                        Selected="SelectedIndex == i"  />
+                }
+                else
+                {
+                    <ProductListItem 
+                        Index="i" 
+                        OnSelected="SelectProduct" 
+                        Selected="SelectedIndex == i" 
+                        Info="@Products[i]" />
+                }
+            }
+            @if (Products == null)
+            {
+                <h3>Loading Products...</h3>
+            }
+        </div>
+    </div>
+</Cart>
 
 @if(ShowModal)
 {
-    <ProductModal Product="@Products[SelectedIndex]" Index="SelectedIndex" OnCancelEvent="() =>ShowModal = false" />
+    <ProductModal 
+        Product="@Products[SelectedIndex]" 
+        Index="SelectedIndex" 
+        OnCancelEvent="() =>ShowModal = false" 
+        OnAddEvent="AddToCart"/>
 }
 
 
@@ -42,11 +63,37 @@
 
     private bool ShowModal = false;
 
+    private bool ShowList = false;
+
     private List<Product> ProductsCopy = new List<Product>();
 
-    private List<Product> Products = Product.generateList(35);
+    [Parameter]
+    public int id { get; set; }
+
+    public List<Product>? Products = new List<Product>();
+
+    private Product newInfo = new Product();
+
+    public Dictionary<Product, int> CartDict { get; set; } = new Dictionary<Product, int>();
 
     private string searchTerm = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        // method for showing productname from database into page
+        try
+        {
+            newInfo = await ProductService.GetByID(id);
+            // Store in a new list temporarily to avoid seting Products to null
+            List<Product> FetchedProducts = await ProductService.GetProducts(0, "name", "descr", "url");
+            Products = FetchedProducts;
+        }
+        catch(Exception e)
+        {
+            //NoConnection = true;
+        }
+
+    }
 
     private void Search() 
     {
@@ -76,6 +123,28 @@
     protected override void OnInitialized()
     {
         FillCopy("");
+    }
+
+    private void AddToCart(int[] product)
+    {
+        ShowModal = false;
+
+        int index = product[0];
+        int amount = product[1];
+
+        if(amount <= 0)
+        {
+            return;
+        }
+
+        if(CartDict.ContainsKey(Products[index]))
+        {
+            CartDict[Products[index]] = amount;
+        }
+        else
+        {
+            CartDict.Add(Products[index], amount);
+        }
     }
 
 }

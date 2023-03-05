@@ -5,34 +5,33 @@
 @using WebStoreElementLogic.Interfaces;
 @inject IProductService ProductService;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
+@inherits ProductComponentBase
 
 <Cart CartDict="CartDict" Products="Products">
     <div class="d-flex flex-row mx-5 rounded mb-3">
-        <button @onclick="() => ShowList = !ShowList" class="btn btn-primary">@(ShowList? "⬛" : "📃")</button>
+        <button @onclick="() => ShowList = !ShowList" class="btn btn-primary">@(ShowList? "🖼" : "📃")</button>
         <input placeholder="Search Product Names.." id="txtSearch" name="search" type="text" class="form-control ms-3" 
             @bind="SearchTerm" @bind:event="oninput">
-
-        <button @onclick="Search" class="btn btn-primary">Search</button>
     </div>
     <div class="container-fluid">
         <div class="row">
-            @for (int i = 0; i < FilteredProducts.Count; i++)
+            @foreach (Product product in FilteredProducts)
             {
                 if (!ShowList)
                 {
                     <ProductTile 
-                        Product="@FilteredProducts[i]" 
-                        Index="i" 
-                        OnSelected="SelectProduct" 
-                        Selected="SelectedIndex == i"  />
+                        Product="@product"
+                        Index="@FilteredProducts.IndexOf(product)"
+                        OnSelected="(index) => SelectProduct(FilteredProducts[index])" 
+                        Selected="@(SelectedIndex == FilteredProducts.IndexOf(product))"  />
                 }
                 else
                 {
                     <ProductListItem 
-                        Index="i" 
-                        OnSelected="SelectProduct" 
-                        Selected="SelectedIndex == i" 
-                        Info="@FilteredProducts[i]" />
+                        Info="@product"
+                        Index="@FilteredProducts.IndexOf(product)"
+                        OnSelected="(index) => SelectProduct(FilteredProducts[index])"
+                        Selected="@(SelectedIndex == FilteredProducts.IndexOf(product))" />
                 }
             }
             @if (Products == null)
@@ -55,112 +54,11 @@
 
 @code {
 
-    // TODO: Make class to keep track of variables?
-    // -- Search related --
-
-    private string searchTerm;
-    private string SearchTerm
+    public override void SelectProduct(Product product)
     {
-        get { return searchTerm; }
-        set
-        {
-            searchTerm = value;
-            FilterProducts();
-        }
-    }
-
-    private int totalPages;
-    private int totalRecords;
-    private int curPage;
-    private int pagerSize;
-    private int pageSize;
-    private int startPage;
-    private int endPage;
-    private string sortColumnName = "Id";
-    private string sortDirection = "ASC";
-    private bool isSortedAscending;
-    private string activeSortColumn;
-    private List<Product> FilteredProducts = new List<Product>();
-
-    // Search- functions from here
-    public async Task RefreshRecords(int currentPage)
-    {
-        var products = await ProductService.ListAllRefresh(SearchTerm, currentPage, pageSize, sortColumnName, sortDirection);
-        Products = products;
-    }
-
-    public void FilterProducts()
-    {
-        SelectedIndex = -1;
-
-        Console.WriteLine("FilterProducts called");
-        endPage = 0;
-        Console.WriteLine($"SearchTerm = {SearchTerm}");
-        if (string.IsNullOrWhiteSpace(SearchTerm))
-        {
-            // If the search term is empty or null, show all products
-            FilteredProducts = Products;
-        }
-        else
-        {
-            // Otherwise, filter the products based on the search term
-            FilteredProducts = Products.Where(p => p.Name.IndexOf(SearchTerm, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
-        }
-        Console.WriteLine($"FilteredProducts = {FilteredProducts.Count}");
-    }
-
-    private int GetPageIndexFromQueryString()
-    {
-        var uri = new Uri(NavigationManager.Uri);
-        var queryParameters = QueryHelpers.ParseQuery(uri.Query);
-        var pageIndex = 0;
-        if (queryParameters.ContainsKey("pageIndex"))
-        {
-            int.TryParse(queryParameters["pageIndex"], out pageIndex);
-        }
-        return pageIndex;
-    }
-
-
-    public void SetPagerSize(string direction)
-    {
-        if (direction == "forward" && endPage < totalPages)
-        {
-            startPage = endPage + 1;
-            if (endPage + pagerSize < totalPages)
-            {
-                endPage = startPage + pagerSize - 1;
-            }
-            else
-            {
-                endPage = totalPages;
-            }
-            this.StateHasChanged();
-        }
-        else if (direction == "back" && startPage > 1)
-        {
-            endPage = startPage - 1;
-            startPage = startPage - pagerSize;
-        }
-        else
-        {
-            startPage = 1;
-            endPage = totalPages;
-        }
-    }
-
-
-    // -- OTHER --
-
-    private void SelectProduct(int index)
-    {
-        SelectedIndex = index;
-        Console.Write(SelectedIndex);
+        base.SelectProduct(product);
         ShowModal = true;
-        StateHasChanged();
     }
-
-    private int SelectedIndex = -1;
 
     private bool ShowModal = false;
 
@@ -170,8 +68,6 @@
 
     [Parameter]
     public int id { get; set; }
-
-    public List<Product>? Products = new List<Product>();
 
     private Product newInfo = new Product();
 
@@ -183,12 +79,10 @@
         // method for showing productname from database into page
         try
         {
-
             int pageSize = 25;
             // Get the current page number from the query string
             int pageIndex = GetPageIndexFromQueryString();
 
-            ////newInfo = await ProductService.GetByID(id);
             // Store in a new list temporarily to avoid seting Products to null
             List<Product> FetchedProducts = await ProductService.GetProducts("", pageIndex, pageSize);
             FilteredProducts = FetchedProducts;
@@ -196,39 +90,9 @@
         }
         catch(Exception e)
         {
-            //NoConnection = true;
+            // NoConnection = true;
         }
 
-    }
-
-    private void Search() 
-    {
-        FillCopy(searchTerm);
-    }
-
-    private void FillCopy(string term) 
-    {
-        ProductsCopy.Clear();
-        foreach(Product info in Products) 
-        {
-            if(term == "" || info.Name == null)
-            {
-                ProductsCopy.Add((Product) info.Clone());
-            } 
-            else
-            {
-                if(info.Name.ToLower().Contains(term.ToLower())) 
-                {
-                    ProductsCopy.Add((Product) info.Clone());
-                }
-            }
-        }
-        StateHasChanged();
-    }
-
-    protected override void OnInitialized()
-    {
-        FillCopy("");
     }
 
     private void AddToCart(int[] product)
@@ -252,6 +116,4 @@
             CartDict.Add(Products[index], amount);
         }
     }
-
 }
-

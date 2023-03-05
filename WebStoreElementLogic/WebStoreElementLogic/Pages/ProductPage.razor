@@ -5,6 +5,7 @@
 @using WebStoreElementLogic.Interfaces;
 @inject IProductService ProductService;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
+@inherits ProductComponentBase
 
 @if (Products == null)
 {
@@ -36,13 +37,13 @@ else
         <div class="container-fluid">
             @if (FilteredProducts != null)
             {
-                @foreach (var product in FilteredProducts)
+                @foreach (Product product in FilteredProducts)
                 {
                     <ProductListItem
-                    Info="@product"
-                    Index="@FilteredProducts.IndexOf(product)"
-                    OnSelected="(index) => SelectProduct(FilteredProducts[index])"
-                    Selected="@(SelectedIndex == FilteredProducts.IndexOf(product))" />
+                        Info="@product"
+                        Index="@FilteredProducts.IndexOf(product)"
+                        OnSelected="(index) => SelectProduct(FilteredProducts[index])"
+                        Selected="@(SelectedIndex == FilteredProducts.IndexOf(product))" />
                 }
             }
         </div>
@@ -65,14 +66,14 @@ else
                 @if (SelectedIndex >= 0)
                 {
                     <ProductForm 
-                    Title="Edit product"
-                    SaveLabel="Save changes"
-                    DiscardLabel="Discard changes"
-                    DeleteButton
-                    Info="FilteredProducts[SelectedIndex]"
-                    Copy="(Product) FilteredProducts[SelectedIndex].Clone()"
-                    OnSave="SaveHandler"
-                    OnDelete="DeleteHandler" />
+                        Title="Edit product"
+                        SaveLabel="Save changes"
+                        DiscardLabel="Discard changes"
+                        DeleteButton
+                        Info="FilteredProducts[SelectedIndex]"
+                        Copy="(Product) FilteredProducts[SelectedIndex].Clone()"
+                        OnSave="SaveHandler"
+                        OnDelete="DeleteHandler" />
 
 
                 }
@@ -95,45 +96,15 @@ else
 }
 
 @code {
-    // Search function - all changes
-    private string searchTerm;
-    private string SearchTerm
-    {
-        get { return searchTerm; }
-        set
-        {
-            searchTerm = value;
-            FilterProducts();
-        }
-    }
-
-    private int totalPages;
-    private int totalRecords;
-    private int curPage;
-    private int pagerSize;
-    private int pageSize;
-    private int startPage;
-    private int endPage;
-    private string sortColumnName = "Id";
-    private string sortDirection = "ASC";
-    private bool isSortedAscending;
-    private string activeSortColumn;
-    private List<Product> FilteredProducts;
-    // Search function above
-
 
     [Parameter]
     public int id { get; set; }
-
-    public List<Product>? Products = new List<Product>();
 
     private Product newInfo = new Product();
 
     private bool AddNew = false;
     private bool DeleteAlert = false;
     private bool NoConnection = false;
-
-    private int SelectedIndex = -1;
 
     protected override async Task OnInitializedAsync()
     {
@@ -156,26 +127,11 @@ else
         }
     }
 
-    // Search- function
-    private int GetPageIndexFromQueryString()
-    {
-        var uri = new Uri(NavigationManager.Uri);
-        var queryParameters = QueryHelpers.ParseQuery(uri.Query);
-        var pageIndex = 0;
-        if (queryParameters.ContainsKey("pageIndex"))
-        {
-            int.TryParse(queryParameters["pageIndex"], out pageIndex);
-        }
-        return pageIndex;
-    }
-
-    // Changed due to the search- function
-    private void SelectProduct(Product product)
+    public override void SelectProduct(Product product)
     {
         AddNew = false;
-        SelectedIndex = FilteredProducts.IndexOf(product);
+        base.SelectProduct(product);
     }
-
 
     // Changed due to the search- function
     private async Task SaveHandler(Product product)
@@ -206,7 +162,6 @@ else
         // Have the newest product be the selected product
         SelectedIndex = FilteredProducts.IndexOf(product);
     }
-
 
     private void DeleteHandler()
     {
@@ -245,70 +200,10 @@ else
         StateHasChanged();
     }
 
-
-
-
     private void Discard()
     {
         AddNew = false;
         StateHasChanged();
-    }
-
-    // Search- functions from here
-    public async Task RefreshRecords(int currentPage)
-    {
-        var products = await ProductService.ListAllRefresh(SearchTerm, currentPage, pageSize, sortColumnName, sortDirection);
-        Products = products;
-    }
-
-    public void FilterProducts()
-    {
-        SelectedIndex = -1;
-
-        Console.WriteLine("FilterProducts called");
-        endPage = 0;
-        Console.WriteLine($"SearchTerm = {SearchTerm}");
-        if (string.IsNullOrWhiteSpace(SearchTerm))
-        {
-            // If the search term is empty or null, show all products
-            FilteredProducts = Products;
-        }
-        else
-        {
-            // Otherwise, filter the products based on the search term
-            FilteredProducts = Products.Where(p => p.Name.IndexOf(SearchTerm, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
-        }
-        Console.WriteLine($"FilteredProducts = {FilteredProducts.Count}");
-    }
-
-
-
-
-    public void SetPagerSize(string direction)
-    {
-        if (direction == "forward" && endPage < totalPages)
-        {
-            startPage = endPage + 1;
-            if (endPage + pagerSize < totalPages)
-            {
-                endPage = startPage + pagerSize - 1;
-            }
-            else
-            {
-                endPage = totalPages;
-            }
-            this.StateHasChanged();
-        }
-        else if (direction == "back" && startPage > 1)
-        {
-            endPage = startPage - 1;
-            startPage = startPage - pagerSize;
-        }
-        else
-        {
-            startPage = 1;
-            endPage = totalPages;
-        }
     }
 
 }

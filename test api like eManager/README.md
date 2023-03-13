@@ -99,8 +99,8 @@ The response from the above message will look like this:
 </ExportOperation>
 ```
 
-### GR (Goods Receival)
-> POST /api/goodsreceivals/import
+### PL (Pick List)
+> POST /api/picklists/import
 
 A typical request will look like this:
 ```XML

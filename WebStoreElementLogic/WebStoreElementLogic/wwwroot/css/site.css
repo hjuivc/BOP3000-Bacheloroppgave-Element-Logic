@@ -39,26 +39,28 @@ a, .btn-link {
 
 
 .nav-link {
-    color: #B9132F !important;
+    /*color: #B9132F !important;*/
 }
 
 .nav-link:hover {
-    color: #34495E !important;
+    /*color: #34495E !important;*/
 }
 
 .btn-custom {
-    color: #fff;
-    background-color: #B9132F;
+    color: #fff !important;
+    background-color: #B9132F !important;
     border-color: #B9132F;
+    
 }
 
 .btn-custom:hover {
-    background-color: #34495E;
+    background-color: #34495E !important;
     border-color: #34495E;
 }
 
+
 .btn-primary {
-    color: #fff;
+    color: #fff !important;
     background-color: #B9132F;
     border-color: #B9132F;
 }

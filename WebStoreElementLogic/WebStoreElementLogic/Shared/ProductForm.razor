@@ -22,12 +22,12 @@
     <input class="form-control" type="text" autocomplete="off" name="url" @bind="Copy.URL">
 
     <div class="d-flex my-3 justify-content-between">
-        <button type="button" @onclick="Discard" class="btn-custom">@DiscardLabel</button>
-        <button type="button" @onclick="Save" class="btn-custom">@SaveLabel</button>
+        <button type="button" @onclick="Discard" class="btn btn-custom">@DiscardLabel</button>
+        <button type="button" @onclick="Save" class="btn btn-custom">@SaveLabel</button>
     </div>
     @if (DeleteButton)
     {
-        <button type="button" @onclick="Delete" class="btn-custom align-self-lg-start align-self-stretch">Delete</button>
+        <button type="button" @onclick="Delete" class="btn btn-custom align-self-lg-start align-self-stretch">Delete</button>
     }
 </form>
 

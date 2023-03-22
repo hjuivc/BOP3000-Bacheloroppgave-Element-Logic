@@ -25,16 +25,25 @@
                             <span class="input-group-text" id="basic-addon1">Amount</span>
                             <input type="number" class="col-sm-2" @bind="amount" @bind:event="oninput" aria-describedby="basic-addon1">
                     </div>
+                    @if (amount > Product.Qty || amount < 1)
+                    {                    
+                        <p class="text-center fw-bold">Amount selected is not available</p>                     
+                    }
                     <div class="d-flex justify-content-around mt-3">
                         <button type="button" class="btn btn-custom justify-content-start" @onclick="() => OnCancelEvent.InvokeAsync()">Close</button>
                         <button type="button" class="btn btn-custom justify-content-end" @onclick="AddToCart">Add to cart</button>
                     </div>
+                    @if (quant)
+                    {
+                        <div class="alert alert-danger text-center mt-3" role="alert">
+                            Could not add selected amount
+                        </div>
+                    }
                 </div>
             </div>
         </div>
     </div>
 </Alert>
-
 
 @code {
     [Parameter]
@@ -51,9 +60,18 @@
 
     private int amount = 1;
 
+    private bool quant = false;
+
     private void AddToCart()
     {
-        OnAddEvent.InvokeAsync(new int[] { Index, amount });
+        if (amount > Product.Qty || amount < 1)
+        {
+            quant = true;
+        }
+        else
+        {
+            OnAddEvent.InvokeAsync(new int[] { Index, amount });
+        }
     }
 
 }

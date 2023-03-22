@@ -17,3 +17,11 @@
         padding: 10px !important;
     }
 }
+
+.active-class {
+    font-weight: bold !important;
+    text-decoration: underline !important;
+}
+
+
+

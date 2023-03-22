@@ -1,8 +1,8 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+@import url(roboto.css);
 
 html, body {
-    font-family: 'Roboto', sans-serif !important;
-    font-weight: normal;
+    font-family: 'Roboto-Regular', sans-serif !important;
 }
 
 h1:focus {
@@ -64,6 +64,19 @@ a, .btn-link {
     background-color: #B9132F;
     border-color: #B9132F;
 }
+
+.nav-link {
+    font-family: Roboto-Regular, sans-serif !important;
+    font-size: 1.2rem !important;
+    color: #343a40 !important;
+    font-weight: 400 !important;
+    margin-right: 0.9rem !important;
+}
+
+    .nav-link:hover {
+        text-decoration: underline;
+        color: #b9132f !important;
+    }
 
 .content {
     padding-top: 1.1rem;

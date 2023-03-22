@@ -9,7 +9,7 @@
 
 
 <div class="d-flex flex-row mx-5 rounded mb-3">
-    <button @onclick="() => ShowList = !ShowList" class="btn btn-primary">@(ShowList ? "🖼" : "📃")</button>
+    <button @onclick="() => ShowList = !ShowList" class="btn btn-custom">@(ShowList ? "🖼" : "📃")</button>
     <input placeholder="Search Product Names.." id="txtSearch" name="search" type="text" class="form-control ms-3"
             @bind="SearchTerm" @bind:event="oninput">
 </div>
@@ -66,7 +66,7 @@
             Into the system
         </p>
         <div class="d-flex flex-row justify-content-center" style="min-width: 25vw;">
-            <button @onclick="() => ShowSuccess = false" class="btn btn-info">Ok</button>
+            <button @onclick="() => ShowSuccess = false" class="btn btn-custom">Ok</button>
         </div>
     </Alert>
 }

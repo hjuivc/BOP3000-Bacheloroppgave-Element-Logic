@@ -10,13 +10,59 @@ h1:focus {
 }
 
 a, .btn-link {
-    color: #0071c1;
+    color: #B9132F;
 }
 
+.bg-standard {
+    background-color: #B9132F !important;
+}
+
+.bg-custom {
+    background-color: #34495E !important;
+}
+
+.bg-custom:hover {
+    color: #34495E !important;
+}
+
+.custom-range::-webkit-slider-thumb {
+    background-color: #B9132F !important;
+}
+
+.custom-range::-moz-range-thumb {
+    background-color: #B9132F !important;
+}
+
+.custom-range::-ms-thumb {
+    background-color: #B9132F !important;
+}
+
+
+.nav-link {
+    /*color: #B9132F !important;*/
+}
+
+.nav-link:hover {
+    /*color: #34495E !important;*/
+}
+
+.btn-custom {
+    color: #fff !important;
+    background-color: #B9132F !important;
+    border-color: #B9132F;
+    
+}
+
+.btn-custom:hover {
+    background-color: #34495E !important;
+    border-color: #34495E;
+}
+
+
 .btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    color: #fff !important;
+    background-color: #B9132F;
+    border-color: #B9132F;
 }
 
 .nav-link {

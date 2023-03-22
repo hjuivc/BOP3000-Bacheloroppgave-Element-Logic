@@ -32,8 +32,8 @@
             }
         </ul>
         <div class="d-flex flex-row justify-content-around mt-3">
-            <button class="btn btn-warning" @onclick="() => DisplayCheckout = false">Cancel</button>
-            <button class="btn btn-success" @onclick="SendCart">Confirm</button>
+            <button class="btn btn-custom" @onclick="() => DisplayCheckout = false">Cancel</button>
+            <button class="btn btn-custom" @onclick="SendCart">Confirm</button>
         </div>
     </Alert>
 }
@@ -44,7 +44,7 @@
         <h3>Order placed!</h3>
         Your order has been placed
         <div class="d-flex flex-row justify-content-around mt-3">
-            <button class="btn btn-success" @onclick="() => DisplaySuccess = false">Ok</button>
+            <button class="btn btn-custom" @onclick="() => DisplaySuccess = false">Ok</button>
         </div>
     </Alert>
 }
@@ -52,7 +52,7 @@
 <div class="container-fluid row">
     <div class="col container-fluid" style="height: calc(100vh - 105px);">
         <div class="row d-block d-xl-none position-sticky sticky-top">
-            <button class="btn btn-success" @onclick="() => DisplayCheckout = true">Show Cart (@CartCount())</button>
+            <button class="btn btn-custom" @onclick="() => DisplayCheckout = true">Show Cart (@CartCount())</button>
         </div>
         @ChildContent
     </div>
@@ -71,7 +71,7 @@
                 }
             </ul>
             <div>
-                <button @onclick="() => { if (CartDict.Count > 0) DisplayCheckout = true; }" class="btn btn-success mb-4">Send Cart</button>
+                <button @onclick="() => { if (CartDict.Count > 0) DisplayCheckout = true; }" class="btn btn-custom mb-4">Send Cart</button>
             </div>
         </div>
     </div>

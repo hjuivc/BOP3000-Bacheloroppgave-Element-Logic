@@ -18,16 +18,16 @@
     <label class="form-label" for="description">Description</label>
     <textarea class="form-control" name="descr" @bind="Copy.Descr" ></textarea>
 
-    <label class="form-label" for="url">Image</label>
+    <label class="form-label" for="url">Image URL</label>
     <input class="form-control" type="text" autocomplete="off" name="url" @bind="Copy.URL">
 
     <div class="d-flex my-3 justify-content-between">
-        <button type="button" @onclick="Discard" class="btn btn-custom">@DiscardLabel</button>
-        <button type="button" @onclick="Save" class="btn btn-custom">@SaveLabel</button>
+        <button type="button" @onclick="Discard" class="btn btn-neutral">@DiscardLabel</button>
+        <button type="button" @onclick="Save" class="btn btn-positive">@SaveLabel</button>
     </div>
     @if (DeleteButton)
     {
-        <button type="button" @onclick="Delete" class="btn btn-custom align-self-lg-start align-self-stretch">Delete</button>
+        <button type="button" @onclick="Delete" class="btn btn-warning align-self-lg-start align-self-stretch">Delete</button>
     }
 </form>
 

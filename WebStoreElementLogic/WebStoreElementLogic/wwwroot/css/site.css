@@ -13,6 +13,14 @@ a, .btn-link {
     color: #B9132F;
 }
 
+.bg-positive {
+    background-color: #16a085 !important;
+}
+
+.bg-warning {
+    background-color: #B9132F !important;
+}
+
 .bg-standard {
     background-color: #B9132F !important;
 }
@@ -44,6 +52,36 @@ a, .btn-link {
 
 .nav-link:hover {
     /*color: #34495E !important;*/
+}
+
+.btn-positive {
+    color: #fff !important;
+    background-color: #16a085 !important;
+}
+
+.btn-positive:hover {
+    color: #fff !important;
+    background-color: #16a085 !important;
+}
+
+.btn-warning {
+    color: #fff !important;
+    background-color: #B9132F !important;
+}
+
+.btn-warning:hover {
+    color: #fff !important;
+    background-color: #B9132F !important;
+}
+
+.btn-neutral {
+    color: #fff !important;
+    background-color: #edda22 !important;
+}
+
+.btn-neutral:hover {
+    color: #fff !important;
+    background-color: #edda22 !important;
 }
 
 .btn-custom {

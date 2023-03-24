@@ -4,9 +4,9 @@
     <span class="d-block d-xxl-inline">@Info.Name</span>
     <div>
         <span class="badge bg-custom rounded-pill">@Count</span>
-        <span role="button" class="badge bg-standard round-pill" @onclick="() => UpdateCount(1)" aria-label="Increase Quantity">+</span>
-        <span role="button" class="badge bg-custom round-pill" @onclick="() => UpdateCount(-1)" aria-label="Decrease Quantity">-</span>
-        <button @onclick="Remove" class="btn-custom"></button>
+        <span role="button" class="badge bg-positive round-pill" @onclick="() => UpdateCount(1)" aria-label="Increase Quantity">+</span>
+        <span role="button" class="badge bg-warning round-pill" @onclick="() => UpdateCount(-1)" aria-label="Decrease Quantity">-</span>
+        <button @onclick="Remove" class="btn-warning"></button>
     </div>
 </li>
 @code {

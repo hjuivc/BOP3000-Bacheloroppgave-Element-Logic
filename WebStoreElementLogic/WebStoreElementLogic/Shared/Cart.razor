@@ -32,8 +32,8 @@
             }
         </ul>
         <div class="d-flex flex-row justify-content-around mt-3">
-            <button class="btn btn-custom" @onclick="() => DisplayCheckout = false">Cancel</button>
-            <button class="btn btn-custom" @onclick="SendCart">Confirm</button>
+            <button class="btn btn-neutral" @onclick="() => DisplayCheckout = false">Cancel</button>
+            <button class="btn btn-positive" @onclick="SendCart">Confirm</button>
         </div>
     </Alert>
 }
@@ -44,7 +44,7 @@
         <h3>Order placed!</h3>
         Your order has been placed
         <div class="d-flex flex-row justify-content-around mt-3">
-            <button class="btn btn-custom" @onclick="() => DisplaySuccess = false">Ok</button>
+            <button class="btn btn-positive" @onclick="() => DisplaySuccess = false">Ok</button>
         </div>
     </Alert>
 }
@@ -71,7 +71,7 @@
                 }
             </ul>
             <div>
-                <button @onclick="() => { if (CartDict.Count > 0) DisplayCheckout = true; }" class="btn btn-custom mb-4">Send Cart</button>
+                <button @onclick="() => { if (CartDict.Count > 0) DisplayCheckout = true; }" class="btn btn-positive mb-4">Send Storage</button>
             </div>
         </div>
     </div>

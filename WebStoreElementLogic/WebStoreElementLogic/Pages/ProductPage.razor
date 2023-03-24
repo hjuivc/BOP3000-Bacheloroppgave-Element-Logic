@@ -35,8 +35,8 @@ else
             Are you sure you wish to delete 
             <span class="text-danger text-decoration-underline">@Products[SelectedIndex].Name?</span>
             <div class="d-flex flex-row justify-content-around mt-3">
-                <button @onclick="CancelDelete" class="btn btn-custom">Cancel</button>
-            <button @onclick="() => Delete(Products[SelectedIndex].Id)" class="btn btn-primary">Delete </button>
+                <button @onclick="CancelDelete" class="btn btn-neutral">Cancel</button>
+            <button @onclick="() => Delete(Products[SelectedIndex].Id)" class="btn btn-warning">Delete </button>
             </div>
         </Alert>
     }
@@ -62,7 +62,7 @@ else
             <!-- TODO: better solution -->
             @if (Products != null)
             {
-                <button class="btn btn-custom mt-2 bottom-0 mb-4 rounded-pill position-fixed align-self-end d-block"
+                <button class="btn btn-positive mt-2 bottom-0 mb-4 rounded-pill position-fixed align-self-end d-block"
                         style="z-index: 3; transform: translateX(-5vw);"
                 @onclick="New">
                     <h3>Add Product</h3>

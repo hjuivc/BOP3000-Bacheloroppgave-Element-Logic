@@ -31,6 +31,10 @@ internal class Program
 
         builder.Services.AddScoped<IDapperService, DapperService>();
 
+        builder.Services.AddScoped<iEManagerService, EManagerService>();
+
+
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.

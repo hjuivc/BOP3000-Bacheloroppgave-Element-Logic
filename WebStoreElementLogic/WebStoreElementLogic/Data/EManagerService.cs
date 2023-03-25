@@ -32,7 +32,7 @@ public class EManagerService : iEManagerService
             <ImportOperation>
                 <Lines>
                     <ProductLine>
-                        <TransactionId>{5}</TransactionId>
+                        <TransactionId>{product.Id}</TransactionId>
                         <ExtProductId>{product.Id}</ExtProductId>
                         <ProductName>{product.Name}</ProductName>
                         <ProductDesc>{product.Descr}</ProductDesc>

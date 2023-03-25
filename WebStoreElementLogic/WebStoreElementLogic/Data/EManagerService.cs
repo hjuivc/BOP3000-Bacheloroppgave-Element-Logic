@@ -15,14 +15,22 @@ public class EManagerService : IEManagerService
 
     public EManagerService(HttpClient httpClient, IConfiguration configuration)
     {
-        _httpClient = httpClient;
-        _configuration = configuration;
+        try
+        {
+            _httpClient = httpClient;
+            _configuration = configuration;
 
-        BaseUrl = _configuration["Api:EManager:BaseUrl"];
-        string username = _configuration["Api:EManager:Username"];
-        string password = _configuration["Api:EManager:Password"];
+            BaseUrl = _configuration["Api:EManager:BaseUrl"];
+            string username = _configuration["Api:EManager:Username"];
+            string password = _configuration["Api:EManager:Password"];
 
-        _httpClient.DefaultRequestHeaders.Authorization = CreateAuthHeader(username, password);
+            _httpClient.DefaultRequestHeaders.Authorization = CreateAuthHeader(username, password);
+        }
+        catch(Exception e)
+        { 
+            Console.WriteLine($"Could not create EManagerService: {e.Message}");
+            throw; 
+        }
     }
 
     public async Task<HttpResponseMessage> Post(string endpoint, string xml)
@@ -38,7 +46,8 @@ public class EManagerService : IEManagerService
         {
             Console.WriteLine($"Problem posting request: {ex.Message}");
         }
-        // Crashes application
+        // Check for null response when using this method.
+        // might need change later
         return null;
     }
 

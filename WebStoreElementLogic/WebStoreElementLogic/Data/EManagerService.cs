@@ -8,16 +8,21 @@ using WebStoreElementLogic.Entities;
 public class EManagerService : IEManagerService
 {
     private readonly HttpClient _httpClient;
-    private string BaseUrl = "http://193.69.50.119";
-    //private string BaseUrl = "http://127.0.0.1:8000";
-    private string Username = "apiuser";
-    private string Password = "1994";
+    private readonly IConfiguration _configuration;
+
+    private string BaseUrl;
 
 
-    public EManagerService(HttpClient httpClient)
+    public EManagerService(HttpClient httpClient, IConfiguration configuration)
     {
         _httpClient = httpClient;
-        _httpClient.DefaultRequestHeaders.Authorization = CreateAuthHeader(Username, Password);
+        _configuration = configuration;
+
+        BaseUrl = _configuration["Api:EManager:BaseUrl"];
+        string username = _configuration["Api:EManager:Username"];
+        string password = _configuration["Api:EManager:Password"];
+
+        _httpClient.DefaultRequestHeaders.Authorization = CreateAuthHeader(username, password);
     }
 
     public async Task<HttpResponseMessage> Post(string endpoint, string xml)
@@ -40,8 +45,6 @@ public class EManagerService : IEManagerService
 
     public async Task<bool> ProductInformation(Product product)
     {
-
-        string xmlDeclaration = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
         string xml = $@"
             <ImportOperation>
                 <Lines>
@@ -56,10 +59,17 @@ public class EManagerService : IEManagerService
             </ImportOperation>            
         ";
 
-        var req = await Post("/api/products/import", xmlDeclaration + xml);
-        int status = ((int)req.StatusCode);
+        var req = await Post("/api/products/import", xml);
 
-        return status < 300 && status >= 200;
+        if (req != null)
+        {
+            int status = ((int)req.StatusCode);
+            return status < 300 && status >= 200;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private static AuthenticationHeaderValue CreateAuthHeader(string username, string password)

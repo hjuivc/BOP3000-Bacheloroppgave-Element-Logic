@@ -22,11 +22,8 @@
 }
 else
 {
-    <!-- Search function -->
-    <div class="row-col-md-3 pull-left">
-        <input type="text" id="txtSearch" class="form-control" placeholder="Search Product Names.."
-            @bind="SearchTerm" @bind:event="oninput"/>
-    </div>
+    
+
 
     @if (DeleteAlert)
     {
@@ -44,6 +41,10 @@ else
     <!-- Test for searching -->
     <div class="d-flex justify-content-between">
         <div class="container-fluid">
+            <!-- Search function -->
+            <div class="sticky-top top-0 py-3 bg-white">
+                <input type="text" id="txtSearch" class="form-control" autocomplete="off" placeholder="Search Product Names.." @bind="SearchTerm" @bind:event="oninput" />
+            </div>
             @if (FilteredProducts != null)
             {
                 @foreach (Product product in FilteredProducts)

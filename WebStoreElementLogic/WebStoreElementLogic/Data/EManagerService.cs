@@ -17,6 +17,11 @@ public class EManagerService : iEManagerService
         _httpClient.DefaultRequestHeaders.Authorization = CreateAuthHeader(Username, Password);
     }
 
+    public EManagerService(HttpClient httpClient)
+    {
+        _httpClient = httpClient;
+    }
+
     public async Task<HttpResponseMessage> Post(string endpoint, string xml)
     {
         return await _httpClient.PostAsync(

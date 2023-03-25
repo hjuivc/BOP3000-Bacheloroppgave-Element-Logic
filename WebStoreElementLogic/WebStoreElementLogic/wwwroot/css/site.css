@@ -55,12 +55,12 @@ a, .btn-link {
 }
 
 .btn-positive {
-    color: #fff !important;
+    color: #000000 !important;
     background-color: #16a085 !important;
 }
 
 .btn-positive:hover {
-    color: #fff !important;
+    color: #000000 !important;
     background-color: #16a085 !important;
 }
 
@@ -75,12 +75,12 @@ a, .btn-link {
 }
 
 .btn-neutral {
-    color: #fff !important;
+    color: #000000 !important;
     background-color: #edda22 !important;
 }
 
 .btn-neutral:hover {
-    color: #fff !important;
+    color: #000000 !important;
     background-color: #edda22 !important;
 }
 
@@ -88,7 +88,6 @@ a, .btn-link {
     color: #fff !important;
     background-color: #B9132F !important;
     border-color: #B9132F;
-    
 }
 
 .btn-custom:hover {
@@ -98,7 +97,7 @@ a, .btn-link {
 
 
 .btn-primary {
-    color: #fff !important;
+    color: #000000 !important;
     background-color: #B9132F;
     border-color: #B9132F;
 }

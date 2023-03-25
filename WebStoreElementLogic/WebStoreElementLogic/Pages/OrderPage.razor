@@ -5,7 +5,8 @@
 @using WebStoreElementLogic.Interfaces;
 @inject IProductService ProductService;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
-@inject iEManagerService EManagerService;
+@inject HttpClient HttpClient;
+@inject IEManagerService EManagerService;
 @inherits ProductComponentBase
 <title>Order</title>
 <Cart CartDict="CartDict" Products="Products">

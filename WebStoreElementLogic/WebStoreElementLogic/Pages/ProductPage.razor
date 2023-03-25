@@ -5,7 +5,7 @@
 @using WebStoreElementLogic.Interfaces;
 @inject IProductService ProductService;
 @inject HttpClient HttpClient;
-@inject iEManagerService EManagerService;
+@inject IEManagerService EManagerService;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
 @inherits ProductComponentBase
 <title>Product</title>
@@ -152,6 +152,7 @@ else
 
             if(!success)
             {
+                // Do something
                 Console.WriteLine("Could not upload to EManager");
             }
             else

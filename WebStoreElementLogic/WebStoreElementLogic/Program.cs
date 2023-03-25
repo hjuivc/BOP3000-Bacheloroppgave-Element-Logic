@@ -25,7 +25,7 @@ internal class Program
             options.UseSqlServer(connectionString));
 
         builder.Services.AddScoped<HttpClient>();
-        builder.Services.AddScoped<iEManagerService, EManagerService>();
+        builder.Services.AddScoped<IEManagerService, EManagerService>();
 
         builder.Services.AddTransient<IProductService, ProductService>();
         builder.Services.AddTransient<DapperService>();

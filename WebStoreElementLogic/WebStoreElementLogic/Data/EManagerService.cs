@@ -5,34 +5,43 @@ using System.Threading.Tasks;
 using System.Net.Http.Headers;
 using WebStoreElementLogic.Entities;
 
-public class EManagerService : iEManagerService
+public class EManagerService : IEManagerService
 {
     private readonly HttpClient _httpClient;
-    private string BaseUrl = "193.69.50.119";
+    private string BaseUrl = "http://193.69.50.119";
+    //private string BaseUrl = "http://127.0.0.1:8000";
     private string Username = "apiuser";
     private string Password = "1994";
 
-    public void addAuth()
-    {
-        _httpClient.DefaultRequestHeaders.Authorization = CreateAuthHeader(Username, Password);
-    }
 
     public EManagerService(HttpClient httpClient)
     {
         _httpClient = httpClient;
+        _httpClient.DefaultRequestHeaders.Authorization = CreateAuthHeader(Username, Password);
     }
 
     public async Task<HttpResponseMessage> Post(string endpoint, string xml)
     {
-        return await _httpClient.PostAsync(
-            BaseUrl + endpoint, 
-            new StringContent(xml, Encoding.UTF8, "application/xml")
-        );
+        try
+        {
+            return await _httpClient.PostAsync(
+                BaseUrl + endpoint,
+                new StringContent(xml, Encoding.UTF8, "application/xml")
+            );
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine($"Problem posting request: {ex.Message}");
+        }
+        // Crashes application
+        return null;
     }
 
 
     public async Task<bool> ProductInformation(Product product)
     {
+
+        string xmlDeclaration = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
         string xml = $@"
             <ImportOperation>
                 <Lines>
@@ -47,7 +56,7 @@ public class EManagerService : iEManagerService
             </ImportOperation>            
         ";
 
-        var req = await Post("/api/products/import", xml);
+        var req = await Post("/api/products/import", xmlDeclaration + xml);
         int status = ((int)req.StatusCode);
 
         return status < 300 && status >= 200;

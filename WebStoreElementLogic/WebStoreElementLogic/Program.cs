@@ -24,14 +24,15 @@ internal class Program
         builder.Services.AddDbContext<WebStoreElementLogic.Data.AppContext>(options =>
             options.UseSqlServer(connectionString));
 
+        builder.Services.AddScoped<HttpClient>();
+        builder.Services.AddScoped<iEManagerService, EManagerService>();
+
         builder.Services.AddTransient<IProductService, ProductService>();
         builder.Services.AddTransient<DapperService>();
 
         builder.Services.AddTransient<IDbConnection>(x => new SqlConnection(connectionString));
 
         builder.Services.AddScoped<IDapperService, DapperService>();
-
-        builder.Services.AddScoped<iEManagerService, EManagerService>();
 
 
 

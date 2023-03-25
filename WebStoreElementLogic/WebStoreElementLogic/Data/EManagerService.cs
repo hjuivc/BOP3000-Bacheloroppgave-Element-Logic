@@ -26,8 +26,8 @@ public class EManagerService : iEManagerService
     {
         return await _httpClient.PostAsync(
             BaseUrl + endpoint, 
-            new StringContent(xml, Encoding.UTF8, "application/xml"
-        ));
+            new StringContent(xml, Encoding.UTF8, "application/xml")
+        );
     }
 
 

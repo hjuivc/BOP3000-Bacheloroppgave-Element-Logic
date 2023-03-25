@@ -1,7 +1,8 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+@import url(roboto.css);
 
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Roboto-Regular', sans-serif !important;
 }
 
 h1:focus {
@@ -9,14 +10,110 @@ h1:focus {
 }
 
 a, .btn-link {
-    color: #0071c1;
+    color: #B9132F;
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+.bg-positive {
+    background-color: #16a085 !important;
 }
+
+.bg-warning {
+    background-color: #B9132F !important;
+}
+
+.bg-standard {
+    background-color: #B9132F !important;
+}
+
+.bg-custom {
+    background-color: #34495E !important;
+}
+
+.bg-custom:hover {
+    color: #34495E !important;
+}
+
+.custom-range::-webkit-slider-thumb {
+    background-color: #B9132F !important;
+}
+
+.custom-range::-moz-range-thumb {
+    background-color: #B9132F !important;
+}
+
+.custom-range::-ms-thumb {
+    background-color: #B9132F !important;
+}
+
+
+.nav-link {
+    /*color: #B9132F !important;*/
+}
+
+.nav-link:hover {
+    /*color: #34495E !important;*/
+}
+
+.btn-positive {
+    color: #000000 !important;
+    background-color: #16a085 !important;
+}
+
+.btn-positive:hover {
+    color: #000000 !important;
+    background-color: #16a085 !important;
+}
+
+.btn-warning {
+    color: #fff !important;
+    background-color: #B9132F !important;
+}
+
+.btn-warning:hover {
+    color: #fff !important;
+    background-color: #B9132F !important;
+}
+
+.btn-neutral {
+    color: #000000 !important;
+    background-color: #edda22 !important;
+}
+
+.btn-neutral:hover {
+    color: #000000 !important;
+    background-color: #edda22 !important;
+}
+
+.btn-custom {
+    color: #fff !important;
+    background-color: #B9132F !important;
+    border-color: #B9132F;
+}
+
+.btn-custom:hover {
+    background-color: #34495E !important;
+    border-color: #34495E;
+}
+
+
+.btn-primary {
+    color: #000000 !important;
+    background-color: #B9132F;
+    border-color: #B9132F;
+}
+
+.nav-link {
+    font-family: Roboto-Regular, sans-serif !important;
+    font-size: 1.2rem !important;
+    color: #343a40 !important;
+    font-weight: 400 !important;
+    margin-right: 0.9rem !important;
+}
+
+    .nav-link:hover {
+        text-decoration: underline;
+        color: #b9132f !important;
+    }
 
 .content {
     padding-top: 1.1rem;

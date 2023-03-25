@@ -18,23 +18,32 @@
                     </div>
                     <div class="d-flex justify-content-around mt-3">
                         <label>1</label>
-                        <input type="range" class="form-range" style="width:80%;" min="1" max="@Product.Qty" step="1" id="amountRange" @bind="amount" @bind:event="oninput" />
+                        <input type="range" class="form-range custom-range" style="width:80%;" min="1" max="@Product.Qty" step="1" id="amountRange" @bind="amount" @bind:event="oninput" />
                         <label>@Product.Qty</label>
                     </div>
                     <div class="input-group justify-content-center mb-3 mt-3">
                             <span class="input-group-text" id="basic-addon1">Amount</span>
                             <input type="number" class="col-sm-2" @bind="amount" @bind:event="oninput" aria-describedby="basic-addon1">
                     </div>
+                    @if (amount > Product.Qty || amount < 1)
+                    {                    
+                        <p class="text-center fw-bold">Amount selected is not available</p>                     
+                    }
                     <div class="d-flex justify-content-around mt-3">
-                        <button type="button" class="btn btn-warning justify-content-start" @onclick="() => OnCancelEvent.InvokeAsync()">Close</button>
-                        <button type="button" class="btn btn-success justify-content-end" @onclick="AddToCart">Add to cart</button>
+                        <button type="button" class="btn btn-neutral justify-content-start" @onclick="() => OnCancelEvent.InvokeAsync()">Close</button>
+                        <button type="button" class="btn btn-positive justify-content-end" @onclick="AddToCart">Add to cart</button>
                     </div>
+                    @if (quant)
+                    {
+                        <div class="alert alert-danger text-center mt-3" role="alert">
+                            Could not add selected amount
+                        </div>
+                    }
                 </div>
             </div>
         </div>
     </div>
 </Alert>
-
 
 @code {
     [Parameter]
@@ -51,9 +60,18 @@
 
     private int amount = 1;
 
+    private bool quant = false;
+
     private void AddToCart()
     {
-        OnAddEvent.InvokeAsync(new int[] { Index, amount });
+        if (amount > Product.Qty || amount < 1)
+        {
+            quant = true;
+        }
+        else
+        {
+            OnAddEvent.InvokeAsync(new int[] { Index, amount });
+        }
     }
 
 }

@@ -1,65 +1,18 @@
-﻿@page "/"
+﻿@page "/home"
 @using System.Timers
+<style>
+    main {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+</style>
+<main>
+    <img src="/images/logos/Element logic logo black hires.JPG" class="d-block w-100 center" alt="Third slide">
+</main>
 
-
-<div class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item @(currentSlide == 0 ? "active" : "")">
-            <img src="/images/logos/Element Logic logo white on red hires.jpg" class="d-block w-100" style="height: 700px;" alt="First slide">
-        </div>
-        <div class="carousel-item @(currentSlide == 1 ? "active" : "")">
-            <img src="/images/logos/Element logic logo red hires.JPG" class="d-block w-100" style="height: 700px;" alt="Second slide">
-        </div>
-        <div class="carousel-item @(currentSlide == 2 ? "active" : "")">
-            <img src="/images/logos/Element logic logo black hires.JPG" class="d-block w-100" style="height: 700px;" alt="Third slide">
-        </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev" @onclick="PrevSlide">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next" @onclick="NextSlide">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
-<hr />
-<!-- TODO: når vi har noen bra bilde style det kanskje litt slik at det ser fint ut -->
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="row" style="margin: 100px;">
-                <div class="col-md-6">
-                    <img src="/images/logos/Element Logic logo white on red hires.jpg" class="img-fluid" alt="First image">
-                </div>
-                <div class="col-md-6">
-                    <h2>First Content Section Title</h2>
-                    <p>legge inn bilde og skrive litt om ka element logic i hovedsak gjer </p>
-                </div>
-            </div>
-            <hr>
-            <div class="row" style="margin: 100px;">
-                <div class="col-md-6 order-2 order-md-1">
-                    <h2>Second Content Section Title</h2>
-                    <p>legge inn et fint bilde og skrive om kanskje koffor velge element logic </p>
-                </div>
-                <div class="col-md-6 order-1 order-md-2">
-                    <img src="/images/logos/Element Logic logo white on red hires.jpg" class="img-fluid" alt="Second image">
-                </div>
-            </div>
-            <hr>
-            <div class="row" style="margin: 100px;">
-                <div class="col-md-6">
-                    <img src="/images/logos/Element Logic logo white on red hires.jpg" class="img-fluid" alt="Third image">
-                </div>
-                <div class="col-md-6">
-                    <h2>Third Content Section Title</h2>
-                    <p>legge inn passande bilde og skrive litt om janei sei det? </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 

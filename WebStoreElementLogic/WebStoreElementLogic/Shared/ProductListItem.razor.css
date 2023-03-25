@@ -1,10 +1,10 @@
 .selected {
-    box-shadow: 5px 5px 5px 5px rgba(20, 200, 20, 0.8);
+    /*box-shadow: 5px 5px 5px 5px rgba(20, 200, 20, 0.8);*/
 }
 
 img {
     aspect-ratio: 1/1;
-    object-fit: cover;
+    object-fit: scale-down;
 }
 
 section {
@@ -12,5 +12,5 @@ section {
 }
 
 section:hover {
-    transform: scale(1.05);
+    /*transform: scale(1.05);*/
 }

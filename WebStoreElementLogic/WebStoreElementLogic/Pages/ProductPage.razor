@@ -39,12 +39,11 @@ else
     }
 
     <!-- Test for searching -->
-    <div class="d-flex justify-content-between">
+    <div class="d-flex flex-row mx-5 rounded mb-3">
         <div class="container-fluid">
             <!-- Search function -->
-            <div class="sticky-top top-0 py-3 bg-white">
-                <input type="text" id="txtSearch" class="form-control" autocomplete="off" placeholder="Search Product Names.." @bind="SearchTerm" @bind:event="oninput" />
-            </div>
+            <input placeholder="Search Product Names.." id="txtSearch" name="search" type="text" class="form-control ms-3"
+               @bind="SearchTerm" @bind:event="oninput">
             @if (FilteredProducts != null)
             {
                 @foreach (Product product in FilteredProducts)

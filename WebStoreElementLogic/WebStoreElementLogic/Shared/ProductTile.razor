@@ -2,10 +2,10 @@
 
 
 <div class="col-lg-3 col-md-4 col-sm-6">
-    <div class="card m-4 border-4 rounded" style="cursor: pointer;" @onclick="SelectProduct">
+    <div class="card m-4 border rounded" style="cursor: pointer;" @onclick="SelectProduct">
         <img src="@Product.URL" class="card-img-top" alt="productimage">
         <div class="card-body">
-            <h5 class="card-title">@Product.Name</h5>
+            <h5 class="card-title text-truncate">@Product.Name</h5>
             <p class="card-text">Quantity:@Product.Qty</p>
         </div>
     </div>

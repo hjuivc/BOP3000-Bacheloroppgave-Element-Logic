@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Register.razor.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Shared\NavMenu.razor.css" />
   </ItemGroup>
 

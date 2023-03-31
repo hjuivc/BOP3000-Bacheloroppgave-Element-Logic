@@ -25,6 +25,7 @@ internal class Program
             options.UseSqlServer(connectionString));
 
         builder.Services.AddTransient<IProductService, ProductService>();
+        builder.Services.AddTransient<IUserService, UserService>();
         builder.Services.AddTransient<DapperService>();
 
         builder.Services.AddTransient<IDbConnection>(x => new SqlConnection(connectionString));

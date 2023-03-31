@@ -6,10 +6,11 @@
 @inject IProductService ProductService;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
 @inherits ProductComponentBase
-
 <title>Inbound</title>
-<div class="d-flex flex-row mx-5 rounded mb-3">
-    <button @onclick="() => ShowList = !ShowList" class="btn btn-custom">
+<div class="d-flex mx-5 rounded mb-3">
+    <input placeholder="Search Product Names.." id="txtSearch" name="search" type="text" autocomplete="off" class="form-control me-3"
+           @bind="SearchTerm" @bind:event="oninput">
+    <button @onclick="() => ShowList = !ShowList" class="btn btn-custom" style="margin-left: auto; padding-left: 0.75rem; padding-right: 0.75rem;">
         @if (ShowList)
         {
             <i class="fa fa-th"></i>
@@ -19,9 +20,8 @@
             <i class="fa fa-list"></i>
         }
     </button>
-    <input placeholder="Search Product Names.." id="txtSearch" name="search" type="text" class="form-control ms-3"
-            @bind="SearchTerm" @bind:event="oninput">
 </div>
+
 <div class="container-fluid">
     <div class="@(ShowList ? "mx-5" : "row")">
         @foreach (Product product in FilteredProducts)
@@ -41,6 +41,7 @@
                     Index="@FilteredProducts.IndexOf(product)"
                     OnSelected="(index) => SelectProduct(FilteredProducts[index])"
                     Selected="@(SelectedIndex == FilteredProducts.IndexOf(product))" />
+
             }
         }
         @if (Products == null)

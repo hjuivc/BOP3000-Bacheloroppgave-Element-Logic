@@ -3,6 +3,7 @@
 @using WebStoreElementLogic.Data;
 @using WebStoreElementLogic.Entities;
 @using WebStoreElementLogic.Interfaces;
+@using Microsoft.JSInterop
 @inject IProductService ProductService;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
 @inherits ProductComponentBase
@@ -22,9 +23,6 @@
 }
 else
 {
-    
-
-
     @if (DeleteAlert)
     {
         <Alert OnCancel="CancelDelete">
@@ -38,12 +36,19 @@ else
         </Alert>
     }
 
-    <!-- Test for searching -->
+    <!-- Searching -->
     <div class="d-flex flex-row mx-5 rounded mb-3">
         <div class="container-fluid">
             <!-- Search function -->
-            <input placeholder="Search Product Names.." id="txtSearch" name="search" type="text" class="form-control ms-3"
-               @bind="SearchTerm" @bind:event="oninput">
+            <div class="position-relative" style="padding-bottom: 30px">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search Product Names.." id="txtSearch" name="search"
+                           autocomplete="off" @bind="SearchTerm" @bind:event="oninput">
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-transparent border-0"><i class="fa fa-search fa-lg"></i></span>
+                    </div>
+                </div>
+            </div>
             @if (FilteredProducts != null)
             {
                 @foreach (Product product in FilteredProducts)
@@ -55,20 +60,20 @@ else
                         Selected="@(SelectedIndex == FilteredProducts.IndexOf(product))" />
                 }
             }
-        </div>
-    
+        </div>   
         <div class="container-fluid">
-
             <!-- TODO: better solution -->
             @if (Products != null)
             {
-                <button class="btn btn-positive mt-2 bottom-0 mb-4 rounded-pill position-fixed align-self-end d-block"
+                <button class="btn btn-positive mt-2 bottom-0 mb-4 rounded-circle position-fixed align-self-end d-flex"
                         style="z-index: 3; transform: translateX(-5vw);"
                 @onclick="New">
-                    <h3>Add Product</h3>
+                    <div class="position-relative">
+                        <i class="fa fa-plus" border: 2px solid white; padding: 8px;"></i>
+                    </div>
+                    <span style="position: absolute; left: 100%; margin-left: 10px;">Product</span>
                 </button>
             }
-
             <div class="container-fluid position-fixed w-50 pe-4">
                 @if (SelectedIndex >= 0)
                 {
@@ -81,8 +86,6 @@ else
                         Copy="(Product) FilteredProducts[SelectedIndex].Clone()"
                         OnSave="SaveHandler"
                         OnDelete="DeleteHandler" />
-
-
                 }
                 @if (AddNew)
                 {
@@ -95,11 +98,10 @@ else
                          OnSave="SaveHandler"
                          OnDiscard="Discard" />
                 }
-
             </div>
         </div>
     </div>
-
+    
 }
 
 @code {

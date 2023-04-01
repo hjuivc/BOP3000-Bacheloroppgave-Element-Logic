@@ -4,22 +4,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http.Headers;
 using WebStoreElementLogic.Entities;
+using WebStoreElementLogic.Data;
 
-public class EManagerService : IEManagerService
+public class EManagerService : ApiServiceBase, IEManagerService
 {
-    private readonly HttpClient _httpClient;
-    private readonly IConfiguration _configuration;
 
-    private string BaseUrl;
-
-
-    public EManagerService(HttpClient httpClient, IConfiguration configuration)
+    public EManagerService(HttpClient httpClient, IConfiguration configuration) : base(httpClient, configuration)
     {
         try
         {
-            _httpClient = httpClient;
-            _configuration = configuration;
-
             BaseUrl = _configuration["Api:EManager:BaseUrl"];
             string username = _configuration["Api:EManager:Username"];
             string password = _configuration["Api:EManager:Password"];
@@ -32,25 +25,6 @@ public class EManagerService : IEManagerService
             throw; 
         }
     }
-
-    public async Task<HttpResponseMessage> Post(string endpoint, string xml)
-    {
-        try
-        {
-            return await _httpClient.PostAsync(
-                BaseUrl + endpoint,
-                new StringContent(xml, Encoding.UTF8, "application/xml")
-            );
-        }
-        catch(Exception ex)
-        {
-            Console.WriteLine($"Problem posting request: {ex.Message}");
-        }
-        // Check for null response when using this method.
-        // might need change later
-        return null;
-    }
-
 
     public async Task<bool> ProductInformation(Product product)
     {
@@ -68,7 +42,7 @@ public class EManagerService : IEManagerService
             </ImportOperation>            
         ";
 
-        var req = await Post("/api/products/import", xml);
+        HttpResponseMessage? req = await Post("/api/products/import", xml);
 
         if (req != null)
         {

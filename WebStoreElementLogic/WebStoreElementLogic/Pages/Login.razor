@@ -1,6 +1,15 @@
 ﻿@page "/login"
 @using LoginNamespace = Login;
 @using System.ComponentModel.DataAnnotations;
+@using Microsoft.AspNetCore.WebUtilities;
+@using WebStoreElementLogic.Data;
+@using WebStoreElementLogic.Entities;
+@using WebStoreElementLogic.Interfaces;
+@using Microsoft.AspNetCore.Identity;
+@inject IUserService UserService;
+@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager;
+@layout Shared.LoginLayout;
+
 
 <title>Log in</title>
 <div class="center">
@@ -83,10 +92,27 @@
 
     private async Task HandleValidSubmit()
     {
-        // Handle login logic here
+
+        // Get the user data from SQL in UserService
+        var userList = await UserService.GetUser(loginModel.Username);
+        var user = userList.FirstOrDefault(); // Get the first user from the list (or null if the list is empty)
+
+        // Check if entered password matches the password in the database. The password in the database is hashed with Microsoft.AspNetCore.Identity
+        var passwordHasher = new PasswordHasher<User>();
+        var result = passwordHasher.VerifyHashedPassword(user, user.PasswordHash, loginModel.Password);
+        if (result == PasswordVerificationResult.Success)
+        {
+            // Passwords match
+            // ...
+            Console.WriteLine("Passwords match");
+        }
+        else
+        {
+            // Passwords do not match
+            // ...
+            Console.WriteLine("Passwords do not match");
+        }
     }
-
-
     public class LoginModel
     {
         [Required]
@@ -99,3 +125,6 @@
         public bool RememberMe { get; set; }
     }
 }
+}
+
+

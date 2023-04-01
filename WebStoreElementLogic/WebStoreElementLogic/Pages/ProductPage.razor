@@ -42,13 +42,14 @@ else
             <!-- Search function -->
             <div class="position-relative" style="padding-bottom: 30px">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search Product Names.." id="txtSearch" name="search"
+                    <input type="text" class="form-control" placeholder="Search.." id="txtSearch" name="search"
                            autocomplete="off" @bind="SearchTerm" @bind:event="oninput">
                     <div class="input-group-append">
                         <span class="input-group-text bg-transparent border-0"><i class="fa fa-search fa-lg"></i></span>
                     </div>
                 </div>
             </div>
+
             @if (FilteredProducts != null)
             {
                 @foreach (Product product in FilteredProducts)

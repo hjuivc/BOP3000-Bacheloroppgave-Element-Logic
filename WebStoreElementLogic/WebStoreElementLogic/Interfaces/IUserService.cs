@@ -6,8 +6,5 @@ namespace WebStoreElementLogic.Interfaces
         Task<int> Create(User user);
         Task<List<User>> GetNextID(int Id);
         Task<List<User>> GetUser(string UserName);
-
-
-
     }
 }

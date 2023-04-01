@@ -90,17 +90,19 @@
 @code {
     private LoginModel loginModel = new LoginModel();
 
+
     private async Task HandleValidSubmit()
     {
 
         // Get the user data from SQL in UserService
         var userList = await UserService.GetUser(loginModel.Username);
         var user = userList.FirstOrDefault(); // Get the first user from the list (or null if the list is empty)
-
-        // Check if entered password matches the password in the database. The password in the database is hashed with Microsoft.AspNetCore.Identity
         var passwordHasher = new PasswordHasher<User>();
-        var result = passwordHasher.VerifyHashedPassword(user, user.PasswordHash, loginModel.Password);
-        if (result == PasswordVerificationResult.Success)
+
+        // Verify if the hashed password in the database matches the entered password from the user
+        var passwordVerificationResult = passwordHasher.VerifyHashedPassword(user, user.password, loginModel.Password);
+
+        if (passwordVerificationResult == PasswordVerificationResult.Success)
         {
             // Passwords match
             // ...

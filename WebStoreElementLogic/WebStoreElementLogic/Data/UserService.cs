@@ -33,8 +33,8 @@ namespace WebStoreElementLogic.Data
             try
             {  
                 var dbPara = new DynamicParameters();
-                dbPara.Add("@userName", user.UserName, DbType.String);
-                dbPara.Add("@password", user.PasswordHash, DbType.String);
+                dbPara.Add("@userName", user.userName, DbType.String);
+                dbPara.Add("@password", user.password, DbType.String);
                 result = _dapperService.Execute(
                     "[dbo].[spAddUsers]",
                     dbPara,
@@ -52,24 +52,17 @@ namespace WebStoreElementLogic.Data
         }
 
         //For at ny bruker får riktig ID
-        public Task<List<User>> GetNextID(int Id)
+        public Task<List<User>> GetNextID(int userId)
         {
             var userList = _dapperService.GetAll<User>($"SELECT MAX(userId + 1) AS Id FROM [Users]", null, commandType: CommandType.Text);
             return Task.FromResult(userList.ToList());
         }
 
         //For å hente bruker og sammenligne hashet passord
-        public Task<List<User>> GetUser(string UserName)
+        public Task<List<User>> GetUser(string userName)
         {
             {
-                var userList = _dapperService.GetAll<User>($"SELECT * FROM [Users] WHERE userName = '{UserName}'", null, commandType: CommandType.Text);
-                // Print the userList to console
-                foreach (var user in userList)
-                {   
-                    Console.WriteLine(user.Id);
-                    Console.WriteLine(user.UserName);
-                    Console.WriteLine(user.PasswordHash);
-                }
+                var userList = _dapperService.GetAll<User>($"SELECT * FROM [Users] WHERE userName = '{userName}'", null, commandType: CommandType.Text);
                 return Task.FromResult(userList.ToList());
 
             }

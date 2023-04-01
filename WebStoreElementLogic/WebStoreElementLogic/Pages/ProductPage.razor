@@ -127,7 +127,6 @@ else
             List<Product> FetchedProducts = await ProductService.GetProducts(searchTerm, pageIndex, pageSize);
             FilteredProducts = FetchedProducts;
             Products = FilteredProducts.ToList();
-
         }
         catch (Exception e)
         {

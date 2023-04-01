@@ -10,12 +10,8 @@ namespace WebStoreElementLogic.Entities
         public override string UserName { get; set; }
         [Required]
         public override string PasswordHash { get; set; }
-        public User(int id, string username, string password)
-        {
-            Id = id;
-            UserName = username;
-            PasswordHash = password;
-        }
+
+        public int Id { get; set; }
 
         public User()
         {
@@ -23,6 +19,15 @@ namespace WebStoreElementLogic.Entities
             UserName = "";
             PasswordHash = "";
         }
+        public User(int id, string username, string password)
+        {
+            Id = id;
+            UserName = username;
+            PasswordHash = password;
+        }
+
+     
+
     }
 }
 

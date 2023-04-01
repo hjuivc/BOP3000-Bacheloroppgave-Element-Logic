@@ -61,8 +61,18 @@ namespace WebStoreElementLogic.Data
         //For å hente bruker og sammenligne hashet passord
         public Task<List<User>> GetUser(string UserName)
         {
-            var userList = _dapperService.GetAll<User>($"SELECT * FROM [Users] WHERE userName = {UserName}", null, commandType: CommandType.Text);
-            return Task.FromResult(userList.ToList());
+            {
+                var userList = _dapperService.GetAll<User>($"SELECT * FROM [Users] WHERE userName = '{UserName}'", null, commandType: CommandType.Text);
+                // Print the userList to console
+                foreach (var user in userList)
+                {   
+                    Console.WriteLine(user.Id);
+                    Console.WriteLine(user.UserName);
+                    Console.WriteLine(user.PasswordHash);
+                }
+                return Task.FromResult(userList.ToList());
+
+            }
         }
         //Med utgangspunkt i at vi ikke skal ha register på siden har jeg foreløpig ikke lagt til andre tasks her nå,
         //men det kan komme mer senere eller i en egen app for registrering.

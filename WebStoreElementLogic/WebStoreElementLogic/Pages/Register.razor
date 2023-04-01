@@ -30,7 +30,7 @@
 
                             <div class="form-group border mb-4">
                                 <div class="input-group">
-                                    <InputText id="username" class="form-control narrow-input" autocomplete="off" placeholder="Username" @bind-Value="@newUser.UserName" />
+                                    <InputText id="username" class="form-control narrow-input" autocomplete="off" placeholder="Username" @bind-Value="@newUser.userName" />
                                     <div class="input-group-append">
                                         <span class="input-group-text" style="background-color: transparent; border: none;">
                                             <!-- Font Awesome icon -->
@@ -38,11 +38,11 @@
                                         </span>
                                     </div>
                                 </div>
-                                <ValidationMessage For="@(() => newUser.UserName)" />
+                                <ValidationMessage For="@(() => newUser.userName)" />
                             </div>
                             <div class="form-group border mb-4">
                                 <div class="input-group">
-                                    <InputText id="password" class="form-control narrow-input" type="password" placeholder="Password" @bind-Value="@newUser.PasswordHash" />
+                                    <InputText id="password" class="form-control narrow-input" type="password" placeholder="Password" @bind-Value="@newUser.password" />
                                     <div class="input-group-append">
                                         <span class="input-group-text" style="background-color: transparent; border: none;">
                                             <!-- Font Awesome icon -->
@@ -50,7 +50,7 @@
                                         </span>
                                     </div>
                                 </div>
-                                <ValidationMessage For="@(() => newUser.PasswordHash)" />
+                                <ValidationMessage For="@(() => newUser.password)" />
                             </div>
 
                             <div class="d-flex justify-content-end">
@@ -87,17 +87,15 @@
 
     private User newUser = new User();
 
-    private readonly PasswordHasher<User> _passwordHasher = new PasswordHasher<User>();
-
     private async Task HandleValidSubmit()
     {
-        newUser.PasswordHash = _passwordHasher.HashPassword(newUser, newUser.PasswordHash);
+        var passwordHasher = new PasswordHasher<User>();
+        var hashedPassword = passwordHasher.HashPassword(newUser, newUser.password);
+        newUser.password = hashedPassword;
+
         await UserService.Create(newUser);
         
         NavigationManager.NavigateTo("/home");
 
     }
-
-
- 
 }

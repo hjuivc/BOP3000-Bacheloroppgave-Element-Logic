@@ -22,11 +22,11 @@ namespace WebStoreElementLogic.Entities
             userName = "";
             password = "";
         }
-        public User(int id, string username, string password)
+        public User(int id, string username, string hashedPassword)
         {
             userId = id;
             userName = username;
-            password = password;
+            password = hashedPassword;
         }
 
      

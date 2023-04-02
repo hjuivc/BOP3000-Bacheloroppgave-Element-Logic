@@ -7,8 +7,13 @@ namespace WebStoreElementLogic.Entities
 {
     public class User : IdentityUser<int>
     {
+        [Required]
         public int userId { get; set; }
+
+        [Required]
         public string userName { get; set; }
+
+        [Required]
         public string password { get; set; }
 
         public User()

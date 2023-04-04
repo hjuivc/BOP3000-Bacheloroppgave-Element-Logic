@@ -3,7 +3,13 @@
 @using WebStoreElementLogic.Data;
 @using WebStoreElementLogic.Entities;
 @using WebStoreElementLogic.Interfaces;
+@using Microsoft.AspNetCore.SignalR.Client;
+@using Microsoft.AspNetCore.Mvc;
+@using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
+@using Microsoft.AspNetCore.SignalR;
+@using WebStoreElementLogic.Hubs;
 @inject IProductService ProductService;
+@inject IEManagerService EManagerService;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
 @inherits ProductComponentBase
 
@@ -94,8 +100,20 @@
 
     private int Count = 0;
 
+    private HubConnection _hubConnection;
+
     protected override async Task OnInitializedAsync()
     {
+
+        _hubConnection = new HubConnectionBuilder()
+            .WithUrl(NavigationManager.ToAbsoluteUri("/EManagerHub"))
+            .Build();
+
+        _hubConnection.On<int>("update", data =>
+        {
+            // Update processed inbound orders (UI only!)
+            StateHasChanged();
+        });
 
         // method for showing productname from database into page
         try
@@ -114,6 +132,17 @@
             // NoConnection = true;
         }
 
+        // Wait for signalR update form endpoint
+        await _hubConnection.StartAsync();
+    }
+
+    // TODO: consider adding to default base class
+    public async ValueTask DisposeAsync()
+    {
+        if(_hubConnection != null)
+        {
+            await _hubConnection.DisposeAsync();
+        }
     }
 
     private void Checkout(int[] product)
@@ -126,5 +155,7 @@
         // TODO: Send to eManager, remove next two lines
         Count = count;
         ShowSuccess = true;
+
+        EManagerService.GoodsReceipt(FilteredProducts[index], Count);
     }
 }

@@ -55,6 +55,35 @@ public class EManagerService : ApiServiceBase, IEManagerService
         }
     }
 
+    public async Task<bool> GoodsReceipt(Product product, double qty)
+    {
+        string xml = $@"
+            <ImportOperation>
+                <Lines>
+                    <GoodsReceivalLine>
+                        <TransactionId>{999999}</TransactionId>
+                        <PurchaseOrderId>{999999}</PurchaseOrderId>
+                        <PurchaseOrderLineId>{9999}</PurchaseOrderLineId>
+                        <ExtProductId>{product.Id}</ExtProductId>
+                        <Quantity>{qty}</Quantity>
+                    </GoodsReceivalLine>
+                </Lines>
+            </ImportOperation>         
+        ";
+
+        HttpResponseMessage? req = await Post("/api/goodsreceivals/import", xml);
+
+        if (req != null)
+        {
+            int status = ((int)req.StatusCode);
+            return status < 300 && status >= 200;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     private static AuthenticationHeaderValue CreateAuthHeader(string username, string password)
     {
         string credentials = $"{username}:{password}";

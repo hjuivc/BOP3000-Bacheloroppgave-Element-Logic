@@ -39,5 +39,21 @@ namespace WebStoreElementLogic.Data
             return null;
         }
 
+        public async Task<HttpResponseMessage?> PostForm(string endpoint, MultipartFormDataContent formData)
+        {
+            try
+            {
+                return await _httpClient.PostAsync(
+                    BaseUrl ?? "" + endpoint,
+                    content: formData
+                );
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Problem posting request: {ex.Message}");
+            }
+            return null;
+        }
+
     }
 }

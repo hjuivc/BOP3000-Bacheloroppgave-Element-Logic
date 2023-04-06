@@ -55,6 +55,49 @@ a, .btn-link {
 }
 
 
+/*Loginpage - inputText effect covers the icon*/
+.input-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.narrow-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.input-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    font-size: 16px;
+
+}
+
+.input-container:focus-within {
+    border-color: lightskyblue;
+    border-radius: 4px;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5), 0 0 8px rgba(59, 130, 246, 0.5);
+}
+
+ .input-container:focus-within > .narrow-input {
+    border-radius: 4px 0 0 4px;
+ }
+
+.input-container:focus-within > .input-icon {
+    color: #555;
+    border-radius: 0 4px 4px 0;
+}
+/*--------*/
+
 .btn-positive {
     color: #000000 !important;
     background-color: #16a085 !important;

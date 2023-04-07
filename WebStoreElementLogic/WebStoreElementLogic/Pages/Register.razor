@@ -1,4 +1,4 @@
-﻿@page "/register"
+﻿@page "/users/add"
 @using LoginNamespace = Login;
 @using System.ComponentModel.DataAnnotations;
 @using Microsoft.AspNetCore.WebUtilities;
@@ -8,7 +8,6 @@
 @using Microsoft.AspNetCore.Identity;
 @inject IUserService UserService;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
-@layout Shared.LoginLayout
 
 
 <title>Register</title>
@@ -22,7 +21,7 @@
 
                         <img src="../images/logos/Element Logic logo red hires.jpg" style="width: 300px; height: 100px;" class="mx-auto d-block mb-4" />
 
-                        <h5 class="card-title text-center mb-4">Register user for Web Store</h5>
+                        <h5 class="card-title text-center mb-4">Add new user for Web Store</h5>
 
                         <EditForm Model="@newUser" OnValidSubmit="@HandleValidSubmit">
                             <DataAnnotationsValidator />
@@ -54,8 +53,8 @@
                             </div>
 
                             <div class="d-flex justify-content-end">
-                                <NavLink href="/login" class="btn btn-link">Back to Login</NavLink>
-                                <button type="submit" class="btn btn-login btn-block">Register</button>
+                                <NavLink href="/userpage" class="btn btn-link">Back to user management</NavLink>
+                                <button type="submit" class="btn btn-login btn-block">Add user</button>
                             </div>
 
                         </EditForm>
@@ -101,7 +100,7 @@
 
         await UserService.Create(newUser);
         
-        NavigationManager.NavigateTo("/home");
+        NavigationManager.NavigateTo("/userpage");
 
     }
 }

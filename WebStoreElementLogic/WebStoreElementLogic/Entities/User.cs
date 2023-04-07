@@ -16,6 +16,9 @@ namespace WebStoreElementLogic.Entities
         [Required]
         public string password { get; set; }
 
+        public bool IsDeleting { get; set; }
+
+
         public User()
         {
             userId = 0;

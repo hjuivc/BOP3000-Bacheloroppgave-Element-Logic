@@ -1,0 +1,70 @@
+﻿@page "/userpage"
+@using WebStoreElementLogic.Entities
+@using WebStoreElementLogic.Interfaces
+@inject IUserService UserService
+
+<h1 style="text-align:center">User Management</h1>
+<NavLink href="users/add" class="btn btn-sm btn-success mb-2">Add User</NavLink>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 80%">Username</th>
+            <th style="width: 20%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (users != null)
+        {
+            foreach (var user in users)
+            {
+                <tr>
+                    <td>@user.userName</td>
+                    <td style="white-space: nowrap">
+                        <NavLink href="@($"users/edit/{user.userId}")" class="btn btn-sm btn-neutral mr-1">Edit</NavLink>
+                        <button @onclick="@(() => DeleteUser(user.userId))" class="btn btn-sm btn-danger btn-delete-user">
+                            @if (user.IsDeleting)
+                            {
+                                <span class="spinner-border spinner-border-sm"></span>
+                            }
+                            else
+                            {
+                                <span>Delete</span>
+                            }
+                        </button>
+                    </td>
+                </tr>
+            }
+        }
+        @if (loading)
+        {
+            <tr>
+                <td colspan="2" class="text-center">
+                    <span class="spinner-border spinner-border-lg align-center"></span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<User> users;
+    private bool loading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadUsers();
+    }
+
+    private async Task LoadUsers()
+    {
+        loading = true;
+        users = await UserService.GetAllUsersAsync();
+        loading = false;
+    }
+
+    private async Task DeleteUser(int id)
+    {
+        await UserService.DeleteUserAsync(id);
+        await LoadUsers();
+    }
+}

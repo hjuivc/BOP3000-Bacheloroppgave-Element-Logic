@@ -4,6 +4,9 @@ using WebStoreElementLogic.Interfaces;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using WebStoreElementLogic.Entities;
+using WebStoreElementLogic.Entities;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace WebStoreElementLogic.Data
 {
@@ -69,5 +72,64 @@ namespace WebStoreElementLogic.Data
         }
         //Med utgangspunkt i at vi ikke skal ha register på siden har jeg foreløpig ikke lagt til andre tasks her nå,
         //men det kan komme mer senere eller i en egen app for registrering.
+        public async Task<List<User>> GetAllUsersAsync()
+        {
+            var users = await _dapperService.GetAllAsync<User>("SELECT * FROM [Users]");
+            return users.ToList();
+        }
+
+        public async Task<int> DeleteUserAsync(int id)
+        {
+            int result = 0;
+            try
+            {
+                var dbPara = new DynamicParameters();
+                dbPara.Add("@Id", id, DbType.Int32);
+                result = await _dapperService.ExecuteAsync(
+                    "[dbo].[spDeleteUser]",
+                    dbPara,
+                    commandType: CommandType.StoredProcedure);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error deleting user: " + ex.Message);
+                throw;
+            }
+
+            return result;
+        }
+
+        // Getting the user by ID
+        public Task<User> GetUserById(int id)
+        {
+            var user = _dapperService.Get<User>($"SELECT * FROM [Users] WHERE userId = @Id", new { Id = id }, commandType: CommandType.Text);
+            return Task.FromResult(user);
+        }
+
+
+        public async Task<int> UpdateUserAsync(EditUserModel editUser)
+        {
+            int result = 0;
+            try
+            {
+                var dbPara = new DynamicParameters();
+                dbPara.Add("@userId", editUser.userId, DbType.Int32);
+                dbPara.Add("@userName", editUser.userName, DbType.String);
+                dbPara.Add("@password", editUser.password, DbType.String);
+                result = await _dapperService.ExecuteAsync(
+                    "[dbo].[spUpdateUsers]",
+                    dbPara,
+                    commandType: CommandType.StoredProcedure);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error updating user: " + ex.Message);
+                throw;
+            }
+
+            return result;
+        }
     }
+
+    
 }

@@ -1,5 +1,6 @@
 ﻿@page "/login"
 @using LoginNamespace = Login;
+@using System.Security.Claims;
 @using System.ComponentModel.DataAnnotations;
 @using Microsoft.AspNetCore.WebUtilities;
 @using WebStoreElementLogic.Data;
@@ -8,7 +9,14 @@
 @using Microsoft.AspNetCore.Identity;
 @inject IUserService UserService;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager;
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Authentication.Cookies;
+@using Microsoft.AspNetCore.Authentication;
+@inject IJSRuntime JSRuntime;
+@using Microsoft.AspNetCore.Components.Authorization;
+@inject IHttpContextAccessor HttpContextAccessor
 @layout Shared.LoginLayout;
+
 
 
 <title>Log in</title>
@@ -52,18 +60,13 @@
                                 </div>
                                 <ValidationMessage For="@(() => loginModel.Password)" />
                             </div>
-                            <div class="form-group form-check">
-                                <InputCheckbox class="form-check-input" @bind-Value="@loginModel.RememberMe" />
-                                <label class="form-check-label" for="rememberMe">Remember me</label>
-                            </div>
 
                             <div class="d-flex justify-content-end">
-                                <NavLink href="/register" class="btn btn-link">Register</NavLink>
                                 <button type="submit" class="btn btn-login btn-block">Log in</button>
                             </div>
-                        
+
                         </EditForm>
-                    
+
 
                     </div>
                 </div>
@@ -90,31 +93,38 @@
 @code {
     private LoginModel loginModel = new LoginModel();
 
-
     private async Task HandleValidSubmit()
     {
-
         // Get the user data from SQL in UserService
         var userList = await UserService.GetUser(loginModel.Username);
         var user = userList.FirstOrDefault(); // Get the first user from the list (or null if the list is empty)
-        var passwordHasher = new PasswordHasher<User>();
 
-        // Verify if the hashed password in the database matches the entered password from the user
-        var passwordVerificationResult = passwordHasher.VerifyHashedPassword(user, user.password, loginModel.Password);
-
-        if (passwordVerificationResult == PasswordVerificationResult.Success)
+        if (user != null)
         {
-            // Passwords match
-            // ...
-            Console.WriteLine("Passwords match");
+            var passwordHasher = new PasswordHasher<User>();
+
+            // Verify if the hashed password in the database matches the entered password from the user
+            var passwordVerificationResult = passwordHasher.VerifyHashedPassword(user, user.password, loginModel.Password);
+
+            if (passwordVerificationResult == PasswordVerificationResult.Success)
+            {
+                // Navigate to home page
+                NavigationManager.NavigateTo("/home");
+            }
+            else
+            {
+                // Passwords do not match
+                await JSRuntime.InvokeVoidAsync("alert", "User found, but wrong password entered.");
+            }
         }
         else
         {
-            // Passwords do not match
-            // ...
-            Console.WriteLine("Passwords do not match");
+            // User not found
+            await JSRuntime.InvokeVoidAsync("alert", "User not found. Try another username.");
         }
     }
+
+
     public class LoginModel
     {
         [Required]

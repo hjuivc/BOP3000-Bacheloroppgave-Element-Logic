@@ -1,0 +1,12 @@
+﻿@page "/logout"
+@using Microsoft.AspNetCore.Components.Authorization
+@inject NavigationManager NavigationManager
+
+<h3>Logging out...</h3>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        NavigationManager.NavigateTo("/login", true);
+    }
+}

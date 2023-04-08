@@ -1,4 +1,5 @@
 ﻿@page "/users/edit/{id:int}"
+@attribute [Authorize]
 @using LoginNamespace = Login;
 @using System.ComponentModel.DataAnnotations;
 @using Microsoft.AspNetCore.WebUtilities;

@@ -11,6 +11,7 @@ namespace WebStoreElementLogic.Entities
         public int userId { get; set; }
 
         [Required]
+        [RegularExpression("^[a-zA-Z]*$", ErrorMessage = "Username can only contain letters.")]
         public string userName { get; set; }
 
         [Required]

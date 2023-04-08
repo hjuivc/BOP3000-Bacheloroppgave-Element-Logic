@@ -1,5 +1,13 @@
-﻿@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager;
+﻿@using Microsoft.AspNetCore.Components;
+@attribute [Authorize]
+@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager;
 @inject NavigationManager NavigationManager;
+@inject AuthenticationStateProvider AuthenticationStateProvider;
+@using System.Security.Claims;
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Authentication.Cookies;
+@using Microsoft.AspNetCore.Authentication;
+@using Microsoft.AspNetCore.Components.Authorization;
 @page "/#"
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white p-0">
@@ -28,7 +36,9 @@
                 <li class="nav-item d-flex justify-content-center">
                     <a class="nav-link @(IsActive("/userpage"))" aria-current="page" href="userpage"><i class="fa-solid fa-users"></i></a>
                 </li>
-                
+                <li class="nav-item d-flex justify-content-center">
+                    <a class="nav-link" aria-current="page" href="userpage" @onclick="Logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                </li>
             </ul>
         </div>
     </div>
@@ -67,6 +77,14 @@
 
     // Create function to check what is the current page and return "active" if it is the current page to change styling on the nav bar
     private string IsActive(string page) => NavigationManager.Uri.Contains(page) ? "active" : "";
+
+    private void Logout()
+    {
+        NavigationManager.NavigateTo("/logout", true);
+    }
+
+
+
 
 }
 

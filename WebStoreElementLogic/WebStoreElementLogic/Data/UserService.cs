@@ -34,10 +34,11 @@ namespace WebStoreElementLogic.Data
         {
             int result = 0;
             try
-            {  
+            {
                 var dbPara = new DynamicParameters();
                 dbPara.Add("@userName", user.userName, DbType.String);
                 dbPara.Add("@password", user.password, DbType.String);
+                dbPara.Add("@admin", user.admin, DbType.Boolean); // add this line
                 result = _dapperService.Execute(
                     "[dbo].[spAddUsers]",
                     dbPara,
@@ -54,6 +55,8 @@ namespace WebStoreElementLogic.Data
             return Task.FromResult(result);
         }
 
+
+
         //For at ny bruker får riktig ID
         public Task<List<User>> GetNextID(int userId)
         {
@@ -62,14 +65,14 @@ namespace WebStoreElementLogic.Data
         }
 
         //For å hente bruker og sammenligne hashet passord
-        public Task<List<User>> GetUser(string userName)
+        public Task<User> GetUser(string userName)
         {
-            {
-                var userList = _dapperService.GetAll<User>($"SELECT * FROM [Users] WHERE userName = '{userName}'", null, commandType: CommandType.Text);
-                return Task.FromResult(userList.ToList());
-
-            }
+            var user = _dapperService.GetAll<User>($"SELECT * FROM [Users] WHERE userName = '{userName}'", null, commandType: CommandType.Text)
+                                     .SingleOrDefault();
+            return Task.FromResult(user);
         }
+
+
         //Med utgangspunkt i at vi ikke skal ha register på siden har jeg foreløpig ikke lagt til andre tasks her nå,
         //men det kan komme mer senere eller i en egen app for registrering.
         public async Task<List<User>> GetAllUsersAsync()
@@ -116,6 +119,7 @@ namespace WebStoreElementLogic.Data
                 dbPara.Add("@userId", editUser.userId, DbType.Int32);
                 dbPara.Add("@userName", editUser.userName, DbType.String);
                 dbPara.Add("@password", editUser.password, DbType.String);
+                dbPara.Add("@admin", editUser.admin, DbType.Boolean); 
                 result = await _dapperService.ExecuteAsync(
                     "[dbo].[spUpdateUsers]",
                     dbPara,
@@ -129,7 +133,8 @@ namespace WebStoreElementLogic.Data
 
             return result;
         }
+
     }
 
-    
+
 }

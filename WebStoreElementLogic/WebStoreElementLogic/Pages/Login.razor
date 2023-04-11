@@ -14,9 +14,12 @@
 @using Microsoft.AspNetCore.Authentication;
 @inject IJSRuntime JSRuntime;
 @using Microsoft.AspNetCore.Components.Authorization;
+@using WebStoreElementLogic.Account;
+@inject AuthenticationStateProvider authenticationStateProvider;
 @inject IHttpContextAccessor HttpContextAccessor
 @layout Shared.LoginLayout;
-
+@inject Microsoft.AspNetCore.Identity.UserManager<IdentityUser> UserManager;
+@inject CustomAuthenticationStateProvider AuthenticationStateProvider;
 
 
 <title>Log in</title>
@@ -34,7 +37,6 @@
 
                         <EditForm Model="@loginModel" OnValidSubmit="@HandleValidSubmit">
                             <DataAnnotationsValidator />
-                            <ValidationSummary />
 
                             <div class="form-group border mb-4">
                                 <div class="input-group">
@@ -95,19 +97,31 @@
 
     private async Task HandleValidSubmit()
     {
-        // Get the user data from SQL in UserService
-        var userList = await UserService.GetUser(loginModel.Username);
-        var user = userList.FirstOrDefault(); // Get the first user from the list (or null if the list is empty)
+        var user = await UserService.GetUser(loginModel.Username);
 
         if (user != null)
         {
             var passwordHasher = new PasswordHasher<User>();
 
-            // Verify if the hashed password in the database matches the entered password from the user
             var passwordVerificationResult = passwordHasher.VerifyHashedPassword(user, user.password, loginModel.Password);
 
             if (passwordVerificationResult == PasswordVerificationResult.Success)
             {
+                // Set the admin status of the user to the value retrieved from the database
+                loginModel.IsAdmin = Convert.ToBoolean(user.admin);
+
+                // Set the authenticated user information
+                var claims = new List<Claim>
+                {
+                new Claim(ClaimTypes.Name, user.userName),
+                new Claim(ClaimTypes.Role, loginModel.IsAdmin ? "Admin" : "User")
+                };
+
+                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var principal = new ClaimsPrincipal(identity);
+                var authenticationState = new AuthenticationState(principal);
+                await ((CustomAuthenticationStateProvider)authenticationStateProvider).NotifyAuthenticationStateChangedAsync(authenticationState);
+
                 // Navigate to home page
                 NavigationManager.NavigateTo("/home");
             }
@@ -127,16 +141,15 @@
 
     public class LoginModel
     {
-        [Required]
+        [Required(ErrorMessage = "Please enter your username")]
         public string Username { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter your password")]
         public string Password { get; set; }
 
         [Required]
-        public bool RememberMe { get; set; }
+        public bool IsAdmin { get; set; }
     }
-}
 }
 
 

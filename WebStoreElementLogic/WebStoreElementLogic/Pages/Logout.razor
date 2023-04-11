@@ -2,11 +2,17 @@
 @using Microsoft.AspNetCore.Components.Authorization
 @inject NavigationManager NavigationManager
 
-<h3>Logging out...</h3>
+<div class="d-flex flex-column align-items-center justify-content-center" style="height: 70vh;">
+    <h3 class="mb-4">Logging out...</h3>
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
 
 @code {
     protected override async Task OnInitializedAsync()
     {
+        await Task.Delay(2000);
         NavigationManager.NavigateTo("/login", true);
     }
 }

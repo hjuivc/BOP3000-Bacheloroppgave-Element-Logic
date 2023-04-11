@@ -4,11 +4,19 @@
 @inject NavigationManager NavigationManager;
 @inject AuthenticationStateProvider AuthenticationStateProvider;
 @using System.Security.Claims;
+@using WebStoreElementLogic.Entities;
+@using WebStoreElementLogic.Interfaces;
 @using Microsoft.AspNetCore.Http;
 @using Microsoft.AspNetCore.Authentication.Cookies;
 @using Microsoft.AspNetCore.Authentication;
+@using Microsoft.AspNetCore.Identity;
+@using WebStoreElementLogic.Data;
 @using Microsoft.AspNetCore.Components.Authorization;
-@page "/#"
+@inject IUserService UserService;
+@inject Microsoft.AspNetCore.Identity.UserManager<IdentityUser> UserManager;
+@inject AuthenticationStateProvider AuthenticationStateProvider;
+
+@page "/"
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white p-0">
     <div class="container-fluid p-0">
@@ -33,11 +41,20 @@
                 <li class="nav-item d-flex justify-content-center">
                     <a class="nav-link @(IsActive("/orderpage"))" aria-current="page" href="orderpage">Order</a>
                 </li>
-                <li class="nav-item d-flex justify-content-center">
-                    <a class="nav-link @(IsActive("/userpage"))" aria-current="page" href="userpage"><i class="fa-solid fa-users"></i></a>
+                <li class="nav-item d-flex justify-content-center @(isAdmin ? "" : "disabled")">
+                    @if (isAdmin)
+                    {
+                        <a class="nav-link @(IsActive("/userpage"))" aria-current="page" href="userpage"><i class="fa-solid fa-users"></i></a>
+                    }
+                    else
+                    {
+                        <a class="nav-link @(IsActive("/userpage"))" aria-current="page" href="userpage"><i class="fa-solid fa-users"></i></a>
+                        <!--<span class="nav-link disabled" aria-current="page"><i class="fa-solid fa-users"></i></span>-->
+                    }
                 </li>
+
                 <li class="nav-item d-flex justify-content-center">
-                    <a class="nav-link" aria-current="page" href="userpage" @onclick="Logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                    <a class="nav-link" aria-current="page" href="logout" @onclick="Logout"><i class="fa-solid fa-right-from-bracket"></i></a>
                 </li>
             </ul>
         </div>
@@ -54,12 +71,38 @@
 
 
 @code {
+    private bool isAdmin = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        isAdmin = await CheckAdmin();
+    }
+
+    private async Task<bool> CheckAdmin()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user != null && user.Identity.IsAuthenticated)
+        {
+            // Get the user's claims
+            var claims = user.Claims.ToList();
+
+            // Check if the user is an admin
+            return claims.Any(c => c.Type == ClaimTypes.Role && c.Value == "Admin");
+        }
+
+        return false;
+    }
+
+
 
     // Set the navbar link as active when navbar is loaded the first time to show which page the user is on
     protected override void OnInitialized()
     {
         NavigationManager.LocationChanged += OnLocationChanged;
-        }
+
+    }
         
     private void OnLocationChanged(object sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
     {
@@ -81,11 +124,7 @@
     private void Logout()
     {
         NavigationManager.NavigateTo("/logout", true);
-    }
-
-
-
-
+    }   
 }
 
 

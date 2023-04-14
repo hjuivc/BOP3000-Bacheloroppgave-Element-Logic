@@ -16,7 +16,7 @@
             <h1>Web Store</h1>
             <div style="display:flex; gap:10px; justify-content:center; align-items:center">
                 <div class="spinner-border" role="status"></div>
-                No data to show...
+                Loading application..
             </div>
         </div>
     </div>
@@ -66,13 +66,13 @@ else
             <!-- TODO: better solution -->
             @if (Products != null)
             {
-                <button class="btn btn-positive mt-2 bottom-0 mb-4 rounded-circle position-fixed align-self-end d-flex"
-                        style="z-index: 3; transform: translateX(-5vw);"
+                <button class="btn btn-positive mx-5 mb-2 rounded-circle position-fixed d-flex"
+                        style="z-index: 3; left: 0;"
                 @onclick="New">
                     <div class="position-relative">
                         <i class="fa fa-plus border: 2px solid white; padding: 8px;"></i>
                     </div>
-                    <span style="position: absolute; left: 100%; margin-left: 10px;">Product</span>
+                    <span style="position: absolute; left: 100%; margin-left: 10px;"></span>
                 </button>
             }
             <div class="container-fluid position-fixed w-50 pe-4">

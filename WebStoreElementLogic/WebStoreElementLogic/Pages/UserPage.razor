@@ -146,9 +146,14 @@
 
     private async Task DeleteUser(int id)
     {
-        await UserService.DeleteUserAsync(id);
-        await LoadUsers();
+        bool confirmDeletion = await JSRuntime.InvokeAsync<bool>("confirmUserDeletion");
+        if (confirmDeletion)
+        {
+            await UserService.DeleteUserAsync(id);
+            await LoadUsers();
+        }
     }
+
 
     // Edit user
     private async Task EditUser(int id)
@@ -190,9 +195,12 @@
     private User newUser = new User();
     private EditUserModel editUser = new EditUserModel();
 
-    private async Task HandleValidSubmit()
+  private async Task HandleValidSubmit()
+{
+    if (isEditing)
     {
-        if (isEditing)
+        bool confirmEdit = await JSRuntime.InvokeAsync<bool>("confirmUserUpdate");
+        if (confirmEdit)
         {
             var userToUpdate = await UserService.GetUserById(editingUserId);
             userToUpdate.userName = editUser.userName;
@@ -217,26 +225,28 @@
 
             CancelEdit();
         }
-        else
+    }
+    else
+    {
+        var existingUser = await UserService.GetUser(newUser.userName);
+        if (existingUser != null)
         {
-            var existingUser = await UserService.GetUser(newUser.userName);
-            if (existingUser != null)
-            {
-                await JSRuntime.InvokeVoidAsync("alert", "Username already exists. Please choose a different username.");
-                return;
-            }
-
-            var passwordHasher = new PasswordHasher<User>();
-            var hashedPassword = passwordHasher.HashPassword(newUser, newUser.password);
-            newUser.password = hashedPassword;
-
-            await UserService.Create(newUser);
+            await JSRuntime.InvokeVoidAsync("alert", "Username already exists. Please choose a different username.");
+            return;
         }
 
-        await LoadUsers();
-        newUser = new User();
-        editUser = new EditUserModel();
+        var passwordHasher = new PasswordHasher<User>();
+        var hashedPassword = passwordHasher.HashPassword(newUser, newUser.password);
+        newUser.password = hashedPassword;
+
+        await UserService.Create(newUser);
     }
+
+    await LoadUsers();
+    newUser = new User();
+    editUser = new EditUserModel();
+}
+
 
 
 

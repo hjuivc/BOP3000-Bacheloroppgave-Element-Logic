@@ -15,6 +15,7 @@ namespace WebStoreElementLogic.Data
         private readonly IDapperService _dapperService;
         private readonly IConfiguration _configuration;
 
+
         public UserService(IDapperService dapperService, IConfiguration configuration)
         {
             try

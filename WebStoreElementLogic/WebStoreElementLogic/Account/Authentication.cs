@@ -71,7 +71,12 @@ namespace WebStoreElementLogic.Account
         }
 
 
-
+        public async Task LogoutAsync()
+        {
+            var anonymousUser = new ClaimsPrincipal(new ClaimsIdentity());
+            var authState = new AuthenticationState(anonymousUser);
+            NotifyAuthenticationStateChanged(Task.FromResult(authState));
+        }
 
 
         public void NotifyAuthenticationStateChanged(AuthenticationState state)
@@ -81,12 +86,7 @@ namespace WebStoreElementLogic.Account
 
         public async Task NotifyAuthenticationStateChangedAsync(AuthenticationState state)
         {
-            await Task.FromResult(state);
-            NotifyAuthenticationStateChanged(state);
+            NotifyAuthenticationStateChanged(Task.FromResult(state));
         }
-
-
-
-
     }
 }

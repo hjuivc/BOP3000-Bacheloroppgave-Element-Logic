@@ -15,8 +15,8 @@
 @inject IJSRuntime JSRuntime;
 @using Microsoft.AspNetCore.Components.Authorization;
 @using WebStoreElementLogic.Account;
-@inject AuthenticationStateProvider authenticationStateProvider;
-@inject IHttpContextAccessor HttpContextAccessor
+@using Microsoft.Extensions.Caching.Distributed
+@inject IDistributedCache DistributedCache
 @layout Shared.LoginLayout;
 @inject Microsoft.AspNetCore.Identity.UserManager<IdentityUser> UserManager;
 @inject CustomAuthenticationStateProvider AuthenticationStateProvider;
@@ -110,17 +110,23 @@
                 // Set the admin status of the user to the value retrieved from the database
                 loginModel.IsAdmin = Convert.ToBoolean(user.admin);
 
+                // Set session value
+                await DistributedCache.SetStringAsync("IsAdmin", loginModel.IsAdmin.ToString());
+
+
                 // Set the authenticated user information
                 var claims = new List<Claim>
-                {
+            {
                 new Claim(ClaimTypes.Name, user.userName),
                 new Claim(ClaimTypes.Role, loginModel.IsAdmin ? "Admin" : "User")
-                };
+            };
 
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
                 var authenticationState = new AuthenticationState(principal);
-                await ((CustomAuthenticationStateProvider)authenticationStateProvider).NotifyAuthenticationStateChangedAsync(authenticationState);
+
+                // Sign in the user
+                await AuthenticationStateProvider.NotifyAuthenticationStateChangedAsync(authenticationState);
 
                 // Navigate to home page
                 NavigationManager.NavigateTo("/home");
@@ -137,6 +143,8 @@
             await JSRuntime.InvokeVoidAsync("alert", "User not found. Try another username.");
         }
     }
+
+
 
 
     public class LoginModel

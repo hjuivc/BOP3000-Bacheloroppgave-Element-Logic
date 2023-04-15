@@ -1,6 +1,8 @@
 ﻿@page "/logout"
 @using Microsoft.AspNetCore.Components.Authorization
 @inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
 
 <div class="d-flex flex-column align-items-center justify-content-center" style="height: 70vh;">
     <h3 class="mb-4">Logging out...</h3>
@@ -12,7 +14,10 @@
 @code {
     protected override async Task OnInitializedAsync()
     {
+        var customAuthStateProvider = (CustomAuthenticationStateProvider)AuthenticationStateProvider;
+        await customAuthStateProvider.LogoutAsync();
         await Task.Delay(2000);
         NavigationManager.NavigateTo("/login", true);
     }
+
 }

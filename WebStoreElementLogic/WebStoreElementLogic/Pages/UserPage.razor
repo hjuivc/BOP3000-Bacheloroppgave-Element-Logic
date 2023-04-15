@@ -139,7 +139,8 @@
     private async Task LoadUsers()
     {
         loading = true;
-        users = await UserService.GetAllUsersAsync();
+        var allUsers = await UserService.GetAllUsersAsync();
+        users = allUsers.Where(u => u.userId != 1).ToList(); // exclude admin user with userId1
         loading = false;
     }
 

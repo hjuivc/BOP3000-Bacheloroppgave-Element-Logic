@@ -3,9 +3,15 @@
     <span class="d-block d-xxl-inline">@Info.Name</span>
     <div style="display: flex; align-items: center;">
         <span class="badge bg-custom rounded-pill" style="margin-right: 10px;">@Count</span>
-        <span role="button" class="badge bg-positive round-pill" @onclick="() => UpdateCount(1)" aria-label="Increase Quantity" style="margin-right: 10px;">+</span>
-        <span role="button" class="badge bg-warning round-pill" @onclick="() => UpdateCount(-1)" aria-label="Decrease Quantity" style="margin-right: 10px;">-</span>
-        <span role="button" class="badge bg-standard round-pill" @onclick="() => Remove()" aria-label="Remove" style="margin-right: 10px;">X</span>
+        <span role="button" class="badge bg-positive" @onclick="() => UpdateCount(1)" aria-label="Increase Quantity" style="margin-right: 10px; border: none;">
+            <i class="fa fa-plus fa-2xs my-custom-icon"></i>
+        </span>
+        <span role="button" class="badge bg-minus" @onclick="() => UpdateCount(-1)" aria-label="Decrease Quantity" style="margin-right: 10px; border: none;">
+            <i class="fa fa-minus fa-2xs my-custom-icon"></i>
+        </span>
+        <span role="button" class="badge bg-standard" @onclick="() => Remove()" aria-label="Remove" style="margin-right: 10px;">
+            <i class="fa fa-trash fa-2xs my-custom-icon"></i>
+        </span>
         @*<button @onclick="Remove" class="btn-warning" style="margin-rignt: 10px;"></button>*@
     </div>
 </li>

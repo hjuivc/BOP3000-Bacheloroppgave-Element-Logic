@@ -13,6 +13,7 @@ section {
     border-width: 0px !important;
 }
 
-section:hover {
-    /*transform: scale(1.05);*/
+.section:hover {
+    border: 1px solid black !important;
+    box-shadow: 0 0 5px black !important;
 }

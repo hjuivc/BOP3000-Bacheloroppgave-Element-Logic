@@ -27,11 +27,11 @@ else
     {
         <Alert OnCancel="CancelDelete">
             <h3>Delete Product</h3>
-            Are you sure you wish to delete 
+            Are you sure you wish to delete
             <span class="text-danger text-decoration-underline">@Products[SelectedIndex].Name?</span>
             <div class="d-flex flex-row justify-content-around mt-3">
                 <button @onclick="CancelDelete" class="btn btn-neutral">Cancel</button>
-            <button @onclick="() => Delete(Products[SelectedIndex].Id)" class="btn btn-warning">Delete </button>
+                <button @onclick="() => Delete(Products[SelectedIndex].Id)" class="btn btn-warning">Delete </button>
             </div>
         </Alert>
     }
@@ -40,13 +40,20 @@ else
     <div class="d-flex flex-row mx-5 rounded mb-3">
         <div class="container-fluid">
             <!-- Search function -->
-            <div class="position-relative" style="padding-bottom: 30px">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search.." id="txtSearch" name="search"
-                           autocomplete="off" @bind="SearchTerm" @bind:event="oninput">
+            <div class="position-relative" style="padding-top: 30px; padding-bottom: 30px;">
+                <div class="input-container">
+                    <input type="text" class="form-control" placeholder="Search.." id="txtSearch" name="search" autocomplete="off" @bind="SearchTerm" @bind:event="oninput">
                     <div class="input-group-append">
                         <span class="input-group-text bg-transparent border-0"><i class="fa fa-search fa-lg"></i></span>
                     </div>
+                </div>
+                <div class="btn-add-container mt-3">
+                    <button class="btn btn-positive my-custom-font" @onclick="New">
+                        <div class="position-relative">
+                            New Product
+                        </div>
+                    </button>
+
                 </div>
             </div>
 
@@ -66,14 +73,7 @@ else
             <!-- TODO: better solution -->
             @if (Products != null)
             {
-                <button class="btn btn-positive mx-5 mb-2 rounded-circle position-fixed d-flex"
-                        style="z-index: 3; left: 0;"
-                @onclick="New">
-                    <div class="position-relative">
-                        <i class="fa fa-plus border: 2px solid white; padding: 8px;"></i>
-                    </div>
-                    <span style="position: absolute; left: 100%; margin-left: 10px;"></span>
-                </button>
+                
             }
             <div class="container-fluid position-fixed w-50 pe-4">
                 @if (SelectedIndex >= 0)

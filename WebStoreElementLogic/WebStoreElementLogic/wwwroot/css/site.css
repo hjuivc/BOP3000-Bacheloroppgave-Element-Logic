@@ -14,23 +14,35 @@ a, .btn-link {
 }
 
 .bg-positive {
-    background-color: #16a085 !important;
+    /*background-color: #16a085 !important;*/
+    border-width: 0px;
+    color: black;
 }
 
 .bg-warning {
-    background-color: #B9132F !important;
+    color: black;
+    background-color: transparent !important;
+}
+
+.bg-minus {
+    color: black;
 }
 
 .bg-standard {
-    background-color: #B9132F !important;
+    /*background-color: #B9132F !important;*/
+    color: black;
 }
 
 .bg-custom {
     background-color: #34495E !important;
 }
 
-.bg-custom:hover {
+/*.bg-custom:hover {
     color: #34495E !important;
+}*/
+
+.my-custom-icon {
+    color: black;
 }
 
 .custom-range::-webkit-slider-thumb {
@@ -231,3 +243,18 @@ a, .btn-link {
 .position-relative .form-control {
     z-index: 1;
 }
+
+/* Testing for productpage */
+.input-container input,
+.input-container .input-group-append {
+    outline: none !important;
+}
+
+.btn-add-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 5px;
+}
+
+
+

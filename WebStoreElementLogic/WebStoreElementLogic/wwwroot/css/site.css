@@ -39,10 +39,21 @@ h5 {
     pull-right !important;
 }
 
+.btn-login:hover {
+    color: #fff !important;
+    background-color: #34495E !important;
+}
+
 /* End of login */
 
 a, .btn-link {
     color: #B9132F;
+    text-decoration: none !important;
+}
+
+a:hover, .btn-link:hover {
+    color: #34495E;
+    text-decoration: underline !important;
 }
 
 .bg-positive {
@@ -144,7 +155,7 @@ a, .btn-link {
 }
 
     .nav-link:hover {
-        text-decoration: underline;
+        text-decoration: underline !important;
         color: #b9132f !important;
     }
 

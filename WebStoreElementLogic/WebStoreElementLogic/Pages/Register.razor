@@ -1,10 +1,10 @@
-﻿@page "/login"
+﻿@page "/register"
 @using LoginNamespace = Login;
 @using System.ComponentModel.DataAnnotations;
 
-<title>Log in</title>
+<title>Register</title>
 <div class="center">
-    <div class="container">
+    <div class="container" style="margin-top: 5%">
         <div class="row justify-content-center">
             <div class="col-md-6">
 
@@ -13,15 +13,15 @@
 
                         <img src="../images/logos/Element Logic logo red hires.jpg" style="width: 300px; height: 100px;" class="mx-auto d-block mb-4" />
 
-                        <h5 class="card-title text-center mb-4">Login to Web Store</h5>
+                        <h5 class="card-title text-center mb-4">Register user for Web Store</h5>
 
-                        <EditForm Model="@loginModel" OnValidSubmit="@HandleValidSubmit">
+                        <EditForm Model="@registerModel" OnValidSubmit="@HandleValidSubmit">
                             <DataAnnotationsValidator />
                             <ValidationSummary />
 
                             <div class="form-group border mb-4">
                                 <div class="input-group">
-                                    <InputText id="username" class="form-control narrow-input" autocomplete="off" placeholder="Username" @bind-Value="@loginModel.Username" />
+                                    <InputText id="username" class="form-control narrow-input" autocomplete="off" placeholder="Username" @bind-Value="@registerModel.Username" />
                                     <div class="input-group-append">
                                         <span class="input-group-text" style="background-color: transparent; border: none;">
                                             <!-- Font Awesome icon -->
@@ -29,11 +29,11 @@
                                         </span>
                                     </div>
                                 </div>
-                                <ValidationMessage For="@(() => loginModel.Username)" />
+                                <ValidationMessage For="@(() => registerModel.Username)" />
                             </div>
                             <div class="form-group border mb-4">
                                 <div class="input-group">
-                                    <InputText id="password" class="form-control narrow-input" type="password" placeholder="Password" @bind-Value="@loginModel.Password" />
+                                    <InputText id="password" class="form-control narrow-input" type="password" placeholder="Password" @bind-Value="@registerModel.Password" />
                                     <div class="input-group-append">
                                         <span class="input-group-text" style="background-color: transparent; border: none;">
                                             <!-- Font Awesome icon -->
@@ -41,20 +41,20 @@
                                         </span>
                                     </div>
                                 </div>
-                                <ValidationMessage For="@(() => loginModel.Password)" />
+                                <ValidationMessage For="@(() => registerModel.Password)" />
                             </div>
                             <div class="form-group form-check">
-                                <InputCheckbox class="form-check-input" @bind-Value="@loginModel.RememberMe" />
+                                <InputCheckbox class="form-check-input" @bind-Value="@registerModel.RememberMe" />
                                 <label class="form-check-label" for="rememberMe">Remember me</label>
                             </div>
 
                             <div class="d-flex justify-content-end">
-                                <NavLink href="/register" class="btn btn-link">Register</NavLink>
-                                <button type="submit" class="btn btn-login btn-block">Log in</button>
+                                <NavLink href="/login" class="btn btn-link">Back to Login</NavLink>
+                                <button type="submit" class="btn btn-login btn-block">Register</button>
                             </div>
-                        
+
                         </EditForm>
-                    
+
 
                     </div>
                 </div>
@@ -63,8 +63,6 @@
         </div>
     </div>
 </div>
-
-
 <style>
     .card {
         max-width: 400px;
@@ -79,7 +77,7 @@
 
 
 @code {
-    private LoginModel loginModel = new LoginModel();
+    private LoginModel registerModel = new LoginModel();
 
     private async Task HandleValidSubmit()
     {

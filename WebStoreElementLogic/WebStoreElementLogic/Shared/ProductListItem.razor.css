@@ -1,6 +1,6 @@
 .selected {
     /*box-shadow: 5px 5px 5px 5px rgba(20, 200, 20, 0.8);*/
-    border: 1px solid #B9132F !important;
+    outline: 1px solid black !important;
 }
 
 img {

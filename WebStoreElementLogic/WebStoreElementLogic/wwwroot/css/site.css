@@ -255,6 +255,9 @@ a, .btn-link {
     justify-content: flex-start;
     margin-top: 5px;
 }
+/* end productpage */
 
-
-
+/* cart */
+.list-group-item {
+    border: none !important;
+}

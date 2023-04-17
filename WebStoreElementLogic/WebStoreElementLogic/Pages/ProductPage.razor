@@ -40,7 +40,7 @@ else
     <div class="d-flex flex-row mx-5 rounded mb-3">
         <div class="container-fluid">
             <!-- Search function -->
-            <div class="position-relative" style="padding-top: 30px; padding-bottom: 30px;">
+            <div class="position-relative" style="padding-bottom: 30px;">
                 <div class="input-container">
                     <input type="text" class="form-control" placeholder="Search.." id="txtSearch" name="search" autocomplete="off" @bind="SearchTerm" @bind:event="oninput">
                     <div class="input-group-append">
@@ -50,10 +50,9 @@ else
                 <div class="btn-add-container mt-3">
                     <button class="btn btn-positive my-custom-font" @onclick="New">
                         <div class="position-relative">
-                            New Product
+                            Add Product
                         </div>
                     </button>
-
                 </div>
             </div>
 
@@ -79,7 +78,7 @@ else
                 @if (SelectedIndex >= 0)
                 {
                     <ProductForm 
-                        Title="Edit product"
+                        Title="Edit Product"
                         SaveLabel="Save changes"
                         DiscardLabel="Discard changes"
                         DeleteButton
@@ -91,7 +90,7 @@ else
                 @if (AddNew)
                 {
                     <ProductForm 
-                        Title="Add new product"
+                        Title="Add Product"
                          SaveLabel="Add"
                          DiscardLabel="Cancel"
                          Info="newInfo"
@@ -101,8 +100,7 @@ else
                 }
             </div>
         </div>
-    </div>
-    
+    </div> 
 }
 
 @code {

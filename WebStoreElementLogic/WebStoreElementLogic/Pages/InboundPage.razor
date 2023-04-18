@@ -10,6 +10,7 @@
 @using WebStoreElementLogic.Hubs;
 @inject IProductService ProductService;
 @inject IEManagerService EManagerService;
+@inject IInboundService InboundService;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
 @inherits ProductComponentBase
 
@@ -145,7 +146,7 @@
         }
     }
 
-    private void Checkout(int[] product)
+    private async void Checkout(int[] product)
     {
         ShowModal = false;
 
@@ -155,6 +156,11 @@
         // TODO: Send to eManager, remove next two lines
         Count = count;
         ShowSuccess = true;
+
+        Console.WriteLine($"Next ID:{await InboundService.GetNextID()}");
+        int p = await InboundService.Create(FilteredProducts[index], count);
+        Console.WriteLine($"The next id is {p}");
+
 
         EManagerService.GoodsReceival(FilteredProducts[index], Count);
     }

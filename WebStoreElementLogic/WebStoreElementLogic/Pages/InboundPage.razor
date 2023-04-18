@@ -157,11 +157,11 @@
         Count = count;
         ShowSuccess = true;
 
-        Console.WriteLine($"Next ID:{await InboundService.GetNextID()}");
-        int p = await InboundService.Create(FilteredProducts[index], count);
-        Console.WriteLine($"The next id is {p}");
+        int nextPurchaseOrderId = await InboundService.GetNextID();
+        await InboundService.Create(FilteredProducts[index], count);
 
 
-        EManagerService.GoodsReceival(FilteredProducts[index], Count);
+
+        await EManagerService.GoodsReceival(FilteredProducts[index], Count, nextPurchaseOrderId);
     }
 }

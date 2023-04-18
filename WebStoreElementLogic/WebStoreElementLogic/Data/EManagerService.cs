@@ -6,25 +6,52 @@ using System.Net.Http.Headers;
 using WebStoreElementLogic.Entities;
 using WebStoreElementLogic.Data;
 
-public class EManagerService : ApiServiceBase, IEManagerService
+public class EManagerService : IEManagerService
 {
+    private readonly HttpClient _httpClient;
+    private readonly IConfiguration _configuration;
 
-    public EManagerService(HttpClient httpClient, IConfiguration configuration) : base(httpClient, configuration)
+    private string BaseUrl;
+
+
+    public EManagerService(HttpClient httpClient, IConfiguration configuration)
     {
         try
         {
+            _httpClient = httpClient;
+            _configuration = configuration;
+
             BaseUrl = _configuration["Api:EManager:BaseUrl"];
             string username = _configuration["Api:EManager:Username"];
             string password = _configuration["Api:EManager:Password"];
 
             _httpClient.DefaultRequestHeaders.Authorization = CreateAuthHeader(username, password);
         }
-        catch(Exception e)
-        { 
+        catch (Exception e)
+        {
             Console.WriteLine($"Could not create EManagerService: {e.Message}");
-            throw; 
+            throw;
         }
     }
+
+    public async Task<HttpResponseMessage> Post(string endpoint, string xml)
+    {
+        try
+        {
+            return await _httpClient.PostAsync(
+                BaseUrl + endpoint,
+                new StringContent(xml, Encoding.UTF8, "application/xml")
+            );
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Problem posting request: {ex.Message}");
+        }
+        // Check for null response when using this method.
+        // might need change later
+        return null;
+    }
+
 
     public async Task<bool> ProductInformation(Product product)
     {
@@ -42,7 +69,7 @@ public class EManagerService : ApiServiceBase, IEManagerService
             </ImportOperation>            
         ";
 
-        HttpResponseMessage? req = await Post("/api/products/import", xml);
+        var req = await Post("/api/products/import", xml);
 
         if (req != null)
         {
@@ -55,23 +82,23 @@ public class EManagerService : ApiServiceBase, IEManagerService
         }
     }
 
-    public async Task<bool> GoodsReceipt(Product product, double qty)
+    public async Task<bool> GoodsReceival(Product product, double qty)
     {
         string xml = $@"
             <ImportOperation>
-                <Lines>
-                    <GoodsReceivalLine>
-                        <TransactionId>{999999}</TransactionId>
-                        <PurchaseOrderId>{999999}</PurchaseOrderId>
-                        <PurchaseOrderLineId>{9999}</PurchaseOrderLineId>
-                        <ExtProductId>{product.Id}</ExtProductId>
-                        <Quantity>{qty}</Quantity>
-                    </GoodsReceivalLine>
-                </Lines>
-            </ImportOperation>         
+              <Lines>
+                <GoodsReceivalLine>
+                  <TransactionId>123</TransactionId>
+                  <PurchaseOrderId>abc</PurchaseOrderId>
+                  <PurchaseOrderLineId>4</PurchaseOrderLineId>
+                  <ExtProductId>abc65050393</ExtProductId>
+                  <Quantity>33.00</Quantity>
+                </GoodsReceivalLine>
+              </Lines>
+            </ImportOperation>            
         ";
 
-        HttpResponseMessage? req = await Post("/api/goodsreceivals/import", xml);
+        var req = await Post("/api/goodsreceivals/import", xml);
 
         if (req != null)
         {

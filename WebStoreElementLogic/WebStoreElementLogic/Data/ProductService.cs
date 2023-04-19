@@ -155,6 +155,7 @@ namespace WebStoreElementLogic.Data
             return Task.FromResult(productsList.ToList());
         }
 
+        // TODO: endre til å sende id diekte
         public Task<List<Product>> GetNextID(int Id)
         {
             var productsList = _dapperService.GetAll<Product>($"SELECT MAX(ExtProductId + 1) AS Id FROM [Products]", null, commandType: CommandType.Text);

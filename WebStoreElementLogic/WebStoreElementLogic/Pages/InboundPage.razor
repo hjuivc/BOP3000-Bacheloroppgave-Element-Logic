@@ -10,6 +10,7 @@
 @using WebStoreElementLogic.Hubs;
 @inject IProductService ProductService;
 @inject IEManagerService EManagerService;
+@inject IInboundService InboundService;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
 @inherits ProductComponentBase
 
@@ -145,7 +146,7 @@
         }
     }
 
-    private void Checkout(int[] product)
+    private async void Checkout(int[] product)
     {
         ShowModal = false;
 
@@ -158,6 +159,11 @@
         Count = count;
         ShowSuccess = true;
 
-        EManagerService.GoodsReceipt(FilteredProducts[index], Count);
+        int nextPurchaseOrderId = await InboundService.GetNextID();
+        await InboundService.Create(FilteredProducts[index], count);
+
+        int transactionId = await InboundService.GetTransactionId(nextPurchaseOrderId);
+
+        await EManagerService.GoodsReceival(FilteredProducts[index], Count, nextPurchaseOrderId, transactionId);
     }
 }

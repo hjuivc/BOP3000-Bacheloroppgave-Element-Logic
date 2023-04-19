@@ -5,7 +5,7 @@ using static EManagerService;
 public interface IEManagerService
 {
     public Task<bool> ProductInformation(Product product);
-    public Task<bool> GoodsReceipt(Product product, double qty);
+    public Task<bool> GoodsReceival(Product product, double qty, int purchaseOrderId, int transactionId);
     public Task<bool> ImportPicklist(List<PicklistLine> picklistLines);
 
 }

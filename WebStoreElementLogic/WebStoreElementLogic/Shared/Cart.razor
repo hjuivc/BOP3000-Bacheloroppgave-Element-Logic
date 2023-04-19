@@ -106,6 +106,12 @@
         CartDict.Clear();
         DisplayCheckout = false;
         DisplaySuccess = true;
+        // Print all products in the cart by looping through the dictionary
+        foreach (KeyValuePair<Product, int> entry in CartDict)
+{
+            Console.WriteLine(entry.Key.Name + " " + entry.Value);
+        }
+
     }
 
     public void RemoveFromCart(int index)

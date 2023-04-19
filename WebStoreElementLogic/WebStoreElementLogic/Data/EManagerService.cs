@@ -84,6 +84,56 @@ public class EManagerService : ApiServiceBase, IEManagerService
         }
     }
 
+    public async Task<bool> ImportPicklist(List<PicklistLine> picklistLines)
+    {
+        if (picklistLines == null || !picklistLines.Any())
+        {
+            throw new ArgumentException("Picklist lines cannot be null or empty.");
+        }
+
+        StringBuilder xmlLines = new StringBuilder();
+        foreach (var line in picklistLines)
+        {
+            xmlLines.Append($@"
+            <PicklistLine>
+                <TransactionId>{line.TransactionId}</TransactionId>
+                <ExtPicklistId>{line.ExtPicklistId}</ExtPicklistId>
+                <ExtOrderId>{line.ExtOrderId}</ExtOrderId>
+                <ExtProductId>{line.ExtProductId}</ExtProductId>
+                <Quantity>{line.Quantity}</Quantity>
+            </PicklistLine>");
+        }
+
+        string xml = $@"
+        <ImportOperation>
+            <Lines>
+                {xmlLines}
+            </Lines>
+        </ImportOperation>";
+
+        HttpResponseMessage? req = await Post("/api/picklists/import", xml);
+
+        if (req != null)
+        {
+            int status = ((int)req.StatusCode);
+            return status < 300 && status >= 200;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public class PicklistLine
+    {
+        public int TransactionId { get; set; }
+        public string ExtPicklistId { get; set; }
+        public string ExtOrderId { get; set; }
+        public string ExtProductId { get; set; }
+        public decimal Quantity { get; set; }
+    }
+
+
     private static AuthenticationHeaderValue CreateAuthHeader(string username, string password)
     {
         string credentials = $"{username}:{password}";

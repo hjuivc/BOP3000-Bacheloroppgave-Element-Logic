@@ -82,17 +82,17 @@ public class EManagerService : IEManagerService
         }
     }
 
-    public async Task<bool> GoodsReceival(Product product, double qty, int purchaseOrderId)
+    public async Task<bool> GoodsReceival(Product product, double qty, int purchaseOrderId, int transactionId)
     {
         string xml = $@"
             <ImportOperation>
               <Lines>
                 <GoodsReceivalLine>
-                  <TransactionId></TransactionId>
+                  <TransactionId>{transactionId}</TransactionId>
                   <PurchaseOrderId>{purchaseOrderId}</PurchaseOrderId>
-                  <PurchaseOrderLineId>4</PurchaseOrderLineId>
-                  <ExtProductId>abc65050393</ExtProductId>
-                  <Quantity>33.00</Quantity>
+                  <PurchaseOrderLineId>1</PurchaseOrderLineId>
+                  <ExtProductId>{product.Id}</ExtProductId>
+                  <Quantity>{qty}</Quantity>
                 </GoodsReceivalLine>
               </Lines>
             </ImportOperation>            

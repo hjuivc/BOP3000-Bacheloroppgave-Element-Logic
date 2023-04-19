@@ -64,5 +64,12 @@ namespace WebStoreElementLogic.Data
 
             return result;
         }
+        public Task<int> GetTransactionId(int nextPurchaseOrderId)
+        {
+            int transactionId = _dapperService.Execute
+                ($"SELECT TransactionId FROM [Inbound] WHERE PurchaseOrderId = {nextPurchaseOrderId}",
+                null, commandType: CommandType.Text);
+            return Task.FromResult(transactionId);
+        }
     }
 }

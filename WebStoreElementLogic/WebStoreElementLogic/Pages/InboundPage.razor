@@ -160,8 +160,8 @@
         int nextPurchaseOrderId = await InboundService.GetNextID();
         await InboundService.Create(FilteredProducts[index], count);
 
+        int transactionId = await InboundService.GetTransactionId(nextPurchaseOrderId);
 
-
-        await EManagerService.GoodsReceival(FilteredProducts[index], Count, nextPurchaseOrderId);
+        await EManagerService.GoodsReceival(FilteredProducts[index], Count, nextPurchaseOrderId, transactionId);
     }
 }

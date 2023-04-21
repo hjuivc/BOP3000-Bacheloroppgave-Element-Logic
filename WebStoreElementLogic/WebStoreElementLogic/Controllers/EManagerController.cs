@@ -23,6 +23,8 @@ namespace WebStoreElementLogic.Controllers
         [HttpPost("PlacedGoods")]
         public async Task<IActionResult> PlacedGoods([FromBody]string xml)
         {
+            Console.WriteLine("Message recieved form EManager");
+
             PGBody[] receipts = PGBody.FromXml(xml);
 
             // Update database with PG info
@@ -33,6 +35,14 @@ namespace WebStoreElementLogic.Controllers
 
             // Allert connected clients TODO: replace 10 with actual data
             await _hubContext.Clients.All.SendAsync("Something", 10);
+
+            return Ok();
+        }
+
+        [HttpGet("abc")]
+        public async Task<IActionResult> Test()
+        {
+            Console.WriteLine("Something happened!");
 
             return Ok();
         }

@@ -185,6 +185,31 @@ namespace WebStoreElementLogic.Data
                 }
             }
         }
+        public async Task<List<Product>> GetProductsQuantity(string searchTerm, int pageIndex = 1, int pageSize = 10)
+        {
+            var sql = @"SELECT p.ExtProductId AS Id, p.ProductName AS Name, p.ProductDesc AS Descr, p.ImageId AS URL, q.Quantity 
+                FROM [Products] p 
+                INNER JOIN [ProductQuantities] q ON p.ExtProductId = q.ExtProductId
+                WHERE p.ProductName LIKE @searchTerm 
+                ORDER BY p.ProductName
+                OFFSET @pageSize * (@pageIndex - 1) ROWS
+                FETCH NEXT @pageSize ROWS ONLY";
+
+            using (var connection = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]))
+            {
+                try
+                {
+                    await connection.OpenAsync();
+                    var products = await connection.QueryAsync<Product>(sql, new { searchTerm = $"%{searchTerm}%", pageIndex = pageIndex, pageSize = pageSize });
+                    return products.ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("ProductService, GetProducts: " + ex.Message);
+                    return null;
+                }
+            }
+        }
 
 
 

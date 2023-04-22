@@ -15,5 +15,6 @@ namespace WebStoreElementLogic.Interfaces
         Task<List<Product>> GetNextID(int Id);
         Task<List<Product>> GetProductNames(string Name);
         Task<List<Product>> GetProducts(string searchTerm, int pageIndex = 1, int pageSize = 10);
+        Task<List<Product>> GetProductsQuantity(string searchTerm, int pageIndex = 1, int pageSize = 10);
     }
 }

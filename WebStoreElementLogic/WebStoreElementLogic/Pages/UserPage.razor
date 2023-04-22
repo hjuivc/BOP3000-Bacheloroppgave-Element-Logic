@@ -2,6 +2,7 @@
 @attribute [Authorize(Roles = "Admin")]
 @using WebStoreElementLogic.Entities
 @using WebStoreElementLogic.Interfaces
+@using Microsoft.AspNetCore.Components.Web
 @inject IUserService UserService
 @using System.ComponentModel.DataAnnotations;
 @using Microsoft.AspNetCore.WebUtilities;
@@ -110,7 +111,14 @@
                     {
                         <InputCheckbox id="isAdmin" class="form-check-input" @bind-Value="@newUser.admin" />
                     }
-                    <label class="form-check-label" for="isAdmin">Admin rights</label>
+                    <label class="form-check-label" for="isAdmin">
+                        Admin rights
+                    </label>
+                    <div class="tooltip-container">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="tooltip-text">This checkbox gives the user admin rights, which means that he will be able to access the userpage which you are currently on. He will also have access to edit and delete users.</span>
+                    </div>
+
                 </div>
                 <div>
                     @if (isEditing)

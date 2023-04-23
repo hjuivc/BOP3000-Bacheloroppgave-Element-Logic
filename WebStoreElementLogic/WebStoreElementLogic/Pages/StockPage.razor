@@ -67,7 +67,7 @@
             int pageIndex = GetPageIndexFromQueryString();
 
             // Store in a new list temporarily to avoid seting Products to null
-            List<Product> FetchedProducts = await ProductService.GetProductsQuantity("", pageIndex, pageSize);
+            List<Product> FetchedProducts = await ProductService.GetProducts("", pageIndex, pageSize);
             FilteredProducts = FetchedProducts;
             Products = FilteredProducts.ToList();
         }

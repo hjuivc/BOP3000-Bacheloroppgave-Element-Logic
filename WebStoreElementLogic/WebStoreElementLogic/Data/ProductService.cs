@@ -4,6 +4,8 @@ using WebStoreElementLogic.Interfaces;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using WebStoreElementLogic.Entities;
+using System;
+using WebStoreElementLogic.Pages;
 
 namespace WebStoreElementLogic.Data
 {
@@ -168,32 +170,7 @@ namespace WebStoreElementLogic.Data
 
         public async Task<List<Product>> GetProducts(string searchTerm, int pageIndex = 1, int pageSize = 10)
         {
-            var sql = $"SELECT ExtProductId AS Id, ProductName AS Name, ProductDesc AS Descr, ImageId AS URL FROM [Products] WHERE ProductName LIKE @searchTerm ORDER BY ProductName";
-
-            using (var connection = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]))
-            {
-                try
-                {
-                    await connection.OpenAsync();
-                    var products = await connection.QueryAsync<Product>(sql, new { searchTerm = $"%{searchTerm}%" });
-                    return products.ToList();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("ProductService, GetProducts: " + ex.Message);
-                    return null;
-                }
-            }
-        }
-        public async Task<List<Product>> GetProductsQuantity(string searchTerm, int pageIndex = 1, int pageSize = 10)
-        {
-            var sql = @"SELECT p.ExtProductId AS Id, p.ProductName AS Name, p.ProductDesc AS Descr, p.ImageId AS URL, q.Quantity 
-                FROM [Products] p 
-                INNER JOIN [ProductQuantities] q ON p.ExtProductId = q.ExtProductId
-                WHERE p.ProductName LIKE @searchTerm 
-                ORDER BY p.ProductName
-                OFFSET @pageSize * (@pageIndex - 1) ROWS
-                FETCH NEXT @pageSize ROWS ONLY";
+            var sql = $"SELECT p.ExtProductId AS Id, p.ProductName AS Name, p.ProductDesc AS Descr, p.ImageId AS URL, Stock.Quantity AS QTY FROM[Products] p LEFT OUTER JOIN[Stock] ON p.ExtProductId = Stock.ExtProductId WHERE p.ProductName LIKE @searchTerm ORDER BY p.ProductName";
 
             using (var connection = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]))
             {

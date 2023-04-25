@@ -8,9 +8,11 @@
 @using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
 @using Microsoft.AspNetCore.SignalR;
 @using WebStoreElementLogic.Hubs;
+@using static WebStoreElementLogic.Controllers.EManagerController;
 @inject IProductService ProductService;
 @inject IEManagerService EManagerService;
 @inject IInboundService InboundService;
+@inject IJSRuntime JSRuntime;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
 @inherits ProductComponentBase
 
@@ -110,9 +112,11 @@
             .WithUrl(NavigationManager.ToAbsoluteUri("/EManagerHub"))
             .Build();
 
-        _hubConnection.On<int>("update", data =>
+        _hubConnection.On<PGBody[]>("PlacedGoods", (PGBody[] data) =>
         {
             // Update processed inbound orders (UI only!)
+            string msg = data[0].ToString();
+            JSRuntime.InvokeVoidAsync("alert", $"Got some data from eManager:\n{msg}");
             StateHasChanged();
         });
 

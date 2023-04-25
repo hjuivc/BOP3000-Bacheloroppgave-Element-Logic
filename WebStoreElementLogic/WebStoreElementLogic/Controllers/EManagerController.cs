@@ -40,7 +40,7 @@ namespace WebStoreElementLogic.Controllers
             }
 
             // Allert connected clients TODO: replace 10 with actual data
-            await _hubContext.Clients.All.SendAsync("Something", 10);
+            await _hubContext.Clients.All.SendAsync("PlacedGoods", receipts);
             
 
             return Ok();
@@ -62,6 +62,11 @@ namespace WebStoreElementLogic.Controllers
             public int PurchaseOrderLineId { get; set; }
             public int ExtProductId { get; set; }
             public decimal Quantity { get; set; }
+
+            public override string ToString()
+            {
+                return $"PrdouctId: {ExtProductId}\nQuantity: {Quantity}";
+            }
 
             public static PGBody[] FromXml(string xml)
             {

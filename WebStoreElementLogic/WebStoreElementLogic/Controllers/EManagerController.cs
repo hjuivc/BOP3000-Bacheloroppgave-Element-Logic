@@ -5,6 +5,7 @@ using WebStoreElementLogic.Hubs;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.StaticFiles;
+using WebStoreElementLogic.Interfaces;
 
 namespace WebStoreElementLogic.Controllers
 {
@@ -13,10 +14,12 @@ namespace WebStoreElementLogic.Controllers
     public class EManagerController : ControllerBase
     {
         private readonly IHubContext<EManagerHub> _hubContext;
+        private readonly IInboundService _inboundService;
 
-        public EManagerController(IHubContext<EManagerHub> hubContext)
+        public EManagerController(IHubContext<EManagerHub> hubContext, IInboundService inboundService)
         {
             _hubContext = hubContext;
+            _inboundService = inboundService;
         }
 
 
@@ -36,10 +39,11 @@ namespace WebStoreElementLogic.Controllers
             // Update database with PG info
             foreach (var receipt in receipts)
             {
+                await _inboundService.Update(receipt.TransactionId);
                 Console.WriteLine($"Got PG from EManager: {receipt.ExtProductId}");
             }
 
-            // Allert connected clients TODO: replace 10 with actual data
+            // Alert connected clients TODO: replace 10 with actual data
             await _hubContext.Clients.All.SendAsync("PlacedGoods", receipts);
             
 

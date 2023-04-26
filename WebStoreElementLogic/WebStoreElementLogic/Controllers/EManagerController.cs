@@ -21,8 +21,16 @@ namespace WebStoreElementLogic.Controllers
 
 
         [HttpPost("PlacedGoods")]
-        public async Task<IActionResult> PlacedGoods([FromBody]string xml)
+        public async Task<IActionResult> PlacedGoods()
         {
+            Console.WriteLine("Message recieved form EManager:\n");
+
+            using var reader = new StreamReader(Request.Body);
+            string xml = await reader.ReadToEndAsync();
+
+            Console.WriteLine(xml);
+
+            
             PGBody[] receipts = PGBody.FromXml(xml);
 
             // Update database with PG info
@@ -32,7 +40,16 @@ namespace WebStoreElementLogic.Controllers
             }
 
             // Allert connected clients TODO: replace 10 with actual data
-            await _hubContext.Clients.All.SendAsync("Something", 10);
+            await _hubContext.Clients.All.SendAsync("PlacedGoods", receipts);
+            
+
+            return Ok();
+        }
+
+        [HttpGet("abc")]
+        public async Task<IActionResult> Test()
+        {
+            Console.WriteLine("Something happened!");
 
             return Ok();
         }
@@ -46,22 +63,28 @@ namespace WebStoreElementLogic.Controllers
             public int ExtProductId { get; set; }
             public decimal Quantity { get; set; }
 
+            public override string ToString()
+            {
+                return $"PrdouctId: {ExtProductId}\nQuantity: {Quantity}";
+            }
+
             public static PGBody[] FromXml(string xml)
             {
                 XDocument doc = XDocument.Parse(xml);
-                var goodsReceivalLines = doc.Root.Element("Lines").Elements("GoodsReceivalLine");
+                var transactionId = int.Parse(doc.Root.Element("TRANSACTIONID").Value);
+                var putaways = doc.Root.Elements("PUTAWAY");
                 List<PGBody> pgBodies = new List<PGBody>();
 
-                foreach (var goodsReceivalLine in goodsReceivalLines)
+                foreach (var putaway in putaways)
                 {
                     pgBodies.Add(new PGBody
                     {
-                        TransactionId = int.Parse(goodsReceivalLine.Element("TransactionId").Value),
-                        PurchaseOrderId = goodsReceivalLine.Element("PurchaseOrderId").Value,
-                        PurchaseOrderLineId = int.Parse(goodsReceivalLine.Element("PurchaseOrderLineId").Value),
-                        ExtProductId = int.Parse(goodsReceivalLine.Element("ExtProductId").Value),
+                        TransactionId = transactionId,
+                        PurchaseOrderId = putaway.Element("PURCHASEORDERID").Value,
+                        PurchaseOrderLineId = int.Parse(putaway.Element("PURCHASEORDERLINEID").Value),
+                        ExtProductId = int.Parse(putaway.Element("EXTPRODUCTID").Value),
                         Quantity = decimal.Parse(
-                            goodsReceivalLine.Element("Quantity").Value, 
+                            putaway.Element("ACTQUANTITY").Value,
                             System.Globalization.CultureInfo.InvariantCulture
                         )
                     });
@@ -69,7 +92,6 @@ namespace WebStoreElementLogic.Controllers
 
                 return pgBodies.ToArray();
             }
-
         }
     }
 }

@@ -39,7 +39,7 @@ namespace WebStoreElementLogic.Controllers
             // Update database with PG info
             foreach (var receipt in receipts)
             {
-                await _inboundService.Update(receipt.TransactionId);
+                await _inboundService.Update(receipt.PurchaseOrderId);
                 Console.WriteLine($"Got PG from EManager: {receipt.ExtProductId}");
             }
 

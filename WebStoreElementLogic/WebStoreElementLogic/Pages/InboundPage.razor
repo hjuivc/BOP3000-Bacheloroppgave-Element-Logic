@@ -128,11 +128,12 @@
             .WithUrl(NavigationManager.ToAbsoluteUri("/EManagerHub"))
             .Build();
 
-        _hubConnection.On<PGBody[]>("PlacedGoods", (PGBody[] data) =>
+        _hubConnection.On<PGBody[]>("PlacedGoods", async (PGBody[] data) =>
         {
             // Update processed inbound orders (UI only!)
             string msg = data[0].ToString();
-            JSRuntime.InvokeVoidAsync("alert", $"Got some data from eManager:\n{msg}");
+            await JSRuntime.InvokeVoidAsync("alert", $"Got some data from eManager:\n{msg}");
+            await RefreshInboundList();
             StateHasChanged();
         });
 
@@ -148,16 +149,22 @@
             FilteredProducts = FetchedProducts;
             Products = FilteredProducts.ToList();
 
-            inbounds = await InboundService.GetUnfinishedInbounds();
-            
+            await RefreshInboundList();
+
         }
         catch (Exception e)
         {
             // NoConnection = true;
         }
 
+        StateHasChanged();
         // Wait for signalR update form endpoint
         await _hubConnection.StartAsync();
+    }
+
+    public async Task RefreshInboundList()
+    {
+        inbounds = await InboundService.GetUnfinishedInbounds();
     }
 
     // TODO: consider adding to default base class
@@ -188,5 +195,6 @@
         int transactionId = await InboundService.GetTransactionId(nextPurchaseOrderId);
 
         await EManagerService.GoodsReceival(FilteredProducts[index], Count, nextPurchaseOrderId, transactionId);
+        await RefreshInboundList();
     }
 }

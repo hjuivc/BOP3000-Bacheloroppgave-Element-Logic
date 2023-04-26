@@ -112,13 +112,15 @@ namespace WebStoreElementLogic.Data
             }
         }
 
-        public Task<int> Update(int transactionId)
+        public Task<string> Update(string purchaseOrderId)
         {
             _dapperService.Execute
-                ($"UPDATE Inbound SET Status = 1 WHERE TransactionId = @TransactionId",
+                ($"UPDATE Inbound SET Status = 1 WHERE PurchaseOrderId = {purchaseOrderId}",
                 null, commandType: CommandType.Text);
 
-            return Task.FromResult(transactionId);
+            Console.WriteLine($"Updated {purchaseOrderId}");
+
+            return Task.FromResult(purchaseOrderId);
         }
 
     }

@@ -7,6 +7,8 @@ using WebStoreElementLogic.Interfaces;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using WebStoreElementLogic.Entities;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace WebStoreElementLogic.Data
 {
@@ -71,5 +73,53 @@ namespace WebStoreElementLogic.Data
                 null, commandType: CommandType.Text);
             return Task.FromResult(transactionId);
         }
+
+        public async Task<List<Inbound>> GetUnfinishedInbounds()
+        {
+            var sql = "SELECT InboundId, TransactionId, PurchaseOrderId, PurchaseOrderLineId, ExtProductId AS ProductId, Quantity, Status FROM Inbound WHERE Status = 0";
+            using (var connection = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]))
+            {
+                try
+                {
+                    await connection.OpenAsync();
+                    var inbounds = await connection.QueryAsync<Inbound>(sql);
+                    return inbounds.ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return null;
+                }
+            }
+        }
+
+        public async Task<Inbound> GetInbound(int transactionId)
+        {
+            var sql = "SELECT * FROM [Inbound] WHERE TransactionId = @TransactionId";
+            using (var connection = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]))
+            {
+                try
+                {
+                    await connection.OpenAsync();
+                    var inbound = await connection.QuerySingleOrDefaultAsync<Inbound>(sql);
+                    return inbound;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return null;
+                }
+            }
+        }
+
+        public Task<int> Update(int transactionId)
+        {
+            _dapperService.Execute
+                ($"UPDATE Inbound SET Status = 1 WHERE TransactionId = @TransactionId",
+                null, commandType: CommandType.Text);
+
+            return Task.FromResult(transactionId);
+        }
+
     }
 }

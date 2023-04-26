@@ -7,7 +7,9 @@ namespace WebStoreElementLogic.Interfaces
         public Task<int> Create(Product product, double qty);
         //Task<int> Update(Product product);
         public Task<int> GetNextID();
-        //Task<List<Product>> GetProduct(int Id);
+        public Task<Inbound> GetInbound(int transactionId);
         public Task<int> GetTransactionId(int nextPurchaseOrderId);
+
+        public Task<List<Inbound>> GetUnfinishedInbounds();
     }
 }

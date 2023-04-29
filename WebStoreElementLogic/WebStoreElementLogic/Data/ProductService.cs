@@ -170,7 +170,7 @@ namespace WebStoreElementLogic.Data
 
         public async Task<List<Product>> GetProducts(string searchTerm, int pageIndex = 1, int pageSize = 10)
         {
-            var sql = $"SELECT p.ExtProductId AS Id, p.ProductName AS Name, p.ProductDesc AS Descr, p.ImageId AS URL, Stock.Quantity AS QTY FROM[Products] p LEFT OUTER JOIN[Stock] ON p.ExtProductId = Stock.ExtProductId WHERE p.ProductName LIKE @searchTerm ORDER BY p.ProductName";
+            var sql = $"SELECT p.ExtProductId AS Id, p.ProductName AS Name, p.ProductDesc AS Descr, p.ImageId AS URL, CAST(Stock.Quantity AS INT) AS QTY FROM[Products] p LEFT OUTER JOIN[Stock] ON p.ExtProductId = Stock.ExtProductId WHERE p.ProductName LIKE @searchTerm ORDER BY p.ProductName";
 
             using (var connection = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]))
             {

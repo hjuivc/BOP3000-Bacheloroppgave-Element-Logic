@@ -48,9 +48,23 @@
     </div>
 </div>
 
+@if (Showquant)
+{
+    <QuantityModal Product="@FilteredProducts[SelectedIndex]"
+              Index="SelectedIndex"
+              OnCancelEvent="() => Showquant = false" />
+}
+
+
 @code {
 
+    public override void SelectProduct(Product product)
+    {
+        base.SelectProduct(product);
+        Showquant = true;
+    }
 
+    private bool Showquant = false;
     private bool ShowList = false;
     private bool ShowSuccess = false;
 

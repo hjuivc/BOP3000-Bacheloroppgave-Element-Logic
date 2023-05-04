@@ -4,6 +4,8 @@ using WebStoreElementLogic.Interfaces;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using WebStoreElementLogic.Entities;
+using System;
+using WebStoreElementLogic.Pages;
 
 namespace WebStoreElementLogic.Data
 {
@@ -168,14 +170,14 @@ namespace WebStoreElementLogic.Data
 
         public async Task<List<Product>> GetProducts(string searchTerm, int pageIndex = 1, int pageSize = 10)
         {
-            var sql = $"SELECT ExtProductId AS Id, ProductName AS Name, ProductDesc AS Descr, ImageId AS URL FROM [Products] WHERE ProductName LIKE @searchTerm ORDER BY ProductName";
+            var sql = $"SELECT p.ExtProductId AS Id, p.ProductName AS Name, p.ProductDesc AS Descr, p.ImageId AS URL, CAST(Stock.Quantity AS INT) AS QTY FROM[Products] p LEFT OUTER JOIN[Stock] ON p.ExtProductId = Stock.ExtProductId WHERE p.ProductName LIKE @searchTerm ORDER BY p.ProductName";
 
             using (var connection = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]))
             {
                 try
                 {
                     await connection.OpenAsync();
-                    var products = await connection.QueryAsync<Product>(sql, new { searchTerm = $"%{searchTerm}%" });
+                    var products = await connection.QueryAsync<Product>(sql, new { searchTerm = $"%{searchTerm}%", pageIndex = pageIndex, pageSize = pageSize });
                     return products.ToList();
                 }
                 catch (Exception ex)

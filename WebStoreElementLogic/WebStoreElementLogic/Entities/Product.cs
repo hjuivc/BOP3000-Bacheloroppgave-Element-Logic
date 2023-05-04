@@ -9,7 +9,7 @@ namespace WebStoreElementLogic.Entities
         public int Id { get; set; }
         [Key]
         public string? URL { get; set; }
-        public int Qty { get; set; } = 20;
+        public decimal Qty { get; set; }
 
         public Product(int number)
         {
@@ -26,7 +26,7 @@ namespace WebStoreElementLogic.Entities
 
 
 
-        public Product(string? name, string? descr, int id, string url, int qty)
+        public Product(string? name, string? descr, int id, string url, decimal qty)
 
         {
             Name = name;

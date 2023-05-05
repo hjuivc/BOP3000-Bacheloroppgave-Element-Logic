@@ -1,4 +1,8 @@
 ﻿@using Entities
+@using Interfaces
+@using Data
+@inject IEManagerService EManagerService
+@inject IOrderService OrderService
 
 @if (DisplayCheckout)
 {
@@ -101,17 +105,37 @@
         return count;
     }
 
-    public void SendCart()
+    public async void SendCart()
     {
-        CartDict.Clear();
-        DisplayCheckout = false;
-        DisplaySuccess = true;
-        // Print all products in the cart by looping through the dictionary
-        foreach (KeyValuePair<Product, int> entry in CartDict)
-{
-            Console.WriteLine(entry.Key.Name + " " + entry.Value);
+        int nextOrderId = await OrderService.GetNextID();
+        // Upload the order to the database
+        int[] data = await OrderService.Create(CartDict);
+
+        int pickListId = data[0];
+        int transactionId = data[1];
+
+        List<PicklistLine> lines = new List<PicklistLine>();
+        for(int i = 0;i < CartDict.Count;i++)
+        {
+            lines.Add(new PicklistLine
+            {
+                TransactionId = transactionId,
+                ExtPicklistId = $"{pickListId}",
+                ExtOrderId = nextOrderId + i,
+                ExtProductId = $"{CartDict.Keys.ElementAt(i)}",
+                Quantity = CartDict.Values.ElementAt(i)
+            });
         }
 
+        await EManagerService.ImportPicklist(lines);
+
+        CartDict.Clear();
+
+
+
+        DisplayCheckout = false;
+        DisplaySuccess = true;
+        StateHasChanged();
     }
 
     public void RemoveFromCart(int index)

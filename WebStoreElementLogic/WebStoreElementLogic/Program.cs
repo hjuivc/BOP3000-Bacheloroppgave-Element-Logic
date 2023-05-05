@@ -27,6 +27,7 @@ internal class Program
         builder.Services.AddTransient<DapperService>();
 
         builder.Services.AddTransient<IInboundService, InboundService>();
+        builder.Services.AddTransient<IOrderService, OrderService>();
 
         builder.Services.AddTransient<IDbConnection>(x => new SqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
 

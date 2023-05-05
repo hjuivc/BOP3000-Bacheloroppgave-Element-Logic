@@ -36,6 +36,7 @@ namespace WebStoreElementLogic.Controllers
             
             PGBody[] receipts = PGBody.FromXml(xml);
 
+            // TODO: change to no loop
             // Update database with PG info
             foreach (var receipt in receipts)
             {
@@ -50,12 +51,80 @@ namespace WebStoreElementLogic.Controllers
             return Ok();
         }
 
+        [HttpPost("ConfirmedPick")]
+        public async Task<IActionResult> ConfirmedPick()
+        {
+            Console.WriteLine("Message recieved form EManager:\n");
+
+            using var reader = new StreamReader(Request.Body);
+            string xml = await reader.ReadToEndAsync();
+
+            Console.WriteLine(xml);
+            return Ok();
+
+
+            PGBody[] receipts = PGBody.FromXml(xml);
+
+            // Update database with PG info
+            foreach (var receipt in receipts)
+            {
+                await _inboundService.Update(receipt.PurchaseOrderId);
+                Console.WriteLine($"Got PG from EManager: {receipt.ExtProductId}");
+            }
+
+            // Alert connected clients TODO: replace 10 with actual data
+            await _hubContext.Clients.All.SendAsync("ConfirmedPicklist", receipts);
+
+
+            return Ok();
+        }
+
         [HttpGet("abc")]
         public async Task<IActionResult> Test()
         {
             Console.WriteLine("Something happened!");
 
             return Ok();
+        }
+
+        public class CPBody
+        {
+            public int TransactionId { get; set; }
+            public string PurchaseOrderId { get; set; }
+            public int PurchaseOrderLineId { get; set; }
+            public int ExtProductId { get; set; }
+            public decimal Quantity { get; set; }
+
+            public override string ToString()
+            {
+                return $"PrdouctId: {ExtProductId}\nQuantity: {Quantity}";
+            }
+
+            // TODO: hvis transaction id ikke er int, så funker ikke parsen. Bruk try/catch
+            public static CPBody[] FromXml(string xml)
+            {
+                XDocument doc = XDocument.Parse(xml);
+                var transactionId = int.Parse(doc.Root.Element("TRANSACTIONID").Value);
+                var putaways = doc.Root.Elements("PUTAWAY");
+                List<CPBody> cpBodies = new List<CPBody>();
+
+                foreach (var putaway in putaways)
+                {
+                    cpBodies.Add(new CPBody
+                    {
+                        TransactionId = transactionId,
+                        PurchaseOrderId = putaway.Element("PURCHASEORDERID").Value,
+                        PurchaseOrderLineId = int.Parse(putaway.Element("PURCHASEORDERLINEID").Value),
+                        ExtProductId = int.Parse(putaway.Element("EXTPRODUCTID").Value),
+                        Quantity = decimal.Parse(
+                            putaway.Element("ACTQUANTITY").Value,
+                            System.Globalization.CultureInfo.InvariantCulture
+                        )
+                    });
+                }
+
+                return cpBodies.ToArray();
+            }
         }
 
         // Consider as data class?
@@ -72,6 +141,7 @@ namespace WebStoreElementLogic.Controllers
                 return $"PrdouctId: {ExtProductId}\nQuantity: {Quantity}";
             }
 
+            // TODO: hvis transaction id ikke er int, så funker ikke parsen. Bruk try/catch
             public static PGBody[] FromXml(string xml)
             {
                 XDocument doc = XDocument.Parse(xml);

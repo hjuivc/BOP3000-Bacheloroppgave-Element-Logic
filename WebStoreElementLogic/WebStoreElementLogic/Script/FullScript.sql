@@ -23,14 +23,15 @@ GO
 -- Create table Order
 CREATE TABLE [dbo].[Order](
 	[ExtPickListId] [varchar](50) NOT NULL,
-	[ExtOrderId] [nchar](10) NOT NULL,
+	[ExtOrderId] [int] IDENTITY(1,1) NOT NULL,
 	[ExtOrderLineId] [int] NOT NULL,
 	[ExtProductId] [varchar](50) NOT NULL,
 	[Quantity] [decimal](18, 3) NOT NULL,
 	[Status] [bit] NOT NULL,
+	[TransactionId] [int] NOT NULL
  CONSTRAINT [PK_Order] PRIMARY KEY CLUSTERED 
 (
-	[ExtPickListId] ASC
+	[ExtOrderId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -131,3 +132,19 @@ GO
 
 -- Updated 18.02.2023
 
+-- Stored procedure for addOrder
+CREATE PROCEDURE [dbo].[spAddOrder]
+(
+	@TransactionId int,
+	@ExtPickListId varchar(50),
+	@ExtOrderLineId int,
+	@ExtProductId varchar(50),
+	@Quantity decimal (18,3)
+)
+AS
+BEGIN
+
+    INSERT INTO [dbo].[Order](ExtPickListId, ExtOrderLineId, ExtProductId, Quantity, Status, TransactionId)
+    VALUES (@ExtPickListId, @ExtOrderLineId, @ExtProductId, @Quantity, 0, @TransactionId)
+	SELECT SCOPE_IDENTITY() AS ExtOrderId;
+END

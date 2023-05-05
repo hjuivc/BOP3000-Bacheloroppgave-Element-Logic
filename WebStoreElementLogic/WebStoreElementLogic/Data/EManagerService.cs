@@ -143,6 +143,7 @@ public class EManagerService : IEManagerService
         if (req != null)
         {
             int status = ((int)req.StatusCode);
+            Console.WriteLine(status.ToString());
             return status < 300 && status >= 200;
         }
         else
@@ -151,14 +152,6 @@ public class EManagerService : IEManagerService
         }
     }
 
-    public class PicklistLine
-    {
-        public int TransactionId { get; set; }
-        public string ExtPicklistId { get; set; }
-        public string ExtOrderId { get; set; }
-        public string ExtProductId { get; set; }
-        public decimal Quantity { get; set; }
-    }
 
 
     private static AuthenticationHeaderValue CreateAuthHeader(string username, string password)

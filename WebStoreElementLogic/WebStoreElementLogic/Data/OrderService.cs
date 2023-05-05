@@ -75,7 +75,7 @@ namespace WebStoreElementLogic.Data
             }
         }
 
-        public async Task Create(Dictionary<Product, int> CartDict)
+        public async Task<int[]> Create(Dictionary<Product, int> CartDict)
         {
             int pickListId = await GetNextPickListId();
             int transactionId = await GetNextTransactionId();
@@ -104,6 +104,9 @@ namespace WebStoreElementLogic.Data
                 // Re-throw the exception so the calling code can handle it
                 throw;
             }
+
+            // Return to be used in eManager api call
+            return new int[] { pickListId, transactionId };
         }
 
         /*

@@ -15,11 +15,13 @@ namespace WebStoreElementLogic.Controllers
     {
         private readonly IHubContext<EManagerHub> _hubContext;
         private readonly IInboundService _inboundService;
+        private readonly IOrderService _orderService;
 
-        public EManagerController(IHubContext<EManagerHub> hubContext, IInboundService inboundService)
+        public EManagerController(IHubContext<EManagerHub> hubContext, IInboundService inboundService, IOrderService orderService)
         {
             _hubContext = hubContext;
             _inboundService = inboundService;
+            _orderService = orderService;
         }
 
 
@@ -44,7 +46,6 @@ namespace WebStoreElementLogic.Controllers
                 Console.WriteLine($"Got PG from EManager: {receipt.ExtProductId}");
             }
 
-            // Alert connected clients TODO: replace 10 with actual data
             await _hubContext.Clients.All.SendAsync("PlacedGoods", receipts);
             
 
@@ -60,6 +61,7 @@ namespace WebStoreElementLogic.Controllers
             string xml = await reader.ReadToEndAsync();
 
             Console.WriteLine(xml);
+
             return Ok();
 
 

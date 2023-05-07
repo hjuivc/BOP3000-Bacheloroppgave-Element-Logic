@@ -5,6 +5,8 @@
 @using WebStoreElementLogic.Interfaces;
 @inject IProductService ProductService;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
+@inject HttpClient HttpClient;
+@inject IEManagerService EManagerService;
 @inherits ProductComponentBase
 <title>Order</title>
 <Cart CartDict="CartDict" Products="Products">
@@ -98,6 +100,7 @@
         // method for showing productname from database into page
         try
         {
+
             int pageSize = 25;
             // Get the current page number from the query string
             int pageIndex = GetPageIndexFromQueryString();

@@ -5,6 +5,8 @@
 @using WebStoreElementLogic.Interfaces;
 @using Microsoft.JSInterop
 @inject IProductService ProductService;
+@inject HttpClient HttpClient;
+@inject IEManagerService EManagerService;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
 @inherits ProductComponentBase
 <title>Product</title>
@@ -146,6 +148,18 @@ else
     {
         if (AddNew)
         {
+            bool success = await EManagerService.ProductInformation(product);
+
+            if(!success)
+            {
+                // Do something
+                Console.WriteLine("Could not upload to EManager");
+            }
+            else
+            {
+                Console.WriteLine("Success uploading");
+            }
+
             // Add product to db and array
             await ProductService.Create(product);
             Products.Add(product);

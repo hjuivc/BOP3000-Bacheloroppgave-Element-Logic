@@ -1,8 +1,8 @@
 -- Create Database
--- CREATE DATABASE [Element Logic (Web Shop)]
+CREATE DATABASE [Element Logic (Web Shop)]
 
 -- Using the new database
-USE [elementlogicwebshop]
+USE [Element Logic (Web Shop)]
 
 -- Create table Inbound
 CREATE TABLE [dbo].[Inbound](
@@ -23,15 +23,14 @@ GO
 -- Create table Order
 CREATE TABLE [dbo].[Order](
 	[ExtPickListId] [varchar](50) NOT NULL,
-	[ExtOrderId] [int] IDENTITY(1,1) NOT NULL,
+	[ExtOrderId] [nchar](10) NOT NULL,
 	[ExtOrderLineId] [int] NOT NULL,
 	[ExtProductId] [varchar](50) NOT NULL,
 	[Quantity] [decimal](18, 3) NOT NULL,
 	[Status] [bit] NOT NULL,
-	[TransactionId] [int] NOT NULL
  CONSTRAINT [PK_Order] PRIMARY KEY CLUSTERED 
 (
-	[ExtOrderId] ASC
+	[ExtPickListId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -57,18 +56,6 @@ CREATE TABLE [dbo].[Stock](
  CONSTRAINT [PK_Stock] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-
--- Create table Users
-CREATE TABLE [dbo].[Users](
-	[userId] [int] IDENTITY(1,1) NOT NULL,
-	[userName] [nvarchar](100) NOT NULL,
-	[password] [nvarchar](200) NOT NULL,
-CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED
-(
-	[userId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -100,8 +87,8 @@ ALTER TABLE [dbo].[Stock] CHECK CONSTRAINT [FK_Stock_Products]
 GO
 
 -- Creating a user for this database. Password is encrypted.
--- CREATE LOGIN [admin] WITH PASSWORD=N'JNI+b4ISHVuyAhbqns+ewlDx+5GV9cZaVbR4PtYGsaQ=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
--- GO
+CREATE LOGIN [admin] WITH PASSWORD=N'JNI+b4ISHVuyAhbqns+ewlDx+5GV9cZaVbR4PtYGsaQ=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+GO
 
 -- Creating Stored Procedures for Add Products
 CREATE PROCEDURE [dbo].[spAddProducts]
@@ -132,20 +119,6 @@ SET [ProductName]			= @ProductName,
 WHERE [ExtProductId]		= @ExtProductId
 GO
 
--- Creating Stored Procedure for User
-CREATE PROCEDURE [dbo].[spAddUsers]
-                 @userName nvarchar(100),
-                 @password nvarchar(200)
-                     
-AS
-BEGIN
-    INSERT INTO dbo.Users
-    VALUES (@userName, @password)
-    SELECT SCOPE_IDENTITY() AS userId;
-END
-GO
-	
-
 -- Test- data for the Products table
 INSERT INTO dbo.Products(ExtProductId,ProductName,ProductDesc,ImageId)
 VALUES ('1', 'Rab Torque Pant', 'Hiking pants', ''),
@@ -156,23 +129,5 @@ VALUES ('1', 'Rab Torque Pant', 'Hiking pants', ''),
        
 GO
 
--- Updated 02.04.2023
+-- Updated 18.02.2023
 
-
-
--- Stored procedure for addOrder
-CREATE PROCEDURE [dbo].[spAddOrder]
-(
-	@TransactionId int,
-	@ExtPickListId varchar(50),
-	@ExtOrderLineId int,
-	@ExtProductId varchar(50),
-	@Quantity decimal (18,3)
-)
-AS
-BEGIN
-
-    INSERT INTO [dbo].[Order](ExtPickListId, ExtOrderLineId, ExtProductId, Quantity, Status, TransactionId)
-    VALUES (@ExtPickListId, @ExtOrderLineId, @ExtProductId, @Quantity, 0, @TransactionId)
-	SELECT SCOPE_IDENTITY() AS ExtOrderId;
-END

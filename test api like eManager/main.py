@@ -1,9 +1,6 @@
 from fastapi import FastAPI, Request, HTTPException, Response
-from fastapi.middleware import Middleware
-from starlette.middleware.base import BaseHTTPMiddleware
 
 import xmltodict
-import json
 
 def isXML(req):
     return req.headers.get("Content-Type") == "application/xml"
@@ -13,20 +10,9 @@ def checkForField(data: dict, field: str):
         return data[field]
     except:
         raise HTTPException(status_code=400, detail=f"No {field} was given")
-
     
-class LoggingMiddleware(BaseHTTPMiddleware):
-    async def dispatch(self, request: Request, call_next) -> Response:
-        print(f"Request: {request.method} | {request.url.path}")
-        print(f"Headers: {json.dumps(dict(request.headers), indent=4)}")
 
-
-        response = await call_next(request)
-
-        return response
-
-
-app = FastAPI(middleware=[Middleware(LoggingMiddleware)])
+app = FastAPI()
 
 
 @app.post("/api/products/import")

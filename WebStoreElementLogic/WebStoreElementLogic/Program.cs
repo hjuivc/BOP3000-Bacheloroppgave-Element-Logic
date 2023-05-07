@@ -9,14 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebStoreElementLogic.Data;
-using WebStoreElementLogic.Hubs;
 using WebStoreElementLogic.Interfaces;
 using WebStoreElementLogic.Account;
 using WebStoreElementLogic.Shared;
 
-using Microsoft.AspNetCore.Server.Kestrel.Core;
-using System.Net;
-using AppContext = WebStoreElementLogic.Data.AppContext;
 
 namespace MyNamespace
 {
@@ -25,45 +21,6 @@ namespace MyNamespace
         public IConfiguration Configuration { get; }
 
         public Startup(IConfiguration configuration)
-        // Add services to the container.
-        builder.Services.AddRazorPages();
-        builder.Services.AddServerSideBlazor();
-        builder.Services.AddSignalR();
-        builder.Services.AddControllers();
-
-        builder.Services.AddScoped<HttpClient>();
-        builder.Services.AddScoped<IEManagerService, EManagerService>();
-
-        builder.Services.AddTransient<IProductService, ProductService>();
-        builder.Services.AddTransient<DapperService>();
-
-        builder.Services.AddTransient<IInboundService, InboundService>();
-        builder.Services.AddTransient<IOrderService, OrderService>();
-
-        builder.Services.AddTransient<IDbConnection>(x => new SqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-        builder.Services.AddScoped<IDapperService, DapperService>();
-
-        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-        builder.Services.AddDbContext<AppContext>(options => options.UseSqlServer(connectionString));
-        builder.WebHost.ConfigureKestrel(options =>
-        {
-            options.Listen(IPAddress.Any, 5000, listenOptions =>
-            {
-                listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
-            });
-            options.Listen(IPAddress.Any, 7001, listenOptions =>
-            {
-                listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
-                listenOptions.UseHttps();
-            });
-        });
-
-        var app = builder.Build();
-
-        // Configure the HTTP request pipeline.
-        if (!app.Environment.IsDevelopment())
         {
             Configuration = configuration;
         }
@@ -76,8 +33,6 @@ namespace MyNamespace
 
             // Add distributed memory cache
             services.AddDistributedMemoryCache();
-        //app.UseHttpsRedirection();
-        app.UseStaticFiles();
 
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IUserService, UserService>();
@@ -142,13 +97,6 @@ namespace MyNamespace
                 endpoints.MapFallbackToPage("/_Host");
             });
         }
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllers();
-            endpoints.MapHub<EManagerHub>("/EManagerHub");
-            endpoints.MapBlazorHub();
-            endpoints.MapFallbackToPage("/_Host");
-        });
 
     }
 

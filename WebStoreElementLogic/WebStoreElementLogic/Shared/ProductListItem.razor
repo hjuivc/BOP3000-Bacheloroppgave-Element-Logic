@@ -1,8 +1,8 @@
 ﻿@using WebStoreElementLogic.Data;
 @using WebStoreElementLogic.Entities;
 
-<!-- Removed "mx-4" -->
-<section class='d-flex flex-row my-1 bg-light rounded border @(Selected? "border-success selected" : "border-light")' style="cursor: pointer;" @onclick="SelectProduct">
+
+<section class='d-flex flex-row shadow my-2 bg-light p-2 rounded border @(Selected? "border-success selected" : "border-light")' style="background-color: #34495e;" @onclick="SelectProduct">
     <img src="@Info.URL" style="width: 10vmin; height: 10vmin;" />
     <div class="ms-4 mt-lg-3 mt-0">
         <h3 class="text-truncate" style="max-width: 30vw">@Info.Name</h3>

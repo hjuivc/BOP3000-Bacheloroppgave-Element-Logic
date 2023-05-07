@@ -15,32 +15,8 @@
 @inject IJSRuntime JSRuntime;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
 @inherits ProductComponentBase
-<title>Inbound</title>
-<div class="d-flex flex-row mx-5 rounded mb-3">
-    <div class="container-fluid">
-        <div class="position-relative">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search.." id="txtSearch" name="search"
-                       autocomplete="off" @bind="SearchTerm" @bind:event="oninput">
-                <div class="input-group-append">
-                    <span class="input-group-text bg-transparent border-0"><i class="fa fa-search fa-lg"></i></span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- List- or GridView -->
-    <button @onclick="() => ShowList = !ShowList" class="btn btn-custom" style="margin-left: auto; padding-left: 0.75rem; padding-right: 0.75rem;">
-        @if (ShowList)
-        {
-            <i class="fa fa-th"></i>
-        }
-        else
-        {
-            <i class="fa fa-list"></i>
-        }
-    </button>
-</div>
 
+<title>Inbound</title>
 <div class="container-fluid">
     <div class="row">
         <div class="@(inbounds != null ? "col-lg-9" : "col-lg-12")">
@@ -84,27 +60,6 @@
         </div>
         @if (inbounds != null)
         {
-            if (!ShowList)
-            {
-                <ProductTile 
-                    Product="@product"
-                    Index="@FilteredProducts.IndexOf(product)"
-                    OnSelected="(index) => SelectProduct(FilteredProducts[index])"
-                    Selected="@(SelectedIndex == FilteredProducts.IndexOf(product))" />
-            }
-            else
-            {
-                <ProductListItem 
-                    Info="@product"
-                    Index="@FilteredProducts.IndexOf(product)"
-                    OnSelected="(index) => SelectProduct(FilteredProducts[index])"
-                    Selected="@(SelectedIndex == FilteredProducts.IndexOf(product))" />
-
-            }
-        }
-        @if (Products == null)
-        {
-            <h3>Loading Products...</h3>
             <div class="col-lg-3">
                 <div class="container-fluid">
                     <h4>Unfinished Inbounds</h4>
@@ -121,11 +76,10 @@
 
 @if (ShowModal)
 {
-    <ProductModal 
-        Product="@FilteredProducts[SelectedIndex]"
-        Index="SelectedIndex"
-        OnCancelEvent="() => ShowModal = false"
-        OnAddEvent="Checkout" />
+    <ProductModal Product="@FilteredProducts[SelectedIndex]"
+              Index="SelectedIndex"
+              OnCancelEvent="() => ShowModal = false"
+              OnAddEvent="Checkout" />
 }
 
 @if (ShowSuccess)
@@ -138,7 +92,7 @@
             <span class="text-info text-decoration-underline">
                 @FilteredProducts[SelectedIndex].Name
             </span>
-             x @Count
+            x @Count
             <br>
             Into the system
         </p>
@@ -215,7 +169,7 @@
     // TODO: consider adding to default base class
     public async ValueTask DisposeAsync()
     {
-        if(_hubConnection != null)
+        if (_hubConnection != null)
         {
             await _hubConnection.DisposeAsync();
         }

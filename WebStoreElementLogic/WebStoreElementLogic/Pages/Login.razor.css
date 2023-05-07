@@ -5,3 +5,34 @@
     align-items: center;
     height: 70vh;
 }
+﻿/* Login */
+
+.form-control {
+    border: none !important;
+}
+
+.form-check-input {
+    background-color: #34495E !important;
+}
+
+h5 {
+    color: #34495E;
+}
+
+.fa-user {
+    color: #34495E !important;
+    border: none !important;
+}
+
+.fa-lock {
+    color: #34495E !important;
+    border: none !important;
+}
+
+.btn-login {
+    color: #fff !important;
+    background-color: #B9132F !important;
+    pull-right !important;
+}
+
+/* End of login */

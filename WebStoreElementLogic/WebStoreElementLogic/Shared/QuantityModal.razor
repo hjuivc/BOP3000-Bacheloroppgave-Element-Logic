@@ -13,25 +13,15 @@
                             <p>Quantity: @Product.Qty</p>
                         </div>
                         <div class="col-lg-4 col-md-4">
-                            <img src="@Product.URL" class="img-fluid" alt="@Product.Name">
+                            <img src="@Product.URL" class="img-fluid" alt="productimage">
                         </div>
                     </div>
-                    <div class="d-flex justify-content-around mt-3">
-                        <label>1</label>
-                        <input type="range" class="form-range custom-range" style="width:80%;" min="1" max="@Product.Qty" step="1" id="amountRange" @bind="amount" @bind:event="oninput" />
-                        <label>@Product.Qty</label>
-                    </div>
-                    <div class="input-group justify-content-center mb-3 mt-3">
-                            <span class="input-group-text" id="basic-addon1">Amount</span>
-                            <input type="number" class="col-sm-2" @bind="amount" @bind:event="oninput" aria-describedby="basic-addon1">
-                    </div>
                     @if (amount > Product.Qty || amount < 1)
-                    {                    
-                        <p class="text-center fw-bold">Amount selected is not available</p>                     
+                    {
+                        <p class="text-center fw-bold">Product selected not in stock</p>
                     }
                     <div class="d-flex justify-content-around mt-3">
                         <button type="button" class="btn btn-neutral justify-content-start" @onclick="() => OnCancelEvent.InvokeAsync()">Close</button>
-                        <button type="button" class="btn btn-positive justify-content-end" @onclick="AddToCart">Add to cart</button>
                     </div>
                     @if (quant)
                     {

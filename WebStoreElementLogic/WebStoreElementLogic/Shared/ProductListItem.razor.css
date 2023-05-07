@@ -1,5 +1,6 @@
 .selected {
     /*box-shadow: 5px 5px 5px 5px rgba(20, 200, 20, 0.8);*/
+    outline: 1px solid black !important;
 }
 
 img {
@@ -8,9 +9,11 @@ img {
 }
 
 section {
-    transition: all 0.3s;
+    background-color: transparent !important;
+    border-width: 0px !important;
 }
 
 section:hover {
-    /*transform: scale(1.05);*/
+    /*border: 1px solid black !important;*/
+    box-shadow: 0 0 5px black !important;
 }

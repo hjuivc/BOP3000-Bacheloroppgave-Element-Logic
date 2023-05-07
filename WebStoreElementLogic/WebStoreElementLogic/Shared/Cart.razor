@@ -1,4 +1,8 @@
 ﻿@using Entities
+@using Interfaces
+@using Data
+@inject IEManagerService EManagerService
+@inject IOrderService OrderService
 
 @if (DisplayCheckout)
 {
@@ -70,7 +74,7 @@
                           OnRemove="RemoveFromCart" />
                 }
             </ul>
-            <div>
+            <div style="margin-bottom: 25px;">
                 <button @onclick="() => { if (CartDict.Count > 0) DisplayCheckout = true; }" class="btn btn-positive mb-4">Send Storage</button>
             </div>
         </div>
@@ -101,11 +105,37 @@
         return count;
     }
 
-    public void SendCart()
+    public async void SendCart()
     {
+        int nextOrderId = await OrderService.GetNextID();
+        // Upload the order to the database
+        int[] data = await OrderService.Create(CartDict);
+
+        int pickListId = data[0];
+        int transactionId = data[1];
+
+        List<PicklistLine> lines = new List<PicklistLine>();
+        for(int i = 0;i < CartDict.Count;i++)
+        {
+            lines.Add(new PicklistLine
+            {
+                TransactionId = transactionId,
+                ExtPicklistId = $"{pickListId}",
+                ExtOrderId = nextOrderId + i,
+                ExtProductId = $"{CartDict.Keys.ElementAt(i)}",
+                Quantity = CartDict.Values.ElementAt(i)
+            });
+        }
+
+        await EManagerService.ImportPicklist(lines);
+
         CartDict.Clear();
+
+
+
         DisplayCheckout = false;
         DisplaySuccess = true;
+        StateHasChanged();
     }
 
     public void RemoveFromCart(int index)

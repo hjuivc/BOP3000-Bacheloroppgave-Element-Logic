@@ -4,49 +4,72 @@
 @using WebStoreElementLogic.Data;
 @using WebStoreElementLogic.Entities;
 @using WebStoreElementLogic.Interfaces;
+@using Microsoft.AspNetCore.SignalR.Client;
+@using Microsoft.AspNetCore.Mvc;
+@using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
+@using Microsoft.AspNetCore.SignalR;
+@using WebStoreElementLogic.Hubs;
+@using static WebStoreElementLogic.Controllers.EManagerController;
 @inject IProductService ProductService;
+@inject IEManagerService EManagerService;
+@inject IInboundService InboundService;
+@inject IJSRuntime JSRuntime;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
 @inherits ProductComponentBase
 
 <title>Inbound</title>
-<div class="d-flex flex-row mx-5 rounded mb-3">
-    <button @onclick="() => ShowList = !ShowList" class="btn btn-custom">
-        @if (ShowList)
-        {
-            <i class="fa fa-th"></i>
-        }
-        else
-        {
-            <i class="fa fa-list"></i>
-        }
-    </button>
-    <input placeholder="Search Product Names.." id="txtSearch" name="search" type="text" class="form-control ms-3"
-            @bind="SearchTerm" @bind:event="oninput">
-</div>
 <div class="container-fluid">
-    <div class="@(ShowList ? "mx-5" : "row")">
-        @foreach (Product product in FilteredProducts)
+    <div class="row">
+        <div class="@(inbounds != null ? "col-lg-9" : "col-lg-12")">
+            <div class="d-flex flex-row mx-5 rounded mb-3">
+                <button @onclick="() => ShowList = !ShowList" class="btn btn-custom">
+                    @if (ShowList)
+                    {
+                        <i class="fa fa-th"></i>
+                    }
+                    else
+                    {
+                        <i class="fa fa-list"></i>
+                    }
+                </button>
+                <input placeholder="Search Product Names.." id="txtSearch" name="search" type="text" class="form-control ms-3"
+                       @bind="SearchTerm" @bind:event="oninput">
+            </div>
+            <div class="@(ShowList ? "mx-5" : "row")">
+                @foreach (Product product in FilteredProducts)
+                {
+                    if (!ShowList)
+                    {
+                        <ProductTile Product="@product"
+                             Index="@FilteredProducts.IndexOf(product)"
+                             OnSelected="(index) => SelectProduct(FilteredProducts[index])"
+                             Selected="@(SelectedIndex == FilteredProducts.IndexOf(product))" />
+                    }
+                    else
+                    {
+                        <ProductListItem Info="@product"
+                                 Index="@FilteredProducts.IndexOf(product)"
+                                 OnSelected="(index) => SelectProduct(FilteredProducts[index])"
+                                 Selected="@(SelectedIndex == FilteredProducts.IndexOf(product))" />
+                    }
+                }
+                @if (Products == null)
+                {
+                    <h3>Loading Products...</h3>
+                }
+            </div>
+        </div>
+        @if (inbounds != null)
         {
-            if (!ShowList)
-            {
-                <ProductTile 
-                    Product="@product"
-                    Index="@FilteredProducts.IndexOf(product)"
-                    OnSelected="(index) => SelectProduct(FilteredProducts[index])"
-                    Selected="@(SelectedIndex == FilteredProducts.IndexOf(product))" />
-            }
-            else
-            {
-                <ProductListItem 
-                    Info="@product"
-                    Index="@FilteredProducts.IndexOf(product)"
-                    OnSelected="(index) => SelectProduct(FilteredProducts[index])"
-                    Selected="@(SelectedIndex == FilteredProducts.IndexOf(product))" />
-            }
-        }
-        @if (Products == null)
-        {
-            <h3>Loading Products...</h3>
+            <div class="col-lg-3">
+                <div class="container-fluid">
+                    <h4>Unfinished Inbounds</h4>
+                    @foreach (Inbound inbound in inbounds)
+                    {
+                        <p>ProductID:@inbound.ProductId ProductName x @inbound.Quantity</p>
+                    }
+                </div>
+            </div>
         }
     </div>
 </div>
@@ -54,11 +77,10 @@
 
 @if (ShowModal)
 {
-    <ProductModal 
-        Product="@FilteredProducts[SelectedIndex]"
-        Index="SelectedIndex"
-        OnCancelEvent="() => ShowModal = false"
-        OnAddEvent="Checkout" />
+    <ProductModal Product="@FilteredProducts[SelectedIndex]"
+              Index="SelectedIndex"
+              OnCancelEvent="() => ShowModal = false"
+              OnAddEvent="Checkout" />
 }
 
 @if (ShowSuccess)
@@ -71,7 +93,7 @@
             <span class="text-info text-decoration-underline">
                 @FilteredProducts[SelectedIndex].Name
             </span>
-             x @Count
+            x @Count
             <br>
             Into the system
         </p>
@@ -95,8 +117,25 @@
 
     private int Count = 0;
 
+    private HubConnection _hubConnection;
+
+    private List<Inbound> inbounds;
+
     protected override async Task OnInitializedAsync()
     {
+
+        _hubConnection = new HubConnectionBuilder()
+            .WithUrl(NavigationManager.ToAbsoluteUri("/EManagerHub"))
+            .Build();
+
+        _hubConnection.On<PGBody[]>("PlacedGoods", async (PGBody[] data) =>
+        {
+            // Update processed inbound orders (UI only!)
+            string msg = data[0].ToString();
+            await JSRuntime.InvokeVoidAsync("alert", $"Got some data from eManager:\n{msg}");
+            await RefreshInboundList();
+            StateHasChanged();
+        });
 
         // method for showing productname from database into page
         try
@@ -109,23 +148,53 @@
             List<Product> FetchedProducts = await ProductService.GetProducts("", pageIndex, pageSize);
             FilteredProducts = FetchedProducts;
             Products = FilteredProducts.ToList();
+
+            await RefreshInboundList();
+
         }
         catch (Exception e)
         {
             // NoConnection = true;
         }
 
+        StateHasChanged();
+        // Wait for signalR update form endpoint
+        await _hubConnection.StartAsync();
     }
 
-    private void Checkout(int[] product)
+    public async Task RefreshInboundList()
+    {
+        inbounds = await InboundService.GetUnfinishedInbounds();
+    }
+
+    // TODO: consider adding to default base class
+    public async ValueTask DisposeAsync()
+    {
+        if (_hubConnection != null)
+        {
+            await _hubConnection.DisposeAsync();
+        }
+    }
+
+    private async void Checkout(int[] product)
     {
         ShowModal = false;
 
         int index = product[0];
         int count = product[1];
 
+        Console.WriteLine("Checkout: " + index + " " + count);
+
         // TODO: Send to eManager, remove next two lines
         Count = count;
         ShowSuccess = true;
+
+        int nextPurchaseOrderId = await InboundService.GetNextID();
+        await InboundService.Create(FilteredProducts[index], count);
+
+        int transactionId = await InboundService.GetTransactionId(nextPurchaseOrderId);
+
+        await EManagerService.GoodsReceival(FilteredProducts[index], Count, nextPurchaseOrderId, transactionId);
+        await RefreshInboundList();
     }
 }

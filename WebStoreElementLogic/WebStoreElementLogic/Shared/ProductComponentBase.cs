@@ -56,7 +56,7 @@ namespace WebStoreElementLogic.Shared
             Products = products;
         }
 
-        public void FilterProducts()
+        public virtual void FilterProducts()
         {
             SelectedIndex = -1;
 

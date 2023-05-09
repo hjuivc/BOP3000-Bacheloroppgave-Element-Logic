@@ -16,12 +16,19 @@ namespace WebStoreElementLogic.Controllers
         private readonly IHubContext<EManagerHub> _hubContext;
         private readonly IInboundService _inboundService;
         private readonly IOrderService _orderService;
+        private readonly IProductService _productService;
 
-        public EManagerController(IHubContext<EManagerHub> hubContext, IInboundService inboundService, IOrderService orderService)
+        public EManagerController(
+            IHubContext<EManagerHub> hubContext, 
+            IInboundService inboundService, 
+            IOrderService orderService,
+            IProductService productService
+        )
         {
             _hubContext = hubContext;
             _inboundService = inboundService;
             _orderService = orderService;
+            _productService = productService;
         }
 
 
@@ -43,8 +50,11 @@ namespace WebStoreElementLogic.Controllers
             foreach (var receipt in receipts)
             {
                 await _inboundService.Update(receipt.PurchaseOrderId);
+                await _productService.UpdateQuantity(receipt.ExtProductId, receipt.Quantity);
                 Console.WriteLine($"Got PG from EManager: {receipt.ExtProductId}");
             }
+
+            // Update database
 
             await _hubContext.Clients.All.SendAsync("PlacedGoods", receipts);
             
@@ -70,7 +80,7 @@ namespace WebStoreElementLogic.Controllers
             // Update database with PG info
             foreach (var receipt in receipts)
             {
-                await _inboundService.Update(receipt.PurchaseOrderId);
+                //await _inboundService.Update(receipt.PurchaseOrderId);
                 Console.WriteLine($"Got PG from EManager: {receipt.ExtProductId}");
             }
 

@@ -76,10 +76,12 @@
 
 @if (ShowModal)
 {
-    <ProductModal Product="@FilteredProducts[SelectedIndex]"
-              Index="SelectedIndex"
-              OnCancelEvent="() => ShowModal = false"
-              OnAddEvent="Checkout" />
+    <ProductModal 
+        isInbound="true"
+        Product="@FilteredProducts[SelectedIndex]"
+        Index="SelectedIndex"
+        OnCancelEvent="() => ShowModal = false"
+        OnAddEvent="Checkout" />
 }
 
 @if (ShowSuccess)

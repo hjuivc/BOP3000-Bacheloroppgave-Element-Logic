@@ -76,11 +76,10 @@
 
 @if (ShowModal)
 {
-    <ProductModal 
-        Product="@FilteredProducts[SelectedIndex]"
-        Index="SelectedIndex"
-        OnCancelEvent="() => ShowModal = false"
-        OnAddEvent="Checkout" />
+    <ProductModal Product="@FilteredProducts[SelectedIndex]"
+              Index="SelectedIndex"
+              OnCancelEvent="() => ShowModal = false"
+              OnAddEvent="Checkout" />
 }
 
 @if (ShowSuccess)
@@ -93,7 +92,7 @@
             <span class="text-info text-decoration-underline">
                 @FilteredProducts[SelectedIndex].Name
             </span>
-             x @Count
+            x @Count
             <br>
             Into the system
         </p>
@@ -170,7 +169,7 @@
     // TODO: consider adding to default base class
     public async ValueTask DisposeAsync()
     {
-        if(_hubConnection != null)
+        if (_hubConnection != null)
         {
             await _hubConnection.DisposeAsync();
         }

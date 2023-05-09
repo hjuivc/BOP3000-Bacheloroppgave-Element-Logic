@@ -3,6 +3,7 @@
 @using WebStoreElementLogic.Entities;
 @using WebStoreElementLogic.Interfaces;
 @inject IProductService ProductService;
+@inject ICustomWebHostEnvironment CustomWebHostEnvironment;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
 
 <form class="d-flex flex-column p-lg-3 justify-content-center px-0 px-md-2 px-lg-5">
@@ -18,8 +19,16 @@
     <label class="form-label" for="description">Description</label>
     <textarea class="form-control" name="descr" @bind="Copy.Descr" ></textarea>
 
-    <label class="form-label" for="url">Image URL</label>
-    <input class="form-control" type="text" autocomplete="off" name="url" @bind="Copy.URL">
+    <div class="mb-3">
+        <label class="form-label" for="url">Image URL</label>
+        <input class="form-control" name="url" @bind="Copy.URL" />
+    </div>
+    <div class="mb-3">
+        <InputFile id="imageFile" OnChange="@(async (e) => await HandleFileSelected(e))" />
+    </div>
+
+
+    @*<input class="form-control" type="text" autocomplete="off" name="url" @bind="Copy.URL">*@
 
     <div class="d-flex my-3 justify-content-between">
         <button type="button" @onclick="Discard" class="btn btn-neutral">@DiscardLabel</button>
@@ -62,8 +71,18 @@
     [Parameter]
     public EventCallback OnDelete { get; set; }
 
+    // image
+    [Parameter]
+    public EventCallback OnImageSelected { get; set; }
+
     // product- object
     private Product product;
+
+    // Image
+    private IBrowserFile selectedFile;
+
+    // image
+    private string _imagePath;
 
     protected async Task OninitializeAsync()
     {
@@ -91,6 +110,26 @@
     private void Delete()
     {
         OnDelete.InvokeAsync();
+    }
+
+    // Maximum 30MB (imagesize)
+    private async Task HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        var fileName = Path.GetFileNameWithoutExtension(e.File.Name);
+        var extension = Path.GetExtension(e.File.Name);
+        var newFileName = $"{fileName}_{DateTime.Now.Ticks}{extension}";
+
+        var path = Path.Combine(CustomWebHostEnvironment.WebRootPath, "images", newFileName);
+
+        await using var stream = new FileStream(path, FileMode.Create);
+        await e.File.OpenReadStream().CopyToAsync(stream);
+
+        // Create URL
+        var baseUrl = NavigationManager.BaseUri;
+        var imageUrl = $"{baseUrl}images/{newFileName}";
+
+        // Save the URL to database
+        Copy.URL = imageUrl;
     }
 
 }

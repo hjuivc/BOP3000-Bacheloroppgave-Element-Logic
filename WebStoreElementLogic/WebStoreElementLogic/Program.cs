@@ -33,6 +33,15 @@ internal class Program
 
         builder.Services.AddScoped<IDapperService, DapperService>();
 
+        builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+        builder.Services.AddSingleton<ICustomWebHostEnvironment>(s =>
+        {
+            var httpContextAccessor = s.GetRequiredService<IHttpContextAccessor>();
+            var hostingEnvironment = s.GetService<IWebHostEnvironment>();
+            return new CustomWebHostEnvironment(httpContextAccessor, hostingEnvironment);
+        });
+
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
         builder.Services.AddDbContext<AppContext>(options => options.UseSqlServer(connectionString));

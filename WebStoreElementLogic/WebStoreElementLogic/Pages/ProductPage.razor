@@ -7,6 +7,7 @@
 @inject IProductService ProductService;
 @inject HttpClient HttpClient;
 @inject IEManagerService EManagerService;
+@inject ICustomWebHostEnvironment CustomWebHostEnvironment;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
 @inherits ProductComponentBase
 <title>Product</title>
@@ -50,7 +51,7 @@ else
                     </div>
                 </div>
                 <div class="btn-add-container mt-3">
-                    <button class="btn btn-positive my-custom-font" @onclick="New">
+                    <button class="btn btn-positive my-custom-font" @onclick="() => New(selectedFile, newInfo)">
                         <div class="position-relative">
                             Add Product
                         </div>
@@ -115,6 +116,14 @@ else
     private bool AddNew = false;
     private bool DeleteAlert = false;
     private bool NoConnection = false;
+
+    // Image
+    private IBrowserFile selectedFile;
+
+    private string _imagePath;
+
+    [Parameter]
+    public EventCallback OnImageSelected { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -208,7 +217,7 @@ else
         }
     }
 
-    private async Task New()
+    private async Task New(IBrowserFile file, Product product)
     {
         var productsList = await ProductService.GetNextID(0);
         // Checks if the Id is null

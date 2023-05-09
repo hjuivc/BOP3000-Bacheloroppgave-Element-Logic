@@ -11,7 +11,9 @@ namespace WebStoreElementLogic.Entities
         public string ProductId { get; set; }
         public decimal Quantity { get; set; }
         public bool Status { get; set; }
-        
+        public string? Name { get; set; }
+        public int DisplayQuantity => (int)Quantity;
+
         public Inbound(int inboundId, int transactionId, string purchaseOrderId, int purchaseOrderLineId, string productId, decimal quantity, bool status) 
         {
             InboundId = inboundId;
@@ -24,5 +26,9 @@ namespace WebStoreElementLogic.Entities
 
         }
 
+        public Inbound()
+        {
+            
+        }
     }
 }

@@ -12,7 +12,7 @@ h1:focus {
 /* Login */
 
 .form-control {
-    border: none !important;
+    /*border: none !important;*/
 }
 
 .form-check-input {
@@ -260,6 +260,10 @@ a:hover, .btn-link:hover {
 }
 
 /* Search */
+
+.custom-search {
+    border: 1px solid black;
+}
 .position-relative {
     position: relative;
 }

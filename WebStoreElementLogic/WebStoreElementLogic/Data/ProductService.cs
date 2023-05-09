@@ -78,6 +78,21 @@ namespace WebStoreElementLogic.Data
             return totProduct;
         }
 
+        public async Task UpdateQuantity(int productId, decimal quantity)
+        {
+            try
+            {
+                _dapperService.Execute
+                    ($"UPDATE Stock SET Quantity = Quantity + {quantity} WHERE ExtProductId = {productId}",
+                    null, commandType: CommandType.Text);
+                Console.WriteLine($"Updated product {productId}'s quantity with {quantity}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+        }
+
         public Task<int> Update(Product product)
         {
             int result = 0;

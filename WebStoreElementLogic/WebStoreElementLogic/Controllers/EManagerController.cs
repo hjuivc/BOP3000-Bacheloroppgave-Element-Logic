@@ -46,6 +46,8 @@ namespace WebStoreElementLogic.Controllers
                 Console.WriteLine($"Got PG from EManager: {receipt.ExtProductId}");
             }
 
+            // Update database
+
             await _hubContext.Clients.All.SendAsync("PlacedGoods", receipts);
             
 

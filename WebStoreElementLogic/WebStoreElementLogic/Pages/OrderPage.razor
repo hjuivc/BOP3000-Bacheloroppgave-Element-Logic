@@ -153,13 +153,13 @@
             return;
         }
 
-        if(CartDict.ContainsKey(Products[index]))
+        if(CartDict.ContainsKey(FilteredProducts[index]))
         {
-            CartDict[Products[index]] = amount;
+            CartDict[FilteredProducts[index]] = amount;
         }
         else
         {
-            CartDict.Add(Products[index], amount);
+            CartDict.Add(FilteredProducts[index], amount);
         }
     }
 }

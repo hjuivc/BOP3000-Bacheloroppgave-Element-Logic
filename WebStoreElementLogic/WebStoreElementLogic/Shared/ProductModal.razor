@@ -18,7 +18,7 @@
                     </div>
                     <div class="d-flex justify-content-around mt-3">
                         <label>1</label>
-                        <input type="range" class="form-range custom-range" style="width:80%;" min="1" max="@Product.Qty" step="1" id="amountRange" @bind="amount" @bind:event="oninput" />
+                        <input type="range" class="form-range custom-range" title="Drag" style="width:80%;" min="1" max="@Product.Qty" step="1" id="amountRange" @bind="amount" @bind:event="oninput" />
                         <label>@Product.Qty</label>
                     </div>
                     <div class="input-group justify-content-center mb-3 mt-3">
@@ -30,8 +30,8 @@
                         <p class="text-center fw-bold">Amount selected is not available</p>                     
                     }
                     <div class="d-flex justify-content-around mt-3">
-                        <button type="button" class="btn btn-neutral justify-content-start" @onclick="() => OnCancelEvent.InvokeAsync()">Close</button>
-                        <button type="button" class="btn btn-positive justify-content-end" @onclick="AddToCart">Add to cart</button>
+                        <button type="button" class="btn btn-neutral justify-content-start" title="Close" @onclick="() => OnCancelEvent.InvokeAsync()">Close</button>
+                        <button type="button" class="btn btn-positive justify-content-end" title="Add to cart" @onclick="AddToCart">Add to cart</button>
                     </div>
                     @if (quant)
                     {

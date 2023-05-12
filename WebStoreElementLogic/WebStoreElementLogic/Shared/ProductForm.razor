@@ -11,17 +11,17 @@
     <img src="@Copy.URL" style="width: 30vmin; height: 30vmin;" class="align-self-center" />
 
     <label class="form-label" for="name">Name</label>
-    <input class="form-control" type="text" autocomplete="off" name="name" @bind="Copy.Name">
+    <input class="form-control" type="text" autocomplete="off" title="Product Name" name="name" @bind="Copy.Name">
 
     <label class="form-label" for="id">Id</label>
-    <input class="form-control" type="text" autocomplete="off" readonly name="id" @bind="Copy.Id">
+    <input class="form-control" type="text" autocomplete="off" title="Product ID" readonly name="id" @bind="Copy.Id">
 
     <label class="form-label" for="description">Description</label>
-    <textarea class="form-control" name="descr" @bind="Copy.Descr" ></textarea>
+    <textarea class="form-control" name="descr" title="Add a description/ Size for product" @bind="Copy.Descr" ></textarea>
 
     <div class="mb-3">
         <label class="form-label" for="url">Image URL</label>
-        <input class="form-control" name="url" @bind="Copy.URL" />
+        <input class="form-control" name="url" title="URL for the image" @bind="Copy.URL" />
     </div>
     <div class="mb-3">
         <InputFile id="imageFile" OnChange="@(async (e) => await HandleFileSelected(e))" />
@@ -31,12 +31,12 @@
     @*<input class="form-control" type="text" autocomplete="off" name="url" @bind="Copy.URL">*@
 
     <div class="d-flex my-3 justify-content-between">
-        <button type="button" @onclick="Discard" class="btn btn-neutral">@DiscardLabel</button>
-        <button type="button" @onclick="Save" class="btn btn-positive">@SaveLabel</button>
+        <button type="button" @onclick="Discard" class="btn btn-neutral" title="Cancel changes">@DiscardLabel</button>
+        <button type="button" @onclick="Save" class="btn btn-positive" title="Save">@SaveLabel</button>
     </div>
     @if (DeleteButton)
     {
-        <button type="button" @onclick="Delete" class="btn btn-warning align-self-lg-start align-self-stretch">Delete</button>
+        <button type="button" @onclick="Delete" class="btn btn-warning align-self-lg-start align-self-stretch" title="Delete">Delete</button>
     }
 </form>
 

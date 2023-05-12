@@ -25,14 +25,14 @@
                     <div class="position-relative">
                         <div class="input-group">
                             <input type="text" class="form-control custom-search" placeholder="Search.." id="txtSearch" name="search"
-                                   autocomplete="off" @bind="SearchTerm" @bind:event="oninput">
+                                   autocomplete="off" title="Search Product Names" @bind="SearchTerm" @bind:event="oninput">
                             <div class="input-group-append">
                                 <span class="input-group-text bg-transparent border-0"><i class="fa fa-search fa-lg"></i></span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button @onclick="() => ShowList = !ShowList" class="btn btn-custom" style="margin-left: auto; padding-left: 0.75rem; padding-right: 0.75rem;">
+                <button @onclick="() => ShowList = !ShowList" class="btn btn-custom" title="Change View" style="margin-left: auto; padding-left: 0.75rem; padding-right: 0.75rem;">
                     @if (ShowList)
                     {
                         <i class="fa fa-th"></i>
@@ -107,7 +107,7 @@
             Into the system
         </p>
         <div class="d-flex flex-row justify-content-center" style="min-width: 25vw;">
-            <button @onclick="() => ShowSuccess = false" class="btn btn-custom">Ok</button>
+            <button @onclick="() => ShowSuccess = false" class="btn btn-custom" title="Confirm">Ok</button>
         </div>
     </Alert>
 }

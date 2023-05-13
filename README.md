@@ -18,7 +18,6 @@ The current solution uses a combination of the following technologies to impleme
 - ASP.NET C# (.NET 6)
 - Bootstrap 5 css
 - Microsoft SQL database
-- ImageShack
 - eManager REST API
 
 > We chose these technologies specifically to resemble the technologies Element Logic use themselves  

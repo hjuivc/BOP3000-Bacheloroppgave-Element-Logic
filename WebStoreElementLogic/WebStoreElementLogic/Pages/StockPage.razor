@@ -2,7 +2,62 @@
 @attribute [Authorize]
 
 <title>Stock</title>
-<h3>StockPage</h3>
+<div class="d-flex flex-row mx-5 rounded mb-3">
+    <div class="container-fluid">
+        <div class="position-relative">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search.." id="txtSearch" name="search"
+                       autocomplete="off" @bind="SearchTerm" @bind:event="oninput">
+                <div class="input-group-append">
+                    <span class="input-group-text bg-transparent border-0"><i class="fa fa-search fa-lg"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button @onclick="() => ShowList = !ShowList" class="btn btn-custom" style="margin-left: auto; padding-left: 0.75rem; padding-right: 0.75rem;">
+        @if (ShowList)
+        {
+            <i class="fa fa-th"></i>
+        }
+        else
+        {
+            <i class="fa fa-list"></i>
+        }
+    </button>
+</div>
+<div class="container-fluid">
+    <div class="@(ShowList ? "mx-5" : "row")">
+        @foreach (Product product in FilteredProducts)
+        {
+            if (!ShowList)
+            {
+                <ProductTile Product="@product"
+                     Index="@FilteredProducts.IndexOf(product)"
+                     OnSelected="(index) => SelectProduct(FilteredProducts[index])"
+                     Selected="@(SelectedIndex == FilteredProducts.IndexOf(product))" />
+            }
+            else
+            {
+                <ProductListItem Info="@product"
+                         Index="@FilteredProducts.IndexOf(product)"
+                         OnSelected="(index) => SelectProduct(FilteredProducts[index])"
+                         Selected="@(SelectedIndex == FilteredProducts.IndexOf(product))" />
+            }
+        }
+        @if (Products == null)
+        {
+            <h3>Loading Products...</h3>
+        }
+    </div>
+</div>
+
+@if (Showquant)
+{
+    <QuantityModal Product="@FilteredProducts[SelectedIndex]"
+              Index="SelectedIndex"
+              OnCancelEvent="() => Showquant = false" />
+}
+
 
 @code {
 

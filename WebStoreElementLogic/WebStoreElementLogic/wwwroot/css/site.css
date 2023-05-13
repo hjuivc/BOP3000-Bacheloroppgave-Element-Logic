@@ -12,7 +12,7 @@ h1:focus {
 /* Login */
 
 .form-control {
-    border: none !important;
+    /*border: none !important;*/
 }
 
 .form-check-input {
@@ -200,6 +200,56 @@ a:hover, .btn-link:hover {
     color: white;
 }
 
-    .blazor-error-boundary::after {
-        content: "An error has occurred."
-    }
+.blazor-error-boundary::after {
+    content: "An error has occurred."
+}
+
+/* Search */
+
+.custom-search {
+    border: 1px solid black;
+}
+.position-relative {
+    position: relative;
+}
+
+.position-relative .input-group-append {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+}
+
+.position-relative .input-group-append .input-group-text {
+    background-color: transparent;
+    border: none;
+    padding: 0.375rem 0.75rem;
+    color: #6c757d;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.position-relative .form-control {
+    z-index: 1;
+}
+
+/* Testing for productpage */
+.input-container input,
+.input-container .input-group-append {
+    outline: none !important;
+}
+
+.btn-add-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 5px;
+}
+/* end productpage */
+
+/* cart */
+.list-group-item {
+    border: none !important;
+}

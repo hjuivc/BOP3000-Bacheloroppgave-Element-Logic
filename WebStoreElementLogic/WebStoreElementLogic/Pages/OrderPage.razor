@@ -97,12 +97,36 @@
             List<Product> FetchedProducts = await ProductService.GetProducts("", pageIndex, pageSize);
             FilteredProducts = FetchedProducts;
             Products = FilteredProducts.ToList();
+            FilterProducts();
         }
         catch(Exception e)
         {
             // NoConnection = true;
         }
 
+    }
+
+    public override void FilterProducts()
+    {
+        SelectedIndex = -1;
+
+        Console.WriteLine("FilterProducts called");
+        endPage = 0;
+        Console.WriteLine($"SearchTerm = {SearchTerm}");
+        if (string.IsNullOrWhiteSpace(SearchTerm))
+        {
+            // If the search term is empty or null, show all products
+            FilteredProducts = Products.Where(p =>p.Qty > 0).ToList();
+        }
+        else
+        {
+            // Otherwise, filter the products based on the search term
+            FilteredProducts = Products.Where(p => 
+                p.Name.IndexOf(SearchTerm, StringComparison.OrdinalIgnoreCase) >= 0 &&
+                p.Qty > 0 // Do not include product if quantity is 0
+            ).ToList();
+        }
+        Console.WriteLine($"FilteredProducts = {FilteredProducts.Count}");
     }
 
     private void AddToCart(int[] product)
@@ -117,13 +141,13 @@
             return;
         }
 
-        if(CartDict.ContainsKey(Products[index]))
+        if(CartDict.ContainsKey(FilteredProducts[index]))
         {
-            CartDict[Products[index]] = amount;
+            CartDict[FilteredProducts[index]] = amount;
         }
         else
         {
-            CartDict.Add(Products[index], amount);
+            CartDict.Add(FilteredProducts[index], amount);
         }
     }
 }

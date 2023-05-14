@@ -6,17 +6,17 @@ USE [elementlogicwebshop]
 
 -- Create table Inbound
 CREATE TABLE [dbo].[Inbound](
-	[InboundId] [int] NOT NULL,
-	[TransactionId] [int] NOT NULL,
 	[PurchaseOrderId] [varchar](50) NOT NULL,
 	[PurchaseOrderLineId] [int] NOT NULL,
 	[ExtProductId] [varchar](50) NOT NULL,
 	[Quantity] [decimal](18, 3) NOT NULL,
 	[Status] [bit] NOT NULL,
+	[InboundId] [int] IDENTITY(1,1) NOT NULL,
+	[TransactionId] [int] NOT NULL,
  CONSTRAINT [PK_Inbound] PRIMARY KEY CLUSTERED 
- (
+(
 	[InboundId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
@@ -28,11 +28,11 @@ CREATE TABLE [dbo].[Order](
 	[ExtProductId] [varchar](50) NOT NULL,
 	[Quantity] [decimal](18, 3) NOT NULL,
 	[Status] [bit] NOT NULL,
-	[TransactionId] [int] NOT NULL
+	[TransactionId] [int] NOT NULL,
  CONSTRAINT [PK_Order] PRIMARY KEY CLUSTERED 
 (
 	[ExtOrderId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
@@ -45,7 +45,7 @@ CREATE TABLE [dbo].[Products](
  CONSTRAINT [PK_Products] PRIMARY KEY CLUSTERED 
 (
 	[ExtProductId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
@@ -57,19 +57,21 @@ CREATE TABLE [dbo].[Stock](
  CONSTRAINT [PK_Stock] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+
 
 -- Create table Users
 CREATE TABLE [dbo].[Users](
 	[userId] [int] IDENTITY(1,1) NOT NULL,
 	[userName] [nvarchar](100) NOT NULL,
 	[password] [nvarchar](200) NOT NULL,
-CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED
+	[admin] [bit] NOT NULL,
+ CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
 (
 	[userId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
@@ -115,6 +117,11 @@ BEGIN
     INSERT INTO dbo.Products(ExtProductId,ProductName,ProductDesc, ImageId)
     VALUES (@ExtProductId, @ProductName, @ProductDesc, @ImageId)
     SELECT @ExtProductId AS ExtProductId;
+	INSERT INTO dbo.Stock(Quantity, ExtProductId)
+	VALUES (0, @ExtProductId)
+	SELECT SCOPE_IDENTITY() AS Id;
+	
+	SELECT @ExtProductId as ExtProductId;
 END
 GO
 
@@ -135,12 +142,12 @@ GO
 -- Creating Stored Procedure for User
 CREATE PROCEDURE [dbo].[spAddUsers]
                  @userName nvarchar(100),
-                 @password nvarchar(200)
-                     
+                 @password nvarchar(200),
+                 @admin bit
 AS
 BEGIN
     INSERT INTO dbo.Users
-    VALUES (@userName, @password)
+    VALUES (@userName, @password, @admin)
     SELECT SCOPE_IDENTITY() AS userId;
 END
 GO
@@ -176,3 +183,61 @@ BEGIN
     VALUES (@ExtPickListId, @ExtOrderLineId, @ExtProductId, @Quantity, 0, @TransactionId)
 	SELECT SCOPE_IDENTITY() AS ExtOrderId;
 END
+GO
+
+-- Stored procedure for adding an inbound
+CREATE PROCEDURE [dbo].[spAddInbound]
+(
+    @PurchaseOrderId varchar(50),
+    @ExtProductId varchar(50),
+    @Quantity decimal (18,3)
+
+)
+AS
+BEGIN
+	DECLARE @TransactionId INT;
+	SET @TransactionId = NEXT VALUE FOR dbo.TransactionIdSequence;
+
+    INSERT INTO dbo.Inbound(PurchaseOrderId, PurchaseOrderLineId, ExtProductId, Quantity, Status, TransactionId)
+    VALUES (@PurchaseOrderId, 1, @ExtProductId, @Quantity, 0, @TransactionId)
+	SELECT SCOPE_IDENTITY() AS InboudId;
+END
+GO
+
+-- Stored procedure for deleting a user
+CREATE PROCEDURE [dbo].[spDeleteUser]
+    @Id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DELETE FROM [Users]
+    WHERE userId = @Id;
+END
+GO
+
+-- Stored procedure for updating a user
+CREATE PROCEDURE [dbo].[spUpdateUsers]
+ @userId int,
+ @userName nvarchar(100),
+ @password nvarchar(200),
+ @admin bit
+AS
+UPDATE Users
+SET 
+ [userName] = @userName,
+ [password] = @password,
+ [admin] = @admin
+WHERE 
+ [userId] = @userId
+GO
+
+-- Sequence for TransactionId
+CREATE SEQUENCE [dbo].[TransactionIdSequence] 
+ AS [int]
+ START WITH 1
+ INCREMENT BY 1
+ MINVALUE -2147483648
+ MAXVALUE 2147483647
+ CACHE 
+GO

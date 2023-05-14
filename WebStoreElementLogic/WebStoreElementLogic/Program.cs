@@ -267,6 +267,21 @@ namespace MyProgram
             // Configure the request pipeline
             startup.Configure(app, app.Environment);
 
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path == "/")
+                {
+                    string ipAddress = "193.69.50.119"; // Replace with your desired IP address
+                    int port = 90; // Replace with your desired port number
+
+                    string loginUrl = $"http://{ipAddress}:{port}/login";
+                    context.Response.Redirect(loginUrl);
+                    return;
+                }
+                await next.Invoke();
+            });
+
+
             app.Run();
         }
     }

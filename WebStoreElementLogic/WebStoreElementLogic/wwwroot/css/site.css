@@ -308,3 +308,13 @@ a:hover, .btn-link:hover {
 .list-group-item {
     border: none !important;
 }
+
+/* General styling */
+
+.page-container {
+    padding-top: 100px; /* Adjust this value to match the height of your navbar */
+}
+
+.content {
+    margin-top: 20px; /* Adjust this value to add spacing below the navbar */
+}

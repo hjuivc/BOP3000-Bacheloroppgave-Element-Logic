@@ -76,6 +76,14 @@ namespace MyProgram
             services.AddScoped<IEManagerService, EManagerService>();
             services.AddScoped<IDapperService, DapperService>();
 
+            // For pictures
+            services.AddSingleton<ICustomWebHostEnvironment>(s =>
+            {
+                var httpContextAccessor = s.GetRequiredService<IHttpContextAccessor>();
+                var hostingEnvironment = s.GetService<IWebHostEnvironment>();
+                return new CustomWebHostEnvironment(httpContextAccessor, hostingEnvironment);
+            });
+
 
         }
 

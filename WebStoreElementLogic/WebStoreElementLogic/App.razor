@@ -1,12 +1,22 @@
-﻿<Router AppAssembly="@typeof(App).Assembly">
+﻿@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Authorization
+
+<Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+            <NotAuthorized>
+                <div style="position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);">
+                    <h3 style="text-align:center; margin-top: 100px;">You are not authorized to view this page.</h3>
+                </div>
+            </NotAuthorized>
+        </AuthorizeRouteView>
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
     </Found>
     <NotFound>
-        <PageTitle>Not found</PageTitle>
         <LayoutView Layout="@typeof(MainLayout)">
-            <p role="alert">Sorry, there's nothing at this address.</p>
+            <div style="position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);">
+                <h3 style="text-align:center; margin-top: 50px;">Sorry, the page you requested was not found.</h3>
+            </div>
         </LayoutView>
     </NotFound>
 </Router>

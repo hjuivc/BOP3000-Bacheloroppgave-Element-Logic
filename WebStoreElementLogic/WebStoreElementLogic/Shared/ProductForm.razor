@@ -24,15 +24,21 @@
         <input class="form-control" name="url" title="URL for the image" @bind="Copy.URL" />
     </div>
     <div class="mb-3">
-        <InputFile id="imageFile" OnChange="@(async (e) => await HandleFileSelected(e))" />
+        <!-- Create a custom button to override the InputFile -->
+        <label class="custom-input-file" title="Choose a file to upload">
+            <div class="button-wrapper">
+                Choose a file
+            </div>
+            <!-- File input -->
+            <InputFile id="imageFile" OnChange="@(async (e) => await HandleFileSelected(e))" />
+        </label>
     </div>
-
 
     @*<input class="form-control" type="text" autocomplete="off" name="url" @bind="Copy.URL">*@
 
     <div class="d-flex my-3 justify-content-between">
         <button type="button" @onclick="Discard" class="btn btn-neutral" title="Cancel changes">@DiscardLabel</button>
-        <button type="button" @onclick="Save" class="btn btn-positive" title="Save">@SaveLabel</button>
+        <button type="button" @onclick="Save" class="btn btn-positive" title="Save changes">@SaveLabel</button>
     </div>
     @if (DeleteButton)
     {
@@ -128,9 +134,14 @@
         var baseUrl = NavigationManager.BaseUri;
         var imageUrl = $"{baseUrl}images/{newFileName}";
 
+        // Remove address from the URL
+        var uri = new Uri(imageUrl);
+        var relativeUrl = uri.PathAndQuery;
+
         // Save the URL to database
-        Copy.URL = imageUrl;
+        Copy.URL = relativeUrl;
     }
+
 
 }
 

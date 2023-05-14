@@ -156,6 +156,7 @@ a:hover, .btn-link:hover {
 .btn-positive {
     color: #000000 !important;
     background-color: #16a085 !important;
+    overflow: hidden; 
 }
 
 .btn-positive:hover {
@@ -308,3 +309,30 @@ a:hover, .btn-link:hover {
 .list-group-item {
     border: none !important;
 }
+
+/* Hide the default file input button */
+.custom-input-file input[type="file"] {
+    display: none;
+}
+
+/* Style the custom button */
+.custom-input-file .button-wrapper {
+    background-color: #16a085;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+/* Position the file input over the custom button and make it transparent */
+.custom-input-file input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+

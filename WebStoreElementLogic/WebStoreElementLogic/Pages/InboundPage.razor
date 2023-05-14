@@ -1,4 +1,5 @@
 ﻿@page "/inboundpage"
+@attribute [Authorize]
 @using Microsoft.AspNetCore.WebUtilities;
 @using WebStoreElementLogic.Data;
 @using WebStoreElementLogic.Entities;
@@ -176,7 +177,16 @@
 
         StateHasChanged();
         // Wait for signalR update form endpoint
-        await _hubConnection.StartAsync();
+        try
+        {
+            await _hubConnection.StartAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            // Log the exception or display it in the UI here
+        }
+
     }
 
     public async Task RefreshInboundList()

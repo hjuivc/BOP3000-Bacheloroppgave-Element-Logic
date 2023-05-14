@@ -59,6 +59,24 @@ namespace WebStoreElementLogic.Data
             return _connection.Execute(sql, parameters, transaction, commandTimeout, commandType);
         }
 
+        public async Task<IEnumerable<TEntity>> GetAllAsync<TEntity>(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null) where TEntity : class
+        {
+            using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                connection.Open();
+                return await connection.QueryAsync<TEntity>(sql, param, transaction, commandTimeout, commandType);
+            }
+        }
+
+        public async Task<int> ExecuteAsync(string sql, object param = null, IDbTransaction transaction = null, int? commandTimeout = null, CommandType? commandType = null)
+        {
+            using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                connection.Open();
+                return await connection.ExecuteAsync(sql, param, transaction, commandTimeout, commandType);
+            }
+        }
+
         //public DbConnection Connection => (DbConnection)_connection;
 
         public void Dispose()

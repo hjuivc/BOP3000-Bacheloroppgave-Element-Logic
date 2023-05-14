@@ -1,0 +1,305 @@
+﻿@page "/userpage"
+@attribute [Authorize(Roles = "Admin")]
+@using WebStoreElementLogic.Entities
+@using WebStoreElementLogic.Interfaces
+@using Microsoft.AspNetCore.Components.Web
+@inject IUserService UserService
+@using System.ComponentModel.DataAnnotations;
+@using Microsoft.AspNetCore.WebUtilities;
+@using WebStoreElementLogic.Data;
+@using Microsoft.AspNetCore.Identity;
+@inject IJSRuntime JSRuntime;
+@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
+
+<div class="row">
+    <div class="col-md-8">
+        <h3 style="text-align:center">Users in the system</h3>
+
+        <!-- User table -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width: 80%">Username</th>
+                    <th style="width: 20%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (users != null)
+                {
+                    foreach (var user in users)
+                    {
+                        <tr>
+                            <td>@user.userName</td>
+                            <td style="white-space: nowrap">
+                                <button @onclick="@(() => EditUser(user.userId))" class="btn btn-sm btn-neutral mr-1">Edit</button>
+                                <button @onclick="@(() => DeleteUser(user.userId))" class="btn btn-sm btn btn-login btn-block">
+                                    @if (user.IsDeleting)
+                                    {
+                                        <span class="spinner-border spinner-border-sm"></span>
+                                    }
+                                    else
+                                    {
+                                        <span>Delete</span>
+                                    }
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                }
+                @if (loading)
+                {
+                    <tr>
+                        <td colspan="2" class="text-center">
+                            <span class="spinner-border spinner-border-lg align-center"></span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    <div class="col-md-4">
+        <h3 style="text-align:center">@(isEditing ? "Edit user" : "Create new user")</h3>
+        <!-- Add user form -->
+        <EditForm Model="@(isEditing ? (object)editUser : newUser)" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+            <DataAnnotationsValidator />
+
+            <div class="form-group border mb-4" style="margin-top: 48px;">
+                <div class="input-group">
+                    @if (isEditing)
+                    {
+                        <InputText id="username" class="form-control narrow-input" autocomplete="off" placeholder="Username" @bind-Value="editUser.userName" />
+                    }
+                    else
+                    {
+                        <InputText id="username" class="form-control narrow-input" autocomplete="off" placeholder="Username" @bind-Value="newUser.userName" />
+                    }
+                    <div class="input-group-append">
+                        <span class="input-group-text" style="background-color: transparent; border: none;">
+                            <!-- Font Awesome icon -->
+                            <i class="fa fa-user fa-2x" style="border: none;"></i>
+                        </span>
+                    </div>
+                </div>
+                <ValidationMessage For="@(() => editUser.userName)" />
+            </div>
+            <div class="form-group border mb-4">
+                <div class="input-group">
+                    @if (isEditing)
+                    {
+                        <InputText id="password" class="form-control narrow-input" type="password" placeholder="Password" @bind-Value="@newPassword" />
+                    }
+                    else
+                    {
+                        <InputText id="password" class="form-control narrow-input" type="password" placeholder="Password" @bind-Value="@newUser.password" />
+                    }
+                    <div class="input-group-append">
+                        <span class="input-group-text" style="background-color: transparent; border: none;">
+                            <!-- Font Awesome icon -->
+                            <i class="fa fa-lock fa-2x" style="border: none;"></i>
+                        </span>
+                    </div>
+                </div>
+                <ValidationMessage For="@(() => editUser.password)" />
+            </div>
+
+            <div class="form-group form-check d-flex justify-content-between align-items-center">
+                <div>
+                    @if (isEditing)
+                    {
+                        <InputCheckbox id="isAdmin" class="form-check-input" @bind-Value="@editUser.admin" />
+                    }
+                    else
+                    {
+                        <InputCheckbox id="isAdmin" class="form-check-input" @bind-Value="@newUser.admin" />
+                    }
+                    <label class="form-check-label" for="isAdmin">
+                        Admin rights
+                    </label>
+                    <div class="tooltip-container">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="tooltip-text">This checkbox gives the user admin rights, which means that he will be able to access the userpage which you are currently on. He will also have access to edit and delete users.</span>
+                    </div>
+
+                </div>
+                <div>
+                    @if (isEditing)
+                    {
+                        <button type="button" class="btn btn-secondary mr-2" @onclick="CancelEdit">Cancel</button>
+                    }
+                    <button type="submit" class="btn btn-login mx-2">@(!isEditing ? "Add user" : "Update user")</button>
+                </div>
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private List<User> users;
+    private bool loading = true;
+    private bool isEditing = false;
+    private int editingUserId = 0;
+    private String newPassword = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadUsers();
+    }
+
+    private async Task LoadUsers()
+    {
+        loading = true;
+        var allUsers = await UserService.GetAllUsersAsync();
+        users = allUsers.Where(u => u.userId != 1).ToList(); // exclude admin user with userId1
+        loading = false;
+    }
+
+    private async Task DeleteUser(int id)
+    {
+        bool confirmDeletion = await JSRuntime.InvokeAsync<bool>("confirmUserDeletion");
+        if (confirmDeletion)
+        {
+            await UserService.DeleteUserAsync(id);
+            await LoadUsers();
+        }
+    }
+
+
+    // Edit user
+    private async Task EditUser(int id)
+    {
+        var user = await UserService.GetUserById(id);
+        editUser = new EditUserModel
+            {
+                userId = user.userId,
+                userName = user.userName,
+                password = user.password,
+                admin = user.admin
+            };
+        isEditing = true;
+        editingUserId = id;
+    }
+
+
+    private void CancelEdit()
+    {
+        isEditing = false;
+        editingUserId = 0;
+        newUser = new User();
+    }
+
+
+    [Parameter]
+    public int userId { get; set; }
+
+    [RegularExpression("^[a-zA-Z0-9]*$", ErrorMessage = "Username can only contain letters and numbers.")]
+    public string userName { get; set; }
+
+    [RequiredIfCreatingUser("IsEditing")]
+    public string password { get; set; }
+
+
+
+    public bool admin { get; set; }
+
+    private User newUser = new User();
+    private EditUserModel editUser = new EditUserModel();
+
+    private async Task HandleValidSubmit()
+    {
+        if (isEditing)
+        {
+            bool confirmEdit = await JSRuntime.InvokeAsync<bool>("confirmUserUpdate");
+            if (confirmEdit)
+            {
+                var userToUpdate = await UserService.GetUserById(editingUserId);
+                userToUpdate.userName = editUser.userName;
+                userToUpdate.admin = editUser.admin;
+
+                if (!string.IsNullOrWhiteSpace(editUser.password)) // Only update the password if it's provided
+                {
+                    var passwordHasher = new PasswordHasher<User>();
+                    var hashedPassword = passwordHasher.HashPassword(userToUpdate, newPassword);
+                    userToUpdate.password = hashedPassword;
+                }
+
+                var updatedEditUserModel = new EditUserModel
+                    {
+                        userId = userToUpdate.userId,
+                        userName = userToUpdate.userName,
+                        password = userToUpdate.password,
+                        admin = userToUpdate.admin
+                    };
+
+                await UserService.UpdateUserAsync(updatedEditUserModel);
+
+                CancelEdit();
+            }
+        }
+        else
+        {
+            var existingUser = await UserService.GetUser(newUser.userName);
+            if (existingUser != null)
+            {
+                await JSRuntime.InvokeVoidAsync("alert", "Username already exists. Please choose a different username.");
+                return;
+            }
+
+            var passwordHasher = new PasswordHasher<User>();
+            var hashedPassword = passwordHasher.HashPassword(newUser, newUser.password);
+            newUser.password = hashedPassword;
+
+            await UserService.Create(newUser);
+        }
+
+        await LoadUsers();
+        newUser = new User();
+        editUser = new EditUserModel();
+    }
+
+
+
+
+
+
+    public class RequiredIfCreatingUserAttribute : ValidationAttribute
+    {
+        public string IsEditingProperty { get; set; }
+
+        public RequiredIfCreatingUserAttribute(string isEditingProperty)
+        {
+            IsEditingProperty = isEditingProperty;
+            ErrorMessage = "The {0} field is required.";
+        }
+
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            var isEditingPropertyInfo = validationContext.ObjectType.GetProperty(IsEditingProperty);
+            if (isEditingPropertyInfo == null)
+            {
+                return new ValidationResult($"Property '{IsEditingProperty}' is not found.");
+            }
+
+            var isEditingPropertyValue = isEditingPropertyInfo.GetValue(validationContext.ObjectInstance, null);
+            if (!(isEditingPropertyValue is bool))
+            {
+                return new ValidationResult($"Property '{IsEditingProperty}' should be of type 'bool'.");
+            }
+
+            bool isEditing = (bool)isEditingPropertyValue;
+            if (!isEditing && string.IsNullOrWhiteSpace(value?.ToString()))
+            {
+                return new ValidationResult(ErrorMessage);
+            }
+
+            return ValidationResult.Success;
+        }
+    }
+
+    private void HandleInvalidSubmit()
+    {
+        // Show an error message or perform other actions when the form is invalid.
+        Console.WriteLine("Form is invalid");
+    }
+
+}

@@ -1,13 +1,46 @@
 ﻿@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.Authorization
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
 <PageTitle>BOP3000</PageTitle>
 
-<div>
-    <NavMenu />
+@if (isAuthenticated)
+{
+    <div>
+        <NavMenu />
 
-    <main>
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+        <main>
+            <article class="content px-4">
+                @Body
+            </article>
+        </main>
+    </div>
+}
+else
+{
+    <div>
+        <NavMenu />
+
+        <main>
+            <article class="content px-4">
+                @Body
+            </article>
+        </main>
+    </div>
+}
+
+@code {
+    private bool isAuthenticated = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        isAuthenticated = authState.User.Identity.IsAuthenticated;
+        AuthenticationStateProvider.AuthenticationStateChanged += async (task) =>
+        {
+            var authState = await task;
+            isAuthenticated = authState.User.Identity.IsAuthenticated;
+            StateHasChanged();
+        };
+    }
+}

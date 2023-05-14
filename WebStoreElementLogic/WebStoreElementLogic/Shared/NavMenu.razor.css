@@ -35,3 +35,17 @@
     transition: .5s ease;
     backface-visibility: hidden;
 }
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+@media (min-width: 992px) {
+    .navbar {
+        position: fixed;
+        width: 100%;
+    }
+}
+

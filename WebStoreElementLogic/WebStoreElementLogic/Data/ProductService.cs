@@ -203,10 +203,5 @@ namespace WebStoreElementLogic.Data
                 }
             }
         }
-
-
-
-
-
     }
 }

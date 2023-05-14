@@ -115,6 +115,8 @@ namespace MyProgram
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
+                endpoints.MapHub<EManagerHub>("/EManagerHub");
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });

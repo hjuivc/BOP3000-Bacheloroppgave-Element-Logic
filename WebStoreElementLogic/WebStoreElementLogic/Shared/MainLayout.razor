@@ -1,30 +1,27 @@
 ﻿@inherits LayoutComponentBase
 @using Microsoft.AspNetCore.Components.Authorization
 @inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
 
 <PageTitle>BOP3000</PageTitle>
 
 @if (isAuthenticated)
 {
-    <div>
+    <div class="page-container">
         <NavMenu />
 
-        <main>
-            <article class="content px-4">
-                @Body
-            </article>
+        <main class="content">
+            @Body
         </main>
     </div>
 }
 else
 {
-    <div>
+    <div class="page-container">
         <NavMenu />
 
-        <main>
-            <article class="content px-4">
-                @Body
-            </article>
+        <main class="content">
+            @Body
         </main>
     </div>
 }
@@ -34,6 +31,13 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        string currentUrl = NavigationManager.Uri;
+
+        if (currentUrl == NavigationManager.BaseUri)
+        {
+            NavigationManager.NavigateTo("/login", forceLoad: true);
+        }
+
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         isAuthenticated = authState.User.Identity.IsAuthenticated;
         AuthenticationStateProvider.AuthenticationStateChanged += async (task) =>

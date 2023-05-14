@@ -19,18 +19,30 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Pages\Home.razor.css" />
+    <None Remove="Pages\Login.razor.css" />
+    <None Remove="Pages\UserPage.razor.css" />
     <None Remove="Shared\NavMenu.razor.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Pages\Home.razor.css" />
+    <Content Include="Pages\Login.razor.css" />
+    <Content Include="Pages\UserPage.razor.css" />
     <Content Include="Shared\NavMenu.razor.css" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="6.0.16" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.16" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="6.0.16" />
   </ItemGroup>
 
 </Project>

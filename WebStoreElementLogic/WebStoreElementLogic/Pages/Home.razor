@@ -1,55 +1,36 @@
 ﻿@page "/home"
+@attribute [Authorize]
 @using System.Timers
+@using System.Security.Claims
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@using System.Net.Http.Json
+@inject HttpClient Http
+
 <title>Home</title>
-<style>
-    main {
-      width: 100%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-</style>
 
 <main>
-    <img src="/images/logos/Element logic logo black hires.JPG" class="d-block w-100 center" alt="Third slide">
+    <img src="/images/logos/Element logic logo black hires.JPG" class="d-block center" alt="Third slide">
 </main>
 
-
-
-
 @code {
-    private int currentSlide = 0;
-    private Timer timer;
+    private string userName;
+    private bool isAdmin;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        timer = new Timer(5000);
-        timer.Elapsed += (sender, args) =>
-        {
-            InvokeAsync(NextSlide);
-        };
-        timer.AutoReset = true;
-        timer.Enabled = true;
+        var state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = state.User;
+
+        userName = user.Identity.Name;
+        isAdmin = user.IsInRole("Admin");
+
+        // Get the updated AuthenticationState again to access the latest claims
+        state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        user = state.User;
+
+        // Access the updated claims
+        var name = user.FindFirst(ClaimTypes.Name)?.Value;
+        var roles = user.FindAll(ClaimTypes.Role).Select(c => c.Value).ToArray();
     }
 
-    private void NextSlide()
-    {
-        currentSlide++;
-        if (currentSlide > 2)
-        {
-            currentSlide = 0;
-        }
-        StateHasChanged();
-    }
-
-    private void PrevSlide()
-    {
-        currentSlide--;
-        if (currentSlide < 0)
-        {
-            currentSlide = 2;
-        }
-        StateHasChanged();
-    }
 }

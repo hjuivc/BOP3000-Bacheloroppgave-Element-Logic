@@ -21,7 +21,7 @@
                         <p class="text-center fw-bold">Product selected not in stock</p>
                     }
                     <div class="d-flex justify-content-around mt-3">
-                        <button type="button" class="btn btn-neutral justify-content-start" @onclick="() => OnCancelEvent.InvokeAsync()">Close</button>
+                        <button type="button" class="btn btn-neutral justify-content-start" title="Close" @onclick="() => OnCancelEvent.InvokeAsync()">Close</button>
                     </div>
                     @if (quant)
                     {

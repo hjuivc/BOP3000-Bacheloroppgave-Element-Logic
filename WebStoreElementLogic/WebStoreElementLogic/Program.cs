@@ -107,6 +107,21 @@ app.UseEndpoints(endpoints =>
     endpoints.MapFallbackToPage("/_Host");
 });
 
+/*
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path == "/")
+    {
+        string ipAddress = "88.94.88.30"; // Replace with your desired IP address
+        int port = 5000; // Replace with your desired port number
+
+        string loginUrl = $"http://{ipAddress}:{port}/login";
+        context.Response.Redirect(loginUrl);
+        return;
+    }
+    await next.Invoke();
+});
+*/
 // Run the app
 app.Run();
 

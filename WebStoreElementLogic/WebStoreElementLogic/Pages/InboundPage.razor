@@ -145,7 +145,7 @@
             .WithUrl(NavigationManager.ToAbsoluteUri("/EManagerHub"))
             .Build();
 
-        _hubConnection.On<PGBody[]>("PlacedGoods", async (PGBody[] data) =>
+        _hubConnection.On<PlacedGoodsBody[]>("PlacedGoods", async (PlacedGoodsBody[] data) =>
         {
             // Update processed inbound orders (UI only!)
             string msg = data[0].ToString();

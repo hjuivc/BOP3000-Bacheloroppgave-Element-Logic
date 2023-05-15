@@ -21,41 +21,41 @@
     <Authorized>
         <nav class="navbar navbar-expand-lg navbar-light bg-white p-0 shadow-sm">
             <div class="container-fluid p-0">
-                <a href="/home"><img id="img-header" title="Home" width="242" height="97" class="navbar-brand p-0 image" src="\images\logos\Element Logic logo white on red hires.jpg" alt="header_logo"></a>
+                <a href="/home"><img id="img-header" title="Home" width="242" height="97" class="navbar-brand p-0 image" src="\images\logos\Element Logic logo white on red hires.jpg" alt="header_logo" aria-label="Element Logic logo"></a>
                 <button class="navbar-toggler me-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon" aria-label="Toggler icon"></span>
                 </button>
                 <div class="collapse navbar-collapse me-4" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item d-flex justify-content-center">
-                            <a class="nav-link @(IsActive("/home"))" aria-current="page" title="Home" href="/home">Home</a>
+                            <a class="nav-link @(IsActive("/home"))" aria-current="page" aria-label="Home page" title="Home" href="/home">Home</a>
                         </li>
                         <li class="nav-item d-flex justify-content-center">
-                            <a class="nav-link @(IsActive("/productpage"))" aria-current="page" title="Products" href="/productpage">Products</a>
+                            <a class="nav-link @(IsActive("/productpage"))" aria-current="page" aria-label="Product page" title="Products" href="/productpage">Products</a>
                         </li>
                         <li class="nav-item d-flex justify-content-center">
-                            <a class="nav-link @(IsActive("/inboundpage"))" aria-current="page" title="Inbound" href="inboundpage">Inbound</a>
+                            <a class="nav-link @(IsActive("/inboundpage"))" aria-current="page" aria-label="Inbound page" title="Inbound" href="inboundpage">Inbound</a>
                         </li>
                         <li class="nav-item d-flex justify-content-center">
-                            <a class="nav-link @(IsActive("/stockpage"))" aria-current="page" title="Stock" href="stockpage">Stock</a>
+                            <a class="nav-link @(IsActive("/stockpage"))" aria-current="page" aria-label="Stock page" title="Stock" href="stockpage">Stock</a>
                         </li>
                         <li class="nav-item d-flex justify-content-center">
-                            <a class="nav-link @(IsActive("/orderpage"))" aria-current="page" title="Order" href="orderpage">Order</a>
+                            <a class="nav-link @(IsActive("/orderpage"))" aria-current="page" aria-label="Order page" title="Order" href="orderpage">Order</a>
                         </li>
                         <li class="nav-item d-flex justify-content-center @(isAdmin ? "" : "disabled")">
                             @if (isAdmin)
                             {
-                                <a class="nav-link @(IsActive("/userpage"))" aria-current="page" title="Users" href="userpage"><i class="fa-solid fa-users"></i></a>
+                                <a class="nav-link @(IsActive("/userpage"))" aria-current="page" aria-label="User management" title="Users" href="userpage"><i class="fa-solid fa-users" aria-label="User icon"></i></a>
                             }
                             else
                             {
-                                <a class="nav-link @(IsActive("/userpage"))" aria-current="page" title="Users" href="userpage"><i class="fa-solid fa-users"></i></a>
+                                <a class="nav-link @(IsActive("/userpage"))" aria-current="page" aria-label="User management" title="Users" href="userpage"><i class="fa-solid fa-users" aria-label="User icon"></i></a>
                                 <!--<span class="nav-link disabled" aria-current="page"><i class="fa-solid fa-users"></i></span>-->
                             }
                         </li>
 
                         <li class="nav-item d-flex justify-content-center">
-                            <a class="nav-link" aria-current="page" title="Log out" href="logout" @onclick="Logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                            <a class="nav-link" aria-current="page" aria-label="Log out" title="Log out" href="logout" @onclick="Logout"><i class="fa-solid fa-right-from-bracket" aria-label="Log out icon"></i></a>
                         </li>
                     </ul>
                 </div>

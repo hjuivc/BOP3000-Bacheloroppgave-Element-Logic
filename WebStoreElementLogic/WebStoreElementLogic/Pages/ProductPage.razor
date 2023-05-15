@@ -34,8 +34,8 @@ else
             Are you sure you wish to delete
             <span class="text-danger text-decoration-underline">@Products[SelectedIndex].Name?</span>
             <div class="d-flex flex-row justify-content-around mt-3">
-                <button @onclick="CancelDelete" class="btn btn-neutral" title="Cancel">Cancel</button>
-                <button @onclick="() => Delete(Products[SelectedIndex].Id)" class="btn btn-warning" title="Delete">Delete </button>
+                <button @onclick="CancelDelete" class="btn btn-neutral" title="Cancel" aria-label="Cancel">Cancel</button>
+                <button @onclick="() => Delete(Products[SelectedIndex].Id)" class="btn btn-warning" title="Delete" aria-label="Delete product">Delete </button>
             </div>
         </Alert>
     }
@@ -46,13 +46,13 @@ else
             <!-- Search function -->
             <div class="position-relative" style="padding-bottom: 30px;">
                 <div class="input-container">
-                    <input type="text" class="form-control" placeholder="Search.." id="txtSearch" name="search" autocomplete="off" title="Search Product Names" @bind="SearchTerm" @bind:event="oninput">
+                    <input type="text" class="form-control" placeholder="Search.." id="txtSearch" name="search" autocomplete="off" title="Search Product Names" aria-label="Search bar" @bind="SearchTerm" @bind:event="oninput">
                     <div class="input-group-append">
-                        <span class="input-group-text bg-transparent border-0"><i class="fa fa-search fa-lg"></i></span>
+                        <span class="input-group-text bg-transparent border-0"><i class="fa fa-search fa-lg" aria-label="Search icon"></i></span>
                     </div>
                 </div>
                 <div class="btn-add-container mt-3">
-                    <button class="btn btn-positive my-custom-font" title="Add Product" @onclick="() => New(selectedFile, newInfo)">
+                    <button class="btn btn-positive my-custom-font" title="Add Product" aria-label="Add product" @onclick="() => New(selectedFile, newInfo)">
                         <div class="position-relative">
                             Add Product
                         </div>

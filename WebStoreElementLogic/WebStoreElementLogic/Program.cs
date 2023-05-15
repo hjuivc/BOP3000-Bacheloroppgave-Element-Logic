@@ -7,6 +7,135 @@ using WebStoreElementLogic.Interfaces;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using System.Net;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Identity;
+using WebStoreElementLogic.Account;
+using WebStoreElementLogic.Shared;
+
+using AppCtx = WebStoreElementLogic.Data.AppContext;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddRazorPages();
+builder.Services.AddServerSideBlazor();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddSignalR();
+builder.Services.AddControllers();
+
+// Add distributed memory cache
+builder.Services.AddDistributedMemoryCache();
+
+// Connection string
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<AppCtx>(options => options.UseSqlServer(connectionString));
+
+// Services
+builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IDapperService, DapperService>();
+builder.Services.AddTransient<IInboundService, InboundService>();
+builder.Services.AddTransient<IOrderService, OrderService>();
+
+// Session and authentication
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<WebStoreElementLogic.Data.AppContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/login";
+        options.LogoutPath = "/logout";
+    });
+
+builder.Services.AddScoped<CustomAuthenticationStateProvider>();
+builder.Services.AddScoped<AuthenticationStateProvider>(provider => provider.GetRequiredService<CustomAuthenticationStateProvider>());
+
+// Add session middleware configuration
+builder.Services.AddSession(options =>
+{
+    options.Cookie.IsEssential = true;
+});
+
+// Add Scoped services
+builder.Services.AddScoped<HttpClient>();
+builder.Services.AddScoped<IEManagerService, EManagerService>();
+builder.Services.AddScoped<IDapperService, DapperService>();
+
+// Configure Kestrel
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Listen(IPAddress.Any, 5000, listenOptions =>
+    {
+        listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
+    });
+    options.Listen(IPAddress.Any, 7001, listenOptions =>
+    {
+        listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
+        listenOptions.UseHttps();
+    });
+});
+
+
+
+
+
+// Build app
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
+}
+
+// Add Extentsions
+//app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseAuthentication();
+app.UseRouting();
+app.UseAuthorization();
+app.UseSession();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+    endpoints.MapHub<EManagerHub>("/EManagerHub");
+    endpoints.MapBlazorHub();
+    endpoints.MapFallbackToPage("/_Host");
+});
+
+
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path == "/")
+    {
+        string ipAddress = "88.94.88.30"; // Replace with your desired IP address
+        int port = 5000; // Replace with your desired port number
+
+        string loginUrl = $"http://{ipAddress}:{port}/login";
+        context.Response.Redirect(loginUrl);
+        return;
+    }
+    await next.Invoke();
+});
+
+// Run the app
+app.Run();
+
+
+/*
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using System.Data;
+using WebStoreElementLogic.Data;
+using WebStoreElementLogic.Hubs;
+using WebStoreElementLogic.Interfaces;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using System.Net;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -71,18 +200,10 @@ namespace MyProgram
             });
 
             // Add HttpClient service
-            services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://api.example.com") });
+            //services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://api.example.com") });
             services.AddScoped<HttpClient>();
             services.AddScoped<IEManagerService, EManagerService>();
             services.AddScoped<IDapperService, DapperService>();
-
-            // For pictures
-            services.AddSingleton<ICustomWebHostEnvironment>(s =>
-            {
-                var httpContextAccessor = s.GetRequiredService<IHttpContextAccessor>();
-                var hostingEnvironment = s.GetService<IWebHostEnvironment>();
-                return new CustomWebHostEnvironment(httpContextAccessor, hostingEnvironment);
-            });
 
 
         }
@@ -105,12 +226,9 @@ namespace MyProgram
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseAuthentication();
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseSession();
 
             app.UseEndpoints(endpoints =>
@@ -128,6 +246,7 @@ namespace MyProgram
     {
         public static void Main(string[] args)
         {
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add the Startup class
@@ -181,4 +300,4 @@ namespace MyProgram
             app.Run();
         }
     }
-}
+}*/

@@ -220,8 +220,8 @@ else
 
     private async Task New(IBrowserFile file, Product product)
     {
-        int newId = (await ProductService.GetNextID())?.Id ?? 0;
-        newInfo = new Product { Id = newId };
+        int? newId = await ProductService.GetNextID();
+        newInfo = new Product { Id = newId ?? 0 };
         SelectedIndex = FilteredProducts.IndexOf(newInfo);
         AddNew = true;
 

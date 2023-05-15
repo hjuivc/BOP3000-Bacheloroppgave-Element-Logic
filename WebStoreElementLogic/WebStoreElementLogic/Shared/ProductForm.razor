@@ -135,11 +135,11 @@
         var imageUrl = $"{baseUrl}images/{newFileName}";
 
         // Remove address from the URL
-        var uri = new Uri(imageUrl);
-        var relativeUrl = uri.PathAndQuery;
+        //var uri = new Uri(imageUrl);
+        //var relativeUrl = uri.PathAndQuery;
 
         // Save the URL to database
-        Copy.URL = relativeUrl;
+        Copy.URL = imageUrl;
     }
 
 

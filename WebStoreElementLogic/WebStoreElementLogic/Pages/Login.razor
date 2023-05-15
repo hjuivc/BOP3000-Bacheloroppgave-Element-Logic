@@ -31,20 +31,20 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <img src="../images/logos/Element Logic logo red hires.jpg" style="width: 300px; height: 100px;" class="mx-auto d-block mb-4" />
+                        <img src="../images/logos/Element Logic logo red hires.jpg" style="width: 300px; height: 100px;" class="mx-auto d-block mb-4" aria-label="Element Logic logo"/>
 
                         <h5 class="card-title text-center mb-4">Login to Web Store</h5>
 
-                        <EditForm Model="@loginModel" OnValidSubmit="@HandleValidSubmit">
+                        <EditForm Model="@loginModel" OnValidSubmit="@HandleValidSubmit" aria-label="Login form">
                             <DataAnnotationsValidator />
 
                             <div class="form-group border mb-4">
                                 <div class="input-group">
-                                    <InputText id="username" class="form-control narrow-input" autocomplete="off" placeholder="Username" @bind-Value="@loginModel.Username" />
+                                    <InputText id="username" class="form-control narrow-input" autocomplete="off" placeholder="Username" aria-label="Username" @bind-Value="@loginModel.Username" />
                                     <div class="input-group-append">
                                         <span class="input-group-text" style="background-color: transparent; border: none;">
                                             <!-- Font Awesome icon -->
-                                            <i class="fa fa-user fa-2x" style="border: none;"></i>
+                                            <i class="fa fa-user fa-2x" style="border: none;" aria-label="User icon"></i>
                                         </span>
                                     </div>
                                 </div>
@@ -52,11 +52,11 @@
                             </div>
                             <div class="form-group border mb-4">
                                 <div class="input-group">
-                                    <InputText id="password" class="form-control narrow-input" type="password" placeholder="Password" @bind-Value="@loginModel.Password" />
+                                    <InputText id="password" class="form-control narrow-input" type="password" placeholder="Password" aria-label="Password" @bind-Value="@loginModel.Password" />
                                     <div class="input-group-append">
                                         <span class="input-group-text" style="background-color: transparent; border: none;">
                                             <!-- Font Awesome icon -->
-                                            <i class="fa fa-lock fa-2x" style="border: none;"></i>
+                                            <i class="fa fa-lock fa-2x" style="border: none;" aria-label="Lock icon"></i>
                                         </span>
                                     </div>
                                 </div>
@@ -64,7 +64,7 @@
                             </div>
 
                             <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-login btn-block">Log in</button>
+                                <button type="submit" class="btn btn-login btn-block" aria-label="Submit">Log in</button>
                             </div>
 
                         </EditForm>

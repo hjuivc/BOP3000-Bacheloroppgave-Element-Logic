@@ -13,7 +13,7 @@
                             <p>Quantity: @Product.Qty</p>
                         </div>
                         <div class="col-lg-4 col-md-4">
-                            <img src="@Product.URL" class="img-fluid" alt="productimage">
+                            <img src="@Product.URL" class="img-fluid" alt="@Product.Name" aria-label="@Product.Name">
                         </div>
                     </div>
                     @if (amount > Product.Qty || amount < 1)
@@ -21,7 +21,7 @@
                         <p class="text-center fw-bold">Product selected not in stock</p>
                     }
                     <div class="d-flex justify-content-around mt-3">
-                        <button type="button" class="btn btn-neutral justify-content-start" title="Close" @onclick="() => OnCancelEvent.InvokeAsync()">Close</button>
+                        <button type="button" class="btn btn-neutral justify-content-start" title="Close" aria-label="Close" @onclick="() => OnCancelEvent.InvokeAsync()">Close</button>
                     </div>
                     @if (quant)
                     {

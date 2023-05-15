@@ -8,25 +8,25 @@
 
 <form class="d-flex flex-column p-lg-3 justify-content-center px-0 px-md-2 px-lg-5">
     <h2 class="text-center">@Title</h2>
-    <img src="@Copy.URL" style="width: 30vmin; height: 30vmin;" class="align-self-center" />
+    <img src="@Copy.URL" style="width: 30vmin; height: 30vmin;" class="align-self-center" alt="@Copy.Name" aria-label="@Copy.Name"/>
 
     <label class="form-label" for="name">Name</label>
-    <input class="form-control" type="text" autocomplete="off" title="Product Name" name="name" @bind="Copy.Name">
+    <input class="form-control" type="text" autocomplete="off" title="Product Name" name="name" aria-label="Product name" @bind="Copy.Name">
 
     <label class="form-label" for="id">Id</label>
-    <input class="form-control" type="text" autocomplete="off" title="Product ID" readonly name="id" @bind="Copy.Id">
+    <input class="form-control" type="text" autocomplete="off" title="Product ID" readonly name="id" aria-label="Product id" @bind="Copy.Id">
 
     <label class="form-label" for="description">Description</label>
-    <textarea class="form-control" name="descr" title="Add a description/ Size for product" @bind="Copy.Descr" ></textarea>
+    <textarea class="form-control" name="descr" title="Add a description/ Size for product" aria-label="Description of product" @bind="Copy.Descr" ></textarea>
 
     <div class="mb-3">
         <label class="form-label" for="url">Image URL</label>
-        <input class="form-control" name="url" title="URL for the image" @bind="Copy.URL" />
+        <input class="form-control" name="url" title="URL for the image" aria-label="Image URL/Image path" @bind="Copy.URL" />
     </div>
     <div class="mb-3">
         <!-- Create a custom button to override the InputFile -->
         <label class="custom-input-file" title="Choose a file to upload">
-            <div class="button-wrapper">
+            <div class="button-wrapper" aria-label="Choose image file">
                 Choose a file
             </div>
             <!-- File input -->
@@ -37,12 +37,12 @@
     @*<input class="form-control" type="text" autocomplete="off" name="url" @bind="Copy.URL">*@
 
     <div class="d-flex my-3 justify-content-between">
-        <button type="button" @onclick="Discard" class="btn btn-neutral" title="Cancel changes">@DiscardLabel</button>
-        <button type="button" @onclick="Save" class="btn btn-positive" title="Save changes">@SaveLabel</button>
+        <button type="button" @onclick="Discard" class="btn btn-neutral" title="Cancel changes" aria-label="Cancel changes">@DiscardLabel</button>
+        <button type="button" @onclick="Save" class="btn btn-positive" title="Save changes" aria-label="Save changes">@SaveLabel</button>
     </div>
     @if (DeleteButton)
     {
-        <button type="button" @onclick="Delete" class="btn btn-warning align-self-lg-start align-self-stretch" title="Delete">Delete</button>
+        <button type="button" @onclick="Delete" class="btn btn-warning align-self-lg-start align-self-stretch" title="Delete" aria-label="Delete product">Delete</button>
     }
 </form>
 

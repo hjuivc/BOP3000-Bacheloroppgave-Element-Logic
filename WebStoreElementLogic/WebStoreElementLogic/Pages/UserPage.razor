@@ -36,8 +36,8 @@
                         <tr>
                             <td>@user.userName</td>
                             <td style="white-space: nowrap">
-                                <button @onclick="@(() => EditUser(user.userId))" class="btn btn-sm btn-neutral mr-1">Edit</button>
-                                <button @onclick="@(() => DeleteUser(user.userId))" class="btn btn-sm btn btn-login btn-block">
+                                <button @onclick="@(() => EditUser(user.userId))" class="btn btn-sm btn-neutral mr-1" aria-label="Edit user">Edit</button>
+                                <button @onclick="@(() => DeleteUser(user.userId))" class="btn btn-sm btn btn-login btn-block" aria-label="Delete user">
                                     @if (user.IsDeleting)
                                     {
                                         <span class="spinner-border spinner-border-sm"></span>
@@ -66,23 +66,23 @@
     <div class="col-md-4">
         <h3 style="text-align:center">@(isEditing ? "Edit user" : "Create new user")</h3>
         <!-- Add user form -->
-        <EditForm Model="@(isEditing ? (object)editUser : newUser)" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+        <EditForm Model="@(isEditing ? (object)editUser : newUser)" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit" aria-label="Edit user form">
             <DataAnnotationsValidator />
 
             <div class="form-group border mb-4" style="margin-top: 48px;">
                 <div class="input-group">
                     @if (isEditing)
                     {
-                        <InputText id="username" class="form-control narrow-input" autocomplete="off" placeholder="Username" @bind-Value="editUser.userName" />
+                        <InputText id="username" class="form-control narrow-input" autocomplete="off" placeholder="Username" aria-label="Username" @bind-Value="editUser.userName" />
                     }
                     else
                     {
-                        <InputText id="username" class="form-control narrow-input" autocomplete="off" placeholder="Username" @bind-Value="newUser.userName" />
+                        <InputText id="username" class="form-control narrow-input" autocomplete="off" placeholder="Username" aria-label="Username" @bind-Value="newUser.userName" />
                     }
                     <div class="input-group-append">
                         <span class="input-group-text" style="background-color: transparent; border: none;">
                             <!-- Font Awesome icon -->
-                            <i class="fa fa-user fa-2x" style="border: none;"></i>
+                            <i class="fa fa-user fa-2x" style="border: none;" aria-label="User icon"></i>
                         </span>
                     </div>
                 </div>
@@ -92,16 +92,16 @@
                 <div class="input-group">
                     @if (isEditing)
                     {
-                        <InputText id="password" class="form-control narrow-input" type="password" placeholder="Password" @bind-Value="@newPassword" />
+                        <InputText id="password" class="form-control narrow-input" type="password" placeholder="Password" aria-label="Password" @bind-Value="@newPassword" />
                     }
                     else
                     {
-                        <InputText id="password" class="form-control narrow-input" type="password" placeholder="Password" @bind-Value="@newUser.password" />
+                        <InputText id="password" class="form-control narrow-input" type="password" placeholder="Password" aria-label="Password" @bind-Value="@newUser.password" />
                     }
                     <div class="input-group-append">
                         <span class="input-group-text" style="background-color: transparent; border: none;">
                             <!-- Font Awesome icon -->
-                            <i class="fa fa-lock fa-2x" style="border: none;"></i>
+                            <i class="fa fa-lock fa-2x" style="border: none;" aria-label="Lock icon"></i>
                         </span>
                     </div>
                 </div>
@@ -112,17 +112,17 @@
                 <div>
                     @if (isEditing)
                     {
-                        <InputCheckbox id="isAdmin" class="form-check-input" @bind-Value="@editUser.admin" />
+                        <InputCheckbox id="isAdmin" class="form-check-input" aria-label="Admin rights" @bind-Value="@editUser.admin" />
                     }
                     else
                     {
-                        <InputCheckbox id="isAdmin" class="form-check-input" @bind-Value="@newUser.admin" />
+                        <InputCheckbox id="isAdmin" class="form-check-input" aria-label="Admin rights" @bind-Value="@newUser.admin" />
                     }
                     <label class="form-check-label" for="isAdmin">
                         Admin rights
                     </label>
                     <div class="tooltip-container">
-                        <i class="fas fa-info-circle"></i>
+                        <i class="fas fa-info-circle" aria-label="Info icon"></i>
                         <span class="tooltip-text">This checkbox gives the user admin rights, which means that he will be able to access the userpage which you are currently on. He will also have access to edit and delete users.</span>
                     </div>
 
@@ -130,9 +130,9 @@
                 <div>
                     @if (isEditing)
                     {
-                        <button type="button" class="btn btn-secondary mr-2" @onclick="CancelEdit">Cancel</button>
+                        <button type="button" class="btn btn-secondary mr-2" aria-label="Cancel" @onclick="CancelEdit">Cancel</button>
                     }
-                    <button type="submit" class="btn btn-login mx-2">@(!isEditing ? "Add user" : "Update user")</button>
+                    <button type="submit" class="btn btn-login mx-2" aria-label="Submit">@(!isEditing ? "Add user" : "Update user")</button>
                 </div>
             </div>
         </EditForm>

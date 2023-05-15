@@ -63,6 +63,14 @@ builder.Services.AddScoped<HttpClient>();
 builder.Services.AddScoped<IEManagerService, EManagerService>();
 builder.Services.AddScoped<IDapperService, DapperService>();
 
+// WebHost enviornment for images
+builder.Services.AddSingleton<ICustomWebHostEnvironment>(s =>
+{
+    var httpContextAccessor = s.GetRequiredService<IHttpContextAccessor>();
+    var hostingEnvironment = s.GetService<IWebHostEnvironment>();
+    return new CustomWebHostEnvironment(httpContextAccessor, hostingEnvironment);
+});
+
 // Configure Kestrel
 builder.WebHost.ConfigureKestrel(options =>
 {

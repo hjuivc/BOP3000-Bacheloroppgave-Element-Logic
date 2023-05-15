@@ -32,15 +32,10 @@ namespace WebStoreElementLogic.Data
             }
         }
 
-        public async Task<int> GetNextID()
+        public Task<int> GetNextID()
         {
-            var inboundList = _dapperService.GetAll<Product>($"SELECT MAX(PurchaseOrderId + 1) AS Id FROM [Inbound]", null, commandType: CommandType.Text);
-
-            var productsList = await Task.FromResult(inboundList.ToList());
-            // Checks if the Id is null
-            int newId = productsList?.FirstOrDefault()?.Id ?? 0;
-
-            return Math.Max(newId, 1);
+            var inbound = _dapperService.Get<Product>($"SELECT MAX(PurchaseOrderId + 1) AS Id FROM [Inbound]", null, commandType: CommandType.Text);
+            return Task.FromResult(inbound.Id);
         }
         public async Task<int> Create(Product product, double qty)
         {

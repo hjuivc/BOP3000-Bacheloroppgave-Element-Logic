@@ -33,15 +33,10 @@ namespace WebStoreElementLogic.Data
         }
 
         // TODO: fix
-        public async Task<int> GetNextID()
+        public Task<int> GetNextID()
         {
-            var orderList = _dapperService.GetAll<Product>($"SELECT MAX(ExtOrderId + 1) AS Id FROM [Order]", null, commandType: CommandType.Text);
-
-            var productsList = await Task.FromResult(orderList.ToList());
-            // Checks if the Id is null
-            int newId = productsList?.FirstOrDefault()?.Id ?? 0;
-
-            return Math.Max(newId, 1);
+            var order = _dapperService.Get<Product>($"SELECT MAX(ExtOrderId + 1) AS Id FROM [Order]", null, commandType: CommandType.Text);
+            return Task.FromResult(order.Id);
         }
 
         public async Task<int> GetNextPickListId()

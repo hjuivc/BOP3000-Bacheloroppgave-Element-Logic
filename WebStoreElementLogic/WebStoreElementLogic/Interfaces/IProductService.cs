@@ -12,7 +12,7 @@ namespace WebStoreElementLogic.Interfaces
         Task<List<Product>> ListAll(int page, int pageSize, string sortColumnName, string sortDirection, string searchTerm);
         Task<List<Product>> ListAllRefresh(string searchTerm, int page, int pageSize, string sortColumnName, string sortDirection);
         Task<List<Product>> GetProduct(int Id);
-        Task<Product> GetNextID();
+        Task<int> GetNextID();
         Task<List<Product>> GetProductNames(string Name);
         Task<List<Product>> GetProducts(string searchTerm, int pageIndex = 1, int pageSize = 10);
 

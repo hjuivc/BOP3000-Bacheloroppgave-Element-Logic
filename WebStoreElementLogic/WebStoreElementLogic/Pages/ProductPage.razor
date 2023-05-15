@@ -220,9 +220,7 @@ else
 
     private async Task New(IBrowserFile file, Product product)
     {
-        var productsList = await ProductService.GetNextID(0);
-        // Checks if the Id is null
-        int newId = productsList?.FirstOrDefault()?.Id ?? 0;
+        int newId = (await ProductService.GetNextID())?.Id ?? 0;
         newInfo = new Product { Id = newId };
         SelectedIndex = FilteredProducts.IndexOf(newInfo);
         AddNew = true;

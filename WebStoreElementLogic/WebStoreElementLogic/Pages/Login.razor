@@ -94,6 +94,7 @@
 
     private async Task HandleValidSubmit()
     {
+        NavigationManager.NavigateTo("/home");
         var user = await UserService.GetUser(loginModel.Username);
 
         if (user != null)
@@ -101,7 +102,9 @@
             var passwordHasher = new PasswordHasher<User>();
 
             var passwordVerificationResult = passwordHasher.VerifyHashedPassword(user, user.password, loginModel.Password);
-
+            Console.WriteLine(user.password);
+            Console.WriteLine(loginModel.Password);
+            /**/
             if (passwordVerificationResult == PasswordVerificationResult.Success)
             {
                 // Set the admin status of the user to the value retrieved from the database

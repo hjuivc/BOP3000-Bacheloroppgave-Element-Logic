@@ -20,7 +20,7 @@
 @if (ShowInboundMessage)
 {
     <div class="alert alert-success position-fixed top-0 start-50 translate-middle-x" role="alert" style="z-index: 9999; margin-top: 1%;" >
-        <strong>Inbound completed!</strong> @msg !
+        <strong>Inbound completed!</strong> @msg!
     </div>
 }
 <title>Inbound</title>
@@ -157,13 +157,13 @@
         _hubConnection.On<PlacedGoodsBody[]>("PlacedGoods", async (PlacedGoodsBody[] data) =>
         {
             // Update processed inbound orders (UI only!)
-            string msg = data[0].ToString();
+            msg = data[0].ToString();
             ShowInboundMessage = true;
             StateHasChanged();
             await Task.Delay(5000);
-            ShowInboundMessage = false;
-            StateHasChanged();
+            ShowInboundMessage = false;           
             await RefreshInboundList();
+            StateHasChanged();
         });
 
         // method for showing productname from database into page

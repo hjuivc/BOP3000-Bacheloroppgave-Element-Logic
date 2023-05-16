@@ -1,5 +1,5 @@
 ﻿/* // X-Small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {
+@media (max-width: 1000px) {
     img {
         width: 133px;
         height: 59px;
@@ -15,6 +15,15 @@
         width: 20px !important;
         height: 15px !important;
         padding: 10px !important;
+    }
+
+    .navbar {
+        position: fixed !important;
+        width: 100% !important;
+    }
+
+    #status_anchor {
+        margin-right: 0px !important;
     }
 }
 
@@ -36,13 +45,17 @@
     backface-visibility: hidden;
 }
 
+#status_anchor {
+    margin-right:50px;
+}
+
 .navbar {
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 575px) {
     .navbar {
         position: fixed;
         width: 100%;

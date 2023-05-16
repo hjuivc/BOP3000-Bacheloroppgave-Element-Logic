@@ -45,6 +45,17 @@
                         <li class="nav-item d-flex justify-content-center @(isAdmin ? "" : "disabled")">
                             @if (isAdmin)
                             {
+                                <a class="nav-link @(IsActive("/status"))" aria-current="page" aria-label="Status Page" title="Status" href="Status">Status</a>
+                            }
+                            else
+                            {
+                                <a class="nav-link @(IsActive("/status"))" aria-current="page" aria-label="Status Page" title="Status" href="Status">Status</a>
+                                
+                            }
+                        </li>
+                        <li class="nav-item d-flex justify-content-center @(isAdmin ? "" : "disabled")">
+                            @if (isAdmin)
+                            {
                                 <a class="nav-link @(IsActive("/userpage"))" aria-current="page" aria-label="User management" title="Users" href="userpage"><i class="fa-solid fa-users" aria-label="User icon"></i></a>
                             }
                             else

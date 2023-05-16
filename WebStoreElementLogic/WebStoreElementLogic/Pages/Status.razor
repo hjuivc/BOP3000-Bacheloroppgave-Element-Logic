@@ -1,0 +1,94 @@
+﻿@page "/Status"
+@attribute [Authorize(Roles = "Admin")]
+@using Microsoft.AspNetCore.WebUtilities;
+@using WebStoreElementLogic.Data;
+@using WebStoreElementLogic.Entities;
+@using WebStoreElementLogic.Interfaces;
+@inject IStatusService StatusService;
+@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
+@inherits ProductComponentBase
+
+<title>Status</title>
+
+<div class="d-flex flex-row mx-5 rounded mb-3">
+    <!-- Inbound -->
+    <div class="col container-fluid">
+        <h3 style="text-align: center">Awaiting Inbound</h3>
+        @if (inbounds != null)
+        {
+            @foreach (Inbound inbound in inbounds)
+            {
+                <div class="row">
+                    <div class="col">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="mt-3">@inbound.Name</p>
+                            <span class="badge bg-custom rounded-pill">@inbound.DisplayQuantity</span>
+                            <button type="button" class="btn btn-danger">Slett</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        
+        
+    </div>
+
+     <!-- Empty column for the gap -->
+    <div class="col-1 d-flex align-items-center justify-content-center">
+        <div style="border-right: 1px solid black; height: 100%;"></div>
+    </div>
+
+    <!-- Order -->
+    <div class="col container-fluid">
+        <h3 style="text-align: center">Order</h3>
+        @if (orders != null)
+        {
+            @foreach (Order order in orders)
+            {
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="mt-3">@order.Name</p>
+                                <span class="badge bg-custom rounded-pill">@order.Quantity</span>
+                                <button type="button" class="btn btn-danger">Slett</button>
+                            </div>
+                        </div>
+                    </div>
+            }
+        }
+
+        
+    </div>
+</div>
+
+
+@code {
+
+
+
+
+    private bool ShowSuccess = false;
+
+    private int Count = 0;
+
+    private List<Inbound> inbounds;
+    private List<Order> orders;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        // method for showing productname from database into page
+        try
+        {
+            inbounds = await StatusService.GetUnfinishedInbounds();
+            orders = await StatusService.GetUnfinishedOrders();
+        }
+        catch (Exception e)
+        {
+            // NoConnection = true;
+        }
+
+    }
+
+    
+}

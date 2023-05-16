@@ -20,13 +20,13 @@
 @if (ShowInboundMessage)
 {
     <div class="alert alert-success position-fixed top-0 start-50 translate-middle-x" role="alert" style="z-index: 9999; margin-top: 1%;" >
-        <strong>Inbound completed!</strong> @msg!
+        <strong>Inbound completed!</strong> @msg
     </div>
 }
 <title>Inbound</title>
 <div class="container-fluid">
     <div class="row">
-        <div class="@(inbounds != null ? "col-lg-10" : "col-lg-12")">
+        <div class="@(inbounds != null && inbounds.Any() ? "col-lg-10" : "col-lg-12")">
             <div class="d-flex flex-row mx-5 rounded mb-3">
                 <div class="container-fluid">
                     <div class="position-relative">
@@ -103,7 +103,8 @@
         Product="@FilteredProducts[SelectedIndex]"
         Index="SelectedIndex"
         OnCancelEvent="() => ShowModal = false"
-        OnAddEvent="Checkout" />
+        OnAddEvent="Checkout"
+        ButtonText="Send inbound"/>
 }
 
 @if (ShowSuccess)
@@ -137,7 +138,7 @@
     private bool ShowModal = false;
     private bool ShowList = false;
     private bool ShowSuccess = false;
-    
+
     private bool ShowInboundMessage { get; set; }
     private string msg;
 
@@ -161,9 +162,9 @@
             ShowInboundMessage = true;
             StateHasChanged();
             await Task.Delay(5000);
-            ShowInboundMessage = false;           
-            await RefreshInboundList();
+            ShowInboundMessage = false;
             StateHasChanged();
+            await RefreshInboundList();           
         });
 
         // method for showing productname from database into page
@@ -204,6 +205,7 @@
     public async Task RefreshInboundList()
     {
         inbounds = await InboundService.GetUnfinishedInbounds();
+        StateHasChanged();
     }
 
 

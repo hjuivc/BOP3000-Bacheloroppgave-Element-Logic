@@ -2,3 +2,11 @@
     aspect-ratio: 1/1;
     object-fit: fill;
 }
+
+
+
+@media (min-width: 992px) {
+    .custom-input-file {
+        min-width: 250px;
+    }
+}

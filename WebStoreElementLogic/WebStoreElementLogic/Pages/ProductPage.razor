@@ -60,6 +60,7 @@ else
                 </div>
             </div>
 
+            <div style="max-height: calc(100vh - 300px); overflow-y: scroll">
             @if (FilteredProducts != null)
             {
                 @foreach (Product product in FilteredProducts)
@@ -71,6 +72,7 @@ else
                         Selected="@(SelectedIndex == FilteredProducts.IndexOf(product))" />
                 }
             }
+            </div>
         </div>   
         <div class="container-fluid">
             <!-- TODO: better solution -->

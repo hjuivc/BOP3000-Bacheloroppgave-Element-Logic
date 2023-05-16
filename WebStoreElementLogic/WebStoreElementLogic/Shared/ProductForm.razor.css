@@ -10,3 +10,7 @@
         min-width: 250px;
     }
 }
+
+form {
+    margin-top: -45px;
+}

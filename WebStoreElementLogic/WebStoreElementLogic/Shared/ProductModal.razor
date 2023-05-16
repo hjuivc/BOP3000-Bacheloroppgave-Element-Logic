@@ -31,7 +31,7 @@
                     }
                     <div class="d-flex justify-content-around mt-3">
                         <button type="button" class="btn btn-neutral justify-content-start" title="Close" aria-label="Close" @onclick="() => OnCancelEvent.InvokeAsync()">Close</button>
-                        <button type="button" class="btn btn-positive justify-content-end" title="Add to cart" aria-label="Add to cart" @onclick="AddToCart">Add to cart</button>
+                        <button type="button" class="btn btn-positive justify-content-end" title="Add to cart" aria-label="Add to cart" @onclick="AddToCart">@ButtonText</button>
                     </div>
                     @if (quant)
                     {

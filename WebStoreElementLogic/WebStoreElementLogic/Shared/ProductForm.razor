@@ -8,8 +8,8 @@
 
 <form class="d-flex flex-row flex-lg-column p-lg-3 justify-content-center px-0 px-md-2 px-lg-5">
     <div class="d-flex flex-column justify-content-center">
-        <h2 class="text-center">@Title</h2>
-        <img src="@Copy.URL" style="width: 30vmin; height: 30vmin;" class="align-self-center" alt="@Copy.Name" aria-label="@Copy.Name"/>
+        <h3 class="text-center">@Title</h3>
+        <img src="@Copy.URL" style="width: 25vmin; height: 25vmin;" class="align-self-center" alt="@Copy.Name" aria-label="@Copy.Name"/>
     </div>
 
     <div class="d-flex flex-column justify-content-center">
@@ -39,7 +39,7 @@
 
         @*<input class="form-control" type="text" autocomplete="off" name="url" @bind="Copy.URL">*@
 
-        <div class="d-flex my-3 justify-content-between">
+        <div class="d-flex mt-1 justify-content-between">
             <div>
                 <button type="button" @onclick="Save" class="btn btn-positive me-2" title="Save changes" aria-label="Save changes">@SaveLabel</button>
                 <button type="button" @onclick="Discard" class="btn btn-neutral" title="Cancel changes" aria-label="Cancel changes">@DiscardLabel</button>

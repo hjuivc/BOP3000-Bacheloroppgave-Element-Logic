@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.StaticFiles;
 using WebStoreElementLogic.Interfaces;
 using WebStoreElementLogic.Entities;
+using Azure.Core;
+using System.Text;
 
 namespace WebStoreElementLogic.Controllers
 {
@@ -66,12 +68,20 @@ namespace WebStoreElementLogic.Controllers
         [HttpPost("ConfirmedPick")]
         public async Task<IActionResult> ConfirmedPick()
         {
+
             Console.WriteLine("Message recieved form EManager:\n");
 
             using var reader = new StreamReader(Request.Body);
             string xml = await reader.ReadToEndAsync();
 
             Console.WriteLine(xml);
+
+            CPBody[] picks = CPBody.FromXml(xml);
+
+            foreach (var pick in picks)
+            {
+                Console.WriteLine(pick.ToString() + "\n\n");
+            }
 
             return Ok();
         }

@@ -6,44 +6,51 @@
 @inject ICustomWebHostEnvironment CustomWebHostEnvironment;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
 
-<form class="d-flex flex-column p-lg-3 justify-content-center px-0 px-md-2 px-lg-5">
-    <h2 class="text-center">@Title</h2>
-    <img src="@Copy.URL" style="width: 30vmin; height: 30vmin;" class="align-self-center" alt="@Copy.Name" aria-label="@Copy.Name"/>
-
-    <label class="form-label" for="name">Name</label>
-    <input class="form-control" type="text" autocomplete="off" title="Product Name" name="name" aria-label="Product name" @bind="Copy.Name">
-
-    <label class="form-label" for="id">Id</label>
-    <input class="form-control" type="text" autocomplete="off" title="Product ID" readonly name="id" aria-label="Product id" @bind="Copy.Id">
-
-    <label class="form-label" for="description">Description</label>
-    <textarea class="form-control" name="descr" title="Add a description/ Size for product" aria-label="Description of product" @bind="Copy.Descr" ></textarea>
-
-    <div class="mb-3">
-        <label class="form-label" for="url">Image URL</label>
-        <input class="form-control" name="url" title="URL for the image" aria-label="Image URL/Image path" @bind="Copy.URL" />
+<form class="d-flex flex-row flex-lg-column p-lg-3 justify-content-center px-0 px-md-2 px-lg-5">
+    <div class="d-flex flex-column justify-content-center">
+        <h2 class="text-center">@Title</h2>
+        <img src="@Copy.URL" style="width: 30vmin; height: 30vmin;" class="align-self-center" alt="@Copy.Name" aria-label="@Copy.Name"/>
     </div>
-    <div class="mb-3">
-        <!-- Create a custom button to override the InputFile -->
-        <label class="custom-input-file" title="Choose a file to upload">
-            <div class="button-wrapper" aria-label="Choose image file">
-                Choose a file
+
+    <div class="d-flex flex-column justify-content-center">
+        <label class="form-label" for="name">Name</label>
+        <input class="form-control" type="text" autocomplete="off" title="Product Name" name="name" aria-label="Product name" @bind="Copy.Name">
+
+        <label class="form-label" for="id">Id</label>
+        <input class="form-control" type="text" autocomplete="off" title="Product ID" readonly name="id" aria-label="Product id" @bind="Copy.Id">
+
+        <label class="form-label" for="description">Description</label>
+        <textarea class="form-control" name="descr" title="Add a description/ Size for product" aria-label="Description of product" @bind="Copy.Descr" ></textarea>
+
+        <div class="mb-3">
+            <label class="form-label" for="url">Image URL</label>
+            <div class="d-flex justify-content-between">
+                <input class="form-control" name="url" title="URL for the image" aria-label="Image URL/Image path" @bind="Copy.URL" />
+                <!-- Create a custom button to override the InputFile -->
+                <label class="custom-input-file d-flex justify-content-end" title="Choose a file to upload">
+                    <div class="button-wrapper" aria-label="Choose image file">
+                        Choose a file
+                    </div>
+                    <!-- File input -->
+                    <InputFile id="imageFile" OnChange="@(async (e) => await HandleFileSelected(e))" />
+                </label>
             </div>
-            <!-- File input -->
-            <InputFile id="imageFile" OnChange="@(async (e) => await HandleFileSelected(e))" />
-        </label>
-    </div>
+        </div>
 
-    @*<input class="form-control" type="text" autocomplete="off" name="url" @bind="Copy.URL">*@
+        @*<input class="form-control" type="text" autocomplete="off" name="url" @bind="Copy.URL">*@
 
-    <div class="d-flex my-3 justify-content-between">
-        <button type="button" @onclick="Discard" class="btn btn-neutral" title="Cancel changes" aria-label="Cancel changes">@DiscardLabel</button>
-        <button type="button" @onclick="Save" class="btn btn-positive" title="Save changes" aria-label="Save changes">@SaveLabel</button>
+        <div class="d-flex my-3 justify-content-between">
+            <div>
+                <button type="button" @onclick="Save" class="btn btn-positive me-2" title="Save changes" aria-label="Save changes">@SaveLabel</button>
+                <button type="button" @onclick="Discard" class="btn btn-neutral" title="Cancel changes" aria-label="Cancel changes">@DiscardLabel</button>
+            </div>
+            @if (DeleteButton)
+            {
+                <button type="button" @onclick="Delete" class="btn btn-warning align-self-lg-start align-self-stretch" title="Delete" aria-label="Delete product">Delete</button>
+            }
+        </div>
     </div>
-    @if (DeleteButton)
-    {
-        <button type="button" @onclick="Delete" class="btn btn-warning align-self-lg-start align-self-stretch" title="Delete" aria-label="Delete product">Delete</button>
-    }
+    
 </form>
 
 @code {

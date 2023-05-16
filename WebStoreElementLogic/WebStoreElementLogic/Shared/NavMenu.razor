@@ -42,6 +42,19 @@
                         <li class="nav-item d-flex justify-content-center">
                             <a class="nav-link @(IsActive("/orderpage"))" aria-current="page" aria-label="Order page" title="Order" href="orderpage">Order</a>
                         </li>
+                        
+                        <li id="status_anchor" class="nav-item d-flex justify-content-center @(isAdmin ? "" : "disabled")">
+                            @if (isAdmin)
+                            {
+                                <a class="nav-link @(IsActive("/status"))" aria-current="page" aria-label="Status page" title="Status" href="status"><i class="fa-solid fa-users" aria-label="User icon"></i></a>
+                            }
+                            else
+                            {
+                                <a class="nav-link @(IsActive("/status"))" aria-current="page" aria-label="Status page" title="Status" href="status">Status</a>
+                                <!--<span class="nav-link disabled" aria-current="page"><i class="fa-solid fa-users"></i></span>-->
+                            }
+                        </li>
+                        
                         <li class="nav-item d-flex justify-content-center @(isAdmin ? "" : "disabled")">
                             @if (isAdmin)
                             {

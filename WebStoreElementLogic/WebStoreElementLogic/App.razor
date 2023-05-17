@@ -23,7 +23,12 @@
                 <div style="position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);">
                     @if (authorizing)
                     {
-                        <h3 style="text-align:center; margin-top: 100px;">Authorizing...</h3>
+                        <div class="d-flex flex-column align-items-center justify-content-center" style="height: 70vh;">
+                            <h3 style="text-align:center; margin-top: 100px;">Authorizing...</h3>
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
                     }
                     else
                     {
@@ -59,6 +64,7 @@
         if (!authenticationState.User.Identity.IsAuthenticated)
         {
             authorizing = true;
+            StateHasChanged();
             string[]? auth = await SimpleCookieManager.GetAuthCookie();
 
             if(auth != null)
@@ -99,6 +105,7 @@
                 }
             }
             authorizing = false;
+            StateHasChanged();
         }
     }
 }

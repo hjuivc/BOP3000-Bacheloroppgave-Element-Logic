@@ -47,6 +47,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     {
         options.LoginPath = "/login";
         options.LogoutPath = "/logout";
+        options.ExpireTimeSpan = TimeSpan.FromHours(2); // Set cookie expiration to 2 hours
+
     });
 
 builder.Services.AddScoped<CustomAuthenticationStateProvider>();

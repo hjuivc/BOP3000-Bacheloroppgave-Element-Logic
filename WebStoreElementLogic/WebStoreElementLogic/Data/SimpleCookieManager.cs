@@ -14,6 +14,11 @@ namespace WebStoreElementLogic.Data
             _runtime = runtime;
         }
 
+        public async Task DeleteAuthCookie()
+        {
+            await DeleteCookie(_authCookieName);
+        }
+        
         public async Task<string[]?> GetAuthCookie()
         {
             string? cookie = await GetCookie(_authCookieName);
@@ -45,6 +50,12 @@ namespace WebStoreElementLogic.Data
                 .Split(';')
                 .FirstOrDefault(part => part.StartsWith($"{cookieName}=") || part.StartsWith($" {cookieName}="))?
                 .Split('=')[1];
+        }
+
+        public async Task DeleteCookie(string cookieName)
+        {
+            // Set the cookie's value to empty and expiration date to a past date
+            await _runtime.InvokeVoidAsync("eval", $"document.cookie = '{cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'");
         }
 
     }

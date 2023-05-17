@@ -22,7 +22,6 @@
 @inject CustomAuthenticationStateProvider AuthenticationStateProvider;
 @inject ISimpleCookieManager SimpleCookieManager;
 
-
 <title>Log in</title>
 <div class="center">
     <div class="container">
@@ -48,8 +47,6 @@
                                 <ValidationMessage For="@(() => loginModel.Username)" />
                             </div>
 
-                          
-
                             <div class="form-group border mb-4">
                                 <div class="input-container">
                                     <InputText id="password" class="narrow-input" type="password" placeholder="Password" @bind-Value="@loginModel.Password" />
@@ -58,8 +55,6 @@
                                 </div>
                                 <ValidationMessage For="@(() => loginModel.Password)" />
                             </div>
-
-                            
 
                             <div class="d-flex justify-content-end">
                                 <button type="submit" class="btn btn-login btn-block" aria-label="Submit">Log in</button>
@@ -100,10 +95,8 @@
         if (user != null)
         {
             var passwordHasher = new PasswordHasher<User>();
-
             var passwordVerificationResult = passwordHasher.VerifyHashedPassword(user, user.password, loginModel.Password);
 
-            /**/
             if (passwordVerificationResult == PasswordVerificationResult.Success)
             {
                 // Set the admin status of the user to the value retrieved from the database
@@ -111,7 +104,6 @@
 
                 // Set session value
                 await DistributedCache.SetStringAsync("IsAdmin", loginModel.IsAdmin.ToString());
-
 
                 // Set the authenticated user information
                 var claims = new List<Claim>
@@ -128,21 +120,21 @@
                 await AuthenticationStateProvider.NotifyAuthenticationStateChangedAsync(authenticationState);
 
                 // Place authentication cookies
-                // TODO: Hash
                 await SimpleCookieManager.PlaceAuthCookie(user.userName, user.password);
-                await SimpleCookieManager.PlaceCookie("random", "junk");
 
                 // Navigate to home page
                 NavigationManager.NavigateTo("/home");
             }
             else
             {
+                // TODO: Toast
                 // Passwords do not match
                 await JSRuntime.InvokeVoidAsync("alert", "User found, but wrong password entered.");
             }
         }
         else
         {
+            // TODO: Toast
             // User not found
             await JSRuntime.InvokeVoidAsync("alert", "User not found. Try another username.");
         }

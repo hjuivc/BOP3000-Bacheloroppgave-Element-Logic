@@ -20,16 +20,16 @@
     <Found Context="routeData">
         <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
             <NotAuthorized>
-                @if (authorizing)
-                {
-                    
-                }
-                else
-                {
-                    <div style="position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);">
+                <div style="position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);">
+                    @if (authorizing)
+                    {
+                        <h3 style="text-align:center; margin-top: 100px;">Authorizing...</h3>
+                    }
+                    else
+                    {
                         <h3 style="text-align:center; margin-top: 100px;">You are not authorized to view this page.</h3>
-                    </div>
-                }
+                    }
+                </div>
             </NotAuthorized>
         </AuthorizeRouteView>
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
@@ -59,7 +59,6 @@
         if (!authenticationState.User.Identity.IsAuthenticated)
         {
             authorizing = true;
-            //var result = await CookieAuthService.TryAuthorizeWithCookieAsync();
             string[]? auth = await SimpleCookieManager.GetAuthCookie();
 
             if(auth != null)
@@ -72,51 +71,31 @@
                     Username = username,
                     Password = password
                 };
-
                 var user = await UserService.GetUser(loginModel.Username);
 
-                if (user != null)
+                if (user != null && user.password == loginModel.Password)
                 {
+                    // Set the admin status of the user to the value retrieved from the database
+                    loginModel.IsAdmin = Convert.ToBoolean(user.admin);
 
-                    //if (await UserService.CheckHashedPassword(user.Id, loginModel.Password))
-                    if (user.password == loginModel.Password)
+                    // Set session value
+                    await DistributedCache.SetStringAsync("IsAdmin", loginModel.IsAdmin.ToString());
+
+
+                    // Set the authenticated user information
+                    var claims = new List<Claim>
                     {
-                        Console.WriteLine("Success auth");
-                        // Set the admin status of the user to the value retrieved from the database
-                        loginModel.IsAdmin = Convert.ToBoolean(user.admin);
+                        new Claim(ClaimTypes.Name, user.userName),
+                        new Claim(ClaimTypes.Role, loginModel.IsAdmin ? "Admin" : "User")
+                    };
 
-                        // Set session value
-                        await DistributedCache.SetStringAsync("IsAdmin", loginModel.IsAdmin.ToString());
+                    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var principal = new ClaimsPrincipal(identity);
+                    var newAuthenticationState = new AuthenticationState(principal);
 
+                    // Sign in the user
+                    await AuthenticationStateProvider.NotifyAuthenticationStateChangedAsync(newAuthenticationState);
 
-                        // Set the authenticated user information
-                        var claims = new List<Claim>
-                        {
-                            new Claim(ClaimTypes.Name, user.userName),
-                            new Claim(ClaimTypes.Role, loginModel.IsAdmin ? "Admin" : "User")
-                        };
-
-                        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                        var principal = new ClaimsPrincipal(identity);
-                        var newAuthenticationState = new AuthenticationState(principal);
-
-                        Console.WriteLine("test2");
-
-                        // Sign in the user
-                        await AuthenticationStateProvider.NotifyAuthenticationStateChangedAsync(newAuthenticationState);
-
-                    }
-                    else
-                    {
-                        // Passwords do not match
-                        Console.WriteLine("no password match");
-                        Console.WriteLine($"{user.password} | {loginModel.Password}");
-
-                    }
-                }
-                else
-                {
-                    // User not found
                 }
             }
             authorizing = false;

@@ -9,6 +9,7 @@ namespace WebStoreElementLogic.Interfaces
         Task<List<User>> GetAllUsersAsync();
         Task<User> GetUserById(int id);
 
+        Task<bool> CheckHashedPassword(int id, string hashedPassword);
         Task<int> DeleteUserAsync(int id);
         Task<int> UpdateUserAsync(EditUserModel editUser);
 

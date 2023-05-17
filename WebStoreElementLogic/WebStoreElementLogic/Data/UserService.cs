@@ -110,6 +110,17 @@ namespace WebStoreElementLogic.Data
             return Task.FromResult(user);
         }
 
+        public Task<bool> CheckHashedPassword(int id, string hashedPassword)
+        {
+            var user = _dapperService.Get<User>(
+                $"SELECT * FROM [Users] WHERE userId = @Id AND password = @Password",
+                new { Id = id, Password = hashedPassword },
+                commandType: CommandType.Text);
+
+            Console.WriteLine(user == null ? "no luck" : "Yes :)");
+
+            return Task.FromResult(user != null);
+        }
 
         public async Task<int> UpdateUserAsync(EditUserModel editUser)
         {

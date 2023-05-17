@@ -21,14 +21,15 @@ namespace WebStoreElementLogic.Data
             {
                 return null;
             }
-            return cookie.Split(":");
+            return System.Web.HttpUtility.UrlDecode(cookie).Split(":");
         }
 
         public async Task PlaceAuthCookie(string username, string password)
         {
             // TODO: add hashing
             string cookie = $"{username}:{password}";
-            await PlaceCookie(_authCookieName, cookie);
+            string urlEncoded = System.Web.HttpUtility.UrlEncode(cookie);
+            await PlaceCookie(_authCookieName, urlEncoded);
         }
 
         public async Task PlaceCookie(string cookieName, string cookieData)

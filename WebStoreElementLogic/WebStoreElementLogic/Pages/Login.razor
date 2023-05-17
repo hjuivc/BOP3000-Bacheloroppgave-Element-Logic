@@ -20,6 +20,7 @@
 @layout Shared.LoginLayout;
 @inject Microsoft.AspNetCore.Identity.UserManager<IdentityUser> UserManager;
 @inject CustomAuthenticationStateProvider AuthenticationStateProvider;
+@inject ISimpleCookieManager SimpleCookieManager;
 
 
 <title>Log in</title>
@@ -114,10 +115,10 @@
 
                 // Set the authenticated user information
                 var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.userName),
-                new Claim(ClaimTypes.Role, loginModel.IsAdmin ? "Admin" : "User")
-            };
+                {
+                    new Claim(ClaimTypes.Name, user.userName),
+                    new Claim(ClaimTypes.Role, loginModel.IsAdmin ? "Admin" : "User")
+                };
 
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
@@ -125,6 +126,11 @@
 
                 // Sign in the user
                 await AuthenticationStateProvider.NotifyAuthenticationStateChangedAsync(authenticationState);
+
+                // Place authentication cookies
+                // TODO: Hash
+                await SimpleCookieManager.PlaceAuthCookie(user.userName, user.password);
+                await SimpleCookieManager.PlaceCookie("random", "junk");
 
                 // Navigate to home page
                 NavigationManager.NavigateTo("/home");
@@ -140,21 +146,6 @@
             // User not found
             await JSRuntime.InvokeVoidAsync("alert", "User not found. Try another username.");
         }
-    }
-
-
-
-
-    public class LoginModel
-    {
-        [Required(ErrorMessage = "Please enter your username")]
-        public string Username { get; set; }
-
-        [Required(ErrorMessage = "Please enter your password")]
-        public string Password { get; set; }
-
-        [Required]
-        public bool IsAdmin { get; set; }
     }
 }
 

@@ -1,7 +1,10 @@
 ﻿@page "/logout"
 @using Microsoft.AspNetCore.Components.Authorization
+@using WebStoreElementLogic.Interfaces
+@using WebStoreElementLogic.Data
 @inject NavigationManager NavigationManager
 @inject AuthenticationStateProvider AuthenticationStateProvider
+@inject ISimpleCookieManager SimpleCookieManager
 
 
 <div class="d-flex flex-column align-items-center justify-content-center" style="height: 70vh;">
@@ -18,6 +21,13 @@
         await customAuthStateProvider.LogoutAsync();
         await Task.Delay(2000);
         NavigationManager.NavigateTo("/login", true);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+        // If we want to remove the 2000ms delay, we might have to move other logout logic into this function as well
+        await SimpleCookieManager.DeleteAuthCookie();
     }
 
 }

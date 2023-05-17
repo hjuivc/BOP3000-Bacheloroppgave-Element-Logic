@@ -8,7 +8,6 @@ namespace WebStoreElementLogic.Interfaces
         Task<User> GetUser(string userName);
         Task<List<User>> GetAllUsersAsync();
         Task<User> GetUserById(int id);
-
         Task<int> DeleteUserAsync(int id);
         Task<int> UpdateUserAsync(EditUserModel editUser);
 

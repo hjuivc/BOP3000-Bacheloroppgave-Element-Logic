@@ -20,7 +20,7 @@
 @layout Shared.LoginLayout;
 @inject Microsoft.AspNetCore.Identity.UserManager<IdentityUser> UserManager;
 @inject CustomAuthenticationStateProvider AuthenticationStateProvider;
-
+@inject ISimpleCookieManager SimpleCookieManager;
 
 <title>Log in</title>
 <div class="center">
@@ -47,8 +47,6 @@
                                 <ValidationMessage For="@(() => loginModel.Username)" />
                             </div>
 
-                          
-
                             <div class="form-group border mb-4">
                                 <div class="input-container">
                                     <InputText id="password" class="narrow-input" type="password" placeholder="Password" @bind-Value="@loginModel.Password" />
@@ -57,8 +55,6 @@
                                 </div>
                                 <ValidationMessage For="@(() => loginModel.Password)" />
                             </div>
-
-                            
 
                             <div class="d-flex justify-content-end">
                                 <button type="submit" class="btn btn-login btn-block" aria-label="Submit">Log in</button>
@@ -99,10 +95,8 @@
         if (user != null)
         {
             var passwordHasher = new PasswordHasher<User>();
-
             var passwordVerificationResult = passwordHasher.VerifyHashedPassword(user, user.password, loginModel.Password);
 
-            /**/
             if (passwordVerificationResult == PasswordVerificationResult.Success)
             {
                 // Set the admin status of the user to the value retrieved from the database
@@ -111,13 +105,12 @@
                 // Set session value
                 await DistributedCache.SetStringAsync("IsAdmin", loginModel.IsAdmin.ToString());
 
-
                 // Set the authenticated user information
                 var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.userName),
-                new Claim(ClaimTypes.Role, loginModel.IsAdmin ? "Admin" : "User")
-            };
+                {
+                    new Claim(ClaimTypes.Name, user.userName),
+                    new Claim(ClaimTypes.Role, loginModel.IsAdmin ? "Admin" : "User")
+                };
 
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
@@ -126,35 +119,25 @@
                 // Sign in the user
                 await AuthenticationStateProvider.NotifyAuthenticationStateChangedAsync(authenticationState);
 
+                // Place authentication cookies
+                await SimpleCookieManager.PlaceAuthCookie(user.userName, user.password);
+
                 // Navigate to home page
                 NavigationManager.NavigateTo("/home");
             }
             else
             {
+                // TODO: Toast
                 // Passwords do not match
                 await JSRuntime.InvokeVoidAsync("alert", "User found, but wrong password entered.");
             }
         }
         else
         {
+            // TODO: Toast
             // User not found
             await JSRuntime.InvokeVoidAsync("alert", "User not found. Try another username.");
         }
-    }
-
-
-
-
-    public class LoginModel
-    {
-        [Required(ErrorMessage = "Please enter your username")]
-        public string Username { get; set; }
-
-        [Required(ErrorMessage = "Please enter your password")]
-        public string Password { get; set; }
-
-        [Required]
-        public bool IsAdmin { get; set; }
     }
 }
 

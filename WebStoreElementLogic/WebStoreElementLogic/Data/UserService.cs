@@ -110,7 +110,6 @@ namespace WebStoreElementLogic.Data
             return Task.FromResult(user);
         }
 
-
         public async Task<int> UpdateUserAsync(EditUserModel editUser)
         {
             int result = 0;

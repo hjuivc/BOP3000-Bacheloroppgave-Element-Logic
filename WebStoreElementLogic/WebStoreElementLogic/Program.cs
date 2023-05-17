@@ -13,6 +13,7 @@ using WebStoreElementLogic.Account;
 using WebStoreElementLogic.Shared;
 
 using AppCtx = WebStoreElementLogic.Data.AppContext;
+using Microsoft.JSInterop;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +37,7 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IDapperService, DapperService>();
 builder.Services.AddTransient<IInboundService, InboundService>();
 builder.Services.AddTransient<IOrderService, OrderService>();
+builder.Services.AddTransient<ISimpleCookieManager, SimpleCookieManager>();
 
 // Session and authentication
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()

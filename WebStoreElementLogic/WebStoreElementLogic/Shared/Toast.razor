@@ -1,0 +1,13 @@
+﻿
+
+<div class="alert alert-@(Success? "success" : "danger") position-fixed top-0 start-50 translate-middle-x" role="alert" style="z-index: 9999; margin-top: 1%;">
+    @ChildContent
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public bool Success { get; set; } = false;
+}

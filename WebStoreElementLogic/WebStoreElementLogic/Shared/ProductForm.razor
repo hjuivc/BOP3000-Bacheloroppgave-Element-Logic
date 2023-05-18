@@ -8,7 +8,6 @@
 
 <form class="d-flex flex-row flex-lg-column p-lg-3 justify-content-center px-0 px-md-2 px-lg-5">
     <div class="d-flex flex-column justify-content-center">
-        <h3 class="text-center">@Title</h3>
         <img src="@Copy.URL" style="width: 25vmin; height: 25vmin;" class="align-self-center" alt="@Copy.Name" aria-label="@Copy.Name"/>
     </div>
 
@@ -58,7 +57,7 @@
     public int id { get; set; }
 
     [Parameter]
-    public string DiscardLabel { get; set; } = "";
+    public string DiscardLabel { get; set; } = "Cancel";
 
     [Parameter]
     public string SaveLabel { get; set; } = "";

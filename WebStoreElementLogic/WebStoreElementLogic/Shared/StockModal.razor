@@ -48,6 +48,13 @@
     </div>
 </Alert>
 
+@if (ShowStockMessage)
+{
+    <div class="alert alert-success position-fixed top-0 start-50 translate-middle-x" role="alert" style="z-index: 9999; margin-top: 1%;">
+        <strong>Empty stock done!</strong> @msg
+    </div>
+}
+
 @code {
     [Parameter]
     public int Index { get; set; }
@@ -61,37 +68,27 @@
     [Parameter]
     public EventCallback<int[]> OnAddEvent { get; set; }
 
+    [Parameter]
+    public EventCallback OnStockUpdated { get; set; }
+
+
     private int amount = 1;
 
     private bool quant = false;
+
+    private bool ShowStockMessage { get; set; }
+    private string msg;
 
     private async Task EmptyStock()
     {
         int Id = Product.Id + 1;
         await StockService.EmptyStockAsync(Id);
-        await LoadStock();
-
+        ShowStockMessage = true;
+        await Task.Delay(1000);
+        ShowStockMessage = false;
+        await RefreshProducts();
+        await OnCancelEvent.InvokeAsync();
+        await OnStockUpdated.InvokeAsync(); // Invoke the OnStockUpdated callback
     }
-
-    public async Task LoadStock()
-    {
-        // method for showing productname from database into page
-        try
-        {
-            int pageSize = 25;
-            // Get the current page number from the query string
-            int pageIndex = GetPageIndexFromQueryString();
-
-            // Store in a new list temporarily to avoid seting Products to null
-            List<Product> FetchedProducts = await ProductService.GetProducts("", pageIndex, pageSize);
-            FilteredProducts = FetchedProducts;
-            Products = FilteredProducts.ToList();
-        }
-        catch (Exception e)
-        {
-            // NoConnection = true;
-        }
-    }
-
 
 }

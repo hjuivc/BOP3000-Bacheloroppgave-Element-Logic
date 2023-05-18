@@ -35,7 +35,7 @@ namespace WebStoreElementLogic.Data
 
         public async Task<List<Inbound>> GetUnfinishedInbounds()
         {
-            var sql = "SELECT I.*, P.ProductName AS Name FROM Inbound I JOIN Products P ON I.ExtProductId = P.ExtProductId WHERE I.Status = 0;";
+            var sql = "SELECT I.*, P.ProductName AS Name FROM Inbound I JOIN Products P ON I.ExtProductId = P.ExtProductId ;";
             using (var connection = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]))
             {
                 try
@@ -54,7 +54,7 @@ namespace WebStoreElementLogic.Data
 
         public async Task<List<Order>> GetUnfinishedOrders()
         {
-            var sql = "SELECT Order.*, P.ProductName AS Name FROM Order JOIN Products P ON Order.ExtProductId = P.ExtProductId WHERE Order.Status = 0;";
+            var sql = "SELECT [Order].*, P.ProductName AS Name FROM [Order] JOIN Products AS P ON [Order].ExtProductId = P.ExtProductId;";
             using (var connection = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]))
             {
                 try
@@ -69,6 +69,20 @@ namespace WebStoreElementLogic.Data
                     return null;
                 }
             }
+        }
+        public Task<int> DeleteInbound(int id)
+        {
+            int deleteInbound = _dapperService.Execute
+                ($"DELETE FROM [inbound] WHERE InboundId = {id}",
+                null, commandType: CommandType.Text);
+            return Task.FromResult(deleteInbound);
+        }
+        public Task<int> DeleteOrder(int id)
+        {
+            int deleteOrder = _dapperService.Execute
+                ($"DELETE FROM [order] WHERE ExtOrderId = {id}",
+                null, commandType: CommandType.Text);
+            return Task.FromResult(deleteOrder);
         }
 
     }

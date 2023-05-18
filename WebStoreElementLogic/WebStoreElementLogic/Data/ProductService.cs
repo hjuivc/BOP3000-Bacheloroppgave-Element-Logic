@@ -6,6 +6,7 @@ using System.Data;
 using WebStoreElementLogic.Entities;
 using System;
 using WebStoreElementLogic.Pages;
+using System.Text.RegularExpressions;
 
 namespace WebStoreElementLogic.Data
 {
@@ -13,18 +14,67 @@ namespace WebStoreElementLogic.Data
     {
         private readonly IDapperService _dapperService;
         private readonly IConfiguration _configuration;
+        private readonly ICustomWebHostEnvironment _customWebHostEnvironment;
 
-        public ProductService(IDapperService dapperService, IConfiguration configuration)
+        public ProductService(
+            IDapperService dapperService, 
+            IConfiguration configuration, 
+            ICustomWebHostEnvironment customWebHostEnvironment
+        )
         {
             try
             {
                 _configuration = configuration;
                 _dapperService = dapperService;
+                _customWebHostEnvironment = customWebHostEnvironment;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("Could not create DapperService");
                 throw;
+            }
+        }
+
+        public string? ExtractFileName(string fullUrl)
+        {
+            string pattern = @"\/images\/([\d_A-z]+\.[A-z]+)";
+            Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
+            Match m = r.Match(fullUrl);
+
+            if (m.Success)
+            {
+                return m.Groups[1].Value;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public void DeleteImage(int Id)
+        {
+            // Get url from database
+            string url = _dapperService.Get<string>(
+                $"SELECT TOP 1 ImageId FROM [Products] WHERE ExtProductId = @ProductId",
+                new { ProductId = Id },
+                commandType: CommandType.Text
+            );
+
+            // Create file path, get filename with regex
+            var path = Path.Combine(
+                _customWebHostEnvironment.WebRootPath, 
+                "images", 
+                ExtractFileName(url) ?? "missing"
+            );
+
+            // Delete file if it exists
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+            else
+            {
+                Console.WriteLine("File does not exist: " + path);
             }
         }
 
@@ -64,6 +114,8 @@ namespace WebStoreElementLogic.Data
 
         public Task<int> Delete(int id)
         {
+            DeleteImage(id);
+
             int deleteStock = _dapperService.Execute
                 ($"DELETE FROM [Stock] WHERE ExtProductId = {id}",
                 null, commandType: CommandType.Text);

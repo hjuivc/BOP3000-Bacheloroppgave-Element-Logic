@@ -64,6 +64,10 @@ namespace WebStoreElementLogic.Data
 
         public Task<int> Delete(int id)
         {
+            int deleteStock = _dapperService.Execute
+                ($"DELETE FROM [Stock] WHERE ExtProductId = {id}",
+                null, commandType: CommandType.Text);
+
             int deleteProduct = _dapperService.Execute
                 ($"DELETE FROM [Products] WHERE ExtProductId = {id}",
                 null, commandType: CommandType.Text);
@@ -182,6 +186,36 @@ namespace WebStoreElementLogic.Data
         public Task<IEnumerable<Product>> GetAll()
         {
             throw new NotImplementedException();
+        }
+
+        public Task<bool> doesExistInOrder(int Id)
+        {
+            var order = _dapperService.Get<Product>(
+                $"SELECT TOP 1 ExtOrderId AS Id FROM [Order] WHERE ExtProductId = @ProductId",
+                new { ProductId = Id }, 
+                commandType: CommandType.Text
+            );
+            return Task.FromResult(order != null);
+        }
+
+        public Task<bool> doesExistInInbound(int Id)
+        {
+            var inbound = _dapperService.Get<Product>(
+                $"SELECT TOP 1 InboundId AS Id FROM [Inbound] WHERE ExtProductId = @ProductId",
+                new { ProductId = Id },
+                commandType: CommandType.Text
+            );
+            return Task.FromResult(inbound != null);
+        }
+
+        public Task<bool> hasStock(int Id)
+        {
+            var stock = _dapperService.Get<decimal>(
+                $"SELECT TOP 1 Quantity FROM [Stock] WHERE ExtProductId = @ProductId",
+                new { ProductId = Id },
+                commandType: CommandType.Text
+            );
+            return Task.FromResult(stock > 0);
         }
 
         public async Task<List<Product>> GetProducts(string searchTerm, int pageIndex = 1, int pageSize = 10)

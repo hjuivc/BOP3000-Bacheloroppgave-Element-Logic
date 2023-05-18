@@ -16,6 +16,9 @@ namespace WebStoreElementLogic.Interfaces
         Task<List<Product>> GetProductNames(string Name);
         Task<List<Product>> GetProducts(string searchTerm, int pageIndex = 1, int pageSize = 10);
 
+        Task<bool> doesExistInOrder(int Id);
+        Task<bool> doesExistInInbound(int Id);
+        Task<bool> hasStock(int Id);
         Task UpdateQuantity(int productId, decimal quantity);
     }
 }

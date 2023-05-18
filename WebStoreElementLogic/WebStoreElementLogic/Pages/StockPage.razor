@@ -115,11 +115,18 @@
         }
     }
 
-    private void ShowStockEmptyMessage(string productName)
+    private async void ShowStockEmptyMessage(string productName)
     {
         msg = $"Quantity for product: {productName} is now 0!";
         ShowStockMessage = true;
+
         StateHasChanged(); // To re-render the component with new state
+
+        await Task.Delay(4000); // Delay for 4 seconds
+
+        ShowStockMessage = false;
+        StateHasChanged(); // To re-render the component and remove the message
     }
+
 
 }

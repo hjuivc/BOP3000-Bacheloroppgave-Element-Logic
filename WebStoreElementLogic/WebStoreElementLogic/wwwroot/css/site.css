@@ -39,9 +39,9 @@ h5 {
     pull-right: inherit !important;
 }
 
+/* Adding a darker color for hovering  */
 .btn-login:hover {
-    color: #fff !important;
-    background-color: #34495E !important;
+    background-color: #8C0C21 !important;
 }
 
 /* End of login */
@@ -161,7 +161,7 @@ a:hover, .btn-link:hover {
 
 .btn-positive:hover {
     color: #000000 !important;
-    background-color: #16a085 !important;
+    background-color: #12876e !important;
 }
 
 .btn-warning {
@@ -181,7 +181,7 @@ a:hover, .btn-link:hover {
 
 .btn-neutral:hover {
     color: #000000 !important;
-    background-color: #edda22 !important;
+    background-color: #d5c11e !important;
 }
 
 .btn-custom {
@@ -191,8 +191,7 @@ a:hover, .btn-link:hover {
 }
 
 .btn-custom:hover {
-    background-color: #34495E !important;
-    border-color: #34495E;
+    background-color: #8C0C21 !important;
 }
 
 
@@ -332,6 +331,10 @@ a:hover, .btn-link:hover {
     padding: 8px 12px;
     cursor: pointer;
     display: inline-block;
+}
+
+.custom-input-file .button-wrapper:hover {
+    background-color: #12876e;
 }
 
 /* Position the file input over the custom button and make it transparent */

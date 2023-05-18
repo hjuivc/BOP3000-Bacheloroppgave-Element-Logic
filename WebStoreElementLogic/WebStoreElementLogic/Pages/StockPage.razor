@@ -61,8 +61,10 @@
 @if (Showquant)
 {
     <StockModal Product="@FilteredProducts[SelectedIndex]"
-              Index="SelectedIndex"
-              OnCancelEvent="() => Showquant = false" />
+            Index="SelectedIndex"
+            OnCancelEvent="() => Showquant = false"
+                OnStockUpdated="RefreshProducts" />
+
 }
 
 
@@ -86,6 +88,7 @@
         // method for showing productname from database into page
         try
         {
+
             int pageSize = 25;
             // Get the current page number from the query string
             int pageIndex = GetPageIndexFromQueryString();
@@ -94,6 +97,9 @@
             List<Product> FetchedProducts = await ProductService.GetProducts("", pageIndex, pageSize);
             FilteredProducts = FetchedProducts;
             Products = FilteredProducts.ToList();
+            StateHasChanged();
+            await RefreshProducts();
+
         }
         catch (Exception e)
         {
@@ -101,4 +107,15 @@
         }
 
     }
+
+    private async Task RefreshProducts()
+    {
+        int pageSize = 25;
+        int pageIndex = GetPageIndexFromQueryString();
+        List<Product> fetchedProducts = await ProductService.GetProducts("", pageIndex, pageSize);
+        FilteredProducts = fetchedProducts;
+        Products = FilteredProducts.ToList();
+        StateHasChanged();
+    }
+
 }

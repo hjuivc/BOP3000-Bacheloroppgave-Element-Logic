@@ -4,6 +4,8 @@
 @inject IEManagerService EManagerService
 @inject IProductService ProductService
 @inject IOrderService OrderService
+@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
+@inherits ProductComponentBase
 
 @if (DisplayCheckout)
 {
@@ -92,6 +94,9 @@
     [Parameter]
     public Dictionary<Product, int> CartDict { get; set; } = new Dictionary<Product, int>();
 
+    [Parameter]
+    public EventCallback OnCartSend { get; set; } 
+
     public bool DisplayCheckout = false;
     public bool DisplaySuccess = false;
 
@@ -142,6 +147,7 @@
         DisplayCheckout = false;
         DisplaySuccess = true;
         StateHasChanged();
+        await OnCartSend.InvokeAsync();
     }
 
     public void RemoveFromCart(int index)

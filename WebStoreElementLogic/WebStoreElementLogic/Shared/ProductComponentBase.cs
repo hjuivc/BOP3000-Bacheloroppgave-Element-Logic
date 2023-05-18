@@ -24,6 +24,18 @@ namespace WebStoreElementLogic.Shared
             SelectedIndex = FilteredProducts.IndexOf(product);
         }
 
+        public async Task RefreshProducts()
+        {
+            int pageSize = 25;
+            // Get the current page number from the query string
+            int pageIndex = GetPageIndexFromQueryString();
+            List<Product> FetchedProducts = await ProductService.GetProducts("", pageIndex, pageSize);
+            FilteredProducts = FetchedProducts;
+            Products = FilteredProducts.ToList();
+            FilterProducts();
+            StateHasChanged();
+        }
+
         // Search related variables
         public string searchTerm;
         public string SearchTerm
@@ -50,11 +62,6 @@ namespace WebStoreElementLogic.Shared
         public List<Product> FilteredProducts = new List<Product>();
 
         // Search related methods
-        public async Task RefreshRecords(int currentPage)
-        {
-            var products = await ProductService.ListAllRefresh(SearchTerm, currentPage, pageSize, sortColumnName, sortDirection);
-            Products = products;
-        }
 
         public virtual void FilterProducts()
         {
@@ -74,6 +81,7 @@ namespace WebStoreElementLogic.Shared
                 FilteredProducts = Products.Where(p => p.Name.IndexOf(SearchTerm, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
             }
             Console.WriteLine($"FilteredProducts = {FilteredProducts.Count}");
+            StateHasChanged();
         }
 
         public int GetPageIndexFromQueryString()

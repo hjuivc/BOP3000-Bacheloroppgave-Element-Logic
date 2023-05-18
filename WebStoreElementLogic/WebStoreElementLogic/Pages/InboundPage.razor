@@ -164,7 +164,8 @@
             await Task.Delay(5000);
             ShowInboundMessage = false;
             StateHasChanged();
-            await RefreshInboundList();           
+            await RefreshInboundList();
+            await RefreshProducts();
         });
 
         // method for showing productname from database into page

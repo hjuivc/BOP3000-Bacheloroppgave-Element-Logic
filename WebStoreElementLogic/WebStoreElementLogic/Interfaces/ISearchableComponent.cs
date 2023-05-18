@@ -7,7 +7,6 @@ namespace WebStoreElementLogic.Interfaces
     public interface ISearchableComponent
     {
         int GetPageIndexFromQueryString();
-        Task RefreshRecords(int currentPage);
 
         void FilterProducts();
 

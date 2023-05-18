@@ -10,7 +10,7 @@
 @inject IEManagerService EManagerService;
 @inherits ProductComponentBase
 <title>Order</title>
-<Cart CartDict="CartDict" Products="Products">
+<Cart CartDict="CartDict" Products="Products" OnCartSend="RefreshProducts">
     <div class="d-flex flex-row mx-5 rounded mb-3">
         <div class="container-fluid">
             <div class="position-relative">

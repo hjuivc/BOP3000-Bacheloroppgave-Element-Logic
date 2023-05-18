@@ -63,12 +63,21 @@
     <StockModal Product="@FilteredProducts[SelectedIndex]"
             Index="SelectedIndex"
             OnCancelEvent="() => Showquant = false"
-                OnStockUpdated="RefreshProducts" />
-
+            OnStockUpdated="RefreshProducts"
+            OnEmptyStockConfirm="ShowStockEmptyMessage" />
+}
+@if (ShowStockMessage)
+{
+    <div class="alert alert-success position-fixed top-0 start-50 translate-middle-x" role="alert" style="z-index: 9999; margin-top: 1%;">
+        <strong>@msg</strong>
+    </div>
 }
 
 
+
 @code {
+    private bool ShowStockMessage { get; set; }
+    private string msg;
 
     public override void SelectProduct(Product product)
     {
@@ -78,7 +87,6 @@
 
     private bool Showquant = false;
     private bool ShowList = false;
-    private bool ShowSuccess = false;
 
     private int Count = 0;
 
@@ -105,17 +113,13 @@
         {
             // NoConnection = true;
         }
-
     }
 
-    private async Task RefreshProducts()
+    private void ShowStockEmptyMessage(string productName)
     {
-        int pageSize = 25;
-        int pageIndex = GetPageIndexFromQueryString();
-        List<Product> fetchedProducts = await ProductService.GetProducts("", pageIndex, pageSize);
-        FilteredProducts = fetchedProducts;
-        Products = FilteredProducts.ToList();
-        StateHasChanged();
+        msg = $"Quantity for product: {productName} is now 0!";
+        ShowStockMessage = true;
+        StateHasChanged(); // To re-render the component with new state
     }
 
 }

@@ -24,7 +24,7 @@
                     <div class="col">
                         <div class="d-flex justify-content-between align-items-center">
                             <p class="mt-3 col-3">@inbound.Name</p>
-                            <p class="mt-3 col-1">Product ID: @inbound.ExtProductId</p>
+                            <p class="mt-3 col-1">Product ID: @inbound.ProductId</p>
                             <p class="mt-3 col-1">Quantity: @inbound.DisplayQuantity</p>
                             <p class="mt-3 col-1">Status: @(inbound.Status ? "Awaiting" : "Done")</p>
                             <button type="button" class="btn btn-danger" @onclick="() => ShowDeleteConfirmation(inbound.InboundId)">Delete</button>

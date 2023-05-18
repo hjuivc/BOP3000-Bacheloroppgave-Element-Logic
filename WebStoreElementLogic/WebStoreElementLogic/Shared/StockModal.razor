@@ -1,5 +1,8 @@
 ﻿@using WebStoreElementLogic.Entities
 @using WebStoreElementLogic.Data;
+@using WebStoreElementLogic.Interfaces;
+@inject IStockService StockService;
+@inherits ProductComponentBase;
 
 <Alert OnCancel="() =>OnCancelEvent.InvokeAsync()">
     <div role="dialog">
@@ -30,7 +33,7 @@
                         else if (amount < Product.Qty || amount > 1)
                         {
                             <button type="button" class="btn btn-neutral" title="Close" aria-label="Close" @onclick="() => OnCancelEvent.InvokeAsync()">Close</button>
-                            <button type="button" class="btn btn-custom" title="Empty stock for @Product.Name" aria-label="Empty">Empty Stock</button>
+                            <button type="button" class="btn btn-custom" title="Empty stock for @Product.Name" aria-label="Empty" @onclick="EmptyStock">Empty Stock</button>
                         }
                     </div>
                     @if (quant)
@@ -62,16 +65,33 @@
 
     private bool quant = false;
 
-    private void AddToCart()
+    private async Task EmptyStock()
     {
-        if (amount > Product.Qty || amount < 1)
+        int Id = Product.Id + 1;
+        await StockService.EmptyStockAsync(Id);
+        await LoadStock();
+
+    }
+
+    public async Task LoadStock()
+    {
+        // method for showing productname from database into page
+        try
         {
-            quant = true;
+            int pageSize = 25;
+            // Get the current page number from the query string
+            int pageIndex = GetPageIndexFromQueryString();
+
+            // Store in a new list temporarily to avoid seting Products to null
+            List<Product> FetchedProducts = await ProductService.GetProducts("", pageIndex, pageSize);
+            FilteredProducts = FetchedProducts;
+            Products = FilteredProducts.ToList();
         }
-        else
+        catch (Exception e)
         {
-            OnAddEvent.InvokeAsync(new int[] { Index, amount });
+            // NoConnection = true;
         }
     }
+
 
 }

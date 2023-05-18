@@ -1,0 +1,97 @@
+﻿@using WebStoreElementLogic.Entities
+@using WebStoreElementLogic.Data;
+@using WebStoreElementLogic.Interfaces;
+@inject IStockService StockService;
+@inherits ProductComponentBase;
+
+<Alert OnCancel="() =>OnCancelEvent.InvokeAsync()">
+    <div role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row mt-3 mb-3">
+                        <div class="col-8">
+                            <h5>@Product.Name</h5>
+                            <p>@Product.Descr</p>
+                            <p>Quantity: @Product.Qty</p>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <img src="@Product.URL" class="img-fluid" alt="@Product.Name" aria-label="@Product.Name">
+                        </div>
+                    </div>
+                    @if (amount > Product.Qty || amount < 1)
+                    {
+                        <p class="text-center fw-bold">Product selected not in stock</p>
+                    }
+                    <div class="d-flex justify-content-between mt-3">
+                        @if (amount > Product.Qty || amount < 1)
+                        {
+                            <div class="d-flex justify-content-center w-100">
+                                <button type="button" class="btn btn-neutral" title="Close" aria-label="Close" @onclick="() => OnCancelEvent.InvokeAsync()">Close</button>
+                            </div>
+                        }
+                        else if (amount < Product.Qty || amount > 1)
+                        {
+                            <button type="button" class="btn btn-neutral" title="Close" aria-label="Close" @onclick="() => OnCancelEvent.InvokeAsync()">Close</button>
+                            <button type="button" class="btn btn-custom" title="Empty stock for @Product.Name" aria-label="Empty" @onclick="EmptyStock">Empty Stock</button>
+                        }
+                    </div>
+                    @if (quant)
+                    {
+                        <div class="alert alert-danger text-center mt-3" role="alert">
+                            Could not add selected amount
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</Alert>
+
+@code {
+    [Parameter]
+    public int Index { get; set; }
+
+    [Parameter]
+    public Product Product { get; set; }
+
+    [Parameter]
+    public EventCallback OnCancelEvent { get; set; }
+
+    [Parameter]
+    public EventCallback<int[]> OnAddEvent { get; set; }
+
+    private int amount = 1;
+
+    private bool quant = false;
+
+    private async Task EmptyStock()
+    {
+        int Id = Product.Id + 1;
+        await StockService.EmptyStockAsync(Id);
+        await LoadStock();
+
+    }
+
+    public async Task LoadStock()
+    {
+        // method for showing productname from database into page
+        try
+        {
+            int pageSize = 25;
+            // Get the current page number from the query string
+            int pageIndex = GetPageIndexFromQueryString();
+
+            // Store in a new list temporarily to avoid seting Products to null
+            List<Product> FetchedProducts = await ProductService.GetProducts("", pageIndex, pageSize);
+            FilteredProducts = FetchedProducts;
+            Products = FilteredProducts.ToList();
+        }
+        catch (Exception e)
+        {
+            // NoConnection = true;
+        }
+    }
+
+
+}

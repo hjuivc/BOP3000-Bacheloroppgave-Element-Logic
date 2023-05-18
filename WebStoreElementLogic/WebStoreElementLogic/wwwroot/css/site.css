@@ -39,6 +39,7 @@ h5 {
     pull-right: inherit !important;
 }
 
+/* Adding a darker color for hovering  */
 .btn-login:hover {
     background-color: #8C0C21 !important;
 }

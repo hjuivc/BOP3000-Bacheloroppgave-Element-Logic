@@ -38,6 +38,7 @@ builder.Services.AddTransient<IDapperService, DapperService>();
 builder.Services.AddTransient<IInboundService, InboundService>();
 builder.Services.AddTransient<IOrderService, OrderService>();
 builder.Services.AddTransient<ISimpleCookieManager, SimpleCookieManager>();
+builder.Services.AddTransient<IStockService, StockService>();
 
 // Session and authentication
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()

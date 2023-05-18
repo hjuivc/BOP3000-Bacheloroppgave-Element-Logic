@@ -48,12 +48,18 @@
     </div>
 </Alert>
 
-@if (ShowStockMessage)
+
+@if (DisplayWarning)
 {
-    <div class="alert alert-success position-fixed top-0 start-50 translate-middle-x" role="alert" style="z-index: 9999; margin-top: 1%;">
-        <strong>Empty stock done!</strong> @msg
-    </div>
+    <Alert OnCancel="() => DisplayWarning = false">
+        <h3>Are you sure?</h3>
+        <div class="d-flex flex-row justify-content-around mt-3">
+            <button class="btn btn-neutral" title="Cancel" aria-label="Cancel" @onclick="() => OnCancelEvent.InvokeAsync()">Cancel</button>
+            <button class="btn btn-danger" title="Confirm" aria-label="Confirm" @onclick="EmptyStockConfirm">Confirm</button>
+        </div>
+    </Alert>
 }
+
 
 @code {
     [Parameter]
@@ -71,24 +77,31 @@
     [Parameter]
     public EventCallback OnStockUpdated { get; set; }
 
+    [Parameter]
+    public EventCallback<string> OnEmptyStockConfirm { get; set; }
+
 
     private int amount = 1;
 
     private bool quant = false;
 
-    private bool ShowStockMessage { get; set; }
-    private string msg;
+    public bool DisplayWarning = false;
 
     private async Task EmptyStock()
     {
+        DisplayWarning = true;
+    }
+
+    private async Task EmptyStockConfirm()
+    {
+        DisplayWarning = false;
         int Id = Product.Id + 1;
         await StockService.EmptyStockAsync(Id);
-        ShowStockMessage = true;
-        await Task.Delay(1000);
-        ShowStockMessage = false;
+        await OnEmptyStockConfirm.InvokeAsync(Product.Name); // Invoke event with product name
         await RefreshProducts();
         await OnCancelEvent.InvokeAsync();
-        await OnStockUpdated.InvokeAsync(); // Invoke the OnStockUpdated callback
+        await OnStockUpdated.InvokeAsync();
     }
+
 
 }

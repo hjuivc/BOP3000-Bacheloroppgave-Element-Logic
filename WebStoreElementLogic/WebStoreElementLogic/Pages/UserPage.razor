@@ -72,7 +72,7 @@
     <div class="col-md-4">
         <h3 style="text-align:center">@(isEditing ? "Edit user" : "Create new user")</h3>
         <!-- Add user form -->
-        <EditForm Model="@(isEditing ? (object)editUser : newUser)" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit" aria-label="Edit user form">
+        <EditForm Model="@(isEditing ? (object)editUser : newUser)" OnValidSubmit="() => HandleValidSubmit()" OnInvalidSubmit="@HandleInvalidSubmit" aria-label="Edit user form">
             <DataAnnotationsValidator />
 
             <div class="form-group border mb-4" style="margin-top: 48px;">
@@ -172,15 +172,51 @@
         <strong>All the data got deleted!</strong>
     </Toast>
 }
-
+@if (DeleteUserWarning)
+{
+    <Alert OnCancel="() => DeleteUserWarning = false">
+        <h3>Are you sure?</h3>
+        <p class="text-danger">The user will be permanently deleted</p>
+        <div class="d-flex flex-row justify-content-around mt-3">
+            <button class="btn btn-neutral" title="Cancel" aria-label="Cancel" @onclick="() => DeleteUserWarning = false">No</button>
+            <button class="btn btn-danger" title="Confirm" aria-label="Confirm" @onclick="DeleteUserConfirm">Yes</button>
+        </div>
+    </Alert>
+}
+@if (UpdateUserWarning)
+{
+    <Alert OnCancel="async () => await resetNewUser()">
+        <h3>Are you sure?</h3>
+        <p class="text-danger">The user will be permanently altered</p>
+        <div class="d-flex flex-row justify-content-around mt-3">
+            <button class="btn btn-neutral" title="Cancel" aria-label="Cancel" @onclick="async () => await resetNewUser()">No</button>
+            <button class="btn btn-danger" title="Confirm" aria-label="Confirm" @onclick="async () => await HandleValidSubmit(true)">Yes</button>
+        </div>
+    </Alert>
+}
+@if (UserExistsWarning)
+{
+    <Toast>
+        <strong>Could not create user:</strong>
+        <br>A user with that name already exists
+    </Toast>
+}
 @code {
     private List<User> users;
     private bool loading = true;
     private bool isEditing = false;
     private int editingUserId = 0;
     private String newPassword = "";
+
     private bool DisplayWarning = false;
     private bool DisplayToast = false;
+
+    private bool DeleteUserWarning = false;
+    private bool UpdateUserWarning = false;
+    private bool UserExistsWarning = false;
+
+    private int IdToDelete = -1;
+    private int IdToUpdate = -1;
 
     protected override async Task OnInitializedAsync()
     {
@@ -195,16 +231,19 @@
         loading = false;
     }
 
-    private async Task DeleteUser(int id)
+    private void DeleteUser(int id)
     {
-        bool confirmDeletion = await JSRuntime.InvokeAsync<bool>("confirmUserDeletion");
-        if (confirmDeletion)
-        {
-            await UserService.DeleteUserAsync(id);
-            await LoadUsers();
-        }
+        IdToDelete = id;
+        DeleteUserWarning = true;
     }
 
+    private async void DeleteUserConfirm()
+    {
+        await UserService.DeleteUserAsync(IdToDelete);
+        await LoadUsers();
+        DeleteUserWarning = false;
+        StateHasChanged();
+    }
 
     // Edit user
     private async Task EditUser(int id)
@@ -281,19 +320,17 @@
     [RequiredIfCreatingUser("IsEditing")]
     public string password { get; set; }
 
-
-
     public bool admin { get; set; }
 
     private User newUser = new User();
     private EditUserModel editUser = new EditUserModel();
 
-    private async Task HandleValidSubmit()
+    private async Task HandleValidSubmit(bool confirmed = false)
     {
         if (isEditing)
         {
-            bool confirmEdit = await JSRuntime.InvokeAsync<bool>("confirmUserUpdate");
-            if (confirmEdit)
+            UpdateUserWarning = true;
+            if (confirmed)
             {
                 var userToUpdate = await UserService.GetUserById(editingUserId);
                 userToUpdate.userName = editUser.userName;
@@ -318,13 +355,22 @@
 
                 CancelEdit();
             }
+            else
+            {
+                return;
+            }
         }
         else
         {
             var existingUser = await UserService.GetUser(newUser.userName);
             if (existingUser != null)
             {
-                await JSRuntime.InvokeVoidAsync("alert", "Username already exists. Please choose a different username.");
+                UserExistsWarning = true;
+                StateHasChanged();
+                await Task.Delay(2500);
+                UserExistsWarning = false;
+                StateHasChanged();
+
                 return;
             }
 
@@ -335,12 +381,16 @@
             await UserService.Create(newUser);
         }
 
+        await resetNewUser();
+    }
+
+    private async Task resetNewUser()
+    {
         await LoadUsers();
         newUser = new User();
         editUser = new EditUserModel();
+        UpdateUserWarning = false;
     }
-
-
 
 
 

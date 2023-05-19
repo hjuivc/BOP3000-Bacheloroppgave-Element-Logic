@@ -78,6 +78,27 @@ namespace WebStoreElementLogic.Data
             }
         }
 
+        public void DeleteImages()
+        {
+            // Specify the directory path
+            string directoryPath = Path.Combine(_customWebHostEnvironment.WebRootPath, "images");
+
+            // Specify the file extensions to delete
+            string[] extensions = { ".png", ".jpg", ".jpeg" };
+
+            // Get all files with the specified extensions in the directory
+            string[] files = Directory.GetFiles(directoryPath, "*.*")
+                                     .Where(file => extensions.Contains(Path.GetExtension(file)))
+                                     .ToArray();
+
+            // Delete each file
+            foreach (string file in files)
+            {
+                File.Delete(file);
+            }
+        }
+
+
         public Task<int> Create(Product product)
         {
             int result = 0;

@@ -35,7 +35,7 @@ namespace WebStoreElementLogic.Data
         public Task<int> GetNextID()
         {
             var inbound = _dapperService.Get<Product>($"SELECT MAX(PurchaseOrderId + 1) AS Id FROM [Inbound]", null, commandType: CommandType.Text);
-            return Task.FromResult(inbound.Id);
+            return Task.FromResult(Math.Max(inbound.Id, 1));
         }
         public async Task<int> Create(Product product, double qty)
         {
@@ -63,10 +63,12 @@ namespace WebStoreElementLogic.Data
         }
         public Task<int> GetTransactionId(int nextPurchaseOrderId)
         {
-            int transactionId = _dapperService.Execute
-                ($"SELECT TransactionId FROM [Inbound] WHERE PurchaseOrderId = {nextPurchaseOrderId}",
-                null, commandType: CommandType.Text);
-            return Task.FromResult(transactionId);
+            int transactionId = _dapperService.Get<int>
+                ($"SELECT TransactionId FROM [Inbound] WHERE PurchaseOrderId = @PoId",
+                new { PoId = nextPurchaseOrderId}, 
+                commandType: CommandType.Text
+            );
+            return Task.FromResult(Math.Max(transactionId, 1));
         }
 
         public async Task<List<Inbound>> GetUnfinishedInbounds()

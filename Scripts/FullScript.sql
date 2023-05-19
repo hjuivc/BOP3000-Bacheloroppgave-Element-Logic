@@ -241,3 +241,110 @@ CREATE SEQUENCE [dbo].[TransactionIdSequence]
  MAXVALUE 2147483647
  CACHE 
 GO
+
+.. Stored procedure for updating stock to 0
+USE [WebShop]
+GO
+
+/****** Object:  StoredProcedure [dbo].[spUpdateStock]    Script Date: 19-May-23 17:02:57 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+-- Creating Stored Procedure for Update stock to 0
+CREATE PROCEDURE [dbo].[spUpdateStock]
+ @Id Int
+AS
+UPDATE Stock
+SET [Quantity]			= 0
+WHERE [Id]		= @Id
+GO
+
+
+-- Stored procedure for deleting all of the content in the database
+USE [WebShop]
+GO
+
+/****** Object:  StoredProcedure [dbo].[spDeleteAll]    Script Date: 19-May-23 17:04:05 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+USE [WebShop]
+GO
+
+/****** Object:  StoredProcedure [dbo].[spDeleteAll]    Script Date: 19-May-23 19:08:30 ******/
+DROP PROCEDURE [dbo].[spDeleteAll]
+GO
+
+/****** Object:  StoredProcedure [dbo].[spDeleteAll]    Script Date: 19-May-23 19:08:30 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[spDeleteAll]
+AS
+BEGIN
+    DECLARE @ErrorMessage NVARCHAR(4000);
+    
+    BEGIN TRY
+        BEGIN TRANSACTION;
+        
+        -- Delete data from tables in specific order
+        
+        -- Table 1
+        DELETE FROM [Order];
+        
+        -- Table 2
+        DELETE FROM [Inbound];
+        
+        -- Table 3
+        DELETE FROM [Stock];
+
+	-- Table 4
+	DELETE FROM [Products];
+	
+	-- Resetting the sequence
+	ALTER SEQUENCE dbo.TransactionIdSequence RESTART WITH 1;
+
+        -- Commit the transaction
+        COMMIT;
+    END TRY
+    
+    BEGIN CATCH
+        -- Rollback the transaction in case of any error
+        ROLLBACK;
+        
+        -- Get the error message
+        SET @ErrorMessage = ERROR_MESSAGE();
+        
+        -- Optionally, log or handle the error
+        
+        -- Throw an error or return the error message
+        -- THROW @ErrorMessage; -- Uncomment this line to throw the error
+        
+        -- Alternatively, return the error message
+        SELECT @ErrorMessage AS ErrorMessage;
+    END CATCH;
+END;
+GO
+
+
+
+END;
+GO
+
+
+
+
+
+
+
+

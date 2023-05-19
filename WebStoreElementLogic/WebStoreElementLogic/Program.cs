@@ -32,6 +32,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<AppCtx>(options => options.UseSqlServer(connectionString));
 
 // Services
+builder.Services.AddTransient<IStatusService, StatusService>();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IDapperService, DapperService>();

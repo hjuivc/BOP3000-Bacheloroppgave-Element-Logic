@@ -35,7 +35,7 @@ namespace WebStoreElementLogic.Data
 
         public async Task<List<Inbound>> GetUnfinishedInbounds()
         {
-            var sql = "SELECT I.*, P.ProductName AS Name FROM Inbound I JOIN Products P ON I.ExtProductId = P.ExtProductId ;";
+            var sql = "SELECT I.*, P.ProductName AS Name, I.ExtProductId AS ProductId FROM Inbound I JOIN Products P ON I.ExtProductId = P.ExtProductId ORDER BY ProductId ASC;";
             using (var connection = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]))
             {
                 try

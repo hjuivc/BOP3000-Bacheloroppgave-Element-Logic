@@ -8,6 +8,7 @@
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject IStatusService StatusService
 @inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime;
 @inherits ProductComponentBase
 
 <title>Status</title>
@@ -15,23 +16,47 @@
 <div class="d-flex flex-row mx-5 rounded mb-3">
     <!-- Inbound -->
     <div class="col container-fluid">
-        <h3 style="text-align: center">Inbound</h3>
+        <div style="text-align: center;">
+            <h3 style="text-align: center; display: inline-block;">Inbound</h3>
+            <div class="tooltip-container">
+                <i class="fas fa-info-circle" aria-label="Info icon"></i>
+                <span class="tooltip-text">This list shows all awaiting inbounds, and inbounds that has been prosessed</span>
+            </div>
+        </div>
+        
+
         @if (inbounds != null)
         {
-            @foreach (Inbound inbound in inbounds)
-            {
-                <div class="row">
-                    <div class="col">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="mt-3 col-3">@inbound.Name</p>
-                            <p class="mt-3 col-1">Product ID: @inbound.ProductId</p>
-                            <p class="mt-3 col-1">Quantity: @inbound.DisplayQuantity</p>
-                            <p class="mt-3 col-1">Status: @(inbound.Status ? "Awaiting" : "Done")</p>
-                            <button type="button" class="btn btn-danger" @onclick="() => ShowDeleteConfirmation(inbound.InboundId)">Delete</button>
-                        </div>
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="mt-3 col-2 fw-bold">Product ID</p>
+                        <p class="mt-3 col-2 fw-bold">Name</p>
+                        <p class="mt-3 col-1 fw-bold">Quantity</p>
+                        <p class="mt-3 col-1 fw-bold">Status</p>
+                        <p class="mt-3 col-1"></p>
                     </div>
                 </div>
-            }
+            </div>
+
+            <div style="max-height: calc(100vh - 300px); overflow-y: scroll; overflow-x: hidden; width: calc(100% + 23px);">
+                @foreach (Inbound inbound in inbounds)
+                {
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="mt-3 col-2">@inbound.ProductId</p>
+                                <p class="mt-3 col-2">@inbound.Name</p>
+                                <p class="mt-3 col-1">@inbound.DisplayQuantity</p>
+                                <p class="mt-3 col-1 @(inbound.Status ? "badge bg-success" : "badge bg-warning text-dark")">
+                                    @(inbound.Status ? "Done" : "Awaiting")
+                                </p>
+                                <button type="button" class="btn btn-danger col-1" @onclick="() => DeleteData(inbound.InboundId)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
         }
     </div>
 
@@ -42,67 +67,81 @@
 
     <!-- Order -->
     <div class="col container-fluid">
-        <h3 style="text-align: center">Order</h3>
+        <div style="text-align: center;">
+            <h3 style="text-align: center; display: inline-block;">Order</h3>
+            <div class="tooltip-container">
+                <i class="fas fa-info-circle" aria-label="Info icon"></i>
+                <span class="tooltip-text">This list shows all orders, and awaiting orders that has been prosessed</span>
+            </div>
+        </div>
         @if (orders != null)
         {
-            @foreach (Order order in orders)
-            {
-                <div class="row">
-                    <div class="col">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="mt-3 col-3">@order.Name</p>
-                            <p class="mt-3 col-1">Product ID: @order.ExtProductId</p>
-                            <p class="mt-3 col-1">Quantity: @order.DisplayQuantity</p>
-                            <p class="mt-3 col-1">Status: @(order.Status ? "Awaiting" : "Done")</p>
-                            <button type="button" class="btn btn-danger" @onclick="() => ShowDeleteConfirmation(order.ExtOrderId)">Delete</button>
-                        </div>
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="mt-3 col-2 fw-bold">Product ID</p>
+                        <p class="mt-3 col-2 fw-bold">Label</p>
+                        <p class="mt-3 col-1 fw-bold">Quantity</p>
+                        <p class="mt-3 col-1 fw-bold">Status</p>
+                        <p class="mt-3 col-1"></p>
                     </div>
                 </div>
-            }
+            </div>
+
+            <div style="max-height: calc(100vh - 300px); overflow-y: scroll; overflow-x: hidden; width: calc(100% + 23px);">
+                @foreach (Order order in orders)
+                {
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="mt-3 col-2">@order.ExtProductId</p>
+                                <p class="mt-3 col-2">@order.Name</p>
+                                <p class="mt-3 col-1">@order.DisplayQuantity</p>
+                                <p class="mt-3 col-1">@(order.Status ? "Done" : "Awaiting")</p>
+                                <button type="button" class="btn btn-danger col-1" @onclick="() => DeleteData(order.ExtOrderId)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
         }
     </div>
 </div>
 
-@if (showDeleteConfirmation)
+
+@if (DisplayWarning)
 {
-    <div class="modal fade show" tabindex="-1" style="display: block; background-color: rgba(0, 0, 0, 0.5);">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Confirm Delete</h5>
-                    <button type="button" class="close" @onclick="DeleteCancelled">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to delete this item?</p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-danger" @onclick="DeleteConfirmed">Yes</button>
-                    <button class="btn btn-secondary" @onclick="DeleteCancelled">No</button>
-                </div>
-            </div>
+    <Alert OnCancel="() => DisplayWarning = false">
+        <h3>Are you sure?</h3>
+        <div class="d-flex flex-row justify-content-around mt-3">
+            <button class="btn btn-neutral" title="Cancel" aria-label="Cancel" @onclick="() => DisplayWarning = false">Cancel</button>
+            <button class="btn btn-danger" title="Confirm" aria-label="Confirm" @onclick="DeleteConfirmed">Delete</button>
         </div>
-    </div>
+    </Alert>
 }
+
 
 @code {
     private bool showDeleteConfirmation;
     private int deletingItemId;
     private List<Inbound> inbounds;
     private List<Order> orders;
+    private bool DisplayWarning = false;
 
-    private void ShowDeleteConfirmation(int itemId)
+
+    private void DeleteData(int itemId)
     {
         deletingItemId = itemId;
-        showDeleteConfirmation = true;
+        DisplayWarning = true;
     }
 
     private async Task DeleteConfirmed()
     {
+        DisplayWarning = false;
         await DeleteInbound(deletingItemId);
         await DeleteOrder(deletingItemId);
         showDeleteConfirmation = false;
+        
     }
 
     private void DeleteCancelled()

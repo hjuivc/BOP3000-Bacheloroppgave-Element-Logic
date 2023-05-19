@@ -75,7 +75,7 @@ namespace WebStoreElementLogic.Controllers
             string xml = await reader.ReadToEndAsync();
 
             Console.WriteLine(xml);
-
+            return Ok();
             CPBody[] picks = CPBody.FromXml(xml);
 
             foreach (var pick in picks)

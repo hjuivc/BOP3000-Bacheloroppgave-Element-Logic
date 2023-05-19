@@ -27,7 +27,8 @@ namespace WebStoreElementLogic.Entities
                 pgBodies.Add(new PlacedGoodsBody
                 {
                     TransactionId = transactionId,
-                    PurchaseOrderId = putaway.Element("PURCHASEORDERID").Value,
+                    // TODO: remove the 3000 extra
+                    PurchaseOrderId = (int.Parse(putaway.Element("PURCHASEORDERID").Value) - 3000).ToString(),
                     PurchaseOrderLineId = int.Parse(putaway.Element("PURCHASEORDERLINEID").Value),
                     ExtProductId = int.Parse(putaway.Element("EXTPRODUCTID").Value),
                     Quantity = decimal.Parse(

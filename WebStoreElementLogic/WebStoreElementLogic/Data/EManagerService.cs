@@ -84,12 +84,13 @@ public class EManagerService : IEManagerService
 
     public async Task<bool> GoodsReceival(Product product, double qty, int purchaseOrderId, int transactionId)
     {
+        // TODO: Remove addition to PurchaseOrderId
         string xml = $@"
             <ImportOperation>
               <Lines>
                 <GoodsReceivalLine>
                   <TransactionId>{transactionId}</TransactionId>
-                  <PurchaseOrderId>{purchaseOrderId}</PurchaseOrderId>
+                  <PurchaseOrderId>{purchaseOrderId + 3000}</PurchaseOrderId>
                   <PurchaseOrderLineId>1</PurchaseOrderLineId>
                   <ExtProductId>{product.Id}</ExtProductId>
                   <Quantity>{qty}</Quantity>
@@ -121,10 +122,11 @@ public class EManagerService : IEManagerService
         StringBuilder xmlLines = new StringBuilder();
         foreach (var line in picklistLines)
         {
+            // TODO: Remove addition to ExtPickListId
             xmlLines.Append($@"
             <PicklistLine>
                 <TransactionId>{line.TransactionId}</TransactionId>
-                <ExtPicklistId>{line.ExtPicklistId}</ExtPicklistId>
+                <ExtPicklistId>{line.ExtPicklistId + 3000}</ExtPicklistId>
                 <ExtOrderId>{line.ExtOrderId}</ExtOrderId>
                 <ExtProductId>{line.ExtProductId}</ExtProductId>
                 <Quantity>{line.Quantity}</Quantity>

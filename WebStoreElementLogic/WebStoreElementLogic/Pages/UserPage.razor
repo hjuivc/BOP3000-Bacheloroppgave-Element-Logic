@@ -8,8 +8,14 @@
 @using Microsoft.AspNetCore.WebUtilities;
 @using WebStoreElementLogic.Data;
 @using Microsoft.AspNetCore.Identity;
+@using System.Data;
 @inject IJSRuntime JSRuntime;
 @inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
+@inject IProductService ProductService;
+@inject IProductService ProductService;
+@inject IDapperService _dapperService;
+
+
 <style>
     .content {
         margin-left: 50px;
@@ -139,9 +145,9 @@
     </div>
     <div class="col-md-4 offset-md-8 mt-4">
         <h3 style="text-align: center">Delete/flush all data</h3>
-        <div class="text-center mt-2">
+        <div class="text-center mt-2" >
             <button type="button" class="btn btn-custom" title="Delete data" aria-label="Delete data" @onclick="DeleteData">Delete data</button>
-            <div class="tooltip-container">
+            <div class="tooltip-container" style="margin-top: 25px;">
                 <i class="fas fa-info-circle" aria-label="Info icon"></i>
                 <span class="tooltip-text">This button will delete all data for products, stock, inbound, and order. Once the data is deleted, it is not possible to get it back.</span>
             </div>
@@ -230,8 +236,12 @@
         StateHasChanged();
         await Task.Delay(5000);
         DisplayToast = false;
-        //delete all data methods
-        //await someservice.DeleteAllData
+        // Delete all data methods. First delete photos locally and then flushing the database after.
+        ProductService.DeleteImages();
+
+        // Call the stored procedure to flush the database
+        await DeleteAllData();
+
         StateHasChanged();
     }
 
@@ -239,6 +249,27 @@
     {
         DisplayWarning = true;
     }
+
+    public Task<int> DeleteAllData()
+    {
+        int result = 0;
+        try
+        {
+            result = _dapperService.Execute(
+                "[dbo].[spDeleteAll]",
+                commandType: CommandType.StoredProcedure);
+        }
+        catch (Exception ex)
+        {
+            // Log the exception
+            Console.WriteLine("Error deleting all data: " + ex.Message);
+            // Re-throw the exception so the calling code can handle it
+            throw;
+        }
+
+        return Task.FromResult(result);
+    }
+
 
 
     [Parameter]

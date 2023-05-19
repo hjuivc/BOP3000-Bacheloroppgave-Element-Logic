@@ -20,5 +20,8 @@ namespace WebStoreElementLogic.Interfaces
         Task<bool> doesExistInInbound(int Id);
         Task<bool> hasStock(int Id);
         Task UpdateQuantity(int productId, decimal quantity);
+        void DeleteImages();
+
+
     }
 }

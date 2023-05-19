@@ -11,6 +11,7 @@ namespace WebStoreElementLogic.Entities
         [Required]
         public int userId { get; set; }
 
+        [Required(ErrorMessage = "The username field is required.")]
         [RegularExpression("^[a-zA-Z0-9]*$", ErrorMessage = "Username can only contain letters and numbers.")]
         public string userName { get; set; }
 

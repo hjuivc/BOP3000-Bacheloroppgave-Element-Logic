@@ -281,7 +281,7 @@ else
     private async Task New(IBrowserFile file, Product product)
     {
         int? newId = await ProductService.GetNextID();
-        newInfo = new Product { Id = newId ?? 0 };
+        newInfo = new Product { Id = Math.Max(newId ?? 1, 1) };
         SelectedIndex = FilteredProducts.IndexOf(newInfo);
         AddNew = true;
 

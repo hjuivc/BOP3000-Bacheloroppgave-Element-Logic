@@ -18,13 +18,17 @@
                 <CheckoutItem Count="@CartDict.ElementAt(i).Value"
                       Info="@CartDict.ElementAt(i).Key"
                       Index="i"
-                      OnCountUpdate="(int[] p) => {
+                      OnCountUpdate="async (int[] p) => {
                         int index = p[0];
                         int count = p[1];
                         if(count <= 0)
                         {
                             CartDict.Remove(CartDict.ElementAt(index).Key);
                             if(CartDict.Count == 0) DisplayCheckout = false;
+                        }
+                        else if(count > CartDict.ElementAt(index).Key.Qty)
+                        {
+                            await warnTooMany();
                         }
                         else
                         {
@@ -83,6 +87,13 @@
         </div>
     </div>
 </div>
+@if (DisplayTooMany)
+{
+    <Toast>
+        <strong>Could not increase amount</strong>
+        <br>No more stock of product
+    </Toast>
+}
 
 @code {
     [Parameter]
@@ -99,6 +110,7 @@
 
     public bool DisplayCheckout = false;
     public bool DisplaySuccess = false;
+    public bool DisplayTooMany = false;
 
     // Summarize the amount of products currently in the cart
     public int CartCount()
@@ -109,6 +121,15 @@
             count += CartDict.ElementAt(i).Value;
         }
         return count;
+    }
+
+    public async Task warnTooMany()
+    {
+        DisplayTooMany = true;
+        StateHasChanged();
+        await Task.Delay(2500);
+        DisplayTooMany = false;
+        StateHasChanged();
     }
 
     public async void SendCart()
@@ -155,7 +176,7 @@
         CartDict.Remove(CartDict.ElementAt(index).Key);
     }
 
-    public void UpdateCount(int[] product)
+    public async void UpdateCount(int[] product)
     {
         int index = product[0];
         int count = product[1];
@@ -163,6 +184,10 @@
         if (count <= 0)
         {
             RemoveFromCart(index);
+        }
+        else if(count > CartDict.ElementAt(index).Key.Qty)
+        {
+            await warnTooMany();
         }
         else
         {

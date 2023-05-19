@@ -23,6 +23,22 @@
 @inject ISimpleCookieManager SimpleCookieManager;
 
 <title>Log in</title>
+
+@if (PasswordWarning)
+{
+    <Toast>
+        <strong>Could not log in:</strong>
+        <br>Wrong password for user
+    </Toast>
+}
+@if (UserWarning)
+{
+    <Toast>
+        <strong>Could not log in:</strong>
+        <br>No user with that username
+    </Toast>
+}
+
 <div class="center">
     <div class="container">
         <div class="row justify-content-center">
@@ -86,6 +102,9 @@
 
 
 @code {
+    private bool PasswordWarning = false;
+    private bool UserWarning = false;
+
     private LoginModel loginModel = new LoginModel();
 
     private async Task HandleValidSubmit()
@@ -127,16 +146,25 @@
             }
             else
             {
-                // TODO: Toast
                 // Passwords do not match
-                await JSRuntime.InvokeVoidAsync("alert", "User found, but wrong password entered.");
+                PasswordWarning = true;
+                await Task.Delay(2500);
+                PasswordWarning = false;
+                StateHasChanged();
+
+                return;
             }
         }
         else
         {
             // TODO: Toast
             // User not found
-            await JSRuntime.InvokeVoidAsync("alert", "User not found. Try another username.");
+            UserWarning = true;
+            await Task.Delay(2500);
+            UserWarning = false;
+            StateHasChanged();
+
+            return;
         }
     }
 }

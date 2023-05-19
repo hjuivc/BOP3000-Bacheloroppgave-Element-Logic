@@ -11,9 +11,12 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using WebStoreElementLogic.Account;
 using WebStoreElementLogic.Shared;
-
 using AppCtx = WebStoreElementLogic.Data.AppContext;
 using Microsoft.JSInterop;
+using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +26,11 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddSignalR();
 builder.Services.AddControllers();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebStoreElementLogic API", Version = "v1" });
+});
+
 
 // Add distributed memory cache
 builder.Services.AddDistributedMemoryCache();
@@ -108,6 +116,11 @@ if (!app.Environment.IsDevelopment())
 // Add Extentsions
 //app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebStore API v1");
+});
 app.UseAuthentication();
 app.UseRouting();
 app.UseAuthorization();
@@ -120,7 +133,6 @@ app.UseEndpoints(endpoints =>
     endpoints.MapBlazorHub();
     endpoints.MapFallbackToPage("/_Host");
 });
-
 
 app.Use(async (context, next) =>
 {

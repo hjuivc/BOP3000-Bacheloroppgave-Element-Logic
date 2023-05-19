@@ -9,6 +9,9 @@ using WebStoreElementLogic.Interfaces;
 using WebStoreElementLogic.Entities;
 using Azure.Core;
 using System.Text;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace WebStoreElementLogic.Controllers
 {

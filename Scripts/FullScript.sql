@@ -275,6 +275,20 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+USE [WebShop]
+GO
+
+/****** Object:  StoredProcedure [dbo].[spDeleteAll]    Script Date: 19-May-23 19:08:30 ******/
+DROP PROCEDURE [dbo].[spDeleteAll]
+GO
+
+/****** Object:  StoredProcedure [dbo].[spDeleteAll]    Script Date: 19-May-23 19:08:30 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
 CREATE PROCEDURE [dbo].[spDeleteAll]
 AS
 BEGIN
@@ -294,9 +308,12 @@ BEGIN
         -- Table 3
         DELETE FROM [Stock];
 
-		-- Table 4
-		DELETE FROM [Products];
-        
+	-- Table 4
+	DELETE FROM [Products];
+	
+	-- Resetting the sequence
+	ALTER SEQUENCE dbo.TransactionIdSequence RESTART WITH 1;
+
         -- Commit the transaction
         COMMIT;
     END TRY
@@ -316,6 +333,11 @@ BEGIN
         -- Alternatively, return the error message
         SELECT @ErrorMessage AS ErrorMessage;
     END CATCH;
+END;
+GO
+
+
+
 END;
 GO
 

@@ -1,0 +1,210 @@
+﻿@page "/Status"
+@attribute [Authorize(Roles = "Admin")]
+@using Microsoft.AspNetCore.WebUtilities
+@using Microsoft.AspNetCore.Components.Authorization
+@using WebStoreElementLogic.Data
+@using WebStoreElementLogic.Entities
+@using WebStoreElementLogic.Interfaces
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IStatusService StatusService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime;
+@inherits ProductComponentBase
+
+<title>Status</title>
+
+<div class="d-flex flex-row mx-5 rounded mb-3">
+    <!-- Inbound -->
+    <div class="col container-fluid">
+        <div style="text-align: center;">
+            <h3 style="text-align: center; display: inline-block;">Inbound</h3>
+            <div class="tooltip-container">
+                <i class="fas fa-info-circle" aria-label="Info icon"></i>
+                <span class="tooltip-text">This list shows all awaiting inbounds, and inbounds that has been prosessed</span>
+            </div>
+        </div>
+        
+
+        @if (inbounds != null)
+        {
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="mt-3 col-2 fw-bold">Product ID</p>
+                        <p class="mt-3 col-2 fw-bold">Name</p>
+                        <p class="mt-3 col-1 fw-bold">Quantity</p>
+                        <p class="mt-3 col-1 fw-bold">Status</p>
+                        <p class="mt-3 col-1"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="max-height: calc(100vh - 300px); overflow-y: scroll; overflow-x: hidden; width: calc(100% + 23px);">
+                @foreach (Inbound inbound in inbounds)
+                {
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="mt-3 col-2">@inbound.ProductId</p>
+                                <p class="mt-3 col-2">@inbound.Name</p>
+                                <p class="mt-3 col-1">@inbound.DisplayQuantity</p>
+                                <p class="mt-3 col-1 @(inbound.Status ? "badge bg-success" : "badge bg-warning text-dark")">
+                                    @(inbound.Status ? "Done" : "Awaiting")
+                                </p>
+                                <button type="button" class="btn btn-danger col-1" @onclick="() => DeleteData(inbound.InboundId)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+    <!-- Empty column for the gap -->
+    <div class="col-1 d-flex align-items-center justify-content-center">
+        <div style="border-right: 1px solid black; height: 100%;"></div>
+    </div>
+
+    <!-- Order -->
+    <div class="col container-fluid">
+        <div style="text-align: center;">
+            <h3 style="text-align: center; display: inline-block;">Order</h3>
+            <div class="tooltip-container">
+                <i class="fas fa-info-circle" aria-label="Info icon"></i>
+                <span class="tooltip-text">This list shows all orders, and awaiting orders that has been prosessed</span>
+            </div>
+        </div>
+        @if (orders != null)
+        {
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="mt-3 col-2 fw-bold">Product ID</p>
+                        <p class="mt-3 col-2 fw-bold">Label</p>
+                        <p class="mt-3 col-1 fw-bold">Quantity</p>
+                        <p class="mt-3 col-1 fw-bold">Status</p>
+                        <p class="mt-3 col-1"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="max-height: calc(100vh - 300px); overflow-y: scroll; overflow-x: hidden; width: calc(100% + 23px);">
+                @foreach (Order order in orders)
+                {
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="mt-3 col-2">@order.ExtProductId</p>
+                                <p class="mt-3 col-2">@order.Name</p>
+                                <p class="mt-3 col-1">@order.DisplayQuantity</p>
+                                <p class="mt-3 col-1">@(order.Status ? "Done" : "Awaiting")</p>
+                                <button type="button" class="btn btn-danger col-1" @onclick="() => DeleteData(order.ExtOrderId)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+
+@if (DisplayWarning)
+{
+    <Alert OnCancel="() => DisplayWarning = false">
+        <h3>Are you sure?</h3>
+        <div class="d-flex flex-row justify-content-around mt-3">
+            <button class="btn btn-neutral" title="Cancel" aria-label="Cancel" @onclick="() => DisplayWarning = false">Cancel</button>
+            <button class="btn btn-danger" title="Confirm" aria-label="Confirm" @onclick="DeleteConfirmed">Delete</button>
+        </div>
+    </Alert>
+}
+
+
+@code {
+    private bool showDeleteConfirmation;
+    private int deletingItemId;
+    private List<Inbound> inbounds;
+    private List<Order> orders;
+    private bool DisplayWarning = false;
+
+
+    private void DeleteData(int itemId)
+    {
+        deletingItemId = itemId;
+        DisplayWarning = true;
+    }
+
+    private async Task DeleteConfirmed()
+    {
+        DisplayWarning = false;
+        await DeleteInbound(deletingItemId);
+        await DeleteOrder(deletingItemId);
+        showDeleteConfirmation = false;
+        
+    }
+
+    private void DeleteCancelled()
+    {
+        showDeleteConfirmation = false;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            inbounds = await StatusService.GetUnfinishedInbounds();
+            orders = await StatusService.GetUnfinishedOrders();
+        }
+        catch (Exception e)
+        {
+            // Handle exception
+        }
+    }
+
+    private async Task DeleteInbound(int inboundId)
+    {
+        try
+        {
+            // Call the service method to delete the inbound item
+            int deletedRows = await StatusService.DeleteInbound(inboundId);
+
+            if (deletedRows > 0)
+            {
+                inbounds = await StatusService.GetUnfinishedInbounds();
+            }
+            else
+            {
+                // Handle the case when the delete operation did not affect any rows
+                // Display an error message or take appropriate action
+            }
+        }
+        catch (Exception e)
+        {
+            // Handle exception
+        }
+    }
+
+    private async Task DeleteOrder(int extorderId)
+    {
+        try
+        {
+            // Call the service method to delete the order
+            int deletedRows = await StatusService.DeleteOrder(extorderId);
+
+            if (deletedRows > 0)
+            {
+                orders = await StatusService.GetUnfinishedOrders();
+            }
+            else
+            {
+                // Handle the case when the delete operation did not affect any rows
+                // Display an error message or take appropriate action
+            }
+        }
+        catch (Exception e)
+        {
+            // Handle exception
+        }
+    }
+}

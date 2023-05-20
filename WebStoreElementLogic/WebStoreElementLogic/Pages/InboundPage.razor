@@ -77,7 +77,7 @@
         </div>
         @if (inbounds != null && inbounds.Any())
         {
-            <div class="col-lg-2 border-start border-dark min-vh-100">
+            <div class="col-lg-2 border-start border-dark custom-border">
                 <h4>Awaiting inbounds</h4>
                 @foreach (Inbound inbound in inbounds)
                 {
@@ -92,8 +92,17 @@
                 }
             </div>
         }
-    </div>
-</div>
+
+        <style>
+            .custom-border {
+                position: sticky;
+                top: 30px; /* Adjust the top offset as needed */
+                height: calc(100vh - 165px);
+                overflow-y: auto; /* Enable vertical scrolling */
+            }
+        </style>
+
+
 
 
 @if (ShowModal)

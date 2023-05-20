@@ -113,7 +113,8 @@ else
                         Info="FilteredProducts[SelectedIndex]"
                         Copy="(Product) FilteredProducts[SelectedIndex].Clone()"
                         OnSave="SaveHandler"
-                        OnDelete="DeleteHandler" />
+                        OnDelete="DeleteHandler" 
+                        OnDiscard="CancelEdit" />
                 }
                 @if (AddNew)
                 {
@@ -123,7 +124,7 @@ else
                          Info="newInfo"
                          Copy="(Product) newInfo.Clone()"
                          OnSave="SaveHandler"
-                         OnDiscard="Discard" />
+                         OnDiscard="Cancel" />
                 }
             </div>
         </div>
@@ -290,9 +291,15 @@ else
         StateHasChanged();
     }
 
-    private void Discard()
+    private void Cancel()
     {
         AddNew = false;
+        StateHasChanged();
+    }
+
+    private void CancelEdit()
+    {
+        SelectedIndex = -1;
         StateHasChanged();
     }
 

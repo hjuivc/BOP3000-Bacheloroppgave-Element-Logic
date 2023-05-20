@@ -95,14 +95,22 @@
     </div>
 </div>
 
-        <style>
-            .custom-border {
-                position: sticky;
-                top: 30px; /* Adjust the top offset as needed */
-                height: calc(100vh - 165px);
-                overflow-y: auto; /* Enable vertical scrolling */
-            }
-        </style>
+<style>
+    .custom-border {
+        position: fixed;
+        top: 140px; /* Adjust the top offset as needed */
+        right: 0; /* Align to the right side of the screen */
+        width: 270px; /* Adjust the width as needed */
+        height: calc(100vh - 165px);
+        overflow-y: auto; /* Enable vertical scrolling */
+    }
+
+    body {
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+</style>
+
 
 
 

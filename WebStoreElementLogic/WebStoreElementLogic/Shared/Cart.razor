@@ -61,13 +61,13 @@
 }
 
 <div class="container-fluid row">
-    <div class="col container-fluid" style="height: calc(100vh - 165px);">
+    <div class="col container-fluid" style="height: calc(100vh - 105px);">
         <div class="row d-block d-xl-none position-sticky sticky-top">
             <button class="btn btn-custom" title="Show Cart" aria-label="Show cart" @onclick="() => DisplayCheckout = true">Show Cart (@CartCount())</button>
         </div>
         @ChildContent
     </div>
-    <div class="border-start border-dark col-2 ms-4 d-none d-xl-block">
+    <div class="border-start border-dark col-2 ms-4 d-none d-xl-block min-vh-100">
 
         <!-- Cart Menu -->
         <div class="position-fixed container-fluid d-flex flex-column justify-content-between text-white align-content-center" style="height: calc(100% - 85px)">

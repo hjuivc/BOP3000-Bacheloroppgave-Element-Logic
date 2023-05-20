@@ -77,7 +77,7 @@
         </div>
         @if (inbounds != null && inbounds.Any())
         {
-            <div class="col-lg-2 border-start border-dark custom-border">
+            <div class="col-lg-2 border-start border-dark custom-border min-vh-100">
                 <h4>Awaiting inbounds</h4>
                 @foreach (Inbound inbound in inbounds)
                 {
@@ -94,17 +94,6 @@
         }
     </div>
 </div>
-
-<style>
-    .custom-border {
-        position: fixed;
-        top: 140px; /* Adjust the top offset as needed */
-        right: 0; /* Align to the right side of the screen */
-        width: 270px; /* Adjust the width as needed */
-        height: calc(100vh - 165px);
-        overflow-y: auto; /* Enable vertical scrolling */
-    }
-</style>
 
 
 

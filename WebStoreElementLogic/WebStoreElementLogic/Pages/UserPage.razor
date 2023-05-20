@@ -140,18 +140,17 @@
                 </div>
             </div>
         </EditForm>
-    </div>
-    <div class="col-md-4 offset-md-8 mt-4">
-        <h3 style="text-align: center">Delete/flush all data</h3>
-        <div class="text-center mt-2" >
+
+        <h3 style="text-align: center; margin-top: 70px;">Delete/flush all data</h3>
+        <div class="text-center mt-2">
             <button type="button" class="btn btn-custom" title="Delete data" aria-label="Delete data" @onclick="DeleteData">Delete data</button>
             <div class="tooltip-container" style="margin-top: 25px;">
                 <i class="fas fa-info-circle" aria-label="Info icon"></i>
                 <span class="tooltip-text">This button will delete all data for products, stock, inbound, and order. Once the data is deleted, it is not possible to get it back.</span>
             </div>
         </div>
-
     </div>
+
     @if (DisplayWarning)
     {
         <Alert OnCancel="() => DisplayWarning = false">

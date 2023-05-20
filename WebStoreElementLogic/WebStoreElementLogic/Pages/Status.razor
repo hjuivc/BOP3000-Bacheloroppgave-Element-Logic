@@ -27,7 +27,7 @@
 
         @if (inbounds != null)
         {
-            <div style="max-height: calc(100vh - 300px); overflow-y: scroll; overflow-x: hidden; width: calc(100% + 23px);">
+            <div style="max-height: calc(100vh - 205px); overflow-y: scroll; overflow-x: hidden; width: calc(100% + 23px);">
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -53,7 +53,7 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <button type="button" title="Delete inbound" class="btn btn-danger btn-sm" @onclick="() => DeleteData(inbound.InboundId)">Delete</button>
+                                    <button type="button" class="btn btn-danger btn-sm" @onclick="() => DeleteData(inbound.InboundId)">Delete</button>
                                 </td>
                             </tr>
                         }
@@ -64,7 +64,7 @@
     </div>
 
     <!-- Empty column for the gap -->
-    <div class="col-1 d-flex align-items-center justify-content-center">
+    <div class="col-1 d-flex align-items-center justify-content-center" style="height: calc(100vh - 165px);">
         <div style="border-right: 1px solid black; height: 100%;"></div>
     </div>
 
@@ -80,7 +80,7 @@
 
         @if (orders != null)
         {
-            <div style="max-height: calc(100vh - 300px); overflow-y: scroll; overflow-x: hidden;">
+            <div style="max-height: calc(100vh - 200px); overflow-y: scroll; overflow-x: hidden;">
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -104,7 +104,7 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <button type="button" title="Delete order" class="btn btn-danger btn-sm" @onclick="() => DeleteData(order.ExtOrderId)">Delete</button>
+                                    <button type="button" class="btn btn-danger btn-sm" @onclick="() => DeleteData(order.ExtOrderId)">Delete</button>
                                 </td>
                             </tr>
                         }

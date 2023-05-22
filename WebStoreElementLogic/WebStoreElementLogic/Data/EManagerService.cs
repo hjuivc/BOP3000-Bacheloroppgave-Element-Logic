@@ -90,7 +90,7 @@ public class EManagerService : IEManagerService
               <Lines>
                 <GoodsReceivalLine>
                   <TransactionId>{transactionId}</TransactionId>
-                  <PurchaseOrderId>{purchaseOrderId + 3000}</PurchaseOrderId>
+                  <PurchaseOrderId>{purchaseOrderId}</PurchaseOrderId>
                   <PurchaseOrderLineId>1</PurchaseOrderLineId>
                   <ExtProductId>{product.Id}</ExtProductId>
                   <Quantity>{qty}</Quantity>
@@ -126,7 +126,7 @@ public class EManagerService : IEManagerService
             xmlLines.Append($@"
             <PicklistLine>
                 <TransactionId>{line.TransactionId}</TransactionId>
-                <ExtPicklistId>{line.ExtPicklistId + 3000}</ExtPicklistId>
+                <ExtPicklistId>{line.ExtPicklistId}</ExtPicklistId>
                 <ExtOrderId>{line.ExtOrderId}</ExtOrderId>
                 <ExtProductId>{line.ExtProductId}</ExtProductId>
                 <Quantity>{line.Quantity}</Quantity>
